@@ -1,0 +1,32 @@
+extends: airbnb
+parser: babel-eslint
+plugins:
+  - import
+  - jasmine
+
+env:
+  browser: true
+  node: true
+  jest: true
+  jasmine: true
+
+settings:
+  import/parser: 'babel-eslint'
+  ecmaFeatures:
+    - classes
+    - jsx
+
+rules:
+  object-curly-spacing: 0
+  quotes: 0
+  arrow-body-style: 0
+  react/forbid-prop-types: 0
+  react/jsx-filename-extension: 0
+  import/no-extraneous-dependencies: 0
+  import/no-unresolved: 0
+  import/extensions: 0
+  react/no-find-dom-node: 0
+  react/prefer-stateless-function: 0
+  no-console:
+    - 2
+    - allow: ['debug', 'warn', 'error', 'log']
