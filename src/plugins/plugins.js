@@ -13,6 +13,9 @@ const runPlugins = (msg) => {
     const msg2 = Object.assign({}, msg, {
       handling: extraInfo => msg.handling(key, extraInfo),
       log: extraInfo => msg.log(key, extraInfo),
+      vlog: (extraInfo) => {
+        if (msg.verbose) msg.log(`${key}.verbose`, extraInfo);
+      },
     });
     plugins[key](msg2);
   });

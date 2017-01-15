@@ -62,6 +62,7 @@ client.addListener('message', (from, to, message) => {
     };
   }
 
+  messageObj.verbose = !!config.verbose;
   if (config.verbose) {
     console.error(yamlStringify(messageObj, {
       skipInvalid: true,
@@ -90,7 +91,8 @@ client.addListener('message', (from, to, message) => {
     console.log('');
   };
   messageObj.log = (pluginName, extraInfo) => {
-    console.log(`${pluginName}: `, extraInfo);
+    process.stderr.write(`${chalk.blue(pluginName)}: `);
+    console.log(extraInfo);
   };
 
   plugins.run(messageObj);
