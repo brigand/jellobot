@@ -7,7 +7,10 @@
   "author": "Frankie Bagnardi <f.bagnardi@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "irc": "^0.5.2"
+    "chalk": "^1.1.3",
+    "irc": "^0.5.2",
+    "js-yaml": "^3.7.0",
+    "superagent": "^3.3.2"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
