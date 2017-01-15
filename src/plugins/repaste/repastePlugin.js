@@ -1,4 +1,5 @@
 const superagent = require('superagent');
+const prettier = require('prettier');
 const pasteUrlToRaw = require('./pasteUrlToRaw');
 const createGist = require('./createGist');
 
@@ -42,19 +43,34 @@ const repastePlugin = (msg) => {
       msg.respondWithMention(`I don't know the paste service at "${url}". GreenJello, ping!`);
       return;
     }
-    msg.respondWithMention(rawUrl);
     msg.vlog(`Fetching ${rawUrl}`);
     superagent.get(rawUrl)
       .then((res) => {
         const {text} = res;
         msg.vlog(`Fetched ${rawUrl} with body length ${text.length}`);
         if (!text) {
+          msg.respondWithMention(`Paste at ${url} seems to be empty.`);
           return;
         }
+
+        const files = {
+          'original.js': text,
+        };
+
+        try {
+          const formatted = prettier.format(text, {
+            // printWidth: 100,
+            singleQuote: true,
+            trailingComma: true,
+          });
+          files['.js'] = formatted;
+        } catch (e) {
+          console.error(e.message);
+          // do nothing
+        }
+
         createGist({
-          files: {
-            '.js': text,
-          },
+          files,
           tryShortUrl: true,
         })
         .then((gistUrl) => {
