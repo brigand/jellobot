@@ -22,6 +22,11 @@ const pasteUrlToRaw = (url) => {
     return `http://dpaste.com/${parts.pop()}.txt`;
   }
 
+  // https://codepen.io/brigand/pen/JERLwv -> https://codepen.io/brigand/pen/JERLwv.js
+  if (/codepen\.io\/.*\/pen\/.+/.test(url)) {
+    return `${url}.js`;
+  }
+
   return null;
 };
 

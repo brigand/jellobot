@@ -14,3 +14,7 @@ it('dpaste', () => {
   expect(pasteUrlToRaw('http://dpaste.com/3XB47RJ')).toBe('http://dpaste.com/3XB47RJ.txt');
   expect(pasteUrlToRaw('http://dpaste.com/3XB47RJ.txt')).toBe('http://dpaste.com/3XB47RJ.txt');
 });
+
+it('codepen', () => {
+  expect(pasteUrlToRaw('https://codepen.io/brigand/pen/JERLwv')).toBe('https://codepen.io/brigand/pen/JERLwv.js');
+});
