@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source scripts/env.sh
+
+ssh "$ssh_host" "\
+  adduser ; \
+  mkdir /home/$remote_user; \
+  chown jellobot /home/$remote_user; \
+  su - $remote_user -c '\
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash \
+    source ~/.nvm/nvm.sh; \
+    nvm install 6; \
+    curl -o- -L https://yarnpkg.com/install.sh | bash; \
+  '"
+
