@@ -24,9 +24,9 @@ exports.processConfig = (customConfig) => {
   };
 
   if (config.password) {
-    config.ircClientConfig = config.userName || config.nick;
+    config.ircClientConfig.userName = config.userName || config.nick;
     config.ircClientConfig.password = config.password;
-    config.sasl = true;
+    config.ircClientConfig.sasl = true;
   }
 
   // parse args
