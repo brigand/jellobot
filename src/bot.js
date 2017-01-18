@@ -101,7 +101,7 @@ client.addListener('message', (from, to, message) => {
 });
 
 client.addListener('error', (message) => {
-  console.error(`${chalk.red('IRC Error')}: ${message}`);
+  console.error(`${chalk.red('IRC Error')}:`, message);
 });
 
 const connectStartTime = Date.now();

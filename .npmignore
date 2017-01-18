@@ -1,4 +1,5 @@
 node_modules
 coverage
+jellobot-config.json
 scripts/env.sh
 
