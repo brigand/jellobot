@@ -4,6 +4,8 @@ const {safeDump: yamlStringify} = require('js-yaml');
 const {readAndProcessConfig} = require('./utils/getConfig');
 const plugins = require('./plugins/plugins.js');
 
+const logBotPrefix = chalk.black.bgYellow('BOT');
+
 const config = readAndProcessConfig();
 
 const client = new irc.Client(config.server, config.nick, config.ircClientConfig);
@@ -25,6 +27,7 @@ client.addListener('message', (from, to, message) => {
       text = `${text.slice(0, 490)} ...`;
     }
     client.say(to2, text);
+    console.log(`${chalk.bgGreen(to2)} ${text}`);
   };
 
   messageObj.sayTo = say;
@@ -88,7 +91,6 @@ client.addListener('message', (from, to, message) => {
     if (extraInfo !== undefined) {
       console.log(extraInfo);
     }
-    console.log('');
   };
   messageObj.log = (pluginName, extraInfo) => {
     process.stderr.write(`${chalk.blue(pluginName)}: `);
@@ -99,17 +101,29 @@ client.addListener('message', (from, to, message) => {
 });
 
 client.addListener('error', (message) => {
-  console.error(`Error event: ${message}`);
+  console.error(`${chalk.red('IRC Error')}: ${message}`);
 });
 
 const connectStartTime = Date.now();
+let connectFinishTime;
 client.addListener('registered', () => {
-  const connectFinishTime = Date.now();
+  connectFinishTime = Date.now();
   const diff = connectFinishTime - connectStartTime;
-  console.log(`Connected to ${config.server} as ${config.nick}`);
-  console.log(`Took ${diff}ms to connect.`);
+  console.log(`${logBotPrefix}: connected to ${config.server} as ${config.nick}.`);
+  console.log(`${logBotPrefix}: took ${diff}ms to connect.`);
+});
+console.log(`${logBotPrefix}: Connecting to ${config.server} as ${config.nick}`);
+
+const receivedNickListsForChannelEver = {};
+client.addListener('names', (channel, nicks) => {
+  if (receivedNickListsForChannelEver[channel]) {
+    return;
+  }
+  receivedNickListsForChannelEver[channel] = true;
+  const diffFromConnect = Date.now() - connectFinishTime;
+  console.log(`${logBotPrefix}: connected to ${channel} which has ${Object.keys(nicks).length} users. Took ${diffFromConnect}ms since register.`);
 });
 
 if (config.verbose) {
-  console.error('Running in verbose mode');
+  console.log(`${logBotPrefix}: ${chalk.yellow(`Running in verbose mode.`)}`);
 }

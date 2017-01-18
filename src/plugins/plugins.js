@@ -5,9 +5,7 @@ const runPlugins = (msg) => {
     delete require.cache[key];
   });
 
-  const plugins = {
-    repaste: require('./repaste/repastePlugin'),
-  };
+  const plugins = require('./getPlugins')();
 
   Object.keys(plugins).forEach((key) => {
     const msg2 = Object.assign({}, msg, {
