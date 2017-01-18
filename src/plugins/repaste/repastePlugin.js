@@ -84,6 +84,9 @@ const repastePlugin = (msg) => {
             console.error(err);
           }
         });
+      }, (errorRes) => {
+        msg.respondWithMention(`Failed to get raw paste data.`);
+        msg.vlog(errorRes.text);
       });
   } else if (user) {
     msg.respondWithMention(`I couldn't find a link from ${user}`);
