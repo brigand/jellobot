@@ -16,7 +16,18 @@ const runPlugins = (msg) => {
         if (msg.verbose) msg.log(`${key}.verbose`, extraInfo);
       },
     });
-    plugins[key](msg2);
+    try {
+      const maybePromise = plugins[key](msg2);
+      if (maybePromise && maybePromise.catch) {
+        maybePromise.catch((e) => {
+          msg.respond(`An async internal error occured: ${e.message || e}`);
+        });
+      }
+    } catch (e) {
+      console.error(`Error while processing plugin "${key}"`);
+      console.error(e);
+      msg.respond(`An internal error occured: ${e.message || e}`);
+    }
   });
 };
 

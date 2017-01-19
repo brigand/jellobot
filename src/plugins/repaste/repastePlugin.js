@@ -2,6 +2,7 @@ const superagent = require('superagent');
 const prettier = require('prettier');
 const pasteUrlToRaw = require('./pasteUrlToRaw');
 const createGist = require('./createGist');
+const getJsfiddle = require('./jsfiddle/getJsfiddle');
 
 const matchUrl = (text) => {
   const match = text.match(/(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/); // eslint-disable-line
@@ -15,7 +16,7 @@ const findLinkInLogs = (msg, user) => {
     if (!user || log.from === user) {
       const match = matchUrl(log.message);
       if (match) {
-        return match;
+        return {user: log.from, url: match};
       }
     }
   }
@@ -23,76 +24,90 @@ const findLinkInLogs = (msg, user) => {
 };
 
 const repastePlugin = (msg) => {
-  if (!msg.command) return;
+  if (!msg.command) return Promise.resolve();
   const words = msg.command.command.split(' ');
-  if (words[0] !== 'repaste') return;
+  if (words[0] !== 'repaste') return Promise.resolve();
 
   msg.handling();
 
   let url = null;
-  const user = words[1];
+  let user = null;
+  const specifiedUser = words[1];
   if (words[1]) {
-    url = findLinkInLogs(msg, user);
+    ({user, url} = findLinkInLogs(msg, specifiedUser));
   } else {
-    url = findLinkInLogs(msg);
+    ({user, url} = findLinkInLogs(msg));
   }
 
   if (url) {
-    const rawUrl = pasteUrlToRaw(url);
-    if (!rawUrl) {
-      msg.respondWithMention(`I don't know the paste service at "${url}". GreenJello, ping!`);
-      return;
-    }
-    msg.vlog(`Fetching ${rawUrl}`);
-    superagent.get(rawUrl)
-      .then((res) => {
-        const {text} = res;
-        msg.vlog(`Fetched ${rawUrl} with body length ${text.length}`);
-        if (!text) {
-          msg.respondWithMention(`Paste at ${url} seems to be empty.`);
-          return;
-        }
+    return getCode(msg, url).then((res) => { // eslint-disable-line no-use-before-define
+      const files = {
+        'code.js': res.js,
+      };
+      if (res.html) files['code.html'] = res.css;
+      if (res.css) files['code.css'] = res.css;
 
-        const files = {
-          'original.js': text,
-        };
-
-        try {
-          const formatted = prettier.format(text, {
-            // printWidth: 100,
-            singleQuote: true,
-            trailingComma: true,
-          });
-          files['.js'] = formatted;
-        } catch (e) {
-          console.error(e.message);
-          // do nothing
-        }
-
-        createGist({
-          files,
-          tryShortUrl: true,
-        })
-        .then((gistUrl) => {
-          msg.respondWithMention(`Repasted ${url} to ${gistUrl}`);
-        })
-        .catch((err) => {
-          if (err && err.gistError) {
-            msg.respondWithMention(`Failed to create gist. Possibly a rate limit`);
-          } else {
-            msg.respondWithMention(`Failed due to an unknown error. GreenJello, ping! ${err.message}`);
-            console.error(err);
-          }
+      try {
+        const formatted = prettier.format(res.js, {
+          // printWidth: 100,
+          singleQuote: true,
+          trailingComma: true,
         });
-      }, (errorRes) => {
-        msg.respondWithMention(`Failed to get raw paste data.`);
-        msg.vlog(errorRes.text);
+        files['.js'] = formatted;
+      } catch (e) {
+        console.error(e.message);
+        // do nothing
+      }
+
+      createGist({
+        files,
+        tryShortUrl: true,
+      })
+      .then((gistUrl) => {
+        msg.respondWithMention(`Repasted ${user}'s paste to ${gistUrl}`);
+      })
+      .catch((err) => {
+        if (err && err.gistError) {
+          msg.respondWithMention(`Failed to create gist. Possibly a rate limit`);
+        } else {
+          msg.respondWithMention(`Failed due to an unknown error. GreenJello, ping! ${err.message}`);
+          console.error(err);
+        }
       });
+    }, (errorRes) => {
+      msg.respondWithMention(`Failed to get raw paste data.`);
+      msg.vlog(errorRes.text);
+    });
   } else if (user) {
     msg.respondWithMention(`I couldn't find a link from ${user}`);
   } else {
     msg.respondWithMention(`I couldn't find a link in the past 500 messages. Maybe I was restarted recently.`);
   }
+
+  return Promise.resolve();
 };
+
+function getCode(msg, url) {
+  if (/jsfiddle\.net/.test(url)) {
+    return getJsfiddle(url);
+  }
+
+  const rawUrl = pasteUrlToRaw(url);
+  if (!rawUrl) {
+    msg.respondWithMention(`I don't know the paste service at "${url}". GreenJello, ping!`);
+    return Promise.reject();
+  }
+  msg.vlog(`Fetching ${rawUrl}`);
+  return superagent.get(rawUrl)
+  .then((res) => {
+    const {text} = res;
+    msg.vlog(`Fetched ${rawUrl} with body length ${text.length}`);
+    if (!text) {
+      msg.respondWithMention(`Paste at ${url} seems to be empty.`);
+      throw new Error('No text');
+    }
+    return {js: text};
+  });
+}
 
 module.exports = repastePlugin;

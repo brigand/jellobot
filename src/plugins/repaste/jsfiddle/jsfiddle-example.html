@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle code editor.">
+    <meta name="keywords" content="online javascript editor, testing javascript online, online ide, online code editor, html, css, coffeescript, scss online editor">
+    <meta name="author" content="JSFiddle">
+    <meta name="copyright" content="share alike">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+
+    
+      <meta name="robots" content="index, follow">
+      <meta name="googlebot" content="index, follow">
+    
+
+    
+
+    
+      <meta name="google-site-verification" content="9m4aWTtDLfQ1kJNm3NtNsCrtpsOx_QoOPQRJ7jAwup8" />
+    
+
+    <!--meta name="viewport" content="width=device-width, maximum-scale=0.5" /-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-touch-fullscreen" content="yes" />
+
+    
+      <script type="text/javascript" src="/js/_dist-editor.js?update_14_12_2016_1"></script>
+
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/_dist-editor.css?update_14_12_2016_1"/>
+
+
+    
+      <link rel="stylesheet" type="text/css" href="/css/light.css?update_14_12_2016_1"/>
+
+    
+
+    
+      <script type="text/javascript">
+        var fiddleOptions = {
+          example_id: "290574212",
+          exampleURL: "//jsfiddle.net/1f0ww8Lv/",
+          slug: "1f0ww8Lv"
+        };
+        var csspath = "/css/",
+          jspath = "/js/",
+          imgpath = "/img/",
+          mediapath = "/mooshellmedia/",
+          codemirrorpath = "/codemirror/",
+          panel_html = 'html',
+          panel_css = 'css',
+          panel_js = 'javascript',
+          makefavouritepath = "/_make_favourite/",
+          example_server = "//jsfiddle.net",
+          username = "",
+          static_hash = "update_14_12_2016_1",
+          csrfToken = Cookie.read('csrftoken'),
+          editor_save = "",
+          mooshell,
+          preload_resources;
+
+        
+
+        Layout.skin = "light";// "light"
+        window.addEvent('domready', function() {
+          if (panel_js != 'javascript' && $('jslint')) {
+            $('jslint').getParent('li').hide();
+          }
+
+          $extend(Layout, new Events());
+          mooshell = new MooShellActions({
+            example_id: fiddleOptions.example_id,
+            exampleURL: fiddleOptions.exampleURL,
+            exampleSaveUrl: '/_save/',
+            // sendCallbackURL: '',
+            loadDependenciesURL: '/_get_dependencies/{lib_id}/',
+            loadLibraryVersionsURL: '/_get_library_versions/{group_id}/'
+          });
+          new MooShellEditor.JS(document.id('id_code_js'), {
+            language: panel_js
+          }); // add user defined parameters
+          new MooShellEditor.HTML(document.id('id_code_html'), {
+            language: panel_html
+          }); // add user defined parameters
+          new MooShellEditor.CSS(document.id('id_code_css'), {
+            language: panel_css
+          }); // add user defined parameters
+          Layout.render();
+
+          
+
+          // show editors and content when the last editor loads
+          // this will prevent flickering, plus looks nice
+          document.id('content').setStyle('opacity', 1);
+
+          // always keep this at the bottom
+          $$('select.panelChoice').each(function(sel) {
+            this.switchLanguage(sel);
+          }, mooshell);
+        });
+      </script>
+
+      
+    
+
+    
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
+  if (window.localStorage) {
+    ga('create', 'UA-366077-13', {
+      'storage': 'none',
+      'clientId': localStorage.getItem(GA_LOCAL_STORAGE_KEY)
+    });
+    ga(function(tracker) {
+      localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
+    });
+    ga('send', 'pageview', '/[fiddle]/'); // where `url_structure` is for example `/[user]/[fiddle]/[revision]/embedded/js,css/`
+  }
+</script>
+
+      
+
+      <!-- Hotjar Tracking Code for jsfiddle.net -->
+      <!-- <script>
+        (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:13981,hjsv:5};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+      </script> -->
+    
+
+    <script>
+      var HW_config = {
+        selector: ".changelog-badge",
+        account: "1xGMJQ"
+      };
+    </script>
+    <script async src="//cdn.headwayapp.co/widget.js"></script>
+
+    <link rel="icon" href="/favicon.png">
+    <link href="//fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <!-- <link href="//fonts.googleapis.com/css?family=Lato:400|Inconsolata" rel="stylesheet" type="text/css"> -->
+
+    <title>Edit fiddle - JSFiddle</title>
+  </head>
+  <body>
+    <h1>Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle code editor.</h1>
+    <h2>online javascript editor, testing javascript online, online ide, online code editor, html, css, coffeescript, scss online editor</h2>
+    <form method="post" id="show-result" target="result" action="//fiddle.jshell.net/_display/">
+      
+      
+      <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='FPHSkt2nV09ZFPYtj7sG7a9FnMMShAzS' /></div>
+      <div id="header">
+        <div id="branding">
+          <p id="name" class="changelog-badge"><a title="JSFiddle " href="/" id="home" class="drop-target">JSFiddle</a></p>
+        </div>
+        
+          <div id="actions">
+  <nav class="actionCont collapsed">
+    <div class="actionItem">
+      <a class="aiButton" id="run" title="Run (CTRL + Return)" href="#run"><i class="bts bt-play"></i>Run</a>
+    </div>
+
+    
+    
+
+    
+    
+      <div class="actionItem hidden">
+        <a class="aiButton" id="savenew" title="Save new Fiddle (CTRL + S)" href="#save"><i class="bts bt-pencil"></i>Save</a>
+      </div>
+      <div class="actionItem visible">
+        <a class="aiButton" id="update" title="Update (CTRL + S)" href="#update"><i class="bts bt-pencil"></i>Update</a>
+      </div>
+      <div class="actionItem visible">
+        <a class="aiButton" id="fork" title="Fork into a new Fiddle" href="#fork"><i class="bts bt-fork"></i>Fork</a>
+      </div>
+    
+
+    
+
+    <div class="actionItem">
+      <a class="aiButton" id="tidy" title="Tidy messy code" href="#tidy"><i class="bts bt-align-left"></i>Tidy</a>
+    </div>
+    <!-- <div class="actionItem">
+      <a class="aiButton" id="showjscode" title="Show JavaScript code" href="#showjs"><i class="bts bt-code"></i>Show JS</a>
+    </div -->
+    <div class="actionItem">
+      <a class="aiButton" id="collaborate" title="Collaborate on code" href="#collaborate"><i class="bts bt-commenting"></i>Collaborate</a>
+    </div>
+  </nav>
+
+  
+  
+
+  <ul class="actionCont dropdown">
+    <li class="actionItem visible">
+      <a class="aiButton dropdownTrigger" id="share" title="Embed this Fiddle" href="#embed">Embed<i class="bts bt-angle-down rightIcon"></i></a>
+      <div class="dropdownCont center">
+        <div class="dcWrapper embed">
+
+          <div id="creator">
+            <section>
+              <h3>Tabs:</h3>
+              <div class="inlineFields">
+                <label class="inputCont_checkbox checkboxCont">
+                  <input type="checkbox" name="tabs" value="js" checked>
+                  <span class="checkbox"><i class="bts bt-check"></i></span> JavaScript
+                </label>
+                <label class="inputCont_checkbox checkboxCont">
+                  <input type="checkbox" name="tabs" value="html" checked>
+                  <span class="checkbox"><i class="bts bt-check"></i></span> HTML
+                </label>
+                <label class="inputCont_checkbox checkboxCont">
+                  <input type="checkbox" name="tabs" value="css" checked>
+                  <span class="checkbox"><i class="bts bt-check"></i></span> CSS
+                </label>
+                <label class="inputCont_checkbox checkboxCont">
+                  <input type="checkbox" name="tabs" value="result" checked>
+                  <span class="checkbox"><i class="bts bt-check"></i></span> Result
+                </label>
+              </div> <!-- /inlineFields -->
+            </section>
+
+            <section class="noborder">
+              <h3>Visual:</h3>
+              <div class="inlineFields">
+                <label class="inputCont_checkbox checkboxCont">
+                  <input type="radio" name="skin" value="light" checked>
+                  <span class="radio"></span> Light
+                </label>
+                <label class="inputCont_checkbox checkboxCont">
+                  <input type="radio" name="skin" value="dark">
+                  <span class="radio"></span> Dark
+                </label>
+              </div> <!-- /inlineFields -->
+              <label class="inputCont_text">
+                <input type="text" name="accentColor" maxlength="7" placeholder="Accent color">
+              </label>
+              <label class="inputCont_text">
+                <input type="text" name="fontColor" maxlength="7" placeholder="Font color">
+              </label>
+              <label class="inputCont_text">
+                <input type="text" name="menuColor" maxlength="7" placeholder="Menu background">
+              </label>
+              <label class="inputCont_text">
+                <input type="text" name="bodyColor" maxlength="7" placeholder="Code background">
+              </label>
+            </section>
+
+            <section class="noborder">
+              <h3>Embed code <a href="#" class="codeTypeToggle">Prefer iframe?</a>:</h3>
+              <div class="embedCodeWrap">
+<textarea class="embedCode" id="share_embedded_dropdown" data-view="embed" data-pattern-value='<script async src="{embedSrc}"></script>'>
+<script async src="{embedSrc}"></script>
+</textarea>
+              </div> <!-- /embedCodeWrap -->
+
+              <div class="embedCodeWrap hidden">
+<textarea class="embedCode" data-view="embedded" data-pattern-value='<iframe width="100%" height="300" src="{embedSrc}" allowfullscreen="allowfullscreen" frameborder="0"></iframe>'>
+<iframe width="100%" height="300" src="{embedSrc}" allowfullscreen frameborder="0"></iframe>
+</textarea>
+                <p><strong>No autoresizing</strong> to fit the code</p>
+                <p><strong>Render blocking</strong> of the parent page</p>
+              </div> <!-- /embedCodeWrap -->
+            </section>
+          </div> <!-- /creator -->
+
+          <div id="preview"></div> <!-- /preview -->
+
+        </div> <!-- /dcWrapper -->
+      </div> <!-- /dropdownCont -->
+    </li> <!-- /actionItem -->
+  </ul> <!-- /actionCont -->
+
+
+  
+<ul class="actionCont dropdown right">
+  <li class="actionItem hidden draftTriggerCont">
+    <a class="aiButton dropdownTrigger applyDraft" href="#">
+      <i class="bts bt-flag"></i>Your fiddle has an unsaved draft
+    </a>
+    <div class="dropdownCont">
+      <div class="dcWrapper diffCont">
+        <h4>Diff between the <strong>saved</strong> and <strong>locally drafted</strong> fiddle:</h4>
+        <div class="diffPanels">
+          <div class="diffWrap" id="diff-html"></div>
+          <div class="diffWrap" id="diff-js"></div>
+          <div class="diffWrap" id="diff-css"></div>
+        </div><!-- /diffCont -->
+        <p><a class="apply" href="#" id="apply-draft">Apply local draft version</a> or <a href="#" id="discard-draft">discard it</a></p>
+      </div><!-- /actionItem -->
+    </div><!-- /dcWrapper -->
+  </li> <!-- /actionItem -->
+
+  <li class="actionItem">
+    <a class="aiButton dropdownTrigger" href="#editor-options">
+      <i class="bts bt-gear"></i>Settings
+      <i class="bts bt-angle-down rightIcon"></i>
+    </a>
+    <div class="dropdownCont">
+      <div class="dcWrapper" id="editor-options">
+        <p>
+          <label class="checkboxCont">
+            <input type="checkbox" name="autoCloseTags" checked>
+            <span class="checkbox"><i class="bts bt-check"></i></span>
+            Auto-close HTML tags
+          </label>
+        </p>
+        <p>
+          <label class="checkboxCont">
+            <input type="checkbox" name="lineNumbers" checked>
+            <span class="checkbox"><i class="bts bt-check"></i></span>
+            Show line numbers
+          </label>
+        </p>
+        <p>
+          <label class="checkboxCont">
+            <input type="checkbox" name="lineWrapping" checked>
+            <span class="checkbox"><i class="bts bt-check"></i></span>
+            Enable line wrapping
+          </label>
+        </p>
+        <p>
+          <label class="checkboxCont">
+            <input type="checkbox" name="indentWithTabs">
+            <span class="checkbox"><i class="bts bt-check"></i></span>
+            Indent with tabs
+          </label>
+        </p>
+
+        <div class="selectPair">
+          <span class="label">Indent size:</span>
+          <div class="selectCont">
+            <select name="indentUnit">
+              <option value="2">2 spaces</option>
+              <option value="3">3 spaces</option>
+              <option value="4">4 spaces</option>
+            </select>
+            <label><i class="bts bt-angle-down"></i></label>
+          </div> <!-- /selectCont -->
+        </div> <!-- /selectPair -->
+
+        <div class="selectPair">
+          <span class="label">Key map:</span>
+          <div class="selectCont">
+            <select name="keyMap">
+              <option value="default">Default</option>
+              <option value="sublime">Sublime Text</option>
+              <option value="vim">VIM</option>
+              <option value="emacs">EMACS</option>
+            </select>
+            <label><i class="bts bt-angle-down"></i></label>
+          </div> <!-- /selectCont -->
+        </div> <!-- /selectPair -->
+      </div>
+    </div>
+  </li> <!-- /actionItem -->
+  
+    <li class="actionItem noIcon"><a class="aiButton" id="login" title="Login" href="/user/login/"><i class="bts bt-smile"></i>Sign in</a></li>
+  
+</ul>
+
+</div>
+
+        
+        <div id="progressbar"><div class="pb"></div></div>
+      </div>
+
+      
+        <div id="sidebar">
+          <section id="s-cont">
+            
+
+            <h3 id="about_toggler" class="toggler">Fiddle Meta</h3>
+<div class="element">
+  <div class="elementBody">
+    <div class="ebCont">
+      <p>
+        <label>
+          <input id="id_title" type="text" name="title" maxlength="255" value="" placeholder="Untitled fiddle" />
+        </label>
+      </p>
+      <p>
+        <label>
+          <textarea id="id_description" rows="10" cols="40" name="description" placeholder="No description"></textarea>
+        </label>
+      </p>
+      <p class="metaInfo">Add title to make the fiddle public.</p>
+    </div>
+  </div>
+</div>
+
+            
+
+<h3 class='toggler' id='resources_toggler'>
+  External Resources
+</h3>
+
+
+<div class='element' id='resources_element'>
+  <div class="elementBody">
+    <div class="ebCont">
+      <div id="external-resources-form">
+        <input id="external_resource" type="text" value="" placeholder="JavaScript/CSS URI" />
+        <a id="add_external_resource" class="submit" href="#" title="Add resource"><i class="bts bt-plus-circle"></i></a>
+      </div>
+      <input type='hidden' value='' id='external_resources_id' name='add_external_resources' />
+
+      <ul id='external_resources_list'>
+      <script type='text/javascript'>var resources = [];</script>
+      
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script type='text/javascript'>
+  var default_text = 'JavaScript/CSS URL',
+      add_external_resource_url = "/_add_external_resource/";
+</script>
+
+            <h3 class="toggler">AJAX Requests</h3>
+<div class="element">
+  <div class="elementBody">
+    <div class="ebCont">
+
+      <p><code>/echo</code> simulates AJAX calls:<br>
+        JSON: <code>/echo/json/</code><br>
+        JSONP: <code>//jsfiddle.net/echo/jsonp/</code><br>
+        HTML: <code>/echo/html/</code><br>
+        XML: <code>/echo/xml/</code>
+      </p>
+      <p>See <a href="http://doc.jsfiddle.net/use/echo.html" target="_new">docs</a> for more info.</p>
+    </div>
+  </div>
+</div>
+
+            
+            <h3 class="toggler">Legal, Credits and Links</h3>
+<div class="element">
+  <div class="elementBody">
+    <div class="ebCont">
+      <p class="maintainers">Created and maintained by <a title="Piotr's twitter" href="http://twitter.com/zalun" target="_blank">Piotr</a> and <a title="UX and UI Designer" href="http://twitter.com/oskar" target="_blank">@oskar</a>.</p>
+      <p>Hosted on <a href="https://m.do.co/c/52e7a0ad196d" target="_blank"><strong>DigitalOcean</strong></a></p>
+      <p><strong>License</strong></p>
+      <p>All code belongs to the poster and no license is enforced.</p>
+      <p>JSFiddle or its authors are not responsible or liable for any loss or damage of any kind during the usage of provided code.</p>
+      <p><strong>Links</strong></p>
+      <p>
+        <a href="https://jsfiddle.net/about" target="_blank">About JSFiddle</a><br>
+        <!-- <a href="http://doc.jsfiddle.net/" target="_blank">Docs</a><br> -->
+        <a href="http://status.jsfiddle.net" target="_blank">Status page</a> by <a href="https://updown.io/r/bzxdq" target="_blank">updown.io</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style media="screen">
+  .maintainers {
+    position: absolute;
+    top: -900em;
+    left: -900em;
+  }
+</style>
+
+
+            <div id="roadmap">
+              <a href="https://trello.com/b/LakLkQBW/jsfiddle-roadmap" target="_blank">JSFiddle Roadmap <span>suggest and vote for features</span></a>
+            </div>
+          </section>
+          <section id="s-bottom">
+            <div class="twitterCont">
+              <script async type="text/javascript" src="//crbcdn.jsfiddle.net/carbon.js?zoneid=1673&amp;serve=C6AILKT&amp;placement=jsfiddlenet&amp;cd=crbsrv.jsfiddle.net" id="_carbonads_js"></script>
+            </div>
+            <div id="keep-us-running">
+              <p>Like JSFiddle?</p>
+              <p>Keep us running by whitelisting JSFiddle in your ad blocker.</p>
+              <p>We're serving quality, tech-related ads only.</p>
+              <p>Thank you!</p>
+            </div>
+            <script type="text/javascript">
+              window.onload = function(){
+                setTimeout(function(){
+                  var info = document.getElementById("keep-us-running");
+                  var ads = document.getElementById("carbonads");
+
+                  if (ads === null){
+                    info.className = "show";
+                    info.addEvent("click", function(){
+                      info.className = "";
+                    });
+                  }
+                }, 2000)
+              }
+            </script>
+            
+            
+          </section>
+        </div>
+        <div id="content">
+          
+          
+
+
+<input type="hidden" name="version" value="0" id="id_version" />
+<input type="hidden" id="id_slug" name="slug" value="1f0ww8Lv" />
+
+<fieldset class="column left">
+  <div class="window top" id="panel_html" data-panel_type="html">
+    <textarea id="id_code_html" rows="10" cols="40" name="code_html">&lt;b&gt;test html&lt;/b&gt;</textarea>
+    <a href="#" class="windowLabel" data-panel="html">
+      <span class="label">HTML</span><i class="bts bt-gear"></i>
+    </a>
+  </div>
+  <div class="handler handler_horizontal"></div>
+  <div class="window bottom" id="panel_js" data-panel_type="javascript">
+    <textarea id="id_code_js" rows="10" cols="40" name="code_js">var a = {test: &#39;js&#39;};
+</textarea>
+    <a href="#" class="windowLabel" data-panel="js">
+      <span class="label">JavaScript</span><i class="bts bt-gear"></i>
+    </a>
+  </div>
+  <div class="shim"></div>
+</fieldset>
+
+<div class="handler" id="handler_vertical"></div>
+
+<fieldset class="column right">
+  <div class="window top" id="panel_css" data-panel_type="css">
+    <textarea id="id_code_css" rows="10" cols="40" name="code_css">.test-css {}</textarea>
+    <a href="#" class="windowLabel" data-panel="css">
+      <span class="label">CSS</span><i class="bts bt-gear"></i>
+    </a>
+  </div>
+  <div class="handler handler_horizontal"></div>
+  <div id="result" class="window bottom">
+    <iframe name="result" sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-modals" allowfullscreen frameBorder="0"  src="//fiddle.jshell.net/1f0ww8Lv/show/"></iframe>
+    
+  </div>
+  <div class="shim"></div>
+</fieldset>
+
+<div class="windowSettings html">
+  <h3>Language</h3>
+<div class="selectCont">
+  <select name="panel_html" class='panelChoice' id="panel_html_choice" disabled="disabled" data-panel_id="id_code_html" data-panel="html">
+    
+      <option data-mime-type="text/html" value="0" selected>HTML</option>
+    
+  </select>
+  <label for="js_lib"><i class="bts bt-angle-down"></i></label>
+</div> <!-- /selectCont -->
+
+<h3>Doctype</h3>
+<div class="selectCont">
+  <select name="doctype">
+    
+      <option id="dtd_XHTML 1.0 Strict" value="1">XHTML 1.0 Strict</option>
+    
+      <option id="dtd_XHTML 1.0 Transitional" value="2">XHTML 1.0 Transitional</option>
+    
+      <option selected id="dtd_HTML 5" value="3">HTML 5</option>
+    
+      <option id="dtd_HTML 4.01 Strict" value="4">HTML 4.01 Strict</option>
+    
+      <option id="dtd_HTML 4.01 Transitional" value="5">HTML 4.01 Transitional</option>
+    
+      <option id="dtd_HTML 4.01 Frameset" value="6">HTML 4.01 Frameset</option>
+    
+  </select>
+  <label for="doctype"><i class="bts bt-angle-down"></i></label>
+</div>
+
+<h3>Body tag</h3>
+<p>
+  <label>
+    <input id="id_body_tag" type="text" name="body_tag" maxlength="255" />
+  </label>
+</p>
+
+</div> <!-- /windowSettings -->
+
+<div class="windowSettings js">
+  
+
+
+<h3>Language</h3>
+<div class="selectCont">
+  <select name="panel_js" class="panelChoice" id="panel_js_choice" data-panel_id="id_code_js" data-panel="js">
+    
+      <option data-mime-type="text/javascript" value="0" selected>JavaScript</option>
+    
+      <option data-mime-type="text/x-coffeescript" value="1">CoffeeScript</option>
+    
+      <option data-mime-type="application/javascript;version=1.7" value="2">JavaScript 1.7</option>
+    
+      <option data-mime-type="text/babel" value="3">Babel</option>
+    
+      <option data-mime-type="text/typescript" value="4">TypeScript</option>
+    
+  </select>
+  <label for="js_lib"><i class="bts bt-angle-down"></i></label>
+</div> <!-- /selectCont -->
+
+<h3>Frameworks &amp; Extensions</h3>
+
+  
+    
+<div class="selectCont">
+  <select name="js_lib" id="js_lib">
+    
+    <optgroup label="AngularJS">
+      
+        <option value="281" >AngularJS 2.0.0-alpha.47</option>
+      
+        <option value="283" >AngularJS 1.4.8</option>
+      
+        <option value="180" >AngularJS 1.2.1</option>
+      
+        <option value="137" >AngularJS 1.1.1</option>
+      
+        
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="Bonsai">
+      
+        <option value="120" >Bonsai 0.4.1</option>
+      
+    </optgroup>
+    
+    <optgroup label="Brick">
+      
+        <option value="176" >Brick edge</option>
+      
+    </optgroup>
+    
+    <optgroup label="CreateJS">
+      
+        <option value="279" >CreateJS 2015.05.21</option>
+      
+        <option value="170" >CreateJS 2013.09.25</option>
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="D3">
+      
+        <option value="134" >D3 3.x</option>
+      
+    </optgroup>
+    
+    <optgroup label="Dojo">
+      
+        <option value="87" >Dojo (nightly)</option>
+      
+        <option value="240" >Dojo 1.10.4</option>
+      
+        
+      
+        
+      
+        <option value="242" >Dojo 1.9.7</option>
+      
+        
+      
+        
+      
+        
+      
+        <option value="244" >Dojo 1.8.10</option>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        <option value="246" >Dojo 1.7.8</option>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        <option value="196" >Dojo 1.6.2</option>
+      
+        
+      
+        
+      
+        <option value="194" >Dojo 1.5.3</option>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="Ember">
+      
+        <option value="190" >Ember (latest)</option>
+      
+        
+      
+        
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="Enyo">
+      
+        <option value="115" >Enyo (nightly)</option>
+      
+        <option value="299" >Enyo 2.7.0</option>
+      
+        <option value="238" >Enyo 2.5.1</option>
+      
+        <option value="214" >Enyo 2.4.0</option>
+      
+        <option value="145" >Enyo 2.2.0</option>
+      
+        <option value="121" >Enyo 2.1</option>
+      
+        <option value="116" >Enyo 2.0.1</option>
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="ExtJS">
+      
+        <option value="338" >ExtJS 6.2.0</option>
+      
+        <option value="256" >ExtJS 5.1.0</option>
+      
+        <option value="258" >ExtJS 5.0.0</option>
+      
+        <option value="147" >ExtJS 4.2.0</option>
+      
+        <option value="80" >ExtJS 4.1.1</option>
+      
+        <option value="107" >ExtJS 4.1.0</option>
+      
+        
+      
+        <option value="109" >ExtJS 3.4.0</option>
+      
+        <option value="23" >ExtJS 3.1.0</option>
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="FabricJS">
+      
+        <option value="340" >FabricJS 1.7.1</option>
+      
+        <option value="250" >FabricJS 1.5.0</option>
+      
+        <option value="178" >FabricJS 1.4.0</option>
+      
+        <option value="161" >FabricJS 1.2.0</option>
+      
+        <option value="125" >FabricJS 0.9</option>
+      
+    </optgroup>
+    
+    <optgroup label="Glow">
+      
+        
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="Inferno">
+      
+        <option value="336" >Inferno 1.0.0-beta9</option>
+      
+    </optgroup>
+    
+    <optgroup label="jQuery">
+      
+        
+      
+        
+      
+        <option value="46" >jQuery (edge)</option>
+      
+        <option value="333" >jQuery 3.1.1</option>
+      
+        <option value="321" >jQuery 3.1.0</option>
+      
+        
+      
+        
+      
+        <option value="311" >jQuery 3.0.0</option>
+      
+        <option value="319" >jQuery 2.2.4</option>
+      
+        <option value="305" >jQuery 2.2.3</option>
+      
+        <option value="303" >jQuery 2.2.2</option>
+      
+        <option value="295" >jQuery 2.2.1</option>
+      
+        <option value="291" >jQuery 2.2.0</option>
+      
+        
+      
+        <option value="248" >jQuery 2.1.3</option>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        <option value="131" >jQuery 1.9.1</option>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="jQuery Slim">
+      
+        <option value="335" >jQuery Slim 3.1.1 Slim</option>
+      
+        <option value="323" >jQuery Slim 3.1.0 Slim</option>
+      
+        <option value="313" >jQuery Slim 3.0.0 Slim</option>
+      
+    </optgroup>
+    
+    <optgroup label="JSBlocks">
+      
+        <option value="252" >JSBlocks (edge)</option>
+      
+    </optgroup>
+    
+    <optgroup label="jTypes">
+      
+        <option value="165" >jTypes 2.1.0</option>
+      
+    </optgroup>
+    
+    <optgroup label="KineticJS">
+      
+        <option value="139" >KineticJS 4.3.1</option>
+      
+        <option value="124" >KineticJS 4.0.5</option>
+      
+    </optgroup>
+    
+    <optgroup label="Knockout.js">
+      
+        <option value="277" >Knockout.js 3.4.0</option>
+      
+        <option value="172" >Knockout.js 3.0.0</option>
+      
+        <option value="163" >Knockout.js 2.3.0</option>
+      
+        <option value="122" >Knockout.js 2.2.1</option>
+      
+        <option value="117" >Knockout.js 2.1.0</option>
+      
+        <option value="104" >Knockout.js 2.0.0</option>
+      
+    </optgroup>
+    
+    <optgroup label="Lo-Dash">
+      
+        <option value="167" >Lo-Dash 2.2.1</option>
+      
+    </optgroup>
+    
+    <optgroup label="Minified">
+      
+        <option value="164" >Minified 1.0 beta1</option>
+      
+    </optgroup>
+    
+    <optgroup label="MithrilJS">
+      
+        <option value="273" >MithrilJS 0.2.0</option>
+      
+    </optgroup>
+    
+    <optgroup label="Mootools">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        <option value="59" >Mootools (nightly)</option>
+      
+        <option value="327" >Mootools 1.6.0 (compat)</option>
+      
+        <option value="325" >Mootools 1.6.0</option>
+      
+        <option value="329" >Mootools 1.5.2 (compat)</option>
+      
+        <option value="263" >Mootools 1.5.2</option>
+      
+        
+      
+        
+      
+        <option value="216" >Mootools 1.5.1</option>
+      
+        
+      
+        <option value="208" >Mootools 1.5.0</option>
+      
+        <option value="96" >Mootools 1.4.5 (compat)</option>
+      
+        <option value="95" >Mootools 1.4.5</option>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        <option value="63" >Mootools 1.3.2 (compat)</option>
+      
+        <option value="62" >Mootools 1.3.2</option>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="No-Library">
+      
+        <option value="11" selected="selected">No-Library (pure JS)</option>
+      
+    </optgroup>
+    
+    <optgroup label="OpenUI5">
+      
+        <option value="271" >OpenUI5 (latest, mobile)</option>
+      
+    </optgroup>
+    
+    <optgroup label="Paper.js">
+      
+        <option value="158" >Paper.js 0.22</option>
+      
+    </optgroup>
+    
+    <optgroup label="Pixi">
+      
+        <option value="331" >Pixi 4.0.0</option>
+      
+        <option value="315" >Pixi 3.0.11</option>
+      
+    </optgroup>
+    
+    <optgroup label="Processing.js">
+      
+        <option value="206" >Processing.js 1.4.7</option>
+      
+        <option value="135" >Processing.js 1.4.1</option>
+      
+        <option value="81" >Processing.js 1.3.6</option>
+      
+        <option value="67" >Processing.js 1.2.3</option>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="Prototype">
+      
+        
+      
+        <option value="265" >Prototype 1.7.3</option>
+      
+        <option value="254" >Prototype 1.7.2</option>
+      
+        <option value="54" >Prototype 1.7.1</option>
+      
+        <option value="4" >Prototype 1.6.1.0</option>
+      
+    </optgroup>
+    
+    <optgroup label="qooxdoo">
+      
+        <option value="126" >qooxdoo 2.1</option>
+      
+        <option value="127" >qooxdoo 2.0.3</option>
+      
+    </optgroup>
+    
+    <optgroup label="RactiveJS">
+      
+        
+      
+        
+      
+        <option value="287" >RactiveJS 0.7.3</option>
+      
+    </optgroup>
+    
+    <optgroup label="Raphael">
+      
+        <option value="76" >Raphael 2.1.0</option>
+      
+        <option value="36" >Raphael 1.5.2 (min)</option>
+      
+        <option value="30" >Raphael 1.4</option>
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="React">
+      
+        <option value="285" >React 0.14.3</option>
+      
+        <option value="192" >React 0.9.0</option>
+      
+        <option value="184" >React 0.8.0</option>
+      
+        <option value="166" >React 0.4.0</option>
+      
+        <option value="159" >React 0.3.2</option>
+      
+    </optgroup>
+    
+    <optgroup label="RightJS">
+      
+        <option value="136" >RightJS 2.3.1</option>
+      
+        <option value="45" >RightJS 2.1.1</option>
+      
+    </optgroup>
+    
+    <optgroup label="Shipyard">
+      
+        <option value="99" >Shipyard (nightly)</option>
+      
+        <option value="105" >Shipyard 0.2</option>
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="svg.js">
+      
+        <option value="269" >svg.js 2.1.1</option>
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="The X Toolkit">
+      
+        <option value="106" >The X Toolkit edge</option>
+      
+    </optgroup>
+    
+    <optgroup label="Thorax">
+      
+        <option value="174" >Thorax 2.0.0rc6</option>
+      
+        <option value="143" >Thorax 2.0.0rc3</option>
+      
+    </optgroup>
+    
+    <optgroup label="Three.js">
+      
+        <option value="82" >Three.js r54</option>
+      
+    </optgroup>
+    
+    <optgroup label="Underscore">
+      
+        <option value="267" >Underscore 1.8.3</option>
+      
+        <option value="160" >Underscore 1.4.4</option>
+      
+        <option value="133" >Underscore 1.4.3</option>
+      
+        <option value="111" >Underscore 1.3.3</option>
+      
+    </optgroup>
+    
+    <optgroup label="Vue">
+      
+        <option value="236" >Vue (edge)</option>
+      
+        <option value="289" >Vue 1.0.12</option>
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="WebApp Install">
+      
+        <option value="142" >WebApp Install 0.1</option>
+      
+    </optgroup>
+    
+    <optgroup label="YUI">
+      
+        
+      
+        <option value="230" >YUI 3.17.2</option>
+      
+        <option value="204" >YUI 3.16.0</option>
+      
+        <option value="182" >YUI 3.14.0</option>
+      
+        <option value="153" >YUI 3.10.1</option>
+      
+        
+      
+        <option value="130" >YUI 3.8.0</option>
+      
+        <option value="123" >YUI 3.7.3</option>
+      
+        <option value="118" >YUI 3.6.0</option>
+      
+        <option value="102" >YUI 3.5.0</option>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        <option value="9" >YUI 2.8.0r4</option>
+      
+        
+      
+    </optgroup>
+    
+    <optgroup label="Zepto">
+      
+        <option value="90" >Zepto 1.0rc1</option>
+      
+    </optgroup>
+    
+  </select>
+  <label for="js_lib"><i class="bts bt-angle-down"></i></label>
+</div>
+
+<ul id="js_dependency">
+  
+
+</ul>
+
+  
+
+
+<h3>Load type</h3>
+<div class="selectCont">
+  <select name="js_wrap" id="id_js_wrap">
+<option value="l" selected="selected">onLoad</option>
+<option value="d">onDomready</option>
+<option value="h">No wrap - in &lt;head&gt;</option>
+<option value="b">No wrap - in &lt;body&gt;</option>
+</select>
+  <label for="js_wrap"><i class="bts bt-angle-down"></i></label>
+</div>
+
+
+  <h3>Framework &lt;script> attribute</h3>
+  <p class="libraryTagAttributes">
+    <label>
+      <input id="id_js_lib_option" type="text" name="js_lib_option" maxlength="255" placeholder='ie. data-type=""' value="" />
+    </label>
+  </p>
+
+
+<script type="text/javascript">
+  window.addEvent('load', function() {
+    $('js_lib').addEvent('change', function() {
+      mooshell.loadDependencies(this.value);
+    })
+    if ($('library_group')) $('library_group').addEvent('change', function() {
+      mooshell.loadLibraryVersions(this.value);
+    })
+  });
+</script>
+
+</div> <!-- /windowSettings -->
+
+<div class="windowSettings css">
+  <h3>Language</h3>
+<div class="selectCont">
+  <select name="panel_css" class='panelChoice' id="panel_css_choice" data-panel_id="id_code_css" data-panel="css">
+    
+      <option data-mime-type="text/x-scss" value="0" selected>CSS</option>
+    
+      <option data-mime-type="text/x-scss" value="1">SCSS</option>
+    
+  </select>
+  <label for="js_lib"><i class="bts bt-angle-down"></i></label>
+</div> <!-- /selectCont -->
+
+<h3>Options</h3>
+<p id="normalize_check">
+  <label class="checkboxCont"><input type="checkbox" name="normalize_css" id="id_normalize_css" /><span class="checkbox"><i class="bts bt-check"></i></span> Normalized CSS</label>
+</p>
+
+</div> <!-- /windowSettings -->
+
+        </div>
+      
+    </form>
+
+    
+
+<script>
+  TogetherJSConfig_enableAnalytics = true;
+  TogetherJSConfig_cloneClicks = "#run, .toggler";
+  TogetherJSConfig_toolName = "Collaboration"
+</script>
+<script defer src="https://togetherjs.com/togetherjs.js"></script>
+
+
+    
+
+
+    
+      <script type="text/javascript">
+        window.addEvent('load', function() {
+          
+        });
+      </script>
+    
+  </body>
+</html>
