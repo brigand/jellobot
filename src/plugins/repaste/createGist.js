@@ -29,7 +29,8 @@ const createGist = (opts) => {
       return gistUrl;
     });
   }, (errRes) => {
-    console.error(errRes.body);
+    console.error(`gist error message: ${errRes.message}`);
+    console.error(`gist error body: ${errRes.body}`);
     const error = new Error(`Couldn't create gist.`);
     error.gistError = true;
     throw error;

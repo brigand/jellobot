@@ -92,21 +92,26 @@ function getCode(msg, url) {
     return getJsfiddle(url);
   }
 
-  const rawUrl = pasteUrlToRaw(url);
-  if (!rawUrl) {
+  const rawFiles = pasteUrlToRaw(url);
+  if (!rawFiles) {
     msg.respondWithMention(`I don't know the paste service at "${url}". GreenJello, ping!`);
     return Promise.reject();
   }
-  msg.vlog(`Fetching ${rawUrl}`);
-  return superagent.get(rawUrl)
-  .then((res) => {
-    const {text} = res;
-    msg.vlog(`Fetched ${rawUrl} with body length ${text.length}`);
-    if (!text) {
-      msg.respondWithMention(`Paste at ${url} seems to be empty.`);
-      throw new Error('No text');
-    }
-    return {js: text};
+  msg.vlog(`Fetching ${rawFiles.js}, ${rawFiles.css}, ${rawFiles.html}`);
+  const filePromises = Object.keys(rawFiles).map((extension) => {
+    console.log({extension, url: rawFiles[extension]});
+    return superagent.get(rawFiles[extension])
+    .then((res) => {
+      const {text} = res;
+      msg.vlog(`Fetched ${rawFiles[extension]} with body length ${text.length}`);
+      return {extension, text};
+    });
+  });
+
+  return Promise.all(filePromises).then((results) => {
+    return results.reduce((acc, {extension, text}) =>
+      Object.assign({}, acc, {[extension]: text})
+    , {});
   });
 }
 

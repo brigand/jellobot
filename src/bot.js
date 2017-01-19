@@ -15,6 +15,8 @@ const client = new irc.Client(config.server, config.nick, config.ircClientConfig
 const logs = {};
 
 client.addListener('message', (from, to, message) => {
+  if (from === config.nick) return;
+
   const messageObj = {
     from,
     message,
