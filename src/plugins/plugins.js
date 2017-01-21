@@ -21,6 +21,9 @@ const runPlugins = (msg) => {
       if (maybePromise && maybePromise.catch) {
         maybePromise.catch((e) => {
           msg.respond(`An async internal error occured: ${e.message || e}`);
+          if (e.stack) {
+            console.error(e.stack);
+          }
         });
       }
     } catch (e) {
