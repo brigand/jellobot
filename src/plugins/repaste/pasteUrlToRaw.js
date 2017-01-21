@@ -22,6 +22,14 @@ const pasteUrlToRaw = (url) => {
     return {js: `http://dpaste.com/${parts.pop()}.txt`};
   }
 
+  if (/dpaste\.de/.test(url)) {
+    if (/raw$/.test(url) {
+      return {js: url}
+    } else {
+      return {js: `${url}/raw`};
+    }
+  }
+
   // https://codepen.io/brigand/pen/JERLwv -> https://codepen.io/brigand/pen/JERLwv.js
   if (/codepen\.io\/.*\/pen\/.+/.test(url)) {
     return {
