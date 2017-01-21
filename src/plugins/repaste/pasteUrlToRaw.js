@@ -31,6 +31,10 @@ const pasteUrlToRaw = (url) => {
     };
   }
 
+  if (/sprunge\.us/.test(url)) {
+    return {js: url.replace(/\?.*$/g, '')};
+  }
+
   return null;
 };
 

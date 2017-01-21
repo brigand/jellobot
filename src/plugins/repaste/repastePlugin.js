@@ -41,8 +41,9 @@ const repastePlugin = (msg) => {
 
   if (url) {
     return getCode(msg, url).then((res) => { // eslint-disable-line no-use-before-define
+      const jsSuffix = msg.to === '#reactjs' ? '.jsx' : '.js';
       const files = {
-        'code.js': res.js,
+        [`code${jsSuffix}`]: res.js,
       };
       if (res.html) files['code.html'] = res.css;
       if (res.css) files['code.css'] = res.css;
@@ -53,7 +54,7 @@ const repastePlugin = (msg) => {
           singleQuote: true,
           trailingComma: true,
         });
-        files['.js'] = formatted;
+        files[jsSuffix] = formatted;
       } catch (e) {
         console.error(e.message);
         // do nothing
