@@ -29,7 +29,7 @@ const repastePlugin = (msg) => {
   if (words[0] === 'unpaste') {
     msg.handling();
     if (msg.config.githubToken) {
-      deleteGist({id: words[1], githubToken: msg.config.githubToken})
+      return deleteGist({id: words[1], githubToken: msg.config.githubToken})
         .then(() => {
           msg.respondWithMention(`Deleted ${words[1]}`);
         })
@@ -39,7 +39,9 @@ const repastePlugin = (msg) => {
         });
     } else {
       msg.respondWithMention(`I'm not configured with a github token, so I can't delete the gist.`);
+      return Promise.reject();
     }
+    return;
   }
   if (words[0] !== 'repaste') return Promise.resolve();
 
