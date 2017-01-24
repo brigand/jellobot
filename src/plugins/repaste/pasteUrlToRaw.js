@@ -23,7 +23,7 @@ const pasteUrlToRaw = (url) => {
   }
 
   if (/dpaste\.de/.test(url)) {
-    if (/raw$/.test(url) {
+    if (/raw$/.test(url)) {
       return {js: url}
     } else {
       return {js: `${url}/raw`};

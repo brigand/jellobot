@@ -1,7 +1,7 @@
 const superagent = require('superagent');
 const prettier = require('prettier');
 const pasteUrlToRaw = require('./pasteUrlToRaw');
-const createGist = require('./createGist');
+const {createGist, deleteGist} = require('./createGist');
 const getJsfiddle = require('./jsfiddle/getJsfiddle');
 
 const matchUrl = (text) => {
@@ -26,6 +26,21 @@ const findLinkInLogs = (msg, user) => {
 const repastePlugin = (msg) => {
   if (!msg.command) return Promise.resolve();
   const words = msg.command.command.split(' ');
+  if (words[0] === 'unpaste') {
+    msg.handling();
+    if (msg.config.githubToken) {
+      deleteGist({id: words[1], githubToken: msg.config.githubToken})
+        .then(() => {
+          msg.respondWithMention(`Deleted ${words[1]}`);
+        })
+        .catch((err) => {
+          console.error('Failed to delete gist', err);
+          msg.respondWithMention(`Failed to delete the gist. Message: "${err.message || 'unknown'}"`);
+        });
+    } else {
+      msg.respondWithMention(`I'm not configured with a github token, so I can't delete the gist.`);
+    }
+  }
   if (words[0] !== 'repaste') return Promise.resolve();
 
   msg.handling();
@@ -63,9 +78,11 @@ const repastePlugin = (msg) => {
       createGist({
         files,
         tryShortUrl: true,
+        githubToken: msg.config.githubToken,
       })
-      .then((gistUrl) => {
-        msg.respondWithMention(`Repasted ${user}'s paste to ${gistUrl}`);
+      .then(({id, url}) => {
+        msg.respondWithMention(`Repasted ${user}'s paste to ${url}`);
+
       })
       .catch((err) => {
         if (err && err.gistError) {
