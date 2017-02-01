@@ -20,7 +20,7 @@ const findLinkInLogs = (msg, user) => {
       }
     }
   }
-  return null;
+  return [];
 };
 
 const repastePlugin = (msg) => {
@@ -95,6 +95,9 @@ const repastePlugin = (msg) => {
         }
       });
     }, (errorRes) => {
+      if (errorRes && errorRes.type === 'InvalidUrl') {
+        return;
+      }
       msg.respondWithMention(`Failed to get raw paste data.`);
       if (errorRes) {
         msg.vlog(errorRes.text);
@@ -119,7 +122,7 @@ function getCode(msg, url) {
   const rawFiles = pasteUrlToRaw(url);
   if (!rawFiles) {
     msg.respondWithMention(`I don't know the paste service at "${url}". GreenJello, ping!`);
-    return Promise.reject();
+    return Promise.reject({type: 'InvalidUrl'});
   }
   msg.vlog(`Fetching ${rawFiles.js}, ${rawFiles.css}, ${rawFiles.html}`);
   const filePromises = Object.keys(rawFiles).map((extension) => {
