@@ -62,7 +62,7 @@ const repastePlugin = (msg) => {
       const files = {
         [`code${jsSuffix}`]: res.js,
       };
-      if (res.html) files['code.html'] = res.css;
+      if (res.html) files['code.html'] = res.html;
       if (res.css) files['code.css'] = res.css;
 
       try {
@@ -70,8 +70,10 @@ const repastePlugin = (msg) => {
           // printWidth: 100,
           singleQuote: true,
           trailingComma: true,
+          bracketSpacing: false,
         });
         files[jsSuffix] = formatted;
+        delete files[`code${jsSuffix}`];
       } catch (e) {
         console.error(e.message);
         // do nothing
