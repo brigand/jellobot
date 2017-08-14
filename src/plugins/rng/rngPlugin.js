@@ -8,7 +8,7 @@ const rngPlugin = (msg) => {
   if (command === 'pick' && args.length) {
     const match = args[Math.floor(Math.random() * args.length)];
     msg.handling();
-    msg.respondWithMention(`Hmm... how about "${match}'`);
+    msg.respondWithMention(`Hmm... how about "${match}"`);
   }
 };
 

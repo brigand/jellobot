@@ -3,6 +3,8 @@ const runPlugins = (msg) => {
   // clear the cache so we don't need to restart the bot
   Object.keys(require.cache).forEach((key) => {
     if (/node_modules/.test(key)) return;
+    const item = require.cache[key];
+    item.parent.children.splice(0);
     delete require.cache[key];
   });
 
