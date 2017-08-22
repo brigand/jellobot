@@ -1,7 +1,14 @@
 const fs = require('fs');
+const path = require('path');
 
-const filename = 'jellobot-config.json';
-const absoluteFilePath = `${process.cwd()}/${filename}`;
+let absoluteFilePath;
+
+if (process.env.JELLOBOT_CONFIG) {
+  absoluteFilePath = path.resolve(process.cwd(), process.env.JELLOBOT_CONFIG);
+} else {
+  const filename = 'jellobot-config.json';
+  absoluteFilePath = `${process.cwd()}/${filename}`;
+}
 
 const defaultConfig = {
   commandPrefix: '!',
@@ -39,7 +46,7 @@ exports.processConfig = (customConfig) => {
 exports.readAndProcessConfig = () => {
   let rawConfigFile;
   try {
-    rawConfigFile = fs.readFileSync(filename, 'utf-8');
+    rawConfigFile = fs.readFileSync(absoluteFilePath, 'utf-8');
   } catch (e) {
     console.error(`FATAL: Couldn't read ${absoluteFilePath}`);
     process.exit(7);

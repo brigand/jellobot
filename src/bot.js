@@ -86,9 +86,9 @@ client.addListener('message', (from, to, message) => {
 
   messageObj.handling = (pluginName, extraInfo) => {
     let log = '';
-    log += `${chalk.bgRed(to)}`;
-    log += ` ${chalk.bgYellow(from)}`;
-    log += ` ${chalk.bgBlue(pluginName)}`;
+    log += `${chalk.red(to)}`;
+    log += ` ${chalk.yellow(from)}`;
+    log += ` ${chalk.blue(pluginName)}`;
     log += ` ${messageObj.message}`;
     console.log(log);
     if (extraInfo !== undefined) {
