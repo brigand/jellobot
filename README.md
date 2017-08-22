@@ -8,4 +8,6 @@ Primary features:
 Default plugins:
 
 - repaste: repastes various paste services to gist.github.com and formats js code
+- rng: picks a random item from a list
+- js-eval: runs js code in a docker sandbox, and prints out the result
 
