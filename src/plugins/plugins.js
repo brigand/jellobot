@@ -4,7 +4,9 @@ const runPlugins = (msg) => {
   Object.keys(require.cache).forEach((key) => {
     if (/node_modules/.test(key)) return;
     const item = require.cache[key];
-    item.parent.children.splice(0);
+    if (item.parent) {
+      item.parent.children.splice(0);
+    }
     delete require.cache[key];
   });
 
