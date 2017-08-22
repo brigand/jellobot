@@ -1,6 +1,8 @@
 const irc = require('irc');
 const chalk = require('chalk');
+
 chalk.enabled = true;
+
 const {safeDump: yamlStringify} = require('js-yaml');
 const {readAndProcessConfig} = require('./utils/getConfig');
 const plugins = require('./plugins/plugins.js');

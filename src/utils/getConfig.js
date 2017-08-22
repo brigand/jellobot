@@ -38,7 +38,7 @@ exports.processConfig = (customConfig) => {
 
   // parse args
   const argv = process.argv.slice(2);
-  config.verbose = argv.indexOf('-v') !== -1;
+  config.verbose = config.verbose || argv.indexOf('-v') !== -1;
 
   return config;
 };
