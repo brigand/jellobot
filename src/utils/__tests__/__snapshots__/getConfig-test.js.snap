@@ -1,4 +1,6 @@
-exports[`test works 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`works 1`] = `
 Object {
   "channels": Array [
     Object {
