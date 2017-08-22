@@ -21,4 +21,19 @@ describe(`opts`, () => {
       code: ' 1 + 1',
     });
   });
+
+  it(`fail to match case 1`, () => {
+    const res = parseEvalMessage('n');
+    expect(res).toBe(null);
+  });
+
+  it(`fail to match case 2`, () => {
+    const res = parseEvalMessage('foo');
+    expect(res).toBe(null);
+  });
+  it(`fail to match case 3`, () => {
+    console.error = () => {};
+    const res = parseEvalMessage('n>', false);
+    expect(res).toBe(null);
+  });
 });

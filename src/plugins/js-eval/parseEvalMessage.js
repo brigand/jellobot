@@ -13,7 +13,7 @@ const parseEvalMessage = (str) => {
       opts[split[0]] = split[1];
     }
   });
-  const rest = str.match(/^.*?>(.*)$/);
+  const rest = str.match(/^.*?>(.+)$/);
   if (!rest) {
     console.error(`Failed to match ${str} for js-eval`);
     return null;
@@ -21,5 +21,6 @@ const parseEvalMessage = (str) => {
   const code = rest[1];
   return { opts, code };
 };
+
 
 module.exports = parseEvalMessage;
