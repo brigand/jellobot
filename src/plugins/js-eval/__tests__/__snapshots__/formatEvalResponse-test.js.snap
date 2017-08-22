@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`works for error 1`] = `"undefined:1 1 + ^ SyntaxError: Unexpected end of input at bootstrap_node.js:535:3"`;

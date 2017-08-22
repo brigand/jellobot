@@ -28,8 +28,8 @@ client.addListener('message', (from, to, message) => {
 
   const say = (to2, raw) => {
     let text = String(raw).split('\n').join(' ');
-    if (text.length > 500) {
-      text = `${text.slice(0, 490)} ...`;
+    if (text.length > 400) {
+      text = `${text.slice(0, 390)} ...`;
     }
     client.say(to2, text);
     console.log(`${chalk.bgGreen(to2)} ${text}`);
@@ -37,7 +37,7 @@ client.addListener('message', (from, to, message) => {
 
   messageObj.sayTo = say;
   messageObj.respond = (text) => {
-    say(text);
+    say(to, text);
   };
   messageObj.respondWithMention = (text) => {
     say(to, `${from}, ${text}`);
@@ -86,6 +86,7 @@ client.addListener('message', (from, to, message) => {
 
   messageObj.logs = logs[to];
 
+  // in the actual plugin, omit the first argument
   messageObj.handling = (pluginName, extraInfo) => {
     let log = '';
     log += `${chalk.red(to)}`;

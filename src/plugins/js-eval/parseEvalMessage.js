@@ -1,12 +1,22 @@
 const parseEvalMessage = (str) => {
   const opts = {};
   const type = str[0];
-  if (['n', 'b'].indexOf(type) === -1) return null;
+
+  if (type === 'n') {
+    opts.engine = 'node';
+  } else if (type === 'b') {
+    opts.engine = 'babel';
+  } else {
+    return null;
+  }
+
   const optsMatch = str.match(/^[nb](.*?)>/);
   if (!optsMatch) return null;
   const optsParts = (optsMatch[1] || '').split(/\s*,\s*/).filter(Boolean);
   optsParts.forEach((part) => {
     const split = part.split('=');
+    if (split[0] === 'engine') return;
+
     if (split[1] == null) {
       opts[split[0]] = true;
     } else {
@@ -19,7 +29,7 @@ const parseEvalMessage = (str) => {
     return null;
   }
   const code = rest[1];
-  return { opts, code };
+  return Object.assign({}, opts, { code });
 };
 
 
