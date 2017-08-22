@@ -37,11 +37,10 @@ const repastePlugin = (msg) => {
           console.error('Failed to delete gist', err);
           msg.respondWithMention(`Failed to delete the gist. Message: "${err.message || 'unknown'}"`);
         });
-    } else {
-      msg.respondWithMention(`I'm not configured with a github token, so I can't delete the gist.`);
-      return Promise.reject();
     }
-    return;
+
+    msg.respondWithMention(`I'm not configured with a github token, so I can't delete the gist.`);
+    return Promise.reject();
   }
   if (words[0] !== 'repaste') return Promise.resolve();
 
@@ -84,9 +83,8 @@ const repastePlugin = (msg) => {
         tryShortUrl: true,
         githubToken: msg.config.githubToken,
       })
-      .then(({id, url}) => {
-        msg.respondWithMention(`Repasted ${user}'s paste to ${url}`);
-
+      .then(({ url: resultUrl }) => {
+        msg.respondWithMention(`Repasted ${user}'s paste to ${resultUrl}`);
       })
       .catch((err) => {
         if (err && err.gistError) {
