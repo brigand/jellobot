@@ -4,7 +4,8 @@ module.exports = () => {
   const plugins = {
     repaste: require('./repaste/repastePlugin'),
     rng: require('./rng/rngPlugin'),
-    jsEval: require('./js-eval/jsEvalPlugin'),
+    factoid: require('./factoids/factoidsPlugin'),
+//    jsEval: require('./js-eval/jsEvalPlugin'),
   };
   return plugins;
 };

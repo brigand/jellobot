@@ -9,9 +9,34 @@ const plugins = require('./plugins/plugins.js');
 
 const logBotPrefix = chalk.black.bgYellow('BOT');
 
-const config = readAndProcessConfig();
+let config = readAndProcessConfig();
 
 const client = new irc.Client(config.server, config.nick, config.ircClientConfig);
+
+function updateConfig() {
+  const newConfig = readAndProcessConfig();
+  if (!config) {
+    config = newConfig;
+    return;
+  }
+
+  const oldChan = config.channels;
+  const newChan = newConfig.channels;
+
+  // join channels
+  for (const chan of newChan) {
+    if (!oldChan.find(x => x.name === chan.name)) {
+      client.join(chan.name);
+    }
+  }
+  for (const chan of oldChan) {
+    if (!newChan.find(x => x.name === chan.name)) {
+      client.part(chan.name);
+    }
+  }
+}
+
+setInterval(updateConfig, 3000);
 
 // mutable list of recent messages per channel
 // newest messages first
@@ -117,6 +142,17 @@ client.addListener('registered', () => {
   const diff = connectFinishTime - connectStartTime;
   console.log(`${logBotPrefix}: connected to ${config.server} as ${config.nick}.`);
   console.log(`${logBotPrefix}: took ${diff}ms to connect.`);
+
+  if (config.password) {
+    client.say('nickserv', `IDENTIFY ${config.userName} ${config.password}`);
+    setTimeout(() => {
+      config.channels
+        .filter(x => x.requiresAuth)
+        .forEach((c) => {
+          client.join(c.name);
+        });
+    }, 1000);
+  }
 });
 console.log(`${logBotPrefix}: Connecting to ${config.server} as ${config.nick}`);
 

@@ -12,7 +12,7 @@ if (process.env.JELLOBOT_CONFIG) {
 
 const defaultConfig = {
   commandPrefix: '!',
-  server: 'irc.freenode.net',
+  server: 'chat.freenode.net',
   nick: `jellobot-${Math.floor(Math.random() * 1e5)}`,
   password: null,
   channels: [
@@ -26,20 +26,25 @@ exports.processConfig = (customConfig) => {
 
   // generate the config passed to new irc.Client
   config.ircClientConfig = {
-    channels: config.channels.map(({name}) => name),
+    channels: config.channels
+      .filter(x => !x.requiresAuth)
+      .map(({name}) => name),
     retryCount: 10,
   };
 
   if (config.password) {
     config.ircClientConfig.userName = config.userName || config.nick;
     config.ircClientConfig.password = config.password;
-    config.ircClientConfig.sasl = true;
+    // config.ircClientConfig.sasl = true;
   }
 
   // parse args
   const argv = process.argv.slice(2);
   config.verbose = config.verbose || argv.indexOf('-v') !== -1;
 
+  if (config.verbose) {
+    console.log(config);
+  }
   return config;
 };
 

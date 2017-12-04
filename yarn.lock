@@ -867,6 +867,10 @@ diff@^3.2.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.3.0.tgz#056695150d7aa93237ca7e378ac3b1682b7963b9"
 
+dirsum@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/dirsum/-/dirsum-0.1.1.tgz#770123ae8c06f6bdd957af8e4e7053570ff73e18"
+
 doctrine@1.5.0, doctrine@^1.2.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
