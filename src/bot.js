@@ -20,8 +20,12 @@ function updateConfig() {
     return;
   }
 
+  // Cache these before we update the 'config' variable
   const oldChan = config.channels;
   const newChan = newConfig.channels;
+
+  // Replace the config, which is passed around
+  config = newConfig;
 
   // join channels
   for (const chan of newChan) {

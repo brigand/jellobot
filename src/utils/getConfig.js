@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const JSON5 = require('json5');
 
 let absoluteFilePath;
 
@@ -42,9 +43,6 @@ exports.processConfig = (customConfig) => {
   const argv = process.argv.slice(2);
   config.verbose = config.verbose || argv.indexOf('-v') !== -1;
 
-  if (config.verbose) {
-    console.log(config);
-  }
   return config;
 };
 
@@ -59,7 +57,7 @@ exports.readAndProcessConfig = () => {
 
   let customConfig;
   try {
-    customConfig = JSON.parse(rawConfigFile);
+    customConfig = JSON5.parse(rawConfigFile);
   } catch (e) {
     console.error(e);
     console.error(`FATAL: ${absoluteFilePath} is invalid json`);
