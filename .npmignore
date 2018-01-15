@@ -1,5 +1,6 @@
 node_modules
 coverage
-jellobot-config.json
+jellobot-confi*.json
 scripts/env.sh
+*.tgz
 

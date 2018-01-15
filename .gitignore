@@ -2,3 +2,5 @@ node_modules
 coverage
 scripts/env.sh
 jellobot-config.*
+*.tgz
+
