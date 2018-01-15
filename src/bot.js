@@ -60,6 +60,7 @@ client.addListener('message', (from, to, message) => {
   const messageObj = {
     from,
     message,
+    rawMessage: message,
     config,
   };
 
@@ -111,10 +112,17 @@ client.addListener('message', (from, to, message) => {
   // parse e.g. !mdn array.map @ someuser
   // we only accept valid IRC nicks
   // https://stackoverflow.com/a/5163309/1074592
-  const targetedMatch = messageObj.command.command.match(/^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/);
+  const targetedMatch = messageObj.command
+    && messageObj.command.command.match(/^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/);
+  const targetedMatch2 = messageObj.message.match(/^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/);
   if (targetedMatch) {
     messageObj.command.command = targetedMatch[1].trim();
-    mentionUser = targetedMatch[2];
+  }
+  // Handles non-command messages, e.g. n> 1 + 1
+  if (targetedMatch2) {
+    messageObj.message = targetedMatch2[1].trim();
+    mentionUser = targetedMatch2[2];
+    messageObj.mentionUser = mentionUser;
   }
 
   messageObj.verbose = !!config.verbose;

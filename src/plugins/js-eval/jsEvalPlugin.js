@@ -2,7 +2,7 @@ const parseEvalMessage = require('./parseEvalMessage');
 const runDockerContainer = require('./runDockerContainer');
 const formatEvalResponse = require('./formatEvalResponse');
 
-const jsEvalPlugin = ({ respond, respondWithMention, handling, message }) => {
+const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, handling, message }) => {
   const params = parseEvalMessage(message); // returns {opts: {}, code: ''}
   if (!params) return;
   handling(params);
@@ -14,14 +14,18 @@ const jsEvalPlugin = ({ respond, respondWithMention, handling, message }) => {
         respondWithMention(`Something went wrong. ${res}`);
         return;
       }
-      if (res.success) {
+      if (res.success && !mentionUser) {
         resMsg = `${resMsg}(okay) `;
-      } else {
+      } else if (!res.success) {
         resMsg = `${resMsg}(error) `;
       }
       resMsg += formatEvalResponse(res.text);
 
-      respond(resMsg);
+      if (mentionUser) {
+        respondWithMention(resMsg);
+      } else {
+        respond(resMsg);
+      }
     })
     .catch((err) => {
       console.error(err);
