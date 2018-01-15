@@ -53,6 +53,10 @@ client.addListener('message', (from, to, message) => {
   // the 'from' user if it's a PM
   let replyTo = to;
 
+  // mentionUser will be replied to in respondWithMention
+  // we change it later if the command ends with "@ somenick"
+  let mentionUser = from;
+
   const messageObj = {
     from,
     message,
@@ -73,7 +77,7 @@ client.addListener('message', (from, to, message) => {
     say(replyTo, text);
   };
   messageObj.respondWithMention = (text) => {
-    say(replyTo, `${from}, ${text}`);
+    say(replyTo, `${mentionUser}, ${text}`);
   };
 
   if (to === config.nick) {
@@ -102,6 +106,15 @@ client.addListener('message', (from, to, message) => {
     messageObj.command = {
       command: message,
     };
+  }
+
+  // parse e.g. !mdn array.map @ someuser
+  // we only accept valid IRC nicks
+  // https://stackoverflow.com/a/5163309/1074592
+  const targetedMatch = messageObj.command.command.match(/^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/);
+  if (targetedMatch) {
+    messageObj.command.command = targetedMatch[1].trim();
+    mentionUser = targetedMatch[2];
   }
 
   messageObj.verbose = !!config.verbose;
