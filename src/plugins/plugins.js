@@ -1,14 +1,8 @@
 /* eslint global-require: "off" */
+const { maybeClearCache } = require('../utils/requireCache');
+
 const runPlugins = (msg) => {
-  // clear the cache so we don't need to restart the bot
-  Object.keys(require.cache).forEach((key) => {
-    if (/node_modules/.test(key)) return;
-    const item = require.cache[key];
-    if (item.parent) {
-      item.parent.children.splice(0);
-    }
-    delete require.cache[key];
-  });
+  maybeClearCache(null);
 
   const plugins = require('./getPlugins')();
 

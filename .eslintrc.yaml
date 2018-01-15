@@ -30,3 +30,4 @@ rules:
   no-console:
     - 2
     - allow: ['debug', 'warn', 'error', 'log']
+  no-restricted-syntax: 0
