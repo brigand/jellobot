@@ -49,6 +49,10 @@ const logs = {};
 client.addListener('message', (from, to, message) => {
   if (from === config.nick) return;
 
+  // 'to' is either a channel, or the bot's nick. Later we set it to
+  // the 'from' user if it's a PM
+  let replyTo = to;
+
   const messageObj = {
     from,
     message,
@@ -66,14 +70,15 @@ client.addListener('message', (from, to, message) => {
 
   messageObj.sayTo = say;
   messageObj.respond = (text) => {
-    say(to, text);
+    say(replyTo, text);
   };
   messageObj.respondWithMention = (text) => {
-    say(to, `${from}, ${text}`);
+    say(replyTo, `${from}, ${text}`);
   };
 
   if (to === config.nick) {
     messageObj.pm = true;
+    replyTo = from;
   } else {
     messageObj.pm = false;
 
