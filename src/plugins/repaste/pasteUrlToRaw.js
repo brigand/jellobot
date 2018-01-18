@@ -43,6 +43,14 @@ const pasteUrlToRaw = (url) => {
     return {js: url.replace(/\?.*$/g, '')};
   }
 
+  if (/hastebin\.com/.test(url)) {
+    const match = url.match(/.*hastebin.com\/([^.]+)/);
+    if (match) {
+      return {js: `https://hastebin.com/raw/${match[1]}`};
+    }
+    return null;
+  }
+
   return null;
 };
 
