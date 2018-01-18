@@ -1,5 +1,7 @@
 const parseEvalMessage = (str) => {
   const opts = {};
+  if (str[1] !== '>') return null;
+
   const type = str[0];
 
   if (type === 'n') {

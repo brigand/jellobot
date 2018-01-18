@@ -17,7 +17,7 @@ Object {
   "nick": "jellobot",
   "password": null,
   "plugins": Object {},
-  "server": "irc.freenode.net",
+  "server": "chat.freenode.net",
   "verbose": false,
 }
 `;
