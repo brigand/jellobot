@@ -1,0 +1,4 @@
+#!/bin/bash
+
+node scripts/deploy.js jellobot 159.203.67.86 $@
+

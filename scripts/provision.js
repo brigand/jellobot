@@ -35,6 +35,11 @@ async function installNode({ ssh, log }) {
   await ssh.exec(`tar --strip-components 1 -xzvf node-v* -C /usr/local`, { root: true });
 }
 
+async function installPython({ ssh, log }) {
+  log.debug(`Installing python`);
+  await ssh.exec(`sudo apt-get install -y python-minimal python3`, { root: true });
+}
+
 async function installPm2({ ssh, log }) {
   const pm2Version = '2.7.2';
   try {
@@ -122,6 +127,7 @@ async function run() {
     await ssh.exec(`chmod 400 ${authKeyPath}`);
     await ssh.exec(`chown jellobot:jellobot ${authKeyPath}`);
 
+    await installPython({ ssh, log });
     await installNode({ ssh, log });
     await installPm2({ ssh, log });
     await installDocker({ ssh, log });
