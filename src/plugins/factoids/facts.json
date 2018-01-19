@@ -152,7 +152,7 @@
 			"popularity": 86
 		},
 		"paste": {
-			"value": "Don't paste code. Use gist.github.com, bpaste.net, dpaste.com for pastes or codepen.io, jsbin.com, jsfiddle.net for js+html or repl.it, requirebin.com, runkit.com for js/node only",
+			"value": "Show some code, but don't paste it to the channel. Use sites like https://gist.github.com or https://dpaste.com . Ideally it should be executable, see !fiddle",
 			"popularity": 1977,
 			"editors": [
 				"niggler",
