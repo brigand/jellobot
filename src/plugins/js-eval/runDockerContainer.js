@@ -21,7 +21,7 @@ const runDockerContainer = (opts) => {
   proc.stdin.end();
 
   return new Promise((resolve, reject) => {
-    const timerId = setTimeout(() => {
+    const kill = () => {
       cp.exec(`docker kill ${childId}`, (err) => {
         /* istanbul ignore next */
         if (err) {
@@ -33,7 +33,9 @@ const runDockerContainer = (opts) => {
           reject({ reason: 'timeout' });
         }
       });
-    }, runDockerContainer.timeout);
+    };
+
+    const timerId = setTimeout(kill, runDockerContainer.timeout);
     let data = '';
     proc.stdout.on('data', (chunk) => {
       data += chunk;
