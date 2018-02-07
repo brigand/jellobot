@@ -32,7 +32,7 @@ const annotateCode = (ast) => {
         t.identifier(IDENT),
         [
           getLocStr(path.node, true),
-          ...path.node.arguments,
+          path.node,
         ],
       );
 
