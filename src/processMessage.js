@@ -34,7 +34,7 @@ function processMessage(client, config, logs, from, to, message) {
     say(replyTo, `${mentionUser}, ${text}`);
   };
 
-  if (to === config.nick) {
+  if (to && to[0] !== '#') {
     messageObj.pm = true;
     replyTo = from;
   } else {
