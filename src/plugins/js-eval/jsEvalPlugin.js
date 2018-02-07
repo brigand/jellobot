@@ -29,12 +29,17 @@ const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, handling, mess
         respondWithMention(`Something went wrong. ${res}`);
         return;
       }
+
+      const { meta, text } = parseOutput(res.text);
+
       if (res.success && !mentionUser) {
         resMsg = `${resMsg}(okay) `;
       } else if (!res.success) {
         resMsg = `${resMsg}(error) `;
       }
-      resMsg += formatEvalResponse(res.text);
+      resMsg += formatEvalResponse(text);
+
+      console.log(`JSEval meta:`, meta);
 
       if (mentionUser) {
         respondWithMention(resMsg);

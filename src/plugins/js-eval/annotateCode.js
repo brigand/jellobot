@@ -13,6 +13,7 @@ const getLocStr = (node, wrap = false) => {
 const preamble = `
 function ${IDENT}(range, value) {
   console.log('%%%%%' + range + '%%%%%' + require('object-inspect')(value) + '%%%%%');
+  return value;
 }
 `.trim();
 
