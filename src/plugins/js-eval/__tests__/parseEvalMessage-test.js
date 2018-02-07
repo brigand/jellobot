@@ -10,17 +10,6 @@ describe(`opts`, () => {
     });
   });
 
-  const c2 = `b,foo=bar,baz> 1 + 1`;
-  it(`works for ${c2}`, () => {
-    const res = parseEvalMessage(c2);
-    expect(res).toEqual({
-      engine: 'babel',
-      foo: 'bar',
-      baz: true,
-      code: ' 1 + 1',
-    });
-  });
-
   it(`fail to match case 1`, () => {
     const res = parseEvalMessage('n');
     expect(res).toBe(null);
