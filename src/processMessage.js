@@ -23,7 +23,7 @@ function processMessage(client, config, logs, from, to, message) {
       text = `${text.slice(0, 390)} ...`;
     }
     client.say(to2, text);
-    console.log(`${chalk.bgGreen(to2)} ${text}`);
+    console.log(`${chalk.green(to2)} ${text}`);
   };
 
   messageObj.sayTo = say;

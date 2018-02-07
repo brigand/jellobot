@@ -10,6 +10,11 @@ const pubKeyFile = process.argv[4] || `${os.homedir()}/.ssh/id_rsa.pub`;
 assert(user, `User ($1) must be provided`);
 assert(host, `Host ($2) must be provided`);
 
+async function installGeneralDeps({ ssh, log }) {
+  log(`Installing native build deps`);
+  await ssh.exec(`apt-get install -y build-essential libicu-dev`);
+}
+
 async function installNode({ ssh, log }) {
   const nodeVersion = 'v8.9.0';
   const nodeUrl = `https://nodejs.org/dist/${nodeVersion}/node-${nodeVersion}-linux-x64.tar.gz`;
@@ -127,6 +132,7 @@ async function run() {
     await ssh.exec(`chmod 400 ${authKeyPath}`);
     await ssh.exec(`chown jellobot:jellobot ${authKeyPath}`);
 
+    await installGeneralDeps({ ssh, log });
     await installPython({ ssh, log });
     await installNode({ ssh, log });
     await installPm2({ ssh, log });
