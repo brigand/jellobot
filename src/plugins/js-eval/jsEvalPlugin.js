@@ -19,7 +19,6 @@ const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, handling, mess
   }
 
   const annotated = annotateCode(ast);
-  console.log(annotated);
   const params = { ...initialParams, code: annotated };
 
   runDockerContainer(params)
@@ -39,8 +38,6 @@ const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, handling, mess
         resMsg = `${resMsg}(error) `;
       }
       resMsg += formatEvalResponse(text);
-
-      console.log(`JSEval meta:`, meta);
 
       if (mentionUser) {
         respondWithMention(resMsg);
