@@ -66,15 +66,16 @@ function processMessage(client, config, logs, from, to, message) {
   // we only accept valid IRC nicks
   // https://stackoverflow.com/a/5163309/1074592
   const targetedMatch = messageObj.command
-    && messageObj.command.command.match(/^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/);
-  const targetedMatch2 = messageObj.message.match(/^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/);
+    && messageObj.command.command.match(/^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/i);
+  const targetedMatch2 = messageObj.message.match(/^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/i);
+
   if (targetedMatch) {
     messageObj.command.command = targetedMatch[1].trim();
   }
   // Handles non-command messages, e.g. n> 1 + 1
   if (targetedMatch2) {
     messageObj.message = targetedMatch2[1].trim();
-    mentionUser = targetedMatch2[2];
+    mentionUser = targetedMatch2[2].trim();
     messageObj.mentionUser = mentionUser;
   }
 
