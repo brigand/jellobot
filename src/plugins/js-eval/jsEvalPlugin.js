@@ -2,7 +2,7 @@ const parseEvalMessage = require('./parseEvalMessage');
 const runDockerContainer = require('./runDockerContainer');
 const formatEvalResponse = require('./formatEvalResponse');
 const parseCode = require('./parseCode');
-const annotateCode = require('./annotateCode');
+// const annotateCode = require('./annotateCode');
 const parseOutput = require('./parseOutput');
 
 const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, handling, message }) => {
@@ -10,16 +10,18 @@ const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, handling, mess
   if (!initialParams) return;
   handling(initialParams);
 
-  let ast = null;
+  // let ast = null;
   try {
-    ast = parseCode(initialParams.code);
+    parseCode(initialParams.code);
+    // ast = parseCode(initialParams.code);
   } catch (e) {
     respondWithMention(`Failed to parse code: ${e.message}`);
     return;
   }
 
-  const annotated = annotateCode(ast);
-  const params = { ...initialParams, code: annotated };
+  // const annotated = annotateCode(ast);
+  // const params = { ...initialParams, code: annotated };
+  const params = { ...initialParams, code: initialParams.code };
 
   runDockerContainer(params)
     .then((res) => {
@@ -30,7 +32,9 @@ const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, handling, mess
         return;
       }
 
-      const { meta, text } = parseOutput(res.text);
+      // const { meta, text } = parseOutput(res.text);
+      const { text } = parseOutput(res.text);
+
 
       if (res.success && !mentionUser) {
         resMsg = `${resMsg}(okay) `;
