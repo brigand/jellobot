@@ -11,7 +11,7 @@ assert(user, `User ($1) must be provided`);
 assert(host, `Host ($2) must be provided`);
 
 async function installGeneralDeps({ ssh, log }) {
-  log(`Installing native build deps`);
+  log.info(`Installing native build deps`);
   await ssh.exec(`apt-get install -y build-essential libicu-dev`);
 }
 
@@ -123,6 +123,8 @@ async function run() {
 
     await ssh.exec(`mkdir -p /home/jellobot/.ssh`);
     await ssh.exec(`chown -R jellobot:jellobot /home/jellobot/`);
+
+    await ssh.exec(`sudo apt-get update`, { root: true });
 
     const pubKey = await fs.readFileSync(pubKeyFile, 'utf-8');
     const sftp = await ssh.ftp();
