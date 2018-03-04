@@ -7,6 +7,7 @@ module.exports = () => {
     factoid: require('./factoids/factoidsPlugin'),
     mdn: require('./mdn/mdnPlugin'),
     jsEval: require('./js-eval/jsEvalPlugin'),
+    npm: require('./npm/npmPlugin.js'),
   };
   return plugins;
 };
