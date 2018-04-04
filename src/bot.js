@@ -6,12 +6,14 @@ chalk.enabled = true;
 
 const {readAndProcessConfig} = require('./utils/getConfig');
 const plugins = require('./plugins/plugins.js');
+const changeNick = require('./utils/changeNick');
 
 const logBotPrefix = chalk.black.bgYellow('BOT');
 
 let config = readAndProcessConfig();
 
 const client = new irc.Client(config.server, config.nick, config.ircClientConfig);
+client.currentNick = config.nick;
 
 function updateConfig() {
   const newConfig = readAndProcessConfig();
@@ -23,6 +25,8 @@ function updateConfig() {
   // Cache these before we update the 'config' variable
   const oldChan = config.channels;
   const newChan = newConfig.channels;
+  const oldNick = config.nick;
+  const newNick = newConfig.nick;
 
   // Replace the config, which is passed around
   config = newConfig;
@@ -37,6 +41,10 @@ function updateConfig() {
     if (!newChan.find(x => x.name === chan.name)) {
       client.part(chan.name);
     }
+  }
+
+  if (oldNick !== newNick) {
+    changeNick(client, config.nick, false);
   }
 }
 
@@ -70,6 +78,26 @@ client.addListener('message', (from, to, message) => {
   plugins.run(messageObj);
 });
 
+let didRegister = false;
+
+client.addListener('raw', (message) => {
+  if (message.command === 'NICK' && message.nick === config.nick) {
+    const changedTo = message.args[0];
+
+    client.currentNick = changedTo;
+
+    if (changedTo === config.nick) {
+      return;
+    }
+
+    if (!didRegister) return;
+
+    setTimeout(() => {
+      changeNick(client, config.nick, true);
+    }, 60e3 * 5);
+  }
+});
+
 client.addListener('error', (message) => {
   console.error(`${chalk.red('IRC Error')}:`, message);
 });
@@ -81,6 +109,10 @@ client.addListener('registered', () => {
   const diff = connectFinishTime - connectStartTime;
   console.log(`${logBotPrefix}: connected to ${config.server} as ${config.nick}.`);
   console.log(`${logBotPrefix}: took ${diff}ms to connect.`);
+
+  setTimeout(() => {
+    didRegister = true;
+  }, 500);
 
   if (config.password) {
     client.say('nickserv', `IDENTIFY ${config.userName} ${config.password}`);
