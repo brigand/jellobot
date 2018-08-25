@@ -1,7 +1,7 @@
 const parseEvalMessage = require('./parseEvalMessage');
 const runDockerContainer = require('./runDockerContainer');
 const formatEvalResponse = require('./formatEvalResponse');
-const parseCode = require('./parseCode');
+// const parseCode = require('./parseCode');
 // const annotateCode = require('./annotateCode');
 const parseOutput = require('./parseOutput');
 
@@ -12,7 +12,7 @@ const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, handling, mess
 
   // let ast = null;
   try {
-    parseCode(initialParams.code);
+    // parseCode(initialParams.code);
     // ast = parseCode(initialParams.code);
   } catch (e) {
     respondWithMention(`Failed to parse code: ${e.message}`);
