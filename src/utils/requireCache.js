@@ -16,21 +16,27 @@ function clearCache(test = null) {
 
 const lastClearByTest = {};
 const isProd = process.env.NODE_ENV === 'production';
-const delay = isProd ? 5000 : 0;
+
+let needsUpdate = false;
+
+if (isProd) {
+  process.on('SIGHUP', () => {
+    needsUpdate = true;
+  });
+}
 
 function maybeClearCache(test) {
+  if (isProd && !needsUpdate) {
+    return;
+  }
+
   if (!isProd) {
     clearCache(test);
     return;
   }
 
-  const testStr = String(test);
-  const last = lastClearByTest[testStr] || 0;
-
-  if (Date.now() > last + delay) {
-    lastClearByTest[testStr] = Date.now();
-    clearCache();
-  }
+  needsUpdate = false;
+  clearCache();
 }
 
 exports.clearCache = clearCache;

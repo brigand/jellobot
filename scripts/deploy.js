@@ -69,6 +69,15 @@ async function run() {
 
     await ssh.exec(`cd ${dir}; npm install --production`);
 
+    try {
+      const procjson = await ssh.exec(`pm2 jlist jellobot1`, { silent: true });
+      const { pid } = JSON.parse(procjson).find(x => x.name === 'jellobot1');
+      await ssh.exec(`kill -SIGHUP ${pid}`, { silent: true });
+      console.log(`Sent SIGHUP to ${pid}`);
+    } catch (e) {
+      console.error(`Failed to send SIGHUP to process`, e);
+    }
+
     if (process.argv.includes('--restart')) {
       console.error(`Restarting the bot`);
       try {

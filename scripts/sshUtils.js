@@ -148,7 +148,9 @@ class SshConnection {
         let stdout = '';
         stream.on('data', (s) => {
           if (opts.log.flags.debug) {
-            process.stdout.write(String(s));
+            if (!opts.silent) {
+              process.stdout.write(String(s));
+            }
           } else {
             events.push({type: 'stdout', value: String(s)});
           }
@@ -156,7 +158,9 @@ class SshConnection {
         });
         stream.stderr.on('data', (s) => {
           if (opts.log.flags.verbose) {
-            process.stderr.write(String(s));
+            if (!opts.silent) {
+              process.stderr.write(String(s));
+            }
           } else {
             events.push({type: 'stderr', value: String(s)});
           }
