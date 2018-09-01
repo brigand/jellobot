@@ -59,8 +59,6 @@ async function run() {
     const tempFilePath = `/tmp/jellobot.tgz`;
     await ftp.writeFileAsync(tempFilePath, fs.readFileSync(tgzPath));
 
-    await ftp.writeFileAsync(tempFilePath, fs.readFileSync(tgzPath));
-
     const dir = `/home/jellobot/bot1`;
     await ssh.exec(`mkdir -p ${dir}`);
 
