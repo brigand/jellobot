@@ -5,7 +5,7 @@ describe('jsEvalPlugin', () => {
     jsEval({
       message: 'n> 2+2',
       respond: output => {
-        expect(output).toEqual('4');
+        expect(output).toEqual('(okay) 4');
       }
     });
   });
@@ -14,7 +14,7 @@ describe('jsEvalPlugin', () => {
     jsEval({
       message: 'n> 2++2',
       respond: output => {
-        expect(output).toEqual(`ecmabot.js:1
+        expect(output).toEqual(`(error) ecmabot.js:1
  2++2
  ^
 
@@ -25,7 +25,7 @@ ReferenceError: Invalid left-hand side expression in postfix operation`);
     jsEval({
       message: 'n> throw 2',
       respond: output => {
-        expect(output).toEqual('2');
+        expect(output).toEqual('(error) 2');
       }
     });
   });
@@ -34,7 +34,7 @@ ReferenceError: Invalid left-hand side expression in postfix operation`);
     jsEval({
       message: 'n> setTimeout(() => {}, 50000)',
       respond: output => {
-        expect(output).toEqual('Timeout');
+        expect(output).toEqual('(error) Timeout');
       }
     });
   });
@@ -43,10 +43,17 @@ ReferenceError: Invalid left-hand side expression in postfix operation`);
     jsEval({
       message: `n> fs.readdirSync('.')`,
       respond: output => {
-        expect(output).toEqual(`[
-  'run.js',
-  'run.sh'
-]`);
+        expect(output).toEqual(`(okay) []`);
+      }
+    });
+  });
+
+  it(`replies to user`, () => {
+    jsEval({
+      message: `n>'ok'`,
+      mentionUser: 'jay',
+      respond: output => {
+        expect(output).toEqual(`jay, 'ok'`);
       }
     });
   });
