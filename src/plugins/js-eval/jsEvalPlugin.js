@@ -1,58 +1,19 @@
-const parseEvalMessage = require('./parseEvalMessage');
-const runDockerContainer = require('./runDockerContainer');
-const formatEvalResponse = require('./formatEvalResponse');
-// const parseCode = require('./parseCode');
-// const annotateCode = require('./annotateCode');
-const parseOutput = require('./parseOutput');
+const { exec } = require('child_process');
 
-const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, handling, message }) => {
-  const initialParams = parseEvalMessage(message);
-  if (!initialParams) return;
-  handling(initialParams);
+const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, message }) => {
+  if (!message.startsWith('n>')) return;
+  const code = message.slice(2);
 
-  // let ast = null;
-  try {
-    // parseCode(initialParams.code);
-    // ast = parseCode(initialParams.code);
-  } catch (e) {
-    respondWithMention(`Failed to parse code: ${e.message}`);
-    return;
-  }
+  const respondWith = mentionUser ? respondWithMention : respond;
 
-  // const annotated = annotateCode(ast);
-  // const params = { ...initialParams, code: annotated };
-  const params = { ...initialParams, code: initialParams.code };
+  const child = exec('docker run --rm -i devsnek/js-eval', { timeout: 5000 }, (err, stdout = '') => {
+    if (err && err.killed) return respondWith('Timeout');
 
-  runDockerContainer(params)
-    .then((res) => {
-      let resMsg = '';
-      if (!res || typeof res.success !== 'boolean') {
-        console.error(`Unexpected response`, res);
-        respondWithMention(`Something went wrong. ${res}`);
-        return;
-      }
+    return respondWith(stdout.trim());
+  });
 
-      // const { meta, text } = parseOutput(res.text);
-      const { text } = parseOutput(res.text);
-
-
-      if (res.success && !mentionUser) {
-        resMsg = `${resMsg}(okay) `;
-      } else if (!res.success) {
-        resMsg = `${resMsg}(error) `;
-      }
-      resMsg += formatEvalResponse(text);
-
-      if (mentionUser) {
-        respondWithMention(resMsg);
-      } else {
-        respond(resMsg);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      respondWithMention(`Something went wrong. ${err}`);
-    });
+  child.stdin.write(JSON.stringify({ environment: 'node-cjs', code }));
+  child.stdin.end();
 };
 
 module.exports = jsEvalPlugin;
