@@ -1,12 +1,12 @@
 const { exec } = require('child_process');
-const crypto = require('crypto');
+const evalUtils = require('./evalUtils');
 
 const children = new Set();
 
 const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig, log }) => {
   if (!message.startsWith('n>')) return;
   const code = message.slice(2);
-  const childId = `jseval-${crypto.randomBytes(8).toString('hex')}`;
+  const childId = evalUtils.names.make();
 
   let didRespond = false;
   let child;
@@ -27,7 +27,7 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig, log }) 
     done({ killed: true }, '');
     child.kill();
 
-    exec(`docker kill "${childId}"`, (err, stdout = '', stderr = '') => {
+    exec(`docker kill "${childId}"`, { encoding: 'utf-8'}, (err, stdout = '', stderr = '') => {
       const ignore = !err || /No such container/.test(`${stdout}\0${stderr}`);
       if (!ignore) {
         log(`Failed to kill docker container ${name}\n${stdout}\n${stderr}`);
@@ -35,7 +35,7 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig, log }) 
     });
   }, selfConfig.timer || 5000);
 
-  child = exec(`docker run --rm -i --net=none --name=${childId} devsnek/js-eval`, (err, stdout = '') => {
+  child = exec(`docker run --rm -i --net=none --name=${childId} devsnek/js-eval`, { encoding: 'utf-8'}, (err, stdout = '') => {
     clearTimeout(timer);
     done(err, stdout);
   });
