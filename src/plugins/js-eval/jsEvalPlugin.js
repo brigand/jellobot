@@ -1,19 +1,57 @@
 const { exec } = require('child_process');
 const crypto = require('crypto');
 
-const jsEvalPlugin = ({ mentionUser, respond, message }) => {
+const children = new Set();
+
+const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig, log }) => {
   if (!message.startsWith('n>')) return;
   const code = message.slice(2);
   const childId = `jseval-${crypto.randomBytes(8).toString('hex')}`;
 
-  const child = exec(`docker run --rm -i --net=none --name=${childId} devsnek/js-eval`, { timeout: 5000 }, (err, stdout = '') => {
+  let didRespond = false;
+  let child;
+
+  const done = (err, stdout = '') => {
+    if (didRespond) {
+      return;
+    }
+    didRespond = true;
+    children.delete(child);
+
     const msg = err && err.killed ? 'Timeout' : stdout.trim();
     const prefix = mentionUser ? `${mentionUser}, ` : err ? '(error) ' : '(okay) ';
-    return respond(prefix + msg);
+    respond(prefix + msg);
+  };
+
+  const timer = setTimeout(() => {
+    done({ killed: true }, '');
+    child.kill();
+
+    exec(`docker kill "${childId}"`, (err, stdout = '', stderr = '') => {
+      const ignore = !err || /No such container/.test(`${stdout}\0${stderr}`);
+      if (!ignore) {
+        log(`Failed to kill docker container ${name}\n${stdout}\n${stderr}`);
+      }
+    });
+  }, selfConfig.timer || 5000);
+
+  child = exec(`docker run --rm -i --net=none --name=${childId} devsnek/js-eval`, (err, stdout = '') => {
+    clearTimeout(timer);
+    done(err, stdout);
   });
+
+  children.add(child);
 
   child.stdin.write(JSON.stringify({ environment: 'node-cjs', code }));
   child.stdin.end();
 };
+
+if (process.env.NODE_ENV !== 'test') {
+  process.on('exit', () => {
+    for (const child of children) {
+      child.kill();
+    }
+  });
+}
 
 module.exports = jsEvalPlugin;
