@@ -1,6 +1,7 @@
 const irc = require('irc');
 const chalk = require('chalk');
 const { maybeClearCache } = require('./utils/requireCache');
+const init = require('./plugins/initPlugins');
 
 chalk.enabled = true;
 
@@ -11,6 +12,11 @@ const changeNick = require('./utils/changeNick');
 const logBotPrefix = chalk.black.bgYellow('BOT');
 
 let config = readAndProcessConfig();
+
+init().catch((e) => {
+  console.error(`init failed. This is potentially unsafe, but we'll continue.`);
+  console.error(e);
+});
 
 const client = new irc.Client(config.server, config.nick, config.ircClientConfig);
 client.currentNick = config.nick;

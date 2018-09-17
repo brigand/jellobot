@@ -1,58 +1,57 @@
-const parseEvalMessage = require('./parseEvalMessage');
-const runDockerContainer = require('./runDockerContainer');
-const formatEvalResponse = require('./formatEvalResponse');
-// const parseCode = require('./parseCode');
-// const annotateCode = require('./annotateCode');
-const parseOutput = require('./parseOutput');
+const { exec } = require('child_process');
+const evalUtils = require('./evalUtils');
 
-const jsEvalPlugin = ({ mentionUser, respond, respondWithMention, handling, message }) => {
-  const initialParams = parseEvalMessage(message);
-  if (!initialParams) return;
-  handling(initialParams);
+const children = new Set();
 
-  // let ast = null;
-  try {
-    // parseCode(initialParams.code);
-    // ast = parseCode(initialParams.code);
-  } catch (e) {
-    respondWithMention(`Failed to parse code: ${e.message}`);
-    return;
-  }
+const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig, log }) => {
+  if (!message.startsWith('n>')) return;
+  const code = message.slice(2);
+  const childId = evalUtils.names.make();
 
-  // const annotated = annotateCode(ast);
-  // const params = { ...initialParams, code: annotated };
-  const params = { ...initialParams, code: initialParams.code };
+  let didRespond = false;
+  let child;
 
-  runDockerContainer(params)
-    .then((res) => {
-      let resMsg = '';
-      if (!res || typeof res.success !== 'boolean') {
-        console.error(`Unexpected response`, res);
-        respondWithMention(`Something went wrong. ${res}`);
-        return;
+  const done = (err, stdout = '') => {
+    if (didRespond) {
+      return;
+    }
+    didRespond = true;
+    children.delete(child);
+
+    const msg = err && err.killed ? 'Timeout' : stdout.trim();
+    const prefix = mentionUser ? `${mentionUser}, ` : err ? '(error) ' : '(okay) ';
+    respond(prefix + msg);
+  };
+
+  const timer = setTimeout(() => {
+    done({ killed: true }, '');
+    child.kill();
+
+    exec(`docker kill "${childId}"`, { encoding: 'utf-8'}, (err, stdout = '', stderr = '') => {
+      const ignore = !err || /No such container/.test(`${stdout}\0${stderr}`);
+      if (!ignore) {
+        log(`Failed to kill docker container ${name}\n${stdout}\n${stderr}`);
       }
-
-      // const { meta, text } = parseOutput(res.text);
-      const { text } = parseOutput(res.text);
-
-
-      if (res.success && !mentionUser) {
-        resMsg = `${resMsg}(okay) `;
-      } else if (!res.success) {
-        resMsg = `${resMsg}(error) `;
-      }
-      resMsg += formatEvalResponse(text);
-
-      if (mentionUser) {
-        respondWithMention(resMsg);
-      } else {
-        respond(resMsg);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      respondWithMention(`Something went wrong. ${err}`);
     });
+  }, selfConfig.timer || 5000);
+
+  child = exec(`docker run --rm -i --net=none --name=${childId} devsnek/js-eval`, { encoding: 'utf-8'}, (err, stdout = '') => {
+    clearTimeout(timer);
+    done(err, stdout);
+  });
+
+  children.add(child);
+
+  child.stdin.write(JSON.stringify({ environment: 'node-cjs', code }));
+  child.stdin.end();
 };
+
+if (process.env.NODE_ENV !== 'test') {
+  process.on('exit', () => {
+    for (const child of children) {
+      child.kill();
+    }
+  });
+}
 
 module.exports = jsEvalPlugin;
