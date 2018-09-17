@@ -82,7 +82,7 @@ const mdnPlugin = async (msg) => {
       lastRedirect = redirect.headers.location;
     }).catch((e) => {
       if (e && e.response) {
-        throw new Error(`Failed to fetch ${initialUrl} with ${e.response.statusCode}`)
+        throw new Error(`Failed to fetch ${initialUrl} with ${e.response.statusCode}`);
       }
       throw e;
     });
