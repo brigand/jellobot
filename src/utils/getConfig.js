@@ -19,7 +19,11 @@ const defaultConfig = {
   channels: [
     {name: '##jellobot-test'},
   ],
-  plugins: {},
+  plugins: {
+    jsEval: {
+      timeout: 5000,
+    }
+  },
 };
 
 exports.processConfig = (customConfig) => {

@@ -1,5 +1,6 @@
 /* eslint global-require: "off" */
 const { maybeClearCache } = require('../utils/requireCache');
+const get = require('lodash/get');
 
 const runPlugins = (msg) => {
   maybeClearCache(null);
@@ -13,6 +14,7 @@ const runPlugins = (msg) => {
       vlog: (extraInfo) => {
         if (msg.verbose) msg.log(`${key}.verbose`, extraInfo);
       },
+      selfConfig: get(msg, ['config', 'plugins', key]) || {},
     });
     try {
       const maybePromise = plugins[key](msg2);
