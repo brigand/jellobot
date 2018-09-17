@@ -1,3 +1,4 @@
+const url = require('url');
 const superagent = require('superagent');
 const cheerio = require('cheerio');
 
@@ -41,6 +42,27 @@ function extractFromHtml(html) {
   return { text, title };
 }
 
+async function fixLanguage(origRes, lastRedirect) {
+  let res = origRes;
+
+  // attempt to rewrite the language part of the URL
+  const urlParts = url.parse(lastRedirect);
+  urlParts.pathname = urlParts.pathname.replace(/^\/(\w+)(\/docs\/)/, (m, lang, rest) => {
+    return `/en-US${rest}`;
+  });
+
+
+  // If we changed the URL, we need to do another request for it
+  const fixedUrl = url.format(urlParts);
+
+  if (fixedUrl !== lastRedirect) {
+    console.error(`Translated MDN URL from "${lastRedirect}" to "${fixedUrl}"`);
+    res = await superagent.get(fixedUrl).redirects(1);
+  }
+
+  return res;
+}
+
 const mdnPlugin = async (msg) => {
   if (!msg.command) return;
 
@@ -52,9 +74,21 @@ const mdnPlugin = async (msg) => {
 
 
   const suffix = slugify(words.slice(1));
-  const url = `https://mdn.io/${suffix}`;
+  const initialUrl = `https://mdn.io/${suffix}`;
 
-  const res = await superagent.get(url).redirects(5);
+  let lastRedirect = initialUrl;
+  let res = await superagent.get(initialUrl).redirects(5)
+    .on('redirect', (redirect) => {
+      lastRedirect = redirect.headers.location;
+    }).catch((e) => {
+      if (e && e.response) {
+        throw new Error(`Failed to fetch ${initialUrl} with ${e.response.statusCode}`)
+      }
+      throw e;
+    });
+
+  res = await fixLanguage(res, lastRedirect);
+
   if (!res.ok) {
     msg.respond(`Couldn't fetch "${url}"`);
     return;
@@ -66,7 +100,7 @@ const mdnPlugin = async (msg) => {
   } catch (e) {
     if (!(e instanceof HtmlParseError)) throw e;
 
-    msg.respond(`${url} - ${e.message}`);
+    msg.respond(`${initialUrl} - ${e.message}`);
     return;
   }
 
