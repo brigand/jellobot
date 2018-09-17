@@ -108,7 +108,7 @@ const mdnPlugin = async (msg) => {
   if (response.length > 400) {
     response = `${response.slice(0, 350).trim()}…`;
   }
-  response += ` ${url}`;
+  response += ` ${initialUrl}`;
 
   msg.respondWithMention(response);
 };
