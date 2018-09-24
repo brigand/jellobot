@@ -80,7 +80,7 @@ async function run() {
       console.error(`Run with --restart to restart the bot.`);
     }
 
-    await ssh.exec(`docker pull devsnek/js-eval`);
+    await ssh.exec(`docker rmi -f devsnek/js-eval; docker pull devsnek/js-eval`); // delete it first, to force update
   } finally {
     await ssh.end();
   }
