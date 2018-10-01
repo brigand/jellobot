@@ -35,14 +35,14 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig, log }) 
     });
   }, selfConfig.timer || 5000);
 
-  child = exec(`docker run --rm -i --net=none --name=${childId} devsnek/js-eval`, { encoding: 'utf-8'}, (err, stdout = '') => {
+  child = exec(`docker run --rm -i --net=none --name=${childId} -eJSEVAL_ENV=node-cjs brigand/js-eval`, { encoding: 'utf-8'}, (err, stdout = '') => {
     clearTimeout(timer);
     done(err, stdout);
   });
 
   children.add(child);
 
-  child.stdin.write(JSON.stringify({ environment: 'node-cjs', code }));
+  child.stdin.write(code);
   child.stdin.end();
 };
 
