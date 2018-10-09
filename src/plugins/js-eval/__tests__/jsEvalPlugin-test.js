@@ -32,18 +32,18 @@ ReferenceError: Invalid left-hand side expression in postfix operation`);
 
   it(`times out`, () => {
     jsEval({
-      message: 'n> setTimeout(() => {}, 50000)',
+      message: 'n> setTimeout(() => console.log(2), 15000); 1',
       respond: output => {
-        expect(output).toEqual('(error) Timeout');
+        expect(output).toEqual('(timeout) 1');
       }
     });
   });
 
   it(`exposes node core modules`, () => {
     jsEval({
-      message: `n> fs.readdirSync('.')`,
+      message: `n> [fs.readdirSync('.'), child_process.execSync('ls')+'']`,
       respond: output => {
-        expect(output).toEqual(`(okay) []`);
+        expect(output).toEqual(`(okay) [ [], '' ]`);
       }
     });
   });

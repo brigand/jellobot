@@ -1,56 +1,44 @@
-const { exec } = require('child_process');
-const evalUtils = require('./evalUtils');
+const cp = require('child_process');
+const crypto = require('crypto');
 
-const children = new Set();
-
-const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig, log }) => {
+const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
   if (!message.startsWith('n>')) return;
   const code = message.slice(2);
-  const childId = evalUtils.names.make();
 
-  let didRespond = false;
-  let child;
+  const name = `jseval-${crypto.randomBytes(8).toString('hex')}`;
+  const proc = cp.spawn('docker', ['run', '--rm', '-i', `--name=${name}`, '--net=none', 'brigand/js-eval']);
 
-  const done = (err, stdout = '') => {
-    if (didRespond) {
-      return;
-    }
-    didRespond = true;
-    children.delete(child);
+  proc.stdin.write(code);
+  proc.stdin.end();
 
-    const msg = err && err.killed ? 'Timeout' : stdout.trim();
-    const prefix = mentionUser ? `${mentionUser}, ` : err ? '(error) ' : '(okay) ';
-    respond(prefix + msg);
-  };
+  let data = '';
 
   const timer = setTimeout(() => {
-    done({ killed: true }, '');
-    child.kill();
-
-    exec(`docker kill "${childId}"`, { encoding: 'utf-8'}, (err, stdout = '', stderr = '') => {
-      const ignore = !err || /No such container/.test(`${stdout}\0${stderr}`);
-      if (!ignore) {
-        log(`Failed to kill docker container ${name}\n${stdout}\n${stderr}`);
-      }
+    cp.exec(`docker kill ${name}`, () => {
+      respond((mentionUser ? `${mentionUser}, ` : '(timeout) ') + data);
     });
   }, selfConfig.timer || 5000);
 
-  child = exec(`docker run --rm -i --net=none --name=${childId} -eJSEVAL_ENV=node-cjs brigand/js-eval`, { encoding: 'utf-8'}, (err, stdout = '') => {
-    clearTimeout(timer);
-    done(err, stdout);
+  proc.stdout.on('data', (chunk) => {
+    data += chunk;
   });
 
-  children.add(child);
+  proc.on('error', (e) => {
+    clearTimeout(timer);
+    respond((mentionUser ? `${mentionUser}, ` : '(error) ') + e);
+  });
 
-  child.stdin.write(code);
-  child.stdin.end();
+  proc.on('exit', (status) => {
+    clearTimeout(timer);
+    respond((mentionUser ? `${mentionUser}, ` : status === 0 ? '(okay) ' : '(error) ') + data);
+  });
 };
 
 if (process.env.NODE_ENV !== 'test') {
   process.on('exit', () => {
-    for (const child of children) {
-      child.kill();
-    }
+    cp.exec('docker rm -f $(docker ps -qf name=jseval)', (err, stdout) => {
+      console.log(stdout);
+    });
   });
 }
 
