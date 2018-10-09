@@ -1,56 +1,31 @@
-const { exec } = require('child_process');
-const evalUtils = require('./evalUtils');
+const cp = require('child_process');
+const jsEval = require('docker-js-eval');
 
-const children = new Set();
-
-const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig, log }) => {
-  if (!message.startsWith('n>')) return;
+/**
+ * n> node-cjs stable
+ * s> evaluate code as ES Script https://nodejs.org/api/vm.html#vm_class_vm_script
+ * m> evaluate code as ES Module https://nodejs.org/api/vm.html#vm_class_vm_sourcetextmodule
+ * n+>, s+>, m+> same functionalities with unstable harmony flags
+ * (more doc: https://github.com/devsnek/docker-js-eval#js-eval-options)
+ */
+const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
+  if (!/^[nsm]\+?>/.test(message)) return;
   const code = message.slice(2);
-  const childId = evalUtils.names.make();
+  const mode = message[0];
 
-  let didRespond = false;
-  let child;
-
-  const done = (err, stdout = '') => {
-    if (didRespond) {
-      return;
-    }
-    didRespond = true;
-    children.delete(child);
-
-    const msg = err && err.killed ? 'Timeout' : stdout.trim();
-    const prefix = mentionUser ? `${mentionUser}, ` : err ? '(error) ' : '(okay) ';
-    respond(prefix + msg);
-  };
-
-  const timer = setTimeout(() => {
-    done({ killed: true }, '');
-    child.kill();
-
-    exec(`docker kill "${childId}"`, { encoding: 'utf-8'}, (err, stdout = '', stderr = '') => {
-      const ignore = !err || /No such container/.test(`${stdout}\0${stderr}`);
-      if (!ignore) {
-        log(`Failed to kill docker container ${name}\n${stdout}\n${stderr}`);
-      }
-    });
-  }, selfConfig.timer || 5000);
-
-  child = exec(`docker run --rm -i --net=none --name=${childId} -eJSEVAL_ENV=node-cjs brigand/js-eval`, { encoding: 'utf-8'}, (err, stdout = '') => {
-    clearTimeout(timer);
-    done(err, stdout);
-  });
-
-  children.add(child);
-
-  child.stdin.write(code);
-  child.stdin.end();
+  try {
+    const result = await jsEval(code, mode === 'n' ? 'node-cjs' : mode === 's' ? 'script' : 'module', { timeout: selfConfig.timer || 5000, stable: message[1] !== '+' });
+    respond((mentionUser ? `${mentionUser}, ` : '(okay) ') + result);
+  } catch (e) {
+    respond((mentionUser ? `${mentionUser}, ` : '') + e); // Error message always start with Error:
+  }
 };
 
 if (process.env.NODE_ENV !== 'test') {
   process.on('exit', () => {
-    for (const child of children) {
-      child.kill();
-    }
+    cp.exec('docker rm -f $(docker ps -qf name=jseval)', (err, stdout) => {
+      console.log(stdout);
+    });
   });
 }
 

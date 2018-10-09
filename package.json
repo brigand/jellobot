@@ -16,6 +16,7 @@
     "chalk": "^1.1.3",
     "cheerio": "^0.22.0",
     "dirsum": "^0.1.1",
+    "docker-js-eval": "github:devsnek/docker-js-eval",
     "glob": "^7.1.2",
     "irc": "^0.5.2",
     "js-yaml": "^3.12.0",
