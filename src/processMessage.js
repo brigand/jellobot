@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const {safeDump: yamlStringify} = require('js-yaml');
+const { safeDump: yamlStringify } = require('js-yaml');
 
 function processMessage(client, config, logs, from, to, message) {
   // 'to' is either a channel, or the bot's nick. Later we set it to
@@ -50,7 +50,7 @@ function processMessage(client, config, logs, from, to, message) {
     }
   }
 
-  if (message.indexOf(config.commandPrefix) === 0) {
+  if (message.startsWith(config.commandPrefix)) {
     const command = message.slice(config.commandPrefix.length);
     messageObj.command = {
       prefix: config.commandPrefix,
