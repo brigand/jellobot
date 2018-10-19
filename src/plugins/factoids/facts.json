@@ -18,7 +18,7 @@
 		},
 		"w3schools": {
 			"value": "w3schools has spent over a decade subverting search engines to appear at the top of search results, and while it *appears* useful for newcomers, it is in fact of very low quality. Try !eloquent, https://github.com/freeCodeCamp/freeCodeCamp, and http://w3fools.com/",
-			"popularity": 350,
+			"popularity": 351,
 			"editors": [
 				"ljharb",
 				"graingert"
@@ -50,7 +50,7 @@
 		},
 		"this": {
 			"value": "A function call of the form `a.b()` calls the function with `this` being the value of `a`; in a call of the form `f()`, `this` will be `undefined`, which is turned into the global object if the function wasn't defined in strict mode. Note that arrow functions and functions produced by `Function.prototype.bind` ignore the passed `this` value. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this",
-			"popularity": 966,
+			"popularity": 972,
 			"editors": [
 				"ImBcmDth",
 				"dwcook",
@@ -136,7 +136,7 @@
 		},
 		"closures": {
 			"value": "For experienced users: http://dmitrysoshnikov.com/ecmascript/chapter-6-closures/ . For newbies: http://blog.angular-university.io/really-understanding-javascript-closures",
-			"popularity": 220,
+			"popularity": 221,
 			"editors": [
 				"falafel",
 				"ljharb"
@@ -162,11 +162,11 @@
 		},
 		"closure": {
 			"alias": "closures",
-			"popularity": 91
+			"popularity": 92
 		},
 		"paste": {
 			"value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
-			"popularity": 2191,
+			"popularity": 2211,
 			"editors": [
 				"niggler",
 				"gkatsev",
@@ -336,7 +336,7 @@
 		},
 		"code": {
 			"value": "Show some code, but don't paste it on the channel. You can provide a test case we can run and help you with your problem with http://jsfiddle.net , http://jsbin.com , or http://requirebin.com . Sites like http://gist.github.com/ and http://bpaste.net are cool too.",
-			"popularity": 818,
+			"popularity": 825,
 			"editors": [
 				"CoverSlide",
 				"ph88",
@@ -382,29 +382,6 @@
 				"eboy"
 			]
 		},
-		"var": {
-			"value": "`var` defines a variable in the current function-level scope. Always use `const`, `let`, or `var` to declare variables, otherwise you will pollute the global scope, and declaring variables is required in strict mode.",
-			"popularity": 113,
-			"editors": [
-				"j201",
-				"AAA_awright",
-				"ljharb"
-			],
-			"changes": [
-				{
-					"date": "2015-12-11T04:41:45.183Z",
-					"editor": "AAA_awright",
-					"old-value": "Always declare variables with `var`, or you will pollute the global scope. Using `var` will limit access to that variable to the current scope, whatever it is.",
-					"new-value": "`var` defines a variable in the current function-level scope. Always use `var` to declare variables, otherwise you will pollute the global scope, and declaring variables is required in strict mode."
-				},
-				{
-					"date": "2016-03-02T14:52:45.614Z",
-					"editor": "ljharb",
-					"old-value": "`var` defines a variable in the current function-level scope. Always use `var` to declare variables, otherwise you will pollute the global scope, and declaring variables is required in strict mode.",
-					"new-value": "`var` defines a variable in the current function-level scope. Always use `const`, `let`, or `var` to declare variables, otherwise you will pollute the global scope, and declaring variables is required in strict mode."
-				}
-			]
-		},
 		"forms": {
 			"value": "Accessing form elements: Don't use document.formName.elementName. Use document.forms.formName.elements.elementName or getElementById, getElementsByName, or querySelector",
 			"popularity": 25
@@ -437,7 +414,7 @@
 		},
 		"xy": {
 			"value": "The XY problem: You want to do X, but don't know how. You think you can solve it using Y, but don't know how to do that either. You ask about Y, which is a strange thing to want to do. Just ask about X. See also: http://xyproblem.info/",
-			"popularity": 1032,
+			"popularity": 1041,
 			"editors": [
 				"j201",
 				"sukima",
@@ -481,7 +458,7 @@
 		},
 		"eloquent": {
 			"value": "Eloquent JavaScript is a comprehensive introductory Web-based book with examples and a built-in interpreter. http://eloquentjavascript.net/",
-			"popularity": 1702,
+			"popularity": 1704,
 			"editors": [
 				"ericelliott",
 				"ashnur"
@@ -489,7 +466,7 @@
 		},
 		"tias": {
 			"value": "Try it and see, why dontcha?",
-			"popularity": 165
+			"popularity": 168
 		},
 		"css": {
 			"value": "Use Javascript to manipulate CSS stylesheets in a page. http://www.quirksmode.org/dom/w3c_css.html | Quick A-Z reference https://emw3.com/css/ - the js css property names use  camelCase. example: \"text-align\" is \"textAlign\" in the js css api |  For other CSS problems, please try the #css channel.",
@@ -508,11 +485,11 @@
 		},
 		"recursion": {
 			"value": "See !recursion",
-			"popularity": 43
+			"popularity": 44
 		},
 		"ask": {
 			"value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html https://jvns.ca/blog/good-questions/",
-			"popularity": 1757,
+			"popularity": 1776,
 			"editors": [
 				"hemanth",
 				"eboy",
@@ -587,7 +564,7 @@
 		},
 		"doesn't work": {
 			"value": "What do you mean it doesn't work? Is it unemployed? What happens when you try to run it? What did you try to run? What's the output? What's the error message? What did you want or expect to happen? Can you post a screenshot or a fiddle?",
-			"popularity": 802,
+			"popularity": 815,
 			"editors": [
 				"dwcook",
 				"graingert"
@@ -607,7 +584,7 @@
 		},
 		"mdc": {
 			"value": "Mozilla Developer Network @ http://developer.mozilla.org/",
-			"popularity": 152,
+			"popularity": 154,
 			"editors": [
 				"qswz",
 				"ljharb"
@@ -629,7 +606,7 @@
 		},
 		"mdn": {
 			"alias": "mdc",
-			"popularity": 132
+			"popularity": 134
 		},
 		"debugging": {
 			"alias": "console",
@@ -700,15 +677,11 @@
 		},
 		"ugt": {
 			"value": "Universal Greeting Time (or UGT) is a convention that states when a user enters an IRC channel it is always morning and upon leaving it is always night, regardless of the actual physical locations of the users in the channel. http://www.total-knowledge.com/~ilya/mips/ugt.html",
-			"popularity": 90
+			"popularity": 93
 		},
 		"crickets": {
 			"value": "crickets *chirp* *chirp* *chirp*... http://instantrimshot.com/index.php?sound",
 			"popularity": 5
-		},
-		"jsfiddle": {
-			"alias": "code",
-			"popularity": 83
 		},
 		"member access": {
 			"alias": "property access"
@@ -722,14 +695,14 @@
 		},
 		"console": {
 			"value": "The console object will provide you with an easy way to check the values of some variables, instead of the blocking alert() function. See !debug",
-			"popularity": 133,
+			"popularity": 134,
 			"editors": [
 				"ashnur"
 			]
 		},
 		"debug": {
 			"value": "Firefox <https://developer.mozilla.org/en-US/docs/Tools/Debugger>, Safari <https://developer.apple.com/technologies/safari/developer-tools.html>, Chrome <https://developers.google.com/web/tools/chrome-devtools/javascript/>, Opera <http://www.opera.com/dragonfly/>, IE <http://msdn.microsoft.com/en-us/library/dd565625%28v=vs.85%29>",
-			"popularity": 427,
+			"popularity": 430,
 			"editors": [
 				"j201",
 				"FireFly",
@@ -774,11 +747,7 @@
 		},
 		"botabuse": {
 			"value": "Please investigate me in a private message, so we can keep the channel clutter to a minimum. /msg ecmabot usage",
-			"popularity": 79
-		},
-		"abuse": {
-			"alias": "botabuse",
-			"popularity": 52
+			"popularity": 80
 		},
 		"about": {
 			"value": "I'm written entirely in JavaScript using Node.js. Look under the hood on Github: <https://github.com/oftn/oftn-bot>",
@@ -797,7 +766,7 @@
 		},
 		"help": {
 			"value": "For help, ask your question. Be patient. Code samples should be pasted in a paste service (see !paste). Tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !describe and !debug).",
-			"popularity": 4086,
+			"popularity": 4091,
 			"editors": [
 				"ashnur",
 				"earendel",
@@ -820,7 +789,7 @@
 		},
 		"bracket access": {
 			"value": "yourObject.foobar is just another way of saying yourObject['foobar']. So of course if varName = 'foobar', then it's also the same as yourObject[varName]. Dot notation is preferred to bracket notation except where the property name would be an invalid identifier. The same applies to quoting keys inside object literals - don't do it unless you have to.",
-			"popularity": 108,
+			"popularity": 109,
 			"editors": [
 				"ljharb"
 			],
@@ -842,7 +811,7 @@
 		},
 		"ops": {
 			"value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello jaawerth niggler. In case of an emergency requiring op attention, activate !emergency",
-			"popularity": 324,
+			"popularity": 328,
 			"editors": [
 				"Mortchek",
 				"dwcook",
@@ -886,11 +855,11 @@
 		},
 		"not working": {
 			"alias": "doesn't work",
-			"popularity": 28
+			"popularity": 31
 		},
 		"resources": {
 			"value": "!books, !es5, !gcu, !mdn, !owsc, !quirksmode, !caniuse, !crockford, !cheatsheet",
-			"popularity": 22,
+			"popularity": 23,
 			"editors": [
 				"Agamemnus",
 				"Havvy",
@@ -1059,7 +1028,7 @@
 		},
 		"homework": {
 			"value": "That problem looks a little contrived, and we suspect it may be homework. While we won't do your homework for you. We can help, but we'll want to see some effort, and we'll expect you to read docs rather than get spoon-fed. If it's not homework, see also !xy",
-			"popularity": 66,
+			"popularity": 68,
 			"editors": [
 				"graingert"
 			],
@@ -1084,10 +1053,11 @@
 			"value": "Do you have a form element with name=\"submit\"? That confuses some browsers. When you call form.submit(), it thinks you're talking about the name=\"submit\" element."
 		},
 		"sleep": {
-			"value": "JavaScript in the browser and Node.js doesn't have a sleep command -- as it's single threaded (if that makes no sense, ask). Instead, use the setTimeout function. Example: `do_this(); setTimeout(do_this_in_after_at_least_2seconds, 2e3);`",
-			"popularity": 43,
+			"value": "JavaScript in the browser and Node.js doesn't have a sleep command -- as it's single threaded (if that makes no sense, ask). const sleep = util.promisify(setTimeout); Or const sleep = t => new Promise(r => setTimeout(r, t)); Then use await sleep(400);",
+			"popularity": 46,
 			"editors": [
-				"Sorella"
+				"Sorella",
+				"graingert"
 			],
 			"changes": [
 				{
@@ -1110,6 +1080,18 @@
 					"old-value": "JavaScript in the browser and Node.js doesn't have a sleep command -- as it's single threaded (if that makes no sense, ask). Instead, use the setTimeout function. Example: `do_this(); window.setTimeout(do_this_in_after_at_least_2seconds, 2e3);`",
 					"new-value": "JavaScript in the browser and Node.js doesn't have a sleep command -- as it's single threaded (if that makes no sense, ask). Instead, use the setTimeout function. Example: `do_this(); setTimeout(do_this_in_after_at_least_2seconds, 2e3);`",
 					"regex": "s/window\\.//"
+				},
+				{
+					"date": "2018-10-04T17:42:27.158Z",
+					"editor": "graingert",
+					"old-value": "JavaScript in the browser and Node.js doesn't have a sleep command -- as it's single threaded (if that makes no sense, ask). Instead, use the setTimeout function. Example: `do_this(); setTimeout(do_this_in_after_at_least_2seconds, 2e3);`",
+					"new-value": "JavaScript in the browser and Node.js doesn't have a sleep command -- as it's single threaded (if that makes no sense, ask). const sleep = util.promisify(setTimeout); Or const sleep = t => new Promise(r => setTimeout(r, t); Then use await sleep(400);"
+				},
+				{
+					"date": "2018-10-04T17:43:19.783Z",
+					"editor": "graingert",
+					"old-value": "JavaScript in the browser and Node.js doesn't have a sleep command -- as it's single threaded (if that makes no sense, ask). const sleep = util.promisify(setTimeout); Or const sleep = t => new Promise(r => setTimeout(r, t); Then use await sleep(400);",
+					"new-value": "JavaScript in the browser and Node.js doesn't have a sleep command -- as it's single threaded (if that makes no sense, ask). const sleep = util.promisify(setTimeout); Or const sleep = t => new Promise(r => setTimeout(r, t)); Then use await sleep(400);"
 				}
 			]
 		},
@@ -1176,19 +1158,37 @@
 		},
 		"php": {
 			"alias": "backend",
-			"popularity": 49
+			"popularity": 50
 		},
 		"debugger": {
 			"alias": "debug",
-			"popularity": 76
+			"popularity": 77
 		},
 		"chromedevtools": {
 			"value": "http://www.youtube.com/watch?v=N8SS-rUEZPg",
 			"popularity": 6
 		},
 		"tag": {
-			"value": "Know the difference between \"element\" and \"tag\". In \"<p id=x>...</p>\", \"<p id=x>\" is a start tag, and \"</p>\" is an end tag. Taken together, the entire paragraph is a p *element*, not a tag. document.getElementById('x') returns an element, not a tag. Tags do not exist in the DOM, only in the markup.",
-			"popularity": 6
+			"value": "Know the difference between “element” and “tag”. In `<p id=x>...</p>`, `<p id=x>` is a start tag, and `</p>` is an end tag. Taken together, the entire paragraph is a `p` *element*, not a tag. `document.getElementById('x')` returns an element, not a tag. Tags do not exist in the DOM, only in the markup.",
+			"popularity": 10,
+			"editors": [
+				"MJCD",
+				"ljharb"
+			],
+			"changes": [
+				{
+					"date": "2018-10-18T16:54:25.745Z",
+					"editor": "MJCD",
+					"old-value": "Know the difference between \"element\" and \"tag\". In \"<p id=x>...</p>\", \"<p id=x>\" is a start tag, and \"</p>\" is an end tag. Taken together, the entire paragraph is a p *element*, not a tag. document.getElementById('x') returns an element, not a tag. Tags do not exist in the DOM, only in the markup.",
+					"new-value": "TAG, you're it!"
+				},
+				{
+					"date": "2018-10-18T23:04:49.505Z",
+					"editor": "ljharb",
+					"old-value": "TAG, you're it!",
+					"new-value": "Know the difference between “element” and “tag”. In `<p id=x>...</p>`, `<p id=x>` is a start tag, and `</p>` is an end tag. Taken together, the entire paragraph is a `p` *element*, not a tag. `document.getElementById('x')` returns an element, not a tag. Tags do not exist in the DOM, only in the markup."
+				}
+			]
 		},
 		"`": {
 			"value": "A relic of a lost age",
@@ -1221,13 +1221,9 @@
 			"alias": "atwood's law",
 			"popularity": 2
 		},
-		"js": {
-			"value": "did you mean: recursive acronym for JavaScript is not Java.",
-			"popularity": 30
-		},
 		"comparisons": {
 			"value": "Using == and != should be avoided, since they perform coercion giving unexpected results. Use === and !== instead. See also: http://zero.milosz.ca/ http://es5.github.io/#x11.9.3",
-			"popularity": 201,
+			"popularity": 202,
 			"editors": [
 				"jrajav",
 				"j201",
@@ -1284,7 +1280,7 @@
 		},
 		"source": {
 			"value": "My source code is available at: https://github.com/oftn-oswg/oftn-bot/",
-			"popularity": 166,
+			"popularity": 167,
 			"editors": [
 				"eligrey"
 			],
@@ -1419,7 +1415,7 @@
 		},
 		"jscript": {
 			"value": "JScript is the Microsoft dialect of the ECMAScript scripting language specification. JavaScript (the Netscape/Mozilla implementation of the ECMA specification), JScript, and ECMAScript are very similar languages.",
-			"popularity": 26,
+			"popularity": 27,
 			"editors": [
 				"Xinn"
 			],
@@ -1511,7 +1507,7 @@
 		},
 		"truthy": {
 			"value": "The 'falsy' values in JavaScript are undefined, null, 0, -0, NaN, '', and false. The 'truthy' values are all other values. All objects are truthy. There is nothing both truthy and falsy, or neither truthy nor falsy.",
-			"popularity": 273,
+			"popularity": 274,
 			"editors": [
 				"Mortchek",
 				"ljharb",
@@ -1588,7 +1584,7 @@
 		},
 		"coffeescript": {
 			"value": "CoffeeScript is not JavaScript; try #coffeescript for help.",
-			"popularity": 27,
+			"popularity": 28,
 			"editors": [
 				"FireFly"
 			]
@@ -1763,7 +1759,7 @@
 		},
 		"inline": {
 			"value": "Inline event handlers are essentially `eval` inside HTML markup - they're bad practice and result in poorly factored, hard-to-manage code. Seriously consider attaching your events with JavaScript, instead, eg: https://developer.mozilla.org/en/DOM/element.addEventListener",
-			"popularity": 771,
+			"popularity": 773,
 			"editors": [
 				"ljharb",
 				"Akinator"
@@ -1785,7 +1781,7 @@
 		},
 		"gist": {
 			"value": "Paste code at https://gist.github.com (or a similar site) and name the file .js so that we can look over it. Thanks!",
-			"popularity": 203,
+			"popularity": 212,
 			"editors": [
 				"GreenJello"
 			],
@@ -1808,7 +1804,7 @@
 		},
 		"repl": {
 			"value": "REPL stands for 'read-eval-print loop', and is a great way to try your code out. Google for '<your browser> console'. The normal shortcuts are f12 or command/ctrl-shift-I",
-			"popularity": 43
+			"popularity": 44
 		},
 		"module pattern": {
 			"value": "http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth. See https://github.com/substack/node-browserify and http://requirejs.org/ for alternative module definition and loading support.",
@@ -1854,7 +1850,7 @@
 		},
 		"work": {
 			"alias": "doesn't work",
-			"popularity": 45,
+			"popularity": 46,
 			"editors": [
 				"yorick"
 			],
@@ -1904,7 +1900,7 @@
 		},
 		"falsy": {
 			"alias": "truthy",
-			"popularity": 169
+			"popularity": 170
 		},
 		"new array": {
 			"value": "The array literal format - [] - is often preferred for array construction to the array constructor - new Array() or Array(), for two reasons. 1) [] is fewer characters without damaging readability, 2) new Array acts the same as [], *except* if you pass a single integer argument; in which case it makes an array whose length is equal to that argument. [] has no such functionality, and hence has no such inconsistencies.",
@@ -1969,7 +1965,7 @@
 		},
 		"nouns": {
 			"value": "In JavaScript, verbs are equally important as nouns. http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html",
-			"popularity": 239,
+			"popularity": 240,
 			"editors": [
 				"ljharb"
 			],
@@ -2028,7 +2024,7 @@
 		},
 		"hello": {
 			"value": "Welcome! We're a community of friendly, helpful people who are happy to help any time 24/7/365. Please make yourself at home and consider adding us to your autojoin :) Please make sure you read the channel status for channel commands and updates. FYI, just saying hello with no message is super rude in IRC! See also !nohello",
-			"popularity": 263,
+			"popularity": 269,
 			"editors": [
 				"PigDude",
 				"qswz",
@@ -2098,7 +2094,7 @@
 		},
 		"arrays": {
 			"value": "https://developer.mozilla.org/en/JavaScript/Guide/Predefined_Core_Objects#Array_Object",
-			"popularity": 6
+			"popularity": 7
 		},
 		"use a library": {
 			"value": "You want to solve a problem that has been solved several times before, and has been distributed as a reusable component for anyone to use. Using a library you can have your cake, and eat it too!",
@@ -2106,7 +2102,7 @@
 		},
 		"ajax": {
 			"value": "XMLHttpRequest, a method for asynchronous fetching of data or files from a server with javascript. https://developer.mozilla.org/en/docs/DOM/XMLHttpRequest (see also: !cors for issues with cross-origin XHR)",
-			"popularity": 118,
+			"popularity": 119,
 			"editors": [
 				"GreenJello"
 			],
@@ -2121,7 +2117,7 @@
 		},
 		"xhr": {
 			"alias": "ajax",
-			"popularity": 39
+			"popularity": 40
 		},
 		"es5 shim": {
 			"value": "To add most ES5 functionality to older, or modern non-compliant (eg, ALL of them) browsers or node, use https://npmjs.com/package/es5-shim !",
@@ -2173,7 +2169,7 @@
 		},
 		"raf": {
 			"value": "For animations, requestAnimationFrame is far superior to setTimeout. http://paulirish.com/2011/requestanimationframe-for-smart-animating/ To cover older browsers, use this polyfill: https://gist.github.com/1579671",
-			"popularity": 121,
+			"popularity": 122,
 			"editors": [
 				"ljharb"
 			]
@@ -2238,7 +2234,7 @@
 		},
 		"bloat": {
 			"value": "The solution to worrying about JS lib/framework size: include one less .jpg on your site. // https://twitter.com/paul_irish/status/227203681462927361 - also, https://twitter.com/trek/status/227082154109186049 http://fourword.fourkitchens.com/article/one-less-jpg",
-			"popularity": 158,
+			"popularity": 162,
 			"editors": [
 				"gkatsev",
 				"ljharb",
@@ -2345,7 +2341,7 @@
 		},
 		"!>>": {
 			"value": "To run code, use >> and sm> to execute on the Spidermonkey JS engine or >>> and v8> to execute on the v8 JS engine.",
-			"popularity": 63,
+			"popularity": 64,
 			"editors": [
 				"ImBcmDth"
 			],
@@ -2472,7 +2468,7 @@
 		},
 		"regex html": {
 			"value": "http://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454#1732454",
-			"popularity": 51
+			"popularity": 52
 		},
 		"coffeescript scoping": {
 			"value": "The Problem with Implicit Scoping in CoffeeScript: http://lucumr.pocoo.org/2011/12/22/implicit-scoping-in-coffeescript/",
@@ -2501,7 +2497,7 @@
 		},
 		"ded": {
 			"alias": "dedicated",
-			"popularity": 464,
+			"popularity": 465,
 			"editors": [
 				"gkatsev"
 			],
@@ -2599,7 +2595,7 @@
 		},
 		"books": {
 			"value": "!eloquent (http://eloquentjavascript.net), !ydkjs (https://github.com/getify/You-Dont-Know-JS), JavaScript: The Definitive Guide by David Flanagan, High Performance JavaScript by Nicholas C. Zakas, Effective JavaScript by David Herman, Functional JavaScript by Michael Fogus, Programming JavaScript Applications by Eric Elliott.",
-			"popularity": 1097,
+			"popularity": 1098,
 			"creator": "gkatsev",
 			"editors": [
 				"gkatsev",
@@ -2822,7 +2818,7 @@
 		},
 		"java": {
 			"value": "Remember, Java is to JavaScript as Pain is to Painting, or Ham is to Hamster. We don't know Java, and if you're trying to apply your Java knowledge to JavaScript, it probably won't work. See also: http://ow.ly/GMctL and https://twitter.com/ryber/status/567681894662164480 - Try ##java",
-			"popularity": 312,
+			"popularity": 321,
 			"creator": "ljharb",
 			"editors": [
 				"eboy",
@@ -2870,7 +2866,7 @@
 		},
 		"promises": {
 			"value": "Promises are placeholders for values that'll be provided in the future. They allow composing asynchronous operations like synchronous ones. See http://robotlolita.me/2015/11/15/how-do-promises-work.html and https://blog.domenic.me/youre-missing-the-point-of-promises/. Contrast with !cps & see https://bevacqua.github.io/promisees/. Another guide: http://www.javascriptkit.com/javatutors/javascriptpromises.shtml",
-			"popularity": 453,
+			"popularity": 454,
 			"creator": "ljharb",
 			"editors": [
 				"ljharb",
@@ -3137,7 +3133,7 @@
 		},
 		"caps": {
 			"value": "stop resting your coffee mug on shift.  it damages your keyboard",
-			"popularity": 3,
+			"popularity": 4,
 			"creator": "hughfdjackson",
 			"editors": []
 		},
@@ -3172,7 +3168,7 @@
 		},
 		"bot": {
 			"value": "I'm a bot!",
-			"popularity": 76,
+			"popularity": 77,
 			"creator": "lilmonkey",
 			"editors": []
 		},
@@ -3250,7 +3246,7 @@
 		},
 		"jobs": {
 			"value": "It's acceptable to occasionally mention (PROGRAMMING-RELATED) job requests. (discussion should be in PM) Spamming job posts is not allowed. You can also use Elance for posting small jobs or finding small jobs.",
-			"popularity": 20,
+			"popularity": 21,
 			"creator": "niggler",
 			"editors": [
 				"niggler",
@@ -3292,15 +3288,9 @@
 			"creator": "Benvie",
 			"editors": []
 		},
-		"hamster": {
-			"value": "Java is to Javascript like ham is to hamster.",
-			"popularity": 6,
-			"creator": "ljharb",
-			"editors": []
-		},
 		"setinterval": {
 			"value": "Avoid setInterval; use setTimeout instead. http://zetafleet.com/blog/why-i-consider-setinterval-harmful (requestAnimationFrame may be another alternative)",
-			"popularity": 332,
+			"popularity": 334,
 			"creator": "ljharb",
 			"editors": [
 				"qswz",
@@ -3684,7 +3674,7 @@
 		},
 		"onclick": {
 			"alias": "onfoo",
-			"popularity": 109,
+			"popularity": 112,
 			"editors": [
 				"ljharb"
 			],
@@ -3699,7 +3689,7 @@
 		},
 		"iteration": {
 			"value": "ECMAScript's Array contains a number of built-in methods for iteration (e.g., map, reduce, every, some, filter, and forEach). They relieve the need for manual iteration, provide better abstraction than a `for` loop, and make it clear what your iteration is doing. See https://gist.github.com/ljharb/58faf1cfcb4e6808f74aae4ef7944cff",
-			"popularity": 478,
+			"popularity": 486,
 			"creator": "Mortchek",
 			"editors": [
 				"Mortchek",
@@ -3982,7 +3972,7 @@
 		},
 		"json object": {
 			"value": "JSON object is an often misused buzzword that does not have a well-defined meaning. See https://github.com/robotlolita/screw-the-buzzwords/wiki/JSON for alternatives to express what you mean.",
-			"popularity": 28,
+			"popularity": 29,
 			"creator": "sacho_",
 			"editors": [
 				"Sorella"
@@ -4022,7 +4012,7 @@
 		},
 		"csp": {
 			"value": "Content Security Policy (CSP) is an added layer of security to detect/mitigate certain attacks, including XSS and data injection. https://developer.mozilla.org/en-US/docs/Security/CSP",
-			"popularity": 77,
+			"popularity": 78,
 			"creator": "ljharb",
 			"editors": []
 		},
@@ -4315,7 +4305,7 @@
 		},
 		"ham": {
 			"alias": "java",
-			"popularity": 10,
+			"popularity": 11,
 			"editors": [
 				"ljharb"
 			],
@@ -4371,11 +4361,13 @@
 			"editors": []
 		},
 		"tutorial": {
-			"value": "It is highly recommended that you establish a firm grasp of the core syntax within both JavaScript and HTML before asking any syntax error related questions. A good tutorial is: http://eloquentjavascript.net/ - you can also use http://validator.w3.org/ (HTML) and http://eslint.org/demo/ (JS) to make sure your code passes.",
-			"popularity": 157,
+			"value": "It is HIGHLY recommended that you establish a firm grasp of the core syntax within both JavaScript, HTML, and basic CSS. Before asking any syntax error related questions you can use `!eslint` to detect any contextual errors. A critically acclaimed tutorial is available @ http://eloquentjavascript.net/",
+			"popularity": 159,
 			"creator": "MJCD",
 			"editors": [
-				"graingert"
+				"graingert",
+				"MJCD",
+				"ljharb"
 			],
 			"changes": [
 				{
@@ -4383,6 +4375,18 @@
 					"editor": "graingert",
 					"old-value": "It is highly recommended that you establish a firm grasp of the core syntax within both javascript and HTML before asking any syntax error related questions. A good tutorial is: http://eloquentjavascript.net/ - you can also use http://validator.w3.org/ (HTML) and http://www.jslint.com/ (JS) to make sure your code passes.",
 					"new-value": "It is highly recommended that you establish a firm grasp of the core syntax within both JavaScript and HTML before asking any syntax error related questions. A good tutorial is: http://eloquentjavascript.net/ - you can also use http://validator.w3.org/ (HTML) and http://eslint.org/demo/ (JS) to make sure your code passes."
+				},
+				{
+					"date": "2018-10-19T23:00:28.348Z",
+					"editor": "MJCD",
+					"old-value": "It is highly recommended that you establish a firm grasp of the core syntax within both JavaScript and HTML before asking any syntax error related questions. A good tutorial is: http://eloquentjavascript.net/ - you can also use http://validator.w3.org/ (HTML) and http://eslint.org/demo/ (JS) to make sure your code passes.",
+					"new-value": "It is HIGHLY recommended that you establish a firm grasp of the core syntax within both JavaScript, HTML and basic CSS. Before asking any syntax error related questions you can use `!eslint` to detect any contextual errors. A critically acclaimed tutorial is available @ http://eloquentjavascript.net/"
+				},
+				{
+					"date": "2018-10-19T23:35:57.127Z",
+					"editor": "ljharb",
+					"old-value": "It is HIGHLY recommended that you establish a firm grasp of the core syntax within both JavaScript, HTML and basic CSS. Before asking any syntax error related questions you can use `!eslint` to detect any contextual errors. A critically acclaimed tutorial is available @ http://eloquentjavascript.net/",
+					"new-value": "It is HIGHLY recommended that you establish a firm grasp of the core syntax within both JavaScript, HTML, and basic CSS. Before asking any syntax error related questions you can use `!eslint` to detect any contextual errors. A critically acclaimed tutorial is available @ http://eloquentjavascript.net/"
 				}
 			]
 		},
@@ -4418,7 +4422,7 @@
 		},
 		"fp": {
 			"value": "Functional programming: A style of programming which uses only pure (mathematical) functions, avoiding side-effects",
-			"popularity": 61,
+			"popularity": 62,
 			"creator": "Sorella",
 			"editors": [
 				"Sorella",
@@ -4511,7 +4515,7 @@
 		},
 		"modules": {
 			"value": "Modules divide programs into clusters of code that, by some criterion, belong together. \"!es6 modules\" are second-class, but JS can encode first-class ones. Major implementations include CommonJS, Node modules (a variant of CJS), and AMD. All of them can be used in any JS VM, including browsers. See also: http://robotlolita.me/2013/06/06/node-modules-to-rule-them-all.html and http://eloquentjavascript.net/10_modules.html.",
-			"popularity": 181,
+			"popularity": 182,
 			"creator": "Sorella",
 			"editors": [
 				"Sorella",
@@ -4792,7 +4796,7 @@
 		},
 		"backend": {
 			"value": "You're showing us (PHP|ASP|other backend language) code, but asking a question about the browser, which sees the output. Maybe your code produces correct output, maybe it doesn't. Please show us the HTML as the browser sees it.",
-			"popularity": 53,
+			"popularity": 54,
 			"creator": "dwcook",
 			"editors": [
 				"dwcook"
@@ -4849,7 +4853,7 @@
 		},
 		"cps": {
 			"value": "Continuation-Passing style is the formal term for the \"callback-based\" approach to programming. CPS is a heavily used idiom in JavaScript to deal with asynchronous programming. See http://matt.might.net/articles/by-example-continuation-passing-style/",
-			"popularity": 203,
+			"popularity": 204,
 			"creator": "Sorella",
 			"editors": []
 		},
@@ -5583,7 +5587,7 @@
 			"alias": "!>>",
 			"creator": "ImBcmDth",
 			"date": "2014-03-22T19:44:54.278Z",
-			"popularity": 35,
+			"popularity": 36,
 			"editors": [],
 			"changes": []
 		},
@@ -5608,7 +5612,7 @@
 			"alias": "comparisons",
 			"creator": "",
 			"date": "2014-03-23T23:44:47.732Z",
-			"popularity": 68,
+			"popularity": 69,
 			"editors": [],
 			"changes": []
 		},
@@ -5789,7 +5793,7 @@
 			"alias": "bracket access",
 			"creator": "",
 			"date": "2014-04-15T00:49:13.734Z",
-			"popularity": 16,
+			"popularity": 17,
 			"editors": [],
 			"changes": []
 		},
@@ -5813,7 +5817,7 @@
 			"value": "extract({a: {b: {c: 5}}}, \"a.b.c\") gives 5 -- code: https://gist.github.com/brigand/8324917",
 			"creator": "GreenJello",
 			"date": "2014-04-16T01:56:21.939Z",
-			"popularity": 15,
+			"popularity": 16,
 			"editors": [],
 			"changes": []
 		},
@@ -5829,7 +5833,7 @@
 			"alias": "nouns",
 			"creator": "ljharb",
 			"date": "2014-04-19T21:18:38.096Z",
-			"popularity": 15,
+			"popularity": 16,
 			"editors": [],
 			"changes": []
 		},
@@ -5861,7 +5865,7 @@
 			"value": "convert to boolean",
 			"creator": "Qbix2",
 			"date": "2014-04-24T00:17:29.237Z",
-			"popularity": 80,
+			"popularity": 81,
 			"editors": [
 				"graingert"
 			],
@@ -6104,7 +6108,7 @@
 			"value": "|> function range(start, end) { return Array.apply(Array, Array(end + 1 - start)).map(function (_, i) { return i + start; }); }",
 			"creator": "ljharb",
 			"date": "2014-08-17T12:05:59.180Z",
-			"popularity": 149,
+			"popularity": 150,
 			"editors": [
 				"qswz",
 				"ljharb"
@@ -6169,7 +6173,7 @@
 			"value": "5",
 			"creator": "raypulver",
 			"date": "2014-08-31T19:55:31.517Z",
-			"popularity": 36,
+			"popularity": 37,
 			"editors": [],
 			"changes": []
 		},
@@ -6181,19 +6185,11 @@
 			"editors": [],
 			"changes": []
 		},
-		"pain": {
-			"alias": "java",
-			"creator": "ljharb",
-			"date": "2014-09-29T04:54:12.979Z",
-			"popularity": 5,
-			"editors": [],
-			"changes": []
-		},
 		"event loop": {
 			"value": "https://nodesource.com/blog/understanding-the-nodejs-event-loop ; https://www.youtube.com/watch?v=8aGhZQkoFbQ Philip Roberts: What the heck is the event loop anyway? | JSConf EU 2014",
 			"creator": "ashnur",
 			"date": "2014-10-09T20:07:26.047Z",
-			"popularity": 183,
+			"popularity": 184,
 			"editors": [
 				"Havvy"
 			],
@@ -6226,7 +6222,7 @@
 			"value": "Using \".onclick\", \".onchange\", or \"on\" anything is bad practice and results in poorly factored, hard-to-manage code; as well as limiting you to one event listener per event. Consider attaching your events with addEventListener, instead, eg: https://developer.mozilla.org/en/DOM/element.addEventListener",
 			"creator": "ljharb",
 			"date": "2014-10-22T00:25:55.014Z",
-			"popularity": 155,
+			"popularity": 158,
 			"editors": [
 				"Havvy"
 			],
@@ -6308,7 +6304,7 @@
 			"value": "Don't just `ping` someone but ping with some context. `someone: ping re: issue #123` rather than just `someone: ping`. http://blogs.gnome.org/markmc/2014/02/20/naked-pings/",
 			"creator": "gkatsev",
 			"date": "2014-10-28T00:07:51.936Z",
-			"popularity": 44,
+			"popularity": 45,
 			"editors": [
 				"ImBcmDth"
 			],
@@ -6326,7 +6322,7 @@
 			"alias": "naked ping",
 			"creator": "gkatsev",
 			"date": "2014-10-28T00:08:12.133Z",
-			"popularity": 44,
+			"popularity": 45,
 			"editors": [],
 			"changes": []
 		},
@@ -6334,7 +6330,7 @@
 			"value": "The JSConf and #npm Codes of Conduct are good resources to understand how people should conduct themselves on this channel - < http://jsconf.com/codeofconduct.html > and < http://www.npmjs.com/policies/conduct/ >",
 			"creator": "aeoril",
 			"date": "2014-10-31T01:02:12.139Z",
-			"popularity": 122,
+			"popularity": 124,
 			"editors": [
 				"aeoril",
 				"ljharb"
@@ -6483,7 +6479,7 @@
 			"value": "Are you experiencing performance issues? Have you profiled your code? If not, then stop trying to preempt possibly non-existent performance issues and just keep writing code.",
 			"creator": "seemikehack",
 			"date": "2014-11-20T21:18:56.699Z",
-			"popularity": 16,
+			"popularity": 17,
 			"editors": [],
 			"changes": []
 		},
@@ -6528,14 +6524,15 @@
 			"changes": []
 		},
 		"globals": {
-			"value": "Globals: not even once! It's best to avoid global variables. As variables lose scope, they will be eligible for garbage collection. If they are scoped globally, then they will not be eligible for collection until the global namespace loses scope (e.g. when the page unloads). See also !IIFE and !modules",
+			"value": "It's best to avoid global variables. As variables lose scope, they will be eligible for garbage collection. If they are scoped globally, then they will not be eligible for collection until the global namespace loses scope (e.g. when the page unloads). See also !IIFE and !modules",
 			"creator": "therealklanni",
 			"date": "2014-12-03T01:46:02.212Z",
-			"popularity": 69,
+			"popularity": 71,
 			"editors": [
 				"therealklanni",
 				"ljharb",
-				"XIIIIIN"
+				"XIIIIIN",
+				"MJCD"
 			],
 			"changes": [
 				{
@@ -6573,6 +6570,12 @@
 					"editor": "ljharb",
 					"old-value": "It's best to avoid global variables. As variables lose scope, they will be eligible for garbage collection. If they are scoped globally, then they will not be eligible for collection until the global namespace loses scope (e.g. when the page unloads). See also !IIFE and !modules and !best-practices",
 					"new-value": "Globals: not even once! It's best to avoid global variables. As variables lose scope, they will be eligible for garbage collection. If they are scoped globally, then they will not be eligible for collection until the global namespace loses scope (e.g. when the page unloads). See also !IIFE and !modules"
+				},
+				{
+					"date": "2018-10-20T00:10:45.040Z",
+					"editor": "MJCD",
+					"old-value": "Globals: not even once! It's best to avoid global variables. As variables lose scope, they will be eligible for garbage collection. If they are scoped globally, then they will not be eligible for collection until the global namespace loses scope (e.g. when the page unloads). See also !IIFE and !modules",
+					"new-value": "It's best to avoid global variables. As variables lose scope, they will be eligible for garbage collection. If they are scoped globally, then they will not be eligible for collection until the global namespace loses scope (e.g. when the page unloads). See also !IIFE and !modules"
 				}
 			]
 		},
@@ -6738,7 +6741,7 @@
 			"value": "You Don't Know Javascript - Free book series on Github (https://github.com/getify/You-Dont-Know-JS)",
 			"creator": "bradleymeck",
 			"date": "2014-12-29T21:10:32.401Z",
-			"popularity": 67,
+			"popularity": 68,
 			"editors": [
 				"ljharb",
 				"Havvy"
@@ -6867,7 +6870,7 @@
 			"value": "Don't use pastebin.com, Ads, Spamfilters, Captcha, Adds whitespace, Slow, Ugly, No comment/fork/annotate, Breaks copy/paste, Blocked for some people, etc. See !paste and !fiddle",
 			"creator": "ashnur",
 			"date": "2015-01-07T11:48:28.292Z",
-			"popularity": 113,
+			"popularity": 117,
 			"editors": [
 				"graingert"
 			],
@@ -7055,7 +7058,7 @@
 			"value": "Use `npm install` instead. `update` updates all dependencies to the latest, even when they conflict.",
 			"creator": "Havvy",
 			"date": "2015-01-12T07:05:02.900Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -7234,7 +7237,7 @@
 			"alias": "iteration",
 			"creator": "ljharb",
 			"date": "2015-02-12T04:31:36.893Z",
-			"popularity": 202,
+			"popularity": 207,
 			"editors": [],
 			"changes": []
 		},
@@ -7282,7 +7285,7 @@
 			"value": "A higher-order function is a function that takes one or more functions as input, and/or outputs a function. See http://eloquentjavascript.net/05_higher_order.html",
 			"creator": "falafel",
 			"date": "2015-02-28T23:23:22.669Z",
-			"popularity": 8,
+			"popularity": 9,
 			"editors": [
 				"falafel"
 			],
@@ -7521,7 +7524,7 @@
 			"value": "window.fetch - a standard way to make HTTP requests and get a Promise. http://mdn.io/Using_Fetch For older browsers (IE*) you must include a Polyfill - https://github.com/github/fetch See http://mdn.io/fetch for browser support.",
 			"creator": "ljharb",
 			"date": "2015-04-19T01:39:06.472Z",
-			"popularity": 215,
+			"popularity": 223,
 			"editors": [
 				"Havvy",
 				"qswz",
@@ -7618,7 +7621,7 @@
 			"alias": "iteration",
 			"creator": "",
 			"date": "2015-04-28T17:16:37.785Z",
-			"popularity": 38,
+			"popularity": 39,
 			"editors": [],
 			"changes": []
 		},
@@ -7675,14 +7678,6 @@
 			"creator": "joepie91",
 			"date": "2015-05-18T04:29:02.786Z",
 			"popularity": 61,
-			"editors": [],
-			"changes": []
-		},
-		"splitat": {
-			"value": "function (array, splitter) { return array.split(splitter).slice(1).join(splitter); }",
-			"creator": "Havvy",
-			"date": "2015-05-18T05:56:53.468Z",
-			"popularity": 0,
 			"editors": [],
 			"changes": []
 		},
@@ -8255,9 +8250,25 @@
 			"value": "React is a JavaScript library for building user interfaces https://facebook.github.io/react/. Also see http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome",
 			"creator": "falafel",
 			"date": "2015-07-16T23:12:34.173Z",
-			"popularity": 16,
-			"editors": [],
-			"changes": []
+			"popularity": 17,
+			"editors": [
+				"notchris",
+				"ljharb"
+			],
+			"changes": [
+				{
+					"date": "2018-10-01T19:45:40.157Z",
+					"editor": "notchris",
+					"old-value": "React is a JavaScript library for building user interfaces https://facebook.github.io/react/. Also see http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome",
+					"new-value": "vue"
+				},
+				{
+					"date": "2018-10-16T11:22:49.217Z",
+					"editor": "ljharb",
+					"old-value": "vue",
+					"new-value": "React is a JavaScript library for building user interfaces https://facebook.github.io/react/. Also see http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome"
+				}
+			]
 		},
 		"file": {
 			"value": "Each browser implements different security rules for file:/// urls. This leads to weird errors that other people can't track down. Don't use file urls. Either host files with a daemon web server like apache, or run e.g. `python -m SimpleHttpServer 8080` in your project directory.",
@@ -8344,7 +8355,7 @@
 			"value": "http://davidwalsh.name/event-delegate",
 			"creator": "cjohnson",
 			"date": "2015-07-21T14:36:51.389Z",
-			"popularity": 28,
+			"popularity": 29,
 			"editors": [],
 			"changes": []
 		},
@@ -8393,7 +8404,7 @@
 			"value": "You probably don't actually need MVC. http://aredridel.dinhe.net/2015/01/30/why-mvc-does-not-fit-the-web/",
 			"creator": "joepie91",
 			"date": "2015-08-05T07:53:11.876Z",
-			"popularity": 24,
+			"popularity": 25,
 			"editors": [],
 			"changes": []
 		},
@@ -8401,7 +8412,7 @@
 			"value": "b> var two = f => x => f(f(x)); var three = f => x => f(two(f)(x)); var mult = m => n => f => m(n(f)); var pow = e => b => b(e); var toNumber = n => n(x => ~~x+1)(); toNumber(pow(mult(two)(three))(two))",
 			"creator": "j201",
 			"date": "2015-08-06T23:24:50.265Z",
-			"popularity": 27,
+			"popularity": 28,
 			"editors": [
 				"jaawerth"
 			],
@@ -8451,7 +8462,7 @@
 			"value": "#angularjs - ##bootstrap - #browserify - #coffeescript - #css - #d3.js - #dojo - #emberjs  - #express - #grunt - #gulpjs - #jquery - #knockoutjs - #node.js - #reactjs (also tools used in react.js projects) - #requirejs - #socket.io - #three.js - #webgl",
 			"creator": "Sorella",
 			"date": "2015-08-08T16:04:54.273Z",
-			"popularity": 219,
+			"popularity": 220,
 			"editors": [
 				"j201",
 				"deltab",
@@ -8811,7 +8822,7 @@
 			"value": "Don't try to do encryption or cryptography in browser JavaScript. https://web.archive.org/web/20150512024954/http://matasano.com/articles/javascript-cryptography/",
 			"creator": "ljharb",
 			"date": "2015-09-19T06:52:08.583Z",
-			"popularity": 41,
+			"popularity": 42,
 			"editors": [
 				"ljharb"
 			],
@@ -8836,7 +8847,7 @@
 			"value": "ES2015 provides semantics for import/export (currently in modern browsers). node 8.5+, however, requires the --experimental-modules flag and .mjs files. !babel simply transpiles import/export to `require`. Use node-style CJS modules for now.",
 			"creator": "ljharb",
 			"date": "2015-09-22T14:25:53.057Z",
-			"popularity": 415,
+			"popularity": 418,
 			"editors": [
 				"Sorella",
 				"Maxdamantus",
@@ -9122,7 +9133,7 @@
 			"value": "nvm ( http://nvm.sh / #nvm ) lets you change node versions per-user/per-shell. nave ( https://www.npmjs.com/package/nave ) is for per-user/per-SUBshell. n ( https://www.npmjs.com/package/n ) is for a single, global, system-wide node.",
 			"creator": "ljharb",
 			"date": "2015-10-13T22:25:25.927Z",
-			"popularity": 116,
+			"popularity": 118,
 			"editors": [
 				"ljharb"
 			],
@@ -9312,10 +9323,11 @@
 			"value": "JavaScript, often abbreviated as JS, is a high-level, dynamic, weakly typed, object-based, multi-paradigm, and interpreted client-side programming language. Alongside HTML and CSS, JavaScript is one of the three core technologies of World Wide Web content production.",
 			"creator": "ljharb",
 			"date": "2015-11-04T20:31:04.390Z",
-			"popularity": 26,
+			"popularity": 42,
 			"editors": [
 				"ljharb",
-				"Xinn"
+				"Xinn",
+				"notchris"
 			],
 			"changes": [
 				{
@@ -9341,6 +9353,18 @@
 					"editor": "Xinn",
 					"old-value": "JavaScript! Ask questions in #js-irc - read the !spec - read some !books - learn !node.js and ask about it in #node.js",
 					"new-value": "JavaScript, often abbreviated as JS, is a high-level, dynamic, weakly typed, object-based, multi-paradigm, and interpreted client-side programming language. Alongside HTML and CSS, JavaScript is one of the three core technologies of World Wide Web content production."
+				},
+				{
+					"date": "2018-10-01T19:43:58.247Z",
+					"editor": "notchris",
+					"old-value": "JavaScript, often abbreviated as JS, is a high-level, dynamic, weakly typed, object-based, multi-paradigm, and interpreted client-side programming language. Alongside HTML and CSS, JavaScript is one of the three core technologies of World Wide Web content production.",
+					"new-value": "JAVA"
+				},
+				{
+					"date": "2018-10-16T11:23:07.237Z",
+					"editor": "ljharb",
+					"old-value": "JAVA",
+					"new-value": "JavaScript, often abbreviated as JS, is a high-level, dynamic, weakly typed, object-based, multi-paradigm, and interpreted client-side programming language. Alongside HTML and CSS, JavaScript is one of the three core technologies of World Wide Web content production."
 				}
 			]
 		},
@@ -9348,7 +9372,7 @@
 			"alias": "whichnvm",
 			"creator": "ljharb",
 			"date": "2015-11-05T02:46:22.908Z",
-			"popularity": 60,
+			"popularity": 62,
 			"editors": [],
 			"changes": []
 		},
@@ -9364,7 +9388,7 @@
 			"value": "There's 3 options to properly get data from the server to the client: 1) AJAX request from JS. 2) HTML data-* attributes, read them in JS. 3) <script type=\"application/json\"></script>, read and parse it from JS, however this option requires special escaping of </script> in the json body. Never generate/template JS on the fly.",
 			"creator": "ljharb",
 			"date": "2015-11-10T10:18:02.124Z",
-			"popularity": 73,
+			"popularity": 75,
 			"editors": [
 				"GreenJello",
 				"graingert",
@@ -9423,7 +9447,7 @@
 			"value": "See https://github.com/tc39/ecma262 for a list of proposed ECMAScript features (don't forget to check the stage 0 proposals!)",
 			"creator": "diamonds",
 			"date": "2015-12-02T00:57:27.431Z",
-			"popularity": 8,
+			"popularity": 9,
 			"editors": [],
 			"changes": []
 		},
@@ -9538,7 +9562,7 @@
 			"value": "'request' on npm is an old outdated module, consider using whatwg-fetch or superagent instead",
 			"creator": "GreenJello",
 			"date": "2016-01-23T06:22:22.422Z",
-			"popularity": 4,
+			"popularity": 6,
 			"editors": [
 				"GreenJello"
 			],
@@ -9587,7 +9611,7 @@
 			"value": "When transpiling or on node 6+, always use `const`. If you can't avoid reassigning the variable (try!), use `let`. Never use `var` unless you are relying on !hoisting (which you shouldn't be).",
 			"creator": "ljharb",
 			"date": "2016-02-05T00:30:21.978Z",
-			"popularity": 71,
+			"popularity": 73,
 			"editors": [
 				"ljharb",
 				"Agamemnus"
@@ -9623,7 +9647,7 @@
 			"value": "An arrow function expression (also known as fat arrow function) has a shorter syntax compared to function expressions and lexically binds the this value (does not bind its own this, arguments, super, or new.target). Arrow functions are always anonymous. — https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions",
 			"creator": "deltab",
 			"date": "2016-02-12T04:09:02.461Z",
-			"popularity": 21,
+			"popularity": 22,
 			"editors": [],
 			"changes": []
 		},
@@ -9631,7 +9655,7 @@
 			"value": "http://bterlson.github.io/proposal-flatMap/",
 			"creator": "Havvy",
 			"date": "2016-02-17T06:46:04.187Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -9727,7 +9751,7 @@
 			"value": "A guide to getting started with JavaScript and Node.js: https://gist.github.com/joepie91/95ed77b71790442b7e61",
 			"creator": "joepie91",
 			"date": "2016-03-17T15:06:30.967Z",
-			"popularity": 102,
+			"popularity": 113,
 			"editors": [],
 			"changes": []
 		},
@@ -9857,7 +9881,7 @@
 			"value": "map([🌽, 🐮, 🐔], cook) => [🍿, 🍔, 🍳]  | filter([🍿, 🍔, 🍳], isVegetarian) => [🍿, 🍳]  |  reduce([🍿, 🍳], eat) => 💩",
 			"creator": "jaawerth",
 			"date": "2016-06-11T00:44:07.448Z",
-			"popularity": 0,
+			"popularity": 2,
 			"editors": [],
 			"changes": []
 		},
@@ -9865,7 +9889,7 @@
 			"value": "Don't use JWT for sessions. http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions -- JWT was never meant to be used for sessions, and its popularity happened purely because of marketing: https://youtu.be/GrLtOjCTB1s?t=1h2m44s",
 			"creator": "joepie91",
 			"date": "2016-06-13T23:14:15.106Z",
-			"popularity": 136,
+			"popularity": 147,
 			"editors": [
 				"joepie91"
 			],
@@ -9898,7 +9922,7 @@
 			"alias": "crypto",
 			"creator": "ljharb",
 			"date": "2016-06-28T14:05:06.809Z",
-			"popularity": 18,
+			"popularity": 19,
 			"editors": [],
 			"changes": []
 		},
@@ -9962,7 +9986,7 @@
 			"alias": "es6 modules",
 			"creator": "ljharb",
 			"date": "2016-07-10T01:24:04.802Z",
-			"popularity": 84,
+			"popularity": 86,
 			"editors": [],
 			"changes": []
 		},
@@ -10283,7 +10307,7 @@
 			"value": "Arrow functions, new in ES2015, are not just shorter function syntax with optional implicit return. They do not bind this/super/arguments/new.target, they don't have a lexical name (for recursion), and can't be `new`ed. http://mdn.io/arrow+functions Examples: `x => x + 2`, `(x, y) => x + y`, `x => { return x * 2; }`",
 			"creator": "ljharb",
 			"date": "2016-09-15T03:58:03.374Z",
-			"popularity": 34,
+			"popularity": 37,
 			"editors": [
 				"ljharb"
 			],
@@ -10308,7 +10332,7 @@
 			"value": "We tend to support airbnb's javascript style guide - it can be found here: https://github.com/airbnb/javascript you can enforce it in eslint with https://www.npmjs.com/package/eslint-config-airbnb-base see also !eslint",
 			"creator": "XinzZz",
 			"date": "2016-09-20T18:12:53.786Z",
-			"popularity": 132,
+			"popularity": 138,
 			"editors": [
 				"ljharb",
 				"graingert"
@@ -10385,7 +10409,7 @@
 			"alias": "jwt sessions",
 			"creator": "gkatsev",
 			"date": "2016-09-28T01:19:09.907Z",
-			"popularity": 101,
+			"popularity": 107,
 			"editors": [],
 			"changes": []
 		},
@@ -10443,7 +10467,7 @@
 			"value": "Asking about is X faster than Y? Is there an actual results based reason you are concerned about the performance of either X *OR* Y? If the answer is yes to all of these - have you generated a profile using your browsers dev tools running a simple test case? If so, you already have your result. End.",
 			"creator": "ZhinZhao",
 			"date": "2016-10-08T00:05:57.160Z",
-			"popularity": 44,
+			"popularity": 45,
 			"editors": [],
 			"changes": []
 		},
@@ -10459,7 +10483,7 @@
 			"value": "Please share your react code on https://gist.github.com and name the file '.jsx' for proper syntax highlighting.",
 			"creator": "GreenJello",
 			"date": "2016-10-21T14:27:15.421Z",
-			"popularity": 263,
+			"popularity": 266,
 			"editors": [],
 			"changes": []
 		},
@@ -10670,7 +10694,7 @@
 			"value": "The `eval` function has two use cases: macro expansion, and evaluating dynamically generated programs. `eval` is probably not the answer for your problem. See https://blog.racket-lang.org/2011/10/on-eval-in-dynamic-languages-generally-and-in-racket-specifically.html for details. See unsafe-eval in !csp for security aspects.",
 			"creator": "graingert",
 			"date": "2016-12-19T05:11:28.207Z",
-			"popularity": 14,
+			"popularity": 15,
 			"editors": [
 				"Sorella",
 				"graingert"
@@ -10808,7 +10832,7 @@
 			"value": "The term \"guys\" may be a gender-neutral term to some people, but it is not to everybody. As such, please do not use it. Suggested alternatives: folks, people, team, y'all, everybody. https://subfictional.com/2012/07/02/language-matters-stop-using-guys-to-address-mix-gender-groups/ See !sexist",
 			"creator": "ljharb",
 			"date": "2017-01-12T22:15:18.746Z",
-			"popularity": 9,
+			"popularity": 10,
 			"editors": [],
 			"changes": []
 		},
@@ -11065,11 +11089,13 @@
 			"value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are code linters for most programming languages, and compilers sometimes incorporate linting into the compilation process. http://eslint.org/docs/user-guide/getting-started",
 			"creator": "graingert",
 			"date": "2017-06-06T20:04:36.794Z",
-			"popularity": 42,
+			"popularity": 48,
 			"editors": [
 				"graingert",
 				"cjohnson",
-				"sacho1"
+				"sacho1",
+				"MJCD",
+				"ljharb"
 			],
 			"changes": [
 				{
@@ -11119,6 +11145,48 @@
 					"editor": "sacho1",
 					"old-value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are code linters for most programming languages, and compilers sometimes incorporate linting into the compilation process. <http://eslint.org/docs/user-guide/getting-started>",
 					"new-value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are code linters for most programming languages, and compilers sometimes incorporate linting into the compilation process. http://eslint.org/docs/user-guide/getting-started"
+				},
+				{
+					"date": "2018-10-19T23:01:31.271Z",
+					"editor": "MJCD",
+					"old-value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are code linters for most programming languages, and compilers sometimes incorporate linting into the compilation process. http://eslint.org/docs/user-guide/getting-started",
+					"new-value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are code linters for most IDE's - or you can access it online @ http://eslint.org/demo/"
+				},
+				{
+					"date": "2018-10-19T23:01:55.017Z",
+					"editor": "MJCD",
+					"old-value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are code linters for most IDE's - or you can access it online @ http://eslint.org/demo/",
+					"new-value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There eslint modules/extensions for most IDE's - or you can access it online @ http://eslint.org/demo/"
+				},
+				{
+					"date": "2018-10-19T23:02:36.766Z",
+					"editor": "MJCD",
+					"old-value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There eslint modules/extensions for most IDE's - or you can access it online @ http://eslint.org/demo/",
+					"new-value": "ESLint is an open source JavaScript linting utility. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There eslint modules/extensions for most IDE's - or you can access it online @ http://eslint.org/demo/"
+				},
+				{
+					"date": "2018-10-19T23:03:00.567Z",
+					"editor": "MJCD",
+					"old-value": "ESLint is an open source JavaScript linting utility. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There eslint modules/extensions for most IDE's - or you can access it online @ http://eslint.org/demo/",
+					"new-value": "ESLint is an open source JavaScript linting utility. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are eslint modules/extensions for most IDE's - or you can access it online @ http://eslint.org/demo/"
+				},
+				{
+					"date": "2018-10-19T23:05:40.136Z",
+					"editor": "MJCD",
+					"old-value": "ESLint is an open source JavaScript linting utility. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are eslint modules/extensions for most IDE's - or you can access it online @ http://eslint.org/demo/",
+					"new-value": "ESLint is an open source JavaScript linting utility (See !lint). There are eslint modules/extensions for most IDE's and CLI's - or you can access it online @ http://eslint.org/demo/"
+				},
+				{
+					"date": "2018-10-19T23:06:35.309Z",
+					"editor": "MJCD",
+					"old-value": "ESLint is an open source JavaScript linting utility (See !lint). There are eslint modules/extensions for most IDE's and CLI's - or you can access it online @ http://eslint.org/demo/",
+					"new-value": "ESLint is an open source JavaScript linting utility (See !lint). There are eslint modules/extensions for most IDE's and CLI's - or you can access it online @ https://eslint.org/demo/"
+				},
+				{
+					"date": "2018-10-19T23:36:33.976Z",
+					"editor": "ljharb",
+					"old-value": "ESLint is an open source JavaScript linting utility (See !lint). There are eslint modules/extensions for most IDE's and CLI's - or you can access it online @ https://eslint.org/demo/",
+					"new-value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are code linters for most programming languages, and compilers sometimes incorporate linting into the compilation process. http://eslint.org/docs/user-guide/getting-started"
 				}
 			]
 		},
@@ -11131,18 +11199,27 @@
 			"changes": []
 		},
 		"first contribution": {
-			"value": "Looking to contribute to the Node.js project for the first time? The issue tracker has a tag for 'good first contribution' PRs: https://github.com/nodejs/node/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+contribution%22 - see also: !nodetodo",
+			"value": "https://github.com/nodejs/node/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22",
 			"creator": "zsoc",
 			"date": "2017-06-13T19:14:25.528Z",
-			"popularity": 3,
-			"editors": [],
-			"changes": []
+			"popularity": 6,
+			"editors": [
+				"devsnek"
+			],
+			"changes": [
+				{
+					"date": "2018-09-22T22:23:46.621Z",
+					"editor": "devsnek",
+					"old-value": "Looking to contribute to the Node.js project for the first time? The issue tracker has a tag for 'good first contribution' PRs: https://github.com/nodejs/node/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+contribution%22 - see also: !nodetodo",
+					"new-value": "https://github.com/nodejs/node/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"
+				}
+			]
 		},
 		"good first contribution": {
 			"alias": "first contribution",
 			"creator": "zsoc",
 			"date": "2017-06-13T19:14:45.927Z",
-			"popularity": 0,
+			"popularity": 3,
 			"editors": [],
 			"changes": []
 		},
@@ -11150,7 +11227,7 @@
 			"value": "Node Todo is available via twitter and email to help guide you through your first contribution to the Node.js project. See http://nodetodo.org/ and http://nodetodo.org/getting-started/ - see also !first contribution",
 			"creator": "zsoc",
 			"date": "2017-06-13T19:16:13.236Z",
-			"popularity": 2,
+			"popularity": 3,
 			"editors": [],
 			"changes": []
 		},
@@ -11230,7 +11307,7 @@
 			"value": "How to create a minimal, complete, and verifiable example https://stackoverflow.com/help/mcve see also !fiddle",
 			"creator": "falafel",
 			"date": "2017-07-04T22:54:53.347Z",
-			"popularity": 19,
+			"popularity": 20,
 			"editors": [
 				"graingert"
 			],
@@ -11531,7 +11608,7 @@
 			"value": "\"substr\" is nonstandard/deprecated. \"substring\" can't handle negative indices, and weirdly sorts its arguments. \"slice\" works exactly as you'd expect, and identically to Array#slice. Always use slice on strings.",
 			"creator": "ljharb",
 			"date": "2017-08-12T12:14:53.859Z",
-			"popularity": 20,
+			"popularity": 21,
 			"editors": [],
 			"changes": []
 		},
@@ -11539,7 +11616,7 @@
 			"alias": "slice",
 			"creator": "ljharb",
 			"date": "2017-08-12T12:15:16.603Z",
-			"popularity": 6,
+			"popularity": 7,
 			"editors": [],
 			"changes": []
 		},
@@ -11555,7 +11632,7 @@
 			"value": "MongoDB is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas. It is however not without its faults; see !no mongo",
 			"creator": "MJCD",
 			"date": "2017-08-13T03:26:48.612Z",
-			"popularity": 18,
+			"popularity": 19,
 			"editors": [
 				"ljharb"
 			],
@@ -11572,7 +11649,7 @@
 			"value": "Don't use MongoDB - it has many issues, and is essentially never the right solution to your problem. Here's a list of issues: http://cryto.net/~joepie91/blog/2015/07/19/why-you-should-never-ever-ever-use-mongodb/ and a more technical article at http://www.sarahmei.com/blog/2013/11/11/why-you-should-never-use-mongodb/",
 			"creator": "samsch",
 			"date": "2017-08-13T03:29:15.090Z",
-			"popularity": 90,
+			"popularity": 98,
 			"editors": [],
 			"changes": []
 		},
@@ -11685,7 +11762,7 @@
 			"value": "An up and coming moment alternative and all purpose library for dealing with time and date. See also !moment",
 			"creator": "graingert",
 			"date": "2017-08-19T00:11:11.770Z",
-			"popularity": 18,
+			"popularity": 19,
 			"editors": [],
 			"changes": []
 		},
@@ -11693,7 +11770,7 @@
 			"alias": "bloat",
 			"creator": "niggler",
 			"date": "2017-08-19T00:11:27.221Z",
-			"popularity": 5,
+			"popularity": 7,
 			"editors": [],
 			"changes": []
 		},
@@ -11742,7 +11819,7 @@
 			"alias": "paste",
 			"creator": "ljharb",
 			"date": "2017-09-01T20:29:31.066Z",
-			"popularity": 52,
+			"popularity": 59,
 			"editors": [],
 			"changes": []
 		},
@@ -11857,7 +11934,7 @@
 			"value": "jQuery is a comprehensive monolithic JavaScript toolset that was originally designed to provide a more normalized environment than older browsers. As of 2018 a lot of these tools are no longer required, so please think long and hard before choosing jQuery for a NEW project. !ded : #jquery",
 			"creator": "ljharb",
 			"date": "2017-09-08T19:53:27.960Z",
-			"popularity": 10,
+			"popularity": 15,
 			"editors": [
 				"MJCD"
 			],
@@ -11921,7 +11998,7 @@
 			"value": "t => new Promise(r => setTimeout(r, t)) or t => ({then(r){setTimeout(r, t)}}) or util.promisify(setTimeout)",
 			"creator": "qswz",
 			"date": "2017-09-15T01:15:52.542Z",
-			"popularity": 5,
+			"popularity": 6,
 			"editors": [
 				"qswz"
 			],
@@ -11983,7 +12060,7 @@
 			"value": "https://gist.github.com/caub/437e5d98ee9260df811628f7900c1c84",
 			"creator": "qswz",
 			"date": "2017-09-20T21:35:25.819Z",
-			"popularity": 10,
+			"popularity": 12,
 			"editors": [],
 			"changes": []
 		},
@@ -12068,7 +12145,7 @@
 			"value": "The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.  More: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment",
 			"creator": "MJCD",
 			"date": "2017-10-09T12:11:39.865Z",
-			"popularity": 7,
+			"popularity": 8,
 			"editors": [],
 			"changes": []
 		},
@@ -12076,7 +12153,7 @@
 			"value": "Spread syntax allows an iterable such as an array expression to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected. More; https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator",
 			"creator": "MJCD",
 			"date": "2017-10-09T12:12:44.410Z",
-			"popularity": 13,
+			"popularity": 14,
 			"editors": [],
 			"changes": []
 		},
@@ -12129,10 +12206,10 @@
 			"changes": []
 		},
 		"regex": {
-			"value": "A regular expression, regex or regexp(sometimes called a rational expression) is, in theoretical computer science and formal language theory, a sequence of characters that define a search pattern. Usually this pattern is then used by string searching algorithms for \"find\" or \"find and replace\" operations on strings. More; https://en.wikipedia.org/wiki/Regular_expression",
+			"value": "A regular expression, regex or regexp is a sequence of characters that define a search pattern ( More @ More; https://en.wikipedia.org/wiki/Regular_expression ). You can toy with them and learn the syntax @ https://regex101.com",
 			"creator": "MJCD",
 			"date": "2017-10-29T17:40:48.830Z",
-			"popularity": 3,
+			"popularity": 5,
 			"editors": [
 				"MJCD"
 			],
@@ -12142,6 +12219,12 @@
 					"editor": "MJCD",
 					"old-value": "A regular expression, regex or regexp[1] (sometimes called a rational expression)[2][3] is, in theoretical computer science and formal language theory, a sequence of characters that define a search pattern. Usually this pattern is then used by string searching algorithms for \"find\" or \"find and replace\" operations on strings. More; https://en.wikipedia.org/wiki/Regular_expression",
 					"new-value": "A regular expression, regex or regexp(sometimes called a rational expression) is, in theoretical computer science and formal language theory, a sequence of characters that define a search pattern. Usually this pattern is then used by string searching algorithms for \"find\" or \"find and replace\" operations on strings. More; https://en.wikipedia.org/wiki/Regular_expression"
+				},
+				{
+					"date": "2018-10-19T23:25:41.745Z",
+					"editor": "MJCD",
+					"old-value": "A regular expression, regex or regexp(sometimes called a rational expression) is, in theoretical computer science and formal language theory, a sequence of characters that define a search pattern. Usually this pattern is then used by string searching algorithms for \"find\" or \"find and replace\" operations on strings. More; https://en.wikipedia.org/wiki/Regular_expression",
+					"new-value": "A regular expression, regex or regexp is a sequence of characters that define a search pattern ( More @ More; https://en.wikipedia.org/wiki/Regular_expression ). You can toy with them and learn the syntax @ https://regex101.com"
 				}
 			]
 		},
@@ -12149,7 +12232,7 @@
 			"value": "Another satisfied customer! NEXT!!",
 			"creator": "ljharb",
 			"date": "2017-10-30T22:36:07.201Z",
-			"popularity": 149,
+			"popularity": 169,
 			"editors": [],
 			"changes": []
 		},
@@ -12189,7 +12272,7 @@
 			"value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: repl.it, runkit.com, gist.github.com. See also !mcve and !paste",
 			"creator": "graingert",
 			"date": "2017-11-29T00:23:06.807Z",
-			"popularity": 216,
+			"popularity": 231,
 			"editors": [
 				"graingert",
 				"cjohnson",
@@ -12340,7 +12423,7 @@
 			"alias": "es6 modules",
 			"creator": "",
 			"date": "2017-12-14T00:15:40.705Z",
-			"popularity": 10,
+			"popularity": 11,
 			"editors": [],
 			"changes": []
 		},
@@ -12356,7 +12439,7 @@
 			"value": "don't use <script> without src=. See also !csp",
 			"creator": "graingert",
 			"date": "2017-12-20T20:37:36.166Z",
-			"popularity": 24,
+			"popularity": 26,
 			"editors": [],
 			"changes": []
 		},
@@ -12364,7 +12447,7 @@
 			"value": "Cross-site scripting, or XSS, is a term for a category of security issues in which an attacker injects HTML tags or scripts into a target website. Defending against XSS attacks is typically the job of server-side web developers. However, client-side JavaScript programmers must also be aware of, and defend against, cross-site scripting.",
 			"creator": "i_am_a_banana",
 			"date": "2017-12-22T14:01:57.847Z",
-			"popularity": 2,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -12412,7 +12495,7 @@
 			"value": "please set a nickname with /nick and register it with freenode with /msg NickServ register",
 			"creator": "graingert",
 			"date": "2018-01-03T01:26:23.750Z",
-			"popularity": 2,
+			"popularity": 3,
 			"editors": [],
 			"changes": []
 		},
@@ -12445,7 +12528,7 @@
 			"alias": "badpastebin",
 			"creator": "graingert",
 			"date": "2018-01-04T20:36:09.993Z",
-			"popularity": 19,
+			"popularity": 21,
 			"editors": [
 				"cjohnson"
 			],
@@ -12503,7 +12586,7 @@
 			"value": "All mainstream Windows users gained access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html",
 			"creator": "graingert",
 			"date": "2018-01-05T16:08:50.100Z",
-			"popularity": 14,
+			"popularity": 15,
 			"editors": [
 				"graingert"
 			],
@@ -12534,7 +12617,7 @@
 			"value": "Do you have a question? also see http://nohello.com",
 			"creator": "progysm",
 			"date": "2018-01-05T21:59:59.438Z",
-			"popularity": 34,
+			"popularity": 35,
 			"editors": [],
 			"changes": []
 		},
@@ -12582,7 +12665,7 @@
 			"value": "Create and build modern JavaScript applications with zero initial configuration. https://neutrino.js.org/installation/create-new-project.html run: yarn create @neutrinojs/project <dirname>",
 			"creator": "graingert",
 			"date": "2018-01-08T21:52:27.377Z",
-			"popularity": 10,
+			"popularity": 12,
 			"editors": [
 				"graingert"
 			],
@@ -12678,7 +12761,7 @@
 			"alias": "fiddle",
 			"creator": "graingert",
 			"date": "2018-01-16T15:28:30.711Z",
-			"popularity": 4,
+			"popularity": 5,
 			"editors": [],
 			"changes": []
 		},
@@ -12718,7 +12801,7 @@
 			"value": "90% of the time, the answer is to use Maps",
 			"creator": "qswz",
 			"date": "2018-01-30T19:43:39.319Z",
-			"popularity": 4,
+			"popularity": 5,
 			"editors": [],
 			"changes": []
 		},
@@ -12775,7 +12858,7 @@
 			"value": "stay on topic: JavaScript",
 			"creator": "graingert",
 			"date": "2018-02-21T18:40:36.910Z",
-			"popularity": 10,
+			"popularity": 22,
 			"editors": [],
 			"changes": []
 		},
@@ -12816,7 +12899,7 @@
 			"value": "JS engine optimizations are too complex for naive benchmarking; see https://youtu.be/g0ek4vV7nEA",
 			"creator": "`slikts",
 			"date": "2018-03-07T17:16:53.642Z",
-			"popularity": 11,
+			"popularity": 12,
 			"editors": [],
 			"changes": []
 		},
@@ -12873,7 +12956,7 @@
 			"value": "It is highly recommended to use `textContent` instead of `innerText` - see  https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent#Differences_from_innerText http://perfectionkills.com/the-poor-misunderstood-innerText",
 			"creator": "qswz",
 			"date": "2018-03-26T18:28:10.247Z",
-			"popularity": 14,
+			"popularity": 15,
 			"editors": [
 				"Akinator",
 				"qswz"
@@ -13042,7 +13125,7 @@
 			"value": "Show some code, but don't paste it to the channel. Use sites like gist.github.com or dpaste.com. Ideally it should be executable, see !paste",
 			"creator": "systemfault",
 			"date": "2018-04-28T01:17:51.504Z",
-			"popularity": 22,
+			"popularity": 26,
 			"editors": [],
 			"changes": []
 		},
@@ -13195,7 +13278,7 @@
 			"value": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence",
 			"creator": "qswz",
 			"date": "2018-07-07T21:57:26.276Z",
-			"popularity": 0,
+			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
@@ -13203,7 +13286,7 @@
 			"value": "var a=[1,1]; var fib=n=>a[n]||(a[n]=fib(n-1)+fib(n-2));",
 			"creator": "qswz",
 			"date": "2018-07-11T01:05:07.417Z",
-			"popularity": 1,
+			"popularity": 2,
 			"editors": [],
 			"changes": []
 		},
@@ -13219,7 +13302,7 @@
 			"value": "Don't use environment variables to store credentials like passwords and keys! They're too easy to leak, because many tools don't treat environment variables as private information. Use configuration files (eg. config.json) with strict permissions instead.",
 			"creator": "joepie91",
 			"date": "2018-07-14T18:48:39.632Z",
-			"popularity": 4,
+			"popularity": 7,
 			"editors": [],
 			"changes": []
 		},
@@ -13292,7 +13375,7 @@
 			"value": "<script nomodule src=\"//polyfill.io\"></script>",
 			"creator": "qswz",
 			"date": "2018-08-10T23:58:39.984Z",
-			"popularity": 3,
+			"popularity": 6,
 			"editors": [],
 			"changes": []
 		},
@@ -13324,7 +13407,7 @@
 			"value": "Please don't use Hastebin; it has extremely poor color contrast, making it difficult for others to read.",
 			"creator": "joepie91",
 			"date": "2018-08-13T20:32:28.230Z",
-			"popularity": 1,
+			"popularity": 2,
 			"editors": [],
 			"changes": []
 		},
@@ -13340,7 +13423,7 @@
 			"alias": "commonjs",
 			"creator": "graingert",
 			"date": "2018-08-23T02:07:04.565Z",
-			"popularity": 1,
+			"popularity": 2,
 			"editors": [],
 			"changes": []
 		},
@@ -13348,7 +13431,7 @@
 			"alias": "environment variables",
 			"creator": "joepie91",
 			"date": "2018-08-23T17:14:19.115Z",
-			"popularity": 1,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -13380,7 +13463,7 @@
 			"value": "The `with` statement breaks JS engines optimizations, is deprecated and unavailable in strict mode (eg ES modules).  Further reading: http://2ality.com/2011/06/with-statement.html",
 			"creator": "niggler",
 			"date": "2018-08-31T18:41:01.593Z",
-			"popularity": 2,
+			"popularity": 3,
 			"editors": [
 				"graingert"
 			],
@@ -13450,7 +13533,7 @@
 			"value": "Do you know about fetch?",
 			"creator": "qswz",
 			"date": "2018-09-13T01:21:44.667Z",
-			"popularity": 0,
+			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
@@ -13462,18 +13545,270 @@
 			"editors": [],
 			"changes": []
 		},
-		"=>{return": {
-			"value": "Just => ..",
+		"c++": {
+			"value": "qswz is an idiot",
 			"creator": "qswz",
-			"date": "2018-09-15T23:56:51.608Z",
+			"date": "2018-09-20T18:12:02.430Z",
+			"popularity": 1,
+			"editors": [
+				"gehn"
+			],
+			"changes": [
+				{
+					"date": "2018-09-20T18:18:55.712Z",
+					"editor": "gehn",
+					"old-value": "http://webhome.phy.duke.edu/~rgb/Beowulf/c++_interview/c++_interview.html",
+					"new-value": "qswz is an idiot"
+				}
+			]
+		},
+		"snip splitat": {
+			"value": "let splitAt = function (array, splitter) { return array.split(splitter).slice(1).join(splitter); }",
+			"creator": "MJCD",
+			"date": "2018-09-21T19:00:46.404Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"fetchy": {
+			"value": "https://gist.github.com/caub/32952abb755ca84738507f1abd14f72b",
+			"creator": "gehn",
+			"date": "2018-09-25T20:21:04.307Z",
+			"popularity": 3,
+			"editors": [
+				"qswz"
+			],
+			"changes": [
+				{
+					"date": "2018-10-07T22:08:35.719Z",
+					"editor": "qswz",
+					"old-value": "qswz plays Fortnite",
+					"new-value": "https://gist.github.com/caub/32952abb755ca84738507f1abd14f72b"
+				}
+			]
+		},
+		"js-only-fiddle": {
+			"value": "Use repl.it for a fiddle with only JS",
+			"creator": "qswz",
+			"date": "2018-10-01T21:33:31.596Z",
 			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
-		"w": {
-			"value": "What are you trying to do?",
+		"hamster": {
+			"alias": "java",
+			"creator": "graingert",
+			"date": "2018-10-04T17:48:19.070Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"hastebin": {
+			"value": "https://hastebin.com/about.md",
+			"creator": "howdoi",
+			"date": "2018-10-05T12:27:45.480Z",
+			"popularity": 2,
+			"editors": [],
+			"changes": []
+		},
+		"poo": {
+			"value": "💩",
+			"creator": "wedr",
+			"date": "2018-10-11T17:38:12.963Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"💩": {
+			"value": "poo",
 			"creator": "qswz",
-			"date": "2018-09-17T13:29:49.803Z",
+			"date": "2018-10-11T17:52:21.331Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"var": {
+			"value": "`var` defines a variable in the current function-level scope. Always use `const` to declare values and `let` to declare variables, otherwise you will pollute the global scope, and declaring variables is required in strict mode. Only use `var` when targeting IE11 without a transpiler",
+			"creator": "graingert",
+			"date": "2018-10-18T20:28:52.525Z",
+			"popularity": 2,
+			"editors": [],
+			"changes": []
+		},
+		"react webpack": {
+			"value": "A step-by-step, minimal guide to setting up a react+babel+webpack project  https://medium.freecodecamp.org/part-1-react-app-from-scratch-using-webpack-4-562b1d231e75",
+			"creator": "GreenJello",
+			"date": "2018-10-19T03:18:24.902Z",
+			"popularity": 0,
+			"editors": [
+				"GreenJello"
+			],
+			"changes": [
+				{
+					"date": "2018-10-19T03:19:53.867Z",
+					"editor": "GreenJello",
+					"old-value": "https://medium.freecodecamp.org/part-1-react-app-from-scratch-using-webpack-4-562b1d231e75",
+					"new-value": "A step-by-step, minimal guide to setting up a react+babel+webpack project  https://medium.freecodecamp.org/part-1-react-app-from-scratch-using-webpack-4-562b1d231e75"
+				}
+			]
+		},
+		"setup webpack": {
+			"alias": "react webpack",
+			"creator": "GreenJello",
+			"date": "2018-10-19T03:18:44.996Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"keypress": {
+			"value": "Detail on handling keyboard events can be found @ https://www.quirksmode.org/dom/events/keys.html",
+			"creator": "MJCD",
+			"date": "2018-10-19T20:56:16.112Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"keyup": {
+			"alias": "keypress",
+			"creator": "MJCD",
+			"date": "2018-10-19T20:56:26.493Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"keydown": {
+			"alias": "keypress",
+			"creator": "MJCD",
+			"date": "2018-10-19T20:56:33.309Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"lint": {
+			"value": "Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. More: https://en.wikipedia.org/wiki/Lint_%28software%29",
+			"creator": "MJCD",
+			"date": "2018-10-19T23:04:22.073Z",
+			"popularity": 2,
+			"editors": [
+				"MJCD"
+			],
+			"changes": [
+				{
+					"date": "2018-10-19T23:04:33.084Z",
+					"editor": "MJCD",
+					"old-value": "Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. More: https://en.wikipedia.org/wiki/Lint_%28software%29",
+					"new-value": "Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. More: https://en.wikipedia.org/wiki/Lint_%28software%29"
+				}
+			]
+		},
+		"linting": {
+			"alias": "lint",
+			"creator": "MJCD",
+			"date": "2018-10-19T23:04:41.934Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"linter": {
+			"alias": "lint",
+			"creator": "MJCD",
+			"date": "2018-10-19T23:04:47.350Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"centre": {
+			"value": "There are many methods to horizontal and vertical centering in HTML/CSS. More @ https://stackoverflow.com/questions/19461521/how-to-center-an-element-horizontally-and-vertically",
+			"creator": "MJCD",
+			"date": "2018-10-19T23:08:37.190Z",
+			"popularity": 2,
+			"editors": [],
+			"changes": []
+		},
+		"center": {
+			"alias": "centre",
+			"creator": "MJCD",
+			"date": "2018-10-19T23:08:50.538Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"css centre": {
+			"alias": "centre",
+			"creator": "MJCD",
+			"date": "2018-10-19T23:09:35.386Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"css center": {
+			"alias": "centre",
+			"creator": "MJCD",
+			"date": "2018-10-19T23:09:40.019Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"regex101": {
+			"value": "https://regex101.com is a tool for playing with regular expressions of various engines against a given set of data to see the results live",
+			"creator": "MJCD",
+			"date": "2018-10-19T23:26:50.389Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"offtopic": {
+			"value": "Please try to avoid derailing people who need help with social conversation. Off-topic isn't against the rules, however can be annoying to other users. Please be considerate and consider joining #web-social",
+			"creator": "MJCD",
+			"date": "2018-10-19T23:32:00.192Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"cookies": {
+			"value": "An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user's web browser. The browser may store it and send it back with the next request to the same server. [ Recent: See !cookie disclaimer ] ~ More @ https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies",
+			"creator": "MJCD",
+			"date": "2018-10-19T23:34:07.114Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"js": {
+			"alias": "javascript",
+			"creator": "MJCD",
+			"date": "2018-10-20T00:07:11.665Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"jsfiddle": {
+			"alias": "fiddle",
+			"creator": "MJCD",
+			"date": "2018-10-20T00:54:01.823Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"test": {
+			"alias": "fiddle",
+			"creator": "",
+			"date": "2018-10-20T00:54:52.254Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"abuse": {
+			"value": "Please be courteous to the other members of the channel. Please see !offtopic (...) for more information. If you think someone is behaving inappropriately please use !ops to signal for a lil' help. Enjoy your stay and treat others how you would wish to be treated.",
+			"creator": "MJCD",
+			"date": "2018-10-20T01:06:45.563Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"languages": {
+			"value": "[ See also !ded ] #python | #php | ##programming [general multi-language] (ADD MORE HERE)",
+			"creator": "MJCD",
+			"date": "2018-10-20T01:24:46.332Z",
 			"popularity": 0,
 			"editors": [],
 			"changes": []
@@ -18192,6 +18527,312 @@
 				"popularity": 0,
 				"editors": [],
 				"changes": []
+			}
+		},
+		{
+			"date": "2018-09-20T00:35:31.975Z",
+			"editor": "ljharb",
+			"key": "w",
+			"value": {
+				"value": "What are you trying to do?",
+				"creator": "qswz",
+				"date": "2018-09-17T13:29:49.803Z",
+				"popularity": 1,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2018-09-21T19:00:53.142Z",
+			"editor": "MJCD",
+			"key": "splitat",
+			"value": {
+				"value": "function (array, splitter) { return array.split(splitter).slice(1).join(splitter); }",
+				"creator": "Havvy",
+				"date": "2015-05-18T05:56:53.468Z",
+				"popularity": 1,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2018-09-25T20:20:24.550Z",
+			"editor": "qswz",
+			"key": "fetchy",
+			"value": {
+				"value": "https://gist.github.com/caub/32952abb755ca84738507f1abd14f72b",
+				"creator": "qswz",
+				"date": "2018-09-25T20:09:51.051Z",
+				"popularity": 0,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2018-10-04T17:42:39.430Z",
+			"editor": "graingert",
+			"key": "javascript in the browser and node.js doesn't have a sleep command -- as it's single threaded (if that makes no sense, ask). const sleep",
+			"value": {
+				"value": "util.promisify(setTimeout); Or const sleep = t => new Promise(r => setTimeout(r, t); Then use await sleep(400);",
+				"creator": "graingert",
+				"date": "2018-10-04T17:41:44.042Z",
+				"popularity": 0,
+				"editors": [
+					"graingert"
+				],
+				"changes": [
+					{
+						"date": "2018-10-04T17:42:19.666Z",
+						"editor": "graingert",
+						"old-value": "util.promisify(setTimeout). Or const sleep = t => new Promise(r => setTimeout(r, t); Then use await sleep(400);",
+						"new-value": "util.promisify(setTimeout); Or const sleep = t => new Promise(r => setTimeout(r, t); Then use await sleep(400);"
+					}
+				]
+			}
+		},
+		{
+			"date": "2018-10-04T17:48:01.345Z",
+			"editor": "graingert",
+			"key": "hamster",
+			"value": {
+				"value": "Java is to Javascript like ham is to hamster.",
+				"popularity": 7,
+				"creator": "ljharb",
+				"editors": []
+			}
+		},
+		{
+			"date": "2018-10-04T17:52:42.543Z",
+			"editor": "grr12314",
+			"key": "pain",
+			"value": {
+				"alias": "java",
+				"creator": "ljharb",
+				"date": "2014-09-29T04:54:12.979Z",
+				"popularity": 7,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2018-10-15T23:37:43.121Z",
+			"editor": "qswz",
+			"key": "=>{return",
+			"value": {
+				"value": "Just => ..",
+				"creator": "qswz",
+				"date": "2018-09-15T23:56:51.608Z",
+				"popularity": 2,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2018-10-15T23:41:28.077Z",
+			"editor": "qswz",
+			"key": "=>{return x",
+			"value": {
+				"value": "=>{return x is a stupid version of => x",
+				"creator": "qswz",
+				"date": "2018-10-15T23:38:17.457Z",
+				"popularity": 1,
+				"editors": [
+					"qswz"
+				],
+				"changes": [
+					{
+						"date": "2018-10-15T23:40:01.386Z",
+						"editor": "qswz",
+						"old-value": "=> x",
+						"new-value": "=>{return x is a stupid version of => x"
+					}
+				]
+			}
+		},
+		{
+			"date": "2018-10-16T11:23:24.924Z",
+			"editor": "ljharb",
+			"key": "good morning",
+			"value": {
+				"value": "shh i'm trying to sleep",
+				"creator": "devsnek",
+				"date": "2018-10-01T19:43:08.944Z",
+				"popularity": 1,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2018-10-16T11:23:30.471Z",
+			"editor": "ljharb",
+			"key": "!learn",
+			"value": {
+				"value": "BLAH",
+				"creator": "notchris",
+				"date": "2018-10-01T19:44:52.489Z",
+				"popularity": 0,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2018-10-16T11:23:34.164Z",
+			"editor": "ljharb",
+			"key": "die",
+			"value": {
+				"value": "um{escape-r}QUIT rip",
+				"creator": "Kirjava",
+				"date": "2018-10-01T19:44:57.974Z",
+				"popularity": 1,
+				"editors": [
+					"Kirjava"
+				],
+				"changes": [
+					{
+						"date": "2018-10-01T19:45:21.435Z",
+						"editor": "Kirjava",
+						"old-value": "um\\n\\rQUIT rip",
+						"new-value": "um{escape-r}QUIT rip"
+					}
+				]
+			}
+		},
+		{
+			"date": "2018-10-16T11:23:43.025Z",
+			"editor": "ljharb",
+			"key": "qwertyuiop",
+			"value": {
+				"value": "The top row of alphabetical keys on a typical keyboard.",
+				"creator": "Cyp_",
+				"date": "2018-10-04T17:44:23.889Z",
+				"popularity": 1,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2018-10-16T11:23:53.352Z",
+			"editor": "ljharb",
+			"key": "pain",
+			"value": {
+				"value": "Somtimes you must hurt in order to know, fall in order to grow, lose in order to gain, because life’s greatest lessons are learnt through pain.",
+				"creator": "grr12314",
+				"date": "2018-10-04T17:52:50.379Z",
+				"popularity": 4,
+				"editors": [
+					"grr12314"
+				],
+				"changes": [
+					{
+						"date": "2018-10-04T17:56:10.391Z",
+						"editor": "grr12314",
+						"old-value": "Somtimes you must hurt in order to know, fall in order to grow, lose in order to gain, because life’s greatest lessons are learnt through pain",
+						"new-value": "Somtimes you must hurt in order to know, fall in order to grow, lose in order to gain, because life’s greatest lessons are learnt through pain."
+					}
+				]
+			}
+		},
+		{
+			"date": "2018-10-16T11:24:17.093Z",
+			"editor": "ljharb",
+			"key": "salute",
+			"value": {
+				"value": "https://youtu.be/jRx5PrAlUdY?t=74",
+				"creator": "qswz",
+				"date": "2018-10-10T20:05:47.267Z",
+				"popularity": 0,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2018-10-18T20:28:01.666Z",
+			"editor": "MJCD",
+			"key": "var",
+			"value": {
+				"value": "`var` defines a variable in the current function-level scope. Always use `const`, `let`, or `var` to declare variables, otherwise you will pollute the global scope, and declaring variables is required in strict mode.",
+				"popularity": 114,
+				"editors": [
+					"j201",
+					"AAA_awright",
+					"ljharb"
+				],
+				"changes": [
+					{
+						"date": "2015-12-11T04:41:45.183Z",
+						"editor": "AAA_awright",
+						"old-value": "Always declare variables with `var`, or you will pollute the global scope. Using `var` will limit access to that variable to the current scope, whatever it is.",
+						"new-value": "`var` defines a variable in the current function-level scope. Always use `var` to declare variables, otherwise you will pollute the global scope, and declaring variables is required in strict mode."
+					},
+					{
+						"date": "2016-03-02T14:52:45.614Z",
+						"editor": "ljharb",
+						"old-value": "`var` defines a variable in the current function-level scope. Always use `var` to declare variables, otherwise you will pollute the global scope, and declaring variables is required in strict mode.",
+						"new-value": "`var` defines a variable in the current function-level scope. Always use `const`, `let`, or `var` to declare variables, otherwise you will pollute the global scope, and declaring variables is required in strict mode."
+					}
+				]
+			}
+		},
+		{
+			"date": "2018-10-19T23:16:36.169Z",
+			"editor": "MJCD",
+			"key": "pick",
+			"value": {
+				"value": "4",
+				"creator": "qswz",
+				"date": "2018-10-19T23:16:29.275Z",
+				"popularity": 0,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2018-10-19T23:37:07.428Z",
+			"editor": "ljharb",
+			"key": "quote mjcd",
+			"value": {
+				"value": "<MJCD> \"because we all wear masks, hero or villain\" <evulish> what about dr xavier",
+				"creator": "MJCD",
+				"date": "2018-10-19T20:23:08.237Z",
+				"popularity": 1,
+				"editors": [
+					"MJCD"
+				],
+				"changes": [
+					{
+						"date": "2018-10-19T20:23:26.845Z",
+						"editor": "MJCD",
+						"old-value": "<MJCD> \"because we all wear masks, hero or villain\"",
+						"new-value": "<MJCD> \"because we all wear masks, hero or villain\" <evulish> what about dr xavier"
+					}
+				]
+			}
+		},
+		{
+			"date": "2018-10-20T00:07:09.410Z",
+			"editor": "MJCD",
+			"key": "js",
+			"value": {
+				"value": "did you mean: recursive acronym for JavaScript is not Java.",
+				"popularity": 31
+			}
+		},
+		{
+			"date": "2018-10-20T00:53:51.773Z",
+			"editor": "MJCD",
+			"key": "jsfiddle",
+			"value": {
+				"alias": "code",
+				"popularity": 89
+			}
+		},
+		{
+			"date": "2018-10-20T01:05:13.093Z",
+			"editor": "MJCD",
+			"key": "abuse",
+			"value": {
+				"alias": "botabuse",
+				"popularity": 53
 			}
 		}
 	]
