@@ -43,7 +43,7 @@ ReferenceError: Invalid left-hand side expression in postfix operation`);
       message: 'n> setTimeout(() => console.log(2), 10000); 1',
       selfConfig: { timer: 1000 },
       respond: output => {
-        expect(output).toEqual('Error: (timeout) 1');
+        expect(/^Error: \(?timeout\)?/.test(output)).toBeTruthy(); // current devsnek/js-eval has no parens, there's a PR to add them + code result until then
       }
     });
   });
@@ -77,7 +77,7 @@ ReferenceError: Invalid left-hand side expression in postfix operation`);
     });
   });
 
-  it(`exposes unstable harmony features with n+>`, async () => {
+  it(`exposes unstable harmony features with h>`, async () => {
     await jsEval({
       message: `h> class A { x = 3n; ok = () => this.x }; new A().ok()`,
       respond: output => {

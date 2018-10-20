@@ -1,20 +1,17 @@
 const cp = require('child_process');
 const jsEval = require('docker-js-eval');
 
-/**
- * n> node-cjs stable
- * s> evaluate code as ES Script https://nodejs.org/api/vm.html#vm_class_vm_script
- * m> evaluate code as ES Module https://nodejs.org/api/vm.html#vm_class_vm_sourcetextmodule
- * n+>, s+>, m+> same functionalities with unstable harmony flags
- * (more doc: https://github.com/devsnek/docker-js-eval#js-eval-options)
- */
+const helpMsg = `n> node-cjs stable, h> node-cjs harmony, s> script (no process and builtin modules), m> module (import/export). more doc: https://github.com/devsnek/docker-js-eval#js-eval-options`;
+
 const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
-  if (!/^[nsm]\+?>/.test(message)) return;
+  if (!/^[nhsm?]>/.test(message)) return;
   const code = message.slice(2);
   const mode = message[0];
 
+  if (mode === '?') return respond((mentionUser ? `${mentionUser}, ` : '') + helpMsg);
+
   try {
-    const result = await jsEval(code, mode === 'n' ? 'node-cjs' : mode === 's' ? 'script' : 'module', { timeout: selfConfig.timer || 5000, stable: message[1] !== '+' });
+    const result = await jsEval(code, mode === 'n' || mode === 'h' ? 'node-cjs' : mode === 's' ? 'script' : 'module', { timeout: selfConfig.timer || 5000, stable: mode === 'n' });
     respond((mentionUser ? `${mentionUser}, ` : '(okay) ') + result);
   } catch (e) {
     respond((mentionUser ? `${mentionUser}, ` : '') + e); // Error message always start with Error:
