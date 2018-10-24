@@ -16,7 +16,11 @@ Object {
   },
   "nick": "jellobot",
   "password": null,
-  "plugins": Object {},
+  "plugins": Object {
+    "jsEval": Object {
+      "timeout": 5000,
+    },
+  },
   "server": "chat.freenode.net",
   "verbose": false,
 }
