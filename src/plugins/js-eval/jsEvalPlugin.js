@@ -61,7 +61,7 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
       code,
       mode === 's' ? 'script' : mode === 'm' ? 'module' : 'node-cjs',
       selfConfig.timer || 5000,
-      mode === 'n'
+      mode === 'n' || mode === 'b'
     );
     respond((mentionUser ? `${mentionUser}, ` : '(okay) ') + result);
   } catch (e) {
