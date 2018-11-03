@@ -1,56 +1,79 @@
-const { exec } = require('child_process');
-const evalUtils = require('./evalUtils');
+const cp = require('child_process');
+const crypto = require('crypto');
+const babel = require('@babel/core');
 
-const children = new Set();
+const babelTransform = code => new Promise((res, rej) => babel.transform(
+  code,
+  { filename: 'script.js' },
+  (err, obj) => err ? rej(err) : res(obj.code)
+));
 
-const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig, log }) => {
-  if (!message.startsWith('n>')) return;
-  const code = message.slice(2);
-  const childId = evalUtils.names.make();
+const helpMsg = `n> node-cjs stable, h> node-cjs harmony, b> babel (stage1+), s> [script](nodejs.org/api/vm.html#vm_class_vm_script), m> [module](nodejs.org/api/vm.html#vm_class_vm_sourcetextmodule)`;
 
-  let didRespond = false;
-  let child;
+const jsEval = (code, environment = 'node-cjs', timeout = 5000, stable) => new Promise((resolve, reject) => {
+  const name = `jseval-${crypto.randomBytes(8).toString('hex')}`;
+  const args = ['run', '--rm', '-i', `--name=${name}`, `--net=none`, `-eJSEVAL_ENV=${environment}`, `-eJSEVAL_TIMEOUT=${timeout}`, 'brigand/js-eval'];
 
-  const done = (err, stdout = '') => {
-    if (didRespond) {
-      return;
-    }
-    didRespond = true;
-    children.delete(child);
+  if (stable) args.push('node', '/run/run.js');
 
-    const msg = err && err.killed ? 'Timeout' : stdout.trim();
-    const prefix = mentionUser ? `${mentionUser}, ` : err ? '(error) ' : '(okay) ';
-    respond(prefix + msg);
-  };
-
+  let data = '';
   const timer = setTimeout(() => {
-    done({ killed: true }, '');
-    child.kill();
+    try {
+      cp.execSync(`docker kill --signal=9 ${name}`);
+      reject(new Error('(timeout) ' + data)); // send data received so far
+    } catch (e) {
+      reject(e);
+    }
+  }, timeout + 10);
 
-    exec(`docker kill "${childId}"`, { encoding: 'utf-8'}, (err, stdout = '', stderr = '') => {
-      const ignore = !err || /No such container/.test(`${stdout}\0${stderr}`);
-      if (!ignore) {
-        log(`Failed to kill docker container ${name}\n${stdout}\n${stderr}`);
-      }
-    });
-  }, selfConfig.timer || 5000);
+  const proc = cp.spawn('docker', args);
+  proc.stdin.write(code);
+  proc.stdin.end();
 
-  child = exec(`docker run --rm -i --net=none --name=${childId} -eJSEVAL_ENV=node-cjs brigand/js-eval`, { encoding: 'utf-8'}, (err, stdout = '') => {
-    clearTimeout(timer);
-    done(err, stdout);
+  proc.stdout.on('data', (chunk) => {
+    data += chunk;
   });
 
-  children.add(child);
+  proc.on('error', (e) => {
+    clearTimeout(timer);
+    reject(e);
+  });
 
-  child.stdin.write(code);
-  child.stdin.end();
+  proc.on('exit', (status) => {
+    clearTimeout(timer);
+    if (status !== 0) {
+      reject(new Error(data));
+    } else {
+      resolve(data);
+    }
+  });
+});
+
+const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
+  if (!/^[nhbsm?]>/.test(message)) return;
+  const mode = message[0];
+  if (mode === '?') return respond((mentionUser ? `${mentionUser}, ` : '') + helpMsg);
+  let code = message.slice(2);
+  if (mode === 'b') code = await babelTransform(message.slice(2));
+
+  try {
+    const result = await jsEval(
+      code,
+      mode === 's' ? 'script' : mode === 'm' ? 'module' : 'node-cjs',
+      selfConfig.timer || 5000,
+      mode === 'n'
+    );
+    respond((mentionUser ? `${mentionUser}, ` : '(okay) ') + result);
+  } catch (e) {
+    respond((mentionUser ? `${mentionUser}, ` : '') + e); // Error message always start with Error:
+  }
 };
 
 if (process.env.NODE_ENV !== 'test') {
   process.on('exit', () => {
-    for (const child of children) {
-      child.kill();
-    }
+    cp.exec('docker rm -f $(docker ps -qf name=jseval)', (err, stdout) => {
+      console.log(stdout);
+    });
   });
 }
 

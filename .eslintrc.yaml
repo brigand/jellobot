@@ -31,7 +31,11 @@ rules:
   react/prefer-stateless-function: 0
   prefer-template: 0
   no-nested-ternary: 0
+  no-confusing-arrow: 0
+  consistent-return: 0
   no-console:
     - 2
     - allow: ['debug', 'warn', 'error', 'log']
   no-restricted-syntax: 0
+  max-len: [1, 120]
+
