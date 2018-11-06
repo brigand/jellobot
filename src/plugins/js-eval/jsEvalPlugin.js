@@ -71,8 +71,11 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
 
 if (process.env.NODE_ENV !== 'test') {
   process.on('exit', () => {
-    cp.exec('docker rm -f $(docker ps -qf name=jseval)', (err, stdout) => {
-      console.log(stdout);
+    const cmd = 'docker rm -f $(docker ps -qf name=jseval)';
+    cp.exec(cmd, (err, stdout) => {
+      console.error(`Command '${cmd}' finished with output`);
+      console.error(stdout);
+      console.error(`End of '${cmd}' output`);
     });
   });
 }
