@@ -1,9 +1,9 @@
 FROM debian:9.5-slim
 
-ENV NODE_VERSION 11.1.0
+ARG NODE_VERSION=10.13.0
+ENV NODE_VERSION $NODE_VERSION
 
-# diff with https://github.com/nodejs/docker-node/blob/master/11/slim/Dockerfile dirmngr needed for debian:9.5-slim
-# gpg keys listed at https://github.com/nodejs/node#release-team
+# same than https://github.com/nodejs/docker-node/blob/master/11/slim/Dockerfile, gpg keys listed at https://github.com/nodejs/node#release-team
 RUN buildDeps='xz-utils' \
   && ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \

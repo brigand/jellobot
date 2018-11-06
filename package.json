@@ -48,9 +48,13 @@
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
+    "node-fetch": "^2.2.1",
     "ssh2": "^0.6.1"
   },
   "scripts": {
     "test": "jest"
+  },
+  "jest": {
+    "globalSetup": "<rootDir>/src/plugins/js-eval/init.js"
   }
 }
