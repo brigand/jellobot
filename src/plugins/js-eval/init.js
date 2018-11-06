@@ -19,7 +19,7 @@ async function initJsEval() {
 
   // Build image
   console.log('Building image ...');
-  await exec(`docker build -t brigand/js-eval --build-arg NODE_VERSION=${nodeVersion} . -f src/plugins/js-eval/Dockerfile`);
+  await exec(`docker build -t brigand/js-eval --build-arg NODE_VERSION=${nodeVersion} ${__dirname} -f src/plugins/js-eval/Dockerfile`);
   const builtNodeVersion = await exec('docker run --rm brigand/js-eval node -v');
   const meta = JSON.parse(await exec(`docker images brigand/js-eval:latest --format '{{json .}}'`));
 

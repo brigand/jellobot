@@ -45,7 +45,7 @@ RUN buildDeps='xz-utils' \
 RUN useradd node && mkdir -p /home/node && chown -R node:node /home/node
 WORKDIR /home/node
 USER node
-ADD --chown=node https://raw.githubusercontent.com/caub/docker-js-eval/sm/run.js /run/
+COPY --chown=node run.js /run/
 
 CMD ["node", \
   "--harmony-bigint", \

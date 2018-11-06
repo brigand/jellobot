@@ -21,11 +21,7 @@ describe('jsEvalPlugin', () => {
     await jsEval({
       message: 'n> 2++2',
       respond: output => {
-        expect(output).toEqual(`Error: ecmabot.js:1
- 2++2
- ^
-
-ReferenceError: Invalid left-hand side expression in postfix operation`);
+        expect(output).toEqual(`Error: ReferenceError: Invalid left-hand side expression in postfix operation`);
       }
     });
 
@@ -88,11 +84,7 @@ ReferenceError: Invalid left-hand side expression in postfix operation`);
     await jsEval({
       message: `n> class A { x = 3n; ok = () => this.x }; new A().ok()`,
       respond: output => {
-        expect(output).toEqual(`Error: ecmabot.js:1
- class A { x = 3n; ok = () => this.x }; new A().ok()
-             ^
-
-SyntaxError: Unexpected token =`);
+        expect(output).toEqual(`Error: SyntaxError: Unexpected token =`);
       }
     });
   });

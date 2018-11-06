@@ -38,4 +38,4 @@ rules:
     - allow: ['debug', 'warn', 'error', 'log']
   no-restricted-syntax: 0
   max-len: [1, 120]
-
+  no-underscore-dangle: 1
