@@ -80,7 +80,7 @@ async function run() {
       console.error(`Run with --restart to restart the bot.`);
     }
 
-    await ssh.exec(`node src/plugins/js-eval/init`); // build brigand/js-eval image
+    await ssh.exec(`cd ${dir}; node src/plugins/js-eval/init.js`); // build brigand/js-eval image
   } finally {
     await ssh.end();
   }
