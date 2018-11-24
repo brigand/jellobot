@@ -97,4 +97,13 @@ describe('jsEvalPlugin', () => {
       }
     });
   });
+
+  it('has date-fns', async () => {
+    await jsEval({
+      message: `n> require('date-fns').subDays(new Date(2018,10,5), 10)`,
+      respond: output => {
+        expect(output).toEqual(`(okay) 2018-10-26T00:00:00.000Z`);
+      }
+    });
+  });
 });
