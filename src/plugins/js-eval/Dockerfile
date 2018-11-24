@@ -44,8 +44,9 @@ RUN buildDeps='xz-utils' \
 
 RUN useradd node && mkdir -p /home/node && chown -R node:node /home/node
 WORKDIR /home/node
-USER node
 COPY --chown=node run.js /run/
+RUN npm i --prefix /run date-fns
+USER node
 
 CMD ["node", \
   "--harmony-bigint", \
@@ -54,7 +55,9 @@ CMD ["node", \
   "--harmony-static-fields", \
   "--harmony-public-fields", \
   "--harmony-do-expressions", \
+  "--harmony-await-optimization", \
   "--experimental-vm-modules", \
   "--experimental-modules", \
+  "--experimental-repl-await", \
   "--no-warnings", \
   "/run/run.js"]

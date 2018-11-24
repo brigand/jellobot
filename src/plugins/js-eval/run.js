@@ -2,6 +2,8 @@ const { Script, SourceTextModule, createContext } = require('vm');
 const util = require('util');
 const builtinModules = require('module').builtinModules.filter((a) => !/^_|\//.test(a));
 
+// copied from https://github.com/devsnek/docker-js-eval/run.js
+
 const inspect = (val) => {
   try {
     return util.inspect(val, {
