@@ -1,11 +1,16 @@
 const cp = require('child_process');
 const crypto = require('crypto');
 
-const jsEval = (code, environment = 'node-cjs', timeout = 5000, stable) => new Promise((resolve, reject) => {
+/**
+ * jsEval
+ * @param {*} code
+ * @param {*} environment
+ * @param {*} timeout
+ * @param {*} cmd optional cmd array, overriding the default CMD in Dockerfile
+ */
+const jsEval = (code, environment = 'node-cjs', timeout = 5000, cmd = []) => new Promise((resolve, reject) => {
   const name = `jseval-${crypto.randomBytes(8).toString('hex')}`;
-  const args = ['run', '--rm', '-i', `--name=${name}`, `--net=none`, `-eJSEVAL_ENV=${environment}`, `-eJSEVAL_TIMEOUT=${timeout}`, 'brigand/js-eval'];
-
-  if (stable) args.push('node', '/run/run.js');
+  const args = ['run', '--rm', '-i', `--name=${name}`, `--net=none`, `-eJSEVAL_ENV=${environment}`, `-eJSEVAL_TIMEOUT=${timeout}`, 'brigand/js-eval', ...cmd];
 
   let data = '';
   const timer = setTimeout(() => {

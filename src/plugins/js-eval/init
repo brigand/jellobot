@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Kill all docker containers created with "--name jseval-{some hex string}"
+n_killed=$(docker ps -aqf name=jseval- | xargs -r docker rm -f | wc -l)
+
+if (( n_killed )); then
+  echo "Killed $n_killed js-eval containers."
+fi
+
+node_version='11.4.0'; # by default
+# get latest node11 version, if GH_TOKEN provided (easy to get one at https://github.com/settings/tokens)
+if [[ $GH_TOKEN ]]; then
+  nodeVersion=$(curl -sH "Authorization: bearer $GH_TOKEN" https://api.github.com/repos/nodejs/node/tags?per_page=1 | jq -r '.[0].name')
+fi
+
+dir=$(dirname $0)
+docker build -t brigand/js-eval --build-arg NODE_VERSION=$node_version $dir -f $dir/Dockerfile
+
+docker images brigand/js-eval:latest

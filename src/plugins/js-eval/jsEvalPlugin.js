@@ -10,6 +10,10 @@ const babelTransform = code => new Promise((res, rej) => babel.transform(
 
 const helpMsg = `n> node-cjs stable, h> node-cjs harmony, b> babel (stage1+), s> [script](nodejs.org/api/vm.html#vm_class_vm_script), m> [module](nodejs.org/api/vm.html#vm_class_vm_sourcetextmodule)`;
 
+// default jseval run command
+const CMD = ['node', '/run/run.js'];
+const CMD_SHIMS = ['node', '-r', '/run/node_modules/airbnb-js-shims/target/es2019', '/run/run.js'];
+const CMD_HARMONY = ['node', '--harmony-bigint', '--harmony-class-fields', '--harmony-private-fields', '--harmony-static-fields', '--harmony-public-fields', '--harmony-do-expressions', '--harmony-await-optimization', '--experimental-vm-modules', '--experimental-modules', '--no-warnings', '/run/run.js'];
 
 const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
   if (!/^[nhbsm?]>/.test(message)) return;
@@ -23,7 +27,7 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
       code,
       mode === 's' ? 'script' : mode === 'm' ? 'module' : 'node-cjs',
       selfConfig.timer || 5000,
-      mode === 'n' || mode === 'b'
+      mode === 'b' ? CMD_SHIMS : mode === 'n' ? CMD : CMD_HARMONY
     );
     respond((mentionUser ? `${mentionUser}, ` : '(okay) ') + result);
   } catch (e) {

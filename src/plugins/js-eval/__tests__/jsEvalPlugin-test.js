@@ -1,4 +1,9 @@
+const cp = require('child_process');
 const jsEval = require('../jsEvalPlugin');
+
+beforeAll(() => {
+  cp.execSync(`${__dirname}/../../../../src/plugins/js-eval/init`);
+});
 
 describe('jsEvalPlugin', () => {
   it(`works`, async () => {
@@ -33,8 +38,7 @@ describe('jsEvalPlugin', () => {
     });
   });
 
-  // jest doesn't pass this test correctly if we don't await jsEval
-  it(`times out but return temporary result`, async () => {
+  it(`times out but return temporary result`, async () => { // jest doesn't pass this test correctly if we don't await jsEval
     await jsEval({
       message: 'n> setTimeout(() => console.log(2), 10000); 1',
       selfConfig: { timer: 1000 },
@@ -103,6 +107,23 @@ describe('jsEvalPlugin', () => {
       message: `n> require('date-fns').subDays(new Date(2018,10,5), 10)`,
       respond: output => {
         expect(output).toEqual(`(okay) 2018-10-26T00:00:00.000Z`);
+      }
+    });
+  });
+
+  it(`babel has String.prototype.matchAll`, async () => {
+    await jsEval({
+      message: `b> [...'1 2 3'.matchAll(/\\d/g)].map(o => o.index)`,
+      respond: output => {
+        expect(output).toEqual(`(okay) [ 0, 2, 4 ]`);
+      }
+    });
+  });
+  it(`babel has Object.fromEntries`, async () => {
+    await jsEval({
+      message: `b> typeof Object.fromEntries`,
+      respond: output => {
+        expect(output).toEqual(`(okay) 'function'`);
       }
     });
   });

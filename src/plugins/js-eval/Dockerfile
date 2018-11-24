@@ -1,6 +1,6 @@
 FROM debian:9-slim
 
-ARG NODE_VERSION=10.13.0
+ARG NODE_VERSION
 ENV NODE_VERSION $NODE_VERSION
 
 # same than https://github.com/nodejs/docker-node/blob/master/11/stretch-slim/Dockerfile, gpg keys listed at https://github.com/nodejs/node#release-team
@@ -45,19 +45,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
 RUN useradd node && mkdir -p /home/node && chown -R node:node /home/node
 WORKDIR /home/node
 COPY --chown=node run.js /run/
-RUN npm i --prefix /run date-fns
+RUN npm i --prefix /run date-fns airbnb-js-shims
 USER node
 
-CMD ["node", \
-  "--harmony-bigint", \
-  "--harmony-class-fields", \
-  "--harmony-private-fields", \
-  "--harmony-static-fields", \
-  "--harmony-public-fields", \
-  "--harmony-do-expressions", \
-  "--harmony-await-optimization", \
-  "--experimental-vm-modules", \
-  "--experimental-modules", \
-  "--experimental-repl-await", \
-  "--no-warnings", \
-  "/run/run.js"]
+CMD ["node", "/run/run.js"]

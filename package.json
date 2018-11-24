@@ -52,8 +52,5 @@
   },
   "scripts": {
     "test": "jest"
-  },
-  "jest": {
-    "globalSetup": "<rootDir>/src/plugins/js-eval/init.js"
   }
 }
