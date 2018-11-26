@@ -77,20 +77,28 @@ const mdnPlugin = async (msg) => {
   const initialUrl = `https://mdn.io/${suffix}`;
 
   let lastRedirect = initialUrl;
-  let res = await superagent.get(initialUrl).redirects(5)
-    .on('redirect', (redirect) => {
-      lastRedirect = redirect.headers.location;
-    }).catch((e) => {
-      if (e && e.response) {
-        throw new Error(`Failed to fetch ${initialUrl} with ${e.response.statusCode}`);
-      }
+  let res = null;
+
+  try {
+    res = await superagent.get(initialUrl)
+      .set('accept-language', 'en-US,en;q=0.5')
+      .redirects(5)
+      .on('redirect', (redirect) => {
+        lastRedirect = redirect.headers.location;
+      });
+  } catch (e) {
+    // Rethrow if it's not an HTTP error
+    if (!e || !e.response) {
       throw e;
-    });
+    }
+  }
 
-  res = await fixLanguage(res, lastRedirect);
+  if (res) {
+    res = await fixLanguage(res, lastRedirect).catch(() => null);
+  }
 
-  if (!res.ok) {
-    msg.respond(`Couldn't fetch "${url}"`);
+  if (!res || !res.ok) {
+    msg.respondWithMention(`Try ${initialUrl} (couldn't fetch metadata)`);
     return;
   }
 
