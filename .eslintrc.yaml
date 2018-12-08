@@ -39,3 +39,4 @@ rules:
   no-restricted-syntax: 0
   max-len: [1, 120]
   no-underscore-dangle: 1
+  no-empty: warn

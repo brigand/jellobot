@@ -1,7 +1,7 @@
 const cp = require('child_process');
 const crypto = require('crypto');
 
-module.exports = (code, environment = 'node-cjs', timeout = 5000, stable) => new Promise((resolve, reject) => {
+const jsEval = (code, environment = 'node-cjs', timeout = 5000, stable) => new Promise((resolve, reject) => {
   const name = `jseval-${crypto.randomBytes(8).toString('hex')}`;
   const args = ['run', '--rm', '-i', `--name=${name}`, `--net=none`, `-eJSEVAL_ENV=${environment}`, `-eJSEVAL_TIMEOUT=${timeout}`, 'brigand/js-eval'];
 
@@ -39,3 +39,19 @@ module.exports = (code, environment = 'node-cjs', timeout = 5000, stable) => new
     }
   });
 });
+
+
+module.exports = jsEval;
+
+if (!module.parent) {
+  try {
+    let code = '';
+    process.stdin.on('data', b => { code += b; });
+    process.stdin.on('end', async () => {
+      const output = await jsEval(code, process.env.JSEVAL_ENV, process.env.JSEVAL_TIMEOUT);
+      console.log(output);
+    });
+  } catch (e) {
+    console.error(e);
+  }
+}
