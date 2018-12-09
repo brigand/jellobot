@@ -7,13 +7,13 @@ if (( n_killed )); then
   echo "Killed $n_killed js-eval containers."
 fi
 
-node_version='11.4.0'; # by default
-# get latest node11 version, if GH_TOKEN provided (easy to get one at https://github.com/settings/tokens)
-if [[ $GH_TOKEN ]]; then
-  nodeVersion=$(curl -sH "Authorization: bearer $GH_TOKEN" https://api.github.com/repos/nodejs/node/tags?per_page=1 | jq -r '.[0].name')
+if [[ ! $NODE_VERSION ]]; then
+  NODE_VERSION=$(curl -s https://nodejs.org/dist | awk '/>v/{ split($2, a, "[<>]"); sub("/","",a[2]); print a[2] }' | sort -V | tail -n1)
 fi
 
+NODE_VERSION=${NODE_VERSION#v*} # trim v prefix, if any
+
 dir=$(dirname $0)
-docker build -t brigand/js-eval --build-arg NODE_VERSION=$node_version $dir -f $dir/Dockerfile
+docker build -t brigand/js-eval --build-arg NODE_VERSION=$NODE_VERSION $dir -f $dir/Dockerfile
 
 docker images brigand/js-eval:latest
