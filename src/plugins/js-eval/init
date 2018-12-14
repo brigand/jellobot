@@ -8,7 +8,7 @@ if (( n_killed )); then
 fi
 
 if [[ ! $NODE_VERSION ]]; then
-  NODE_VERSION=$(curl -s https://nodejs.org/dist | awk '/>v/{ split($2, a, "[<>]"); sub("/","",a[2]); print a[2] }' | sort -V | tail -n1)
+  NODE_VERSION=$(curl -sL https://nodejs.org/dist | awk '/>v/{ split($2, a, "[<>]"); sub("/","",a[2]); print a[2] }' | sort -V | tail -n1)
 fi
 
 NODE_VERSION=${NODE_VERSION#v*} # trim v prefix, if any
