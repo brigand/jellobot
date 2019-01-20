@@ -136,7 +136,7 @@
 		},
 		"closures": {
 			"value": "Introductory: http://blog.angular-university.io/really-understanding-javascript-closures . Intermediate/Advanced: http://dmitrysoshnikov.com/ecmascript/chapter-6-closures/",
-			"popularity": 226,
+			"popularity": 227,
 			"editors": [
 				"falafel",
 				"ljharb",
@@ -169,11 +169,11 @@
 		},
 		"closure": {
 			"alias": "closures",
-			"popularity": 94
+			"popularity": 95
 		},
 		"paste": {
 			"value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
-			"popularity": 2261,
+			"popularity": 2268,
 			"editors": [
 				"niggler",
 				"gkatsev",
@@ -421,7 +421,7 @@
 		},
 		"xy": {
 			"value": "The XY problem: You want to do X, but don't know how. You think you can solve it using Y, but don't know how to do that either. You ask about Y, which is a strange thing to want to do. Just ask about X. See also: http://xyproblem.info/",
-			"popularity": 1085,
+			"popularity": 1087,
 			"editors": [
 				"j201",
 				"sukima",
@@ -496,7 +496,7 @@
 		},
 		"ask": {
 			"value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html https://jvns.ca/blog/good-questions/",
-			"popularity": 1834,
+			"popularity": 1839,
 			"editors": [
 				"hemanth",
 				"eboy",
@@ -584,7 +584,7 @@
 		},
 		"doesn't work": {
 			"value": "What do you mean it doesn't work? Is it unemployed? What happens when you try to run it? What did you try to run? What's the output? What's the error message? What did you want or expect to happen? Can you post a screenshot or a fiddle?",
-			"popularity": 850,
+			"popularity": 854,
 			"editors": [
 				"dwcook",
 				"graingert"
@@ -786,7 +786,7 @@
 		},
 		"help": {
 			"value": "For help, ask your question. Be patient. Code samples should be pasted in a paste service (see !paste). Tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !describe and !debug).",
-			"popularity": 4119,
+			"popularity": 4120,
 			"editors": [
 				"ashnur",
 				"earendel",
@@ -809,7 +809,7 @@
 		},
 		"bracket access": {
 			"value": "yourObject.foobar is just another way of saying yourObject['foobar']. So of course if varName = 'foobar', then it's also the same as yourObject[varName]. Dot notation is preferred to bracket notation except where the property name would be an invalid identifier. The same applies to quoting keys inside object literals - don't do it unless you have to.",
-			"popularity": 114,
+			"popularity": 116,
 			"editors": [
 				"ljharb"
 			],
@@ -827,7 +827,7 @@
 		},
 		"bracket": {
 			"alias": "bracket access",
-			"popularity": 89
+			"popularity": 90
 		},
 		"ops": {
 			"value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello jaawerth niggler. In case of an emergency requiring op attention, activate !emergency",
@@ -950,7 +950,7 @@
 		},
 		"undefined": {
 			"value": "The undefined type has exactly one value, called `undefined`. Any variable that has not been assigned a value has the value `undefined`.",
-			"popularity": 13
+			"popularity": 14
 		},
 		"booleans": {
 			"value": "The boolean type represents a logical entity having two values, called `true` and `false`.",
@@ -1592,7 +1592,7 @@
 		},
 		"fastest": {
 			"value": "Please refrain from asking broad questions such \"What's the easiest way to do X?\" or \"Fastest way to do Y?\". Explain the context, what you want to do and ask one well defined question.",
-			"popularity": 18
+			"popularity": 19
 		},
 		"single-threaded": {
 			"value": "Browser JS is single-threaded and shares a thread with the rendering engine. That means that the browser can't render the page while it's executing JS, and it can't execute JS while it's rendering the page. There's NO parallelism (except for webworkers).",
@@ -1622,7 +1622,7 @@
 		},
 		"best": {
 			"alias": "fastest",
-			"popularity": 13
+			"popularity": 14
 		},
 		"iife": {
 			"value": "An \"immediately invoked function expression\" is an expression that both creates and calls a function. As with any function call, a scope is created. \"(function () { /* ... */ }())\" is the most common form. For more info: http://benalman.com/news/2010/11/immediately-invoked-function-expression/",
@@ -1653,7 +1653,7 @@
 		},
 		"oop": {
 			"value": "http://robotlolita.me/2011/10/09/understanding-javascript-oop.html summarizes Object Oriented Programming in Javascript, using concepts from ECMAScript 5, and relating them back to older paradigms from ECMAScript 3",
-			"popularity": 654,
+			"popularity": 656,
 			"editors": [
 				"gkatsev",
 				"Sorella"
@@ -1757,7 +1757,7 @@
 		},
 		"prototype intro": {
 			"value": "A short (and practical) explanation of how prototypal inheritance works in JavaScript: https://hughfdjackson.com/javascript/prototypes-the-short%28est-possible%29-story/ For a much more in-depth introduction, see !oop",
-			"popularity": 225,
+			"popularity": 227,
 			"editors": [
 				"ljharb"
 			],
@@ -1786,7 +1786,7 @@
 		},
 		"inline": {
 			"value": "Inline event handlers are essentially `eval` inside HTML markup - they're bad practice and result in poorly factored, hard-to-manage code. Seriously consider attaching your events with JavaScript, instead, eg: https://developer.mozilla.org/en/DOM/element.addEventListener",
-			"popularity": 783,
+			"popularity": 785,
 			"editors": [
 				"ljharb",
 				"Akinator"
@@ -1808,7 +1808,7 @@
 		},
 		"gist": {
 			"value": "Paste code at https://gist.github.com (or a similar site) and name the file .js so that we can look over it. Thanks!",
-			"popularity": 249,
+			"popularity": 252,
 			"editors": [
 				"GreenJello"
 			],
@@ -2051,7 +2051,7 @@
 		},
 		"hello": {
 			"value": "Welcome! We're a community of friendly, helpful people who are happy to help any time 24/7/365. Please make yourself at home and consider adding us to your autojoin :) Please make sure you read the channel status for channel commands and updates. FYI, just saying hello with no message is super rude in IRC! See also !nohello",
-			"popularity": 285,
+			"popularity": 286,
 			"editors": [
 				"PigDude",
 				"qswz",
@@ -2622,7 +2622,7 @@
 		},
 		"books": {
 			"value": "!eloquent (http://eloquentjavascript.net), !ydkjs (https://github.com/getify/You-Dont-Know-JS), JavaScript: The Definitive Guide by David Flanagan, High Performance JavaScript by Nicholas C. Zakas, Effective JavaScript by David Herman, Functional JavaScript by Michael Fogus, Programming JavaScript Applications by Eric Elliott.",
-			"popularity": 1108,
+			"popularity": 1110,
 			"creator": "gkatsev",
 			"editors": [
 				"gkatsev",
@@ -3232,7 +3232,7 @@
 		},
 		"classes": {
 			"value": "Class hierarchies? Don't do that! http://raganwald.com/2014/03/31/class-hierarchies-dont-do-that.html (See also, !inheritance)",
-			"popularity": 283,
+			"popularity": 284,
 			"creator": "flebron",
 			"editors": [
 				"Benvie",
@@ -3317,7 +3317,7 @@
 		},
 		"setinterval": {
 			"value": "Avoid setInterval; use setTimeout instead. https://web.archive.org/web/20160602165800/https://zetafleet.com/blog/2010/04/why-i-consider-setinterval-to-be-harmful.html (requestAnimationFrame may be another alternative, see !raf)",
-			"popularity": 344,
+			"popularity": 346,
 			"creator": "ljharb",
 			"editors": [
 				"qswz",
@@ -3722,7 +3722,7 @@
 		},
 		"iteration": {
 			"value": "ECMAScript's Array contains a number of built-in methods for iteration (e.g., map, reduce, every, some, filter, and forEach). They relieve the need for manual iteration, provide better abstraction than a `for` loop, and make it clear what your iteration is doing. See https://gist.github.com/ljharb/58faf1cfcb4e6808f74aae4ef7944cff",
-			"popularity": 530,
+			"popularity": 533,
 			"creator": "Mortchek",
 			"editors": [
 				"Mortchek",
@@ -3921,7 +3921,7 @@
 		},
 		"inheritance": {
 			"value": "JavaScript does not really have “inheritance” like classical languages. What it has is more properly called “property delegation” or “behavior delegation” http://davidwalsh.name/javascript-objects - ie `foo.bar(baz)` when `!foo.hasOwnProperty('bar')` is essentially doing `Object.getPrototypeOf(foo).bar.call(foo, baz)`",
-			"popularity": 364,
+			"popularity": 365,
 			"creator": "ljharb",
 			"editors": [
 				"Agamemnus",
@@ -4207,7 +4207,7 @@
 		},
 		"pass by value": {
 			"value": "JavaScript has call-by-value semantics in which references to objects are considered to be a type of value. Direct assignment to an argument will never be visible outside of a function. For a detailed explanation, see: https://web.archive.org/web/20161005155047/http://www.jon-carlos.com/2013/is-javascript-call-by-value-or-call-by-reference/",
-			"popularity": 200,
+			"popularity": 201,
 			"creator": "gkatsev",
 			"editors": [
 				"ImBcmDth",
@@ -4488,7 +4488,7 @@
 		},
 		"!": {
 			"value": "!! is a convenient shorthand for converting a truthy/falsy value to true/false, similar to the more verbose `Boolean` function.",
-			"popularity": 146,
+			"popularity": 147,
 			"creator": "ImBcmDth",
 			"editors": [
 				"yansanmo",
@@ -5437,7 +5437,7 @@
 			"value": "Trolls have a host of psychological disorders. Don't hate them - pity them, for they are pathetic, and suffering. http://www.slate.com/articles/health_and_science/climate_desk/2014/02/internet_troll_personality_study_machiavellianism_narcissism_psychopathy.html",
 			"creator": "ljharb",
 			"date": "2014-02-23T20:13:25.545Z",
-			"popularity": 32,
+			"popularity": 33,
 			"editors": [],
 			"changes": []
 		},
@@ -5735,7 +5735,7 @@
 			"value": "http://www.codecombat.com, http://www.codewars.com, http://www.codecademy.com, http://www.khanacademy.org, http://alexnisnevich.github.io/untrusted/",
 			"creator": "Agamemnus",
 			"date": "2014-04-01T06:56:32.071Z",
-			"popularity": 213,
+			"popularity": 214,
 			"editors": [
 				"Agamemnus"
 			],
@@ -5843,7 +5843,7 @@
 			"alias": "bracket access",
 			"creator": "",
 			"date": "2014-04-15T00:49:13.734Z",
-			"popularity": 21,
+			"popularity": 22,
 			"editors": [],
 			"changes": []
 		},
@@ -5915,7 +5915,7 @@
 			"value": "convert to boolean",
 			"creator": "Qbix2",
 			"date": "2014-04-24T00:17:29.237Z",
-			"popularity": 89,
+			"popularity": 90,
 			"editors": [
 				"graingert"
 			],
@@ -7327,7 +7327,7 @@
 			"alias": "iteration",
 			"creator": "ljharb",
 			"date": "2015-02-17T22:54:23.253Z",
-			"popularity": 78,
+			"popularity": 81,
 			"editors": [],
 			"changes": []
 		},
@@ -9819,7 +9819,7 @@
 			"value": "A guide to getting started with JavaScript and Node.js: https://gist.github.com/joepie91/95ed77b71790442b7e61",
 			"creator": "joepie91",
 			"date": "2016-03-17T15:06:30.967Z",
-			"popularity": 127,
+			"popularity": 129,
 			"editors": [],
 			"changes": []
 		},
@@ -10563,7 +10563,7 @@
 			"value": "Please share your react code on https://gist.github.com and name the file '.jsx' for proper syntax highlighting.",
 			"creator": "GreenJello",
 			"date": "2016-10-21T14:27:15.421Z",
-			"popularity": 270,
+			"popularity": 272,
 			"editors": [],
 			"changes": []
 		},
@@ -11178,7 +11178,7 @@
 			"value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are code linters for most programming languages, and compilers sometimes incorporate linting into the compilation process. http://eslint.org/docs/user-guide/getting-started",
 			"creator": "graingert",
 			"date": "2017-06-06T20:04:36.794Z",
-			"popularity": 59,
+			"popularity": 60,
 			"editors": [
 				"graingert",
 				"cjohnson",
@@ -12336,7 +12336,7 @@
 			"value": "Another satisfied customer! NEXT!!",
 			"creator": "ljharb",
 			"date": "2017-10-30T22:36:07.201Z",
-			"popularity": 216,
+			"popularity": 220,
 			"editors": [],
 			"changes": []
 		},
@@ -12376,7 +12376,7 @@
 			"value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: repl.it, runkit.com, gist.github.com. See also !mcve and !paste",
 			"creator": "graingert",
 			"date": "2017-11-29T00:23:06.807Z",
-			"popularity": 260,
+			"popularity": 262,
 			"editors": [
 				"graingert",
 				"cjohnson",
@@ -12721,7 +12721,7 @@
 			"value": "Do you have a question? also see http://nohello.com",
 			"creator": "progysm",
 			"date": "2018-01-05T21:59:59.438Z",
-			"popularity": 37,
+			"popularity": 38,
 			"editors": [],
 			"changes": []
 		},
@@ -12769,7 +12769,7 @@
 			"value": "Create and build modern JavaScript applications with zero initial configuration. https://neutrino.js.org/installation/create-new-project.html run: yarn create @neutrinojs/project <dirname>",
 			"creator": "graingert",
 			"date": "2018-01-08T21:52:27.377Z",
-			"popularity": 19,
+			"popularity": 20,
 			"editors": [
 				"graingert"
 			],
@@ -13412,12 +13412,21 @@
 			"changes": []
 		},
 		"environment variables": {
-			"value": "Don't use environment variables to store credentials like passwords and keys! They're too easy to leak, because many tools don't treat environment variables as private information. Use configuration files (eg. config.json) with strict permissions instead.",
+			"value": "Don't use environment variables to store credentials like passwords and keys! They're too easy to leak, because many tools don't treat environment variables as private information. Use configuration files (eg. config.json) with strict permissions (0400) instead.",
 			"creator": "joepie91",
 			"date": "2018-07-14T18:48:39.632Z",
-			"popularity": 8,
-			"editors": [],
-			"changes": []
+			"popularity": 9,
+			"editors": [
+				"joepie91"
+			],
+			"changes": [
+				{
+					"date": "2019-01-18T22:01:39.179Z",
+					"editor": "joepie91",
+					"old-value": "Don't use environment variables to store credentials like passwords and keys! They're too easy to leak, because many tools don't treat environment variables as private information. Use configuration files (eg. config.json) with strict permissions instead.",
+					"new-value": "Don't use environment variables to store credentials like passwords and keys! They're too easy to leak, because many tools don't treat environment variables as private information. Use configuration files (eg. config.json) with strict permissions (0400) instead."
+				}
+			]
 		},
 		"temporal dead zone": {
 			"alias": "tdz",
@@ -13553,7 +13562,7 @@
 			"alias": "environment variables",
 			"creator": "joepie91",
 			"date": "2018-08-23T17:14:19.115Z",
-			"popularity": 5,
+			"popularity": 6,
 			"editors": [],
 			"changes": []
 		},
@@ -13655,7 +13664,7 @@
 			"value": "Do you know about fetch?",
 			"creator": "qswz",
 			"date": "2018-09-13T01:21:44.667Z",
-			"popularity": 2,
+			"popularity": 3,
 			"editors": [],
 			"changes": []
 		},
@@ -13753,7 +13762,7 @@
 			"value": "`var` defines a variable in the current function-level scope, and should not be used when `const` or `let` are available (see !babel, !const, and !let). Always use a keyword to declare variables, otherwise you will pollute the global scope (a keyword is required in strict mode).",
 			"creator": "graingert",
 			"date": "2018-10-18T20:28:52.525Z",
-			"popularity": 46,
+			"popularity": 49,
 			"editors": [
 				"sillyslux",
 				"graingert",
@@ -13910,7 +13919,7 @@
 			"value": "https://regex101.com is a tool for playing with regular expressions of various engines against a given set of data to see the results live",
 			"creator": "MJCD",
 			"date": "2018-10-19T23:26:50.389Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -14146,7 +14155,7 @@
 			"alias": "var",
 			"creator": "graingert",
 			"date": "2018-11-23T19:25:50.015Z",
-			"popularity": 24,
+			"popularity": 27,
 			"editors": [],
 			"changes": []
 		},
@@ -14298,6 +14307,14 @@
 			"alias": "promises",
 			"creator": "MJCD",
 			"date": "2019-01-06T14:31:15.474Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"unexpected fiddle": {
+			"value": "Why using jsfiddle if it's just a paste?",
+			"creator": "qswz",
+			"date": "2019-01-17T23:02:25.043Z",
 			"popularity": 0,
 			"editors": [],
 			"changes": []
