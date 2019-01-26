@@ -1,7 +1,7 @@
 node_modules
+npm_cache
 coverage
 scripts/env.sh
 jellobot-config.*
 package-lock.json
 *.tgz
-

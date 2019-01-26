@@ -1,6 +1,7 @@
 const cp = require('child_process');
 const babel = require('@babel/core');
 const jsEval = require('./jsEval');
+const npmRequire = require('./npmRequire');
 
 const babelTransform = code => new Promise((res, rej) => babel.transform(
   code,
@@ -8,7 +9,7 @@ const babelTransform = code => new Promise((res, rej) => babel.transform(
   (err, obj) => err ? rej(err) : res(obj.code)
 ));
 
-const helpMsg = `n> node-cjs stable, h> node-cjs harmony, b> babel (stage1+), s> [script](nodejs.org/api/vm.html#vm_class_vm_script), m> [module](nodejs.org/api/vm.html#vm_class_vm_sourcetextmodule)`;
+const helpMsg = `n> node-cjs stable, h> node-cjs harmony, b> babel (stage1+), ~> npm, s> [script](nodejs.org/api/vm.html#vm_class_vm_script), m> [module](nodejs.org/api/vm.html#vm_class_vm_sourcetextmodule)`;
 
 // default jseval run command
 const CMD = ['node', '--no-warnings', '/run/run.js'];
@@ -16,11 +17,12 @@ const CMD_SHIMS = ['node', '-r', '/run/node_modules/airbnb-js-shims/target/es201
 const CMD_HARMONY = ['node', '--harmony-bigint', '--harmony-class-fields', '--harmony-private-fields', '--harmony-static-fields', '--harmony-public-fields', '--harmony-do-expressions', '--harmony-await-optimization', '--experimental-vm-modules', '--experimental-modules', '--no-warnings', '/run/run.js'];
 
 const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
-  if (!/^[nhbsm?]>/.test(message)) return;
+  if (!/^[nhb~sm?]>/.test(message)) return;
   const mode = message[0];
   if (mode === '?') return respond((mentionUser ? `${mentionUser}, ` : '') + helpMsg);
   let code = message.slice(2);
   if (mode === 'b') code = await babelTransform(message.slice(2));
+  else if (mode === '~') code = await npmRequire(message.slice(2));
 
   try {
     const result = await jsEval(
