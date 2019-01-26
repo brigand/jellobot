@@ -10,8 +10,7 @@ const crypto = require('crypto');
  */
 const jsEval = (code, environment = 'node-cjs', timeout = 5000, cmd = []) => new Promise((resolve, reject) => {
   const name = `jseval-${crypto.randomBytes(8).toString('hex')}`;
-  const args = ['run', '--rm', '-i', `--name=${name}`, `--net=none`, `-eJSEVAL_ENV=${environment}`, `-eJSEVAL_TIMEOUT=${timeout}`, 'brigand/js-eval', ...cmd];
-
+  const args = ['run', '-i', '--rm', `--name=${name}`, `--net=none`, `-eJSEVAL_ENV=${environment}`, `-eJSEVAL_TIMEOUT=${timeout}`, 'brigand/js-eval', ...cmd];
   let data = '';
   const timer = setTimeout(() => {
     try {
@@ -23,6 +22,7 @@ const jsEval = (code, environment = 'node-cjs', timeout = 5000, cmd = []) => new
   }, timeout + 10);
 
   const proc = cp.spawn('docker', args);
+
   proc.stdin.write(code);
   proc.stdin.end();
 
@@ -40,7 +40,7 @@ const jsEval = (code, environment = 'node-cjs', timeout = 5000, cmd = []) => new
     if (status !== 0) {
       reject(new Error(data));
     } else {
-      resolve(data);
+      resolve(data.trim());
     }
   });
 });
