@@ -17,7 +17,7 @@ describe('jsEvalPlugin', () => {
     await jsEval({
       message: 'n> setTimeout(() => console.log(2), 1000); 1',
       respond: output => {
-        expect(output).toEqual('(okay) 12\n');
+        expect(output).toEqual('(okay) 12');
       }
     });
   });
@@ -124,6 +124,15 @@ describe('jsEvalPlugin', () => {
       message: `b> typeof Object.fromEntries`,
       respond: output => {
         expect(output).toEqual(`(okay) 'function'`);
+      }
+    });
+  });
+
+  it(`handles empty input`, async () => {
+    await jsEval({
+      message: `n>  `,
+      respond: output => {
+        expect(output).toEqual(`(okay) undefined`);
       }
     });
   });

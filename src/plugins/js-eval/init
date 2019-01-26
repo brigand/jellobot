@@ -7,13 +7,6 @@ if (( n_killed )); then
   echo "Killed $n_killed js-eval containers."
 fi
 
-if [[ ! $NODE_VERSION ]]; then
-  NODE_VERSION=$(curl -sSL https://nodejs.org/dist | awk '/>v/{ split($2, a, "[<>]"); sub("/","",a[2]); print a[2] }' | sort -V | tail -n1)
-fi
-
-NODE_VERSION=${NODE_VERSION#v*} # trim v prefix, if any
-
 dir=$(dirname $0)
-docker build -t brigand/js-eval --build-arg NODE_VERSION=$NODE_VERSION $dir -f $dir/Dockerfile
-
+docker build -t brigand/js-eval $dir -f $dir/Dockerfile
 docker images brigand/js-eval:latest
