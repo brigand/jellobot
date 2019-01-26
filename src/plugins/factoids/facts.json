@@ -18,7 +18,7 @@
 		},
 		"w3schools": {
 			"value": "w3schools has spent over a decade subverting search engines to appear at the top of search results, and while it *appears* useful for newcomers, it is in fact of very low quality. Try !eloquent, https://github.com/freeCodeCamp/freeCodeCamp, and http://w3fools.com/",
-			"popularity": 358,
+			"popularity": 359,
 			"editors": [
 				"ljharb",
 				"graingert"
@@ -173,7 +173,7 @@
 		},
 		"paste": {
 			"value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
-			"popularity": 2268,
+			"popularity": 2271,
 			"editors": [
 				"niggler",
 				"gkatsev",
@@ -421,7 +421,7 @@
 		},
 		"xy": {
 			"value": "The XY problem: You want to do X, but don't know how. You think you can solve it using Y, but don't know how to do that either. You ask about Y, which is a strange thing to want to do. Just ask about X. See also: http://xyproblem.info/",
-			"popularity": 1087,
+			"popularity": 1093,
 			"editors": [
 				"j201",
 				"sukima",
@@ -465,7 +465,7 @@
 		},
 		"eloquent": {
 			"value": "Eloquent JavaScript is a comprehensive introductory Web-based book with examples and a built-in interpreter. http://eloquentjavascript.net/",
-			"popularity": 1720,
+			"popularity": 1722,
 			"editors": [
 				"ericelliott",
 				"ashnur"
@@ -496,7 +496,7 @@
 		},
 		"ask": {
 			"value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html https://jvns.ca/blog/good-questions/",
-			"popularity": 1839,
+			"popularity": 1840,
 			"editors": [
 				"hemanth",
 				"eboy",
@@ -584,7 +584,7 @@
 		},
 		"doesn't work": {
 			"value": "What do you mean it doesn't work? Is it unemployed? What happens when you try to run it? What did you try to run? What's the output? What's the error message? What did you want or expect to happen? Can you post a screenshot or a fiddle?",
-			"popularity": 854,
+			"popularity": 855,
 			"editors": [
 				"dwcook",
 				"graingert"
@@ -657,7 +657,7 @@
 		},
 		"document.write": {
 			"value": "document.wrong. Please use something more modern and less prone to doing confusing things. This function tries to write to the current document. If the document has already been processed, the document will be replaced with a blank one with your argument. You don't want that; use the proper DOM methods instead.",
-			"popularity": 282,
+			"popularity": 283,
 			"editors": [
 				"Sorella",
 				"Jarwain"
@@ -786,7 +786,7 @@
 		},
 		"help": {
 			"value": "For help, ask your question. Be patient. Code samples should be pasted in a paste service (see !paste). Tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !describe and !debug).",
-			"popularity": 4120,
+			"popularity": 4121,
 			"editors": [
 				"ashnur",
 				"earendel",
@@ -809,7 +809,7 @@
 		},
 		"bracket access": {
 			"value": "yourObject.foobar is just another way of saying yourObject['foobar']. So of course if varName = 'foobar', then it's also the same as yourObject[varName]. Dot notation is preferred to bracket notation except where the property name would be an invalid identifier. The same applies to quoting keys inside object literals - don't do it unless you have to.",
-			"popularity": 116,
+			"popularity": 118,
 			"editors": [
 				"ljharb"
 			],
@@ -827,11 +827,11 @@
 		},
 		"bracket": {
 			"alias": "bracket access",
-			"popularity": 90
+			"popularity": 91
 		},
 		"ops": {
 			"value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello jaawerth niggler. In case of an emergency requiring op attention, activate !emergency",
-			"popularity": 341,
+			"popularity": 342,
 			"editors": [
 				"Mortchek",
 				"dwcook",
@@ -1307,7 +1307,7 @@
 		},
 		"source": {
 			"value": "My source code is available at: https://github.com/oftn-oswg/oftn-bot/",
-			"popularity": 169,
+			"popularity": 170,
 			"editors": [
 				"eligrey"
 			],
@@ -1502,7 +1502,7 @@
 		},
 		"document.wrong": {
 			"alias": "document.write",
-			"popularity": 23
+			"popularity": 24
 		},
 		"parseint": {
 			"value": "If you want to convert something to a Number, don't use `parseInt`, just convert it to a Number using `Number(x)`. parseInt will convert it to a String, then extract the first numeric characters in that String that are allowed in the specified radix, THEN convert those to a Number. You only use it for things like parseInt('500 days of Summer', 10) => 500",
@@ -1808,7 +1808,7 @@
 		},
 		"gist": {
 			"value": "Paste code at https://gist.github.com (or a similar site) and name the file .js so that we can look over it. Thanks!",
-			"popularity": 252,
+			"popularity": 258,
 			"editors": [
 				"GreenJello"
 			],
@@ -2051,7 +2051,7 @@
 		},
 		"hello": {
 			"value": "Welcome! We're a community of friendly, helpful people who are happy to help any time 24/7/365. Please make yourself at home and consider adding us to your autojoin :) Please make sure you read the channel status for channel commands and updates. FYI, just saying hello with no message is super rude in IRC! See also !nohello",
-			"popularity": 286,
+			"popularity": 287,
 			"editors": [
 				"PigDude",
 				"qswz",
@@ -2893,7 +2893,7 @@
 		},
 		"promises": {
 			"value": "Promises are placeholders for values that'll be provided in the future. They allow composing asynchronous operations like synchronous ones. See http://robotlolita.me/2015/11/15/how-do-promises-work.html and https://blog.domenic.me/youre-missing-the-point-of-promises/. Contrast with !cps & see https://bevacqua.github.io/promisees/. Another guide: http://www.javascriptkit.com/javatutors/javascriptpromises.shtml",
-			"popularity": 466,
+			"popularity": 468,
 			"creator": "ljharb",
 			"editors": [
 				"ljharb",
@@ -3317,7 +3317,7 @@
 		},
 		"setinterval": {
 			"value": "Avoid setInterval; use setTimeout instead. https://web.archive.org/web/20160602165800/https://zetafleet.com/blog/2010/04/why-i-consider-setinterval-to-be-harmful.html (requestAnimationFrame may be another alternative, see !raf)",
-			"popularity": 346,
+			"popularity": 348,
 			"creator": "ljharb",
 			"editors": [
 				"qswz",
@@ -3564,7 +3564,7 @@
 		},
 		"array mutators": {
 			"value": "Array mutator methods: push, pop, unshift, shift, splice, reverse, sort, fill, copyWithin. https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array#Mutator_methods",
-			"popularity": 59,
+			"popularity": 61,
 			"creator": "ljharb",
 			"editors": [
 				"ljharb"
@@ -3722,7 +3722,7 @@
 		},
 		"iteration": {
 			"value": "ECMAScript's Array contains a number of built-in methods for iteration (e.g., map, reduce, every, some, filter, and forEach). They relieve the need for manual iteration, provide better abstraction than a `for` loop, and make it clear what your iteration is doing. See https://gist.github.com/ljharb/58faf1cfcb4e6808f74aae4ef7944cff",
-			"popularity": 533,
+			"popularity": 534,
 			"creator": "Mortchek",
 			"editors": [
 				"Mortchek",
@@ -3841,7 +3841,7 @@
 		},
 		"editors": {
 			"value": "Popular text editors used by folks in ##javascript: 1) VSCode 2) Atom/Sublime Text [Tied] 3) vim",
-			"popularity": 35,
+			"popularity": 36,
 			"creator": "Havvy",
 			"editors": [
 				"Havvy",
@@ -4395,7 +4395,7 @@
 		},
 		"tutorial": {
 			"value": "It is HIGHLY recommended that you establish a firm grasp of the core syntax within both JavaScript, HTML, and basic CSS. Before asking any syntax error related questions you can use `!eslint` to detect any contextual errors. A critically acclaimed tutorial is available @ http://eloquentjavascript.net/",
-			"popularity": 167,
+			"popularity": 169,
 			"creator": "MJCD",
 			"editors": [
 				"graingert",
@@ -4548,7 +4548,7 @@
 		},
 		"modules": {
 			"value": "Modules divide programs into clusters of code that, by some criterion, belong together. \"!es6 modules\" are second-class, but JS can encode first-class ones. Major implementations include CommonJS, Node modules (a variant of CJS), and AMD. All of them can be used in any JS VM, including browsers. See also: http://robotlolita.me/2013/06/06/node-modules-to-rule-them-all.html and http://eloquentjavascript.net/10_modules.html.",
-			"popularity": 183,
+			"popularity": 184,
 			"creator": "Sorella",
 			"editors": [
 				"Sorella",
@@ -4731,7 +4731,7 @@
 		},
 		"asi": {
 			"value": "ASI stands for 'automatic semicolon insertion', a mechanism by which semicolons may be omitted from the source code in certain cases, and still be recognized by the parser. Note that semicolons are NOT OPTIONAL and use of this feature will patch around your omission. For details: http://inimino.org/~inimino/blog/javascript_semicolons",
-			"popularity": 149,
+			"popularity": 150,
 			"creator": "ashnur",
 			"editors": [
 				"ImBcmDth",
@@ -5843,7 +5843,7 @@
 			"alias": "bracket access",
 			"creator": "",
 			"date": "2014-04-15T00:49:13.734Z",
-			"popularity": 22,
+			"popularity": 23,
 			"editors": [],
 			"changes": []
 		},
@@ -6158,7 +6158,7 @@
 			"value": "|> function range(start, end) { return Array.apply(Array, Array(end + 1 - start)).map(function (_, i) { return i + start; }); }",
 			"creator": "ljharb",
 			"date": "2014-08-17T12:05:59.180Z",
-			"popularity": 152,
+			"popularity": 153,
 			"editors": [
 				"qswz",
 				"ljharb"
@@ -6577,7 +6577,7 @@
 			"value": "It's best to avoid global variables. As variables lose scope, they will be eligible for garbage collection. If they are scoped globally, then they will not be eligible for collection until the global namespace loses scope (e.g. when the page unloads). See also !IIFE and !modules",
 			"creator": "therealklanni",
 			"date": "2014-12-03T01:46:02.212Z",
-			"popularity": 74,
+			"popularity": 75,
 			"editors": [
 				"therealklanni",
 				"ljharb",
@@ -6641,7 +6641,7 @@
 			"value": "|>var _={},partial=function(e,t){t=[].slice.call(arguments,1);return function(n,i){n=t.concat([].slice.call(arguments)),i=n.length;while(i--)if(n[i]===_)n[i]=n.splice(-1)[0];return e.apply(0,n)}}",
 			"creator": "falafel",
 			"date": "2014-12-03T03:27:12.550Z",
-			"popularity": 8,
+			"popularity": 9,
 			"editors": [
 				"falafel"
 			],
@@ -6791,7 +6791,7 @@
 			"value": "You Don't Know Javascript - Free book series on Github (https://github.com/getify/You-Dont-Know-JS)",
 			"creator": "bradleymeck",
 			"date": "2014-12-29T21:10:32.401Z",
-			"popularity": 68,
+			"popularity": 70,
 			"editors": [
 				"ljharb",
 				"Havvy"
@@ -6920,7 +6920,7 @@
 			"value": "Don't use pastebin.com, Ads, Spamfilters, Captcha, Adds whitespace, Slow, Ugly, No comment/fork/annotate, Breaks copy/paste, Blocked for some people, etc. See !paste and !fiddle",
 			"creator": "ashnur",
 			"date": "2015-01-07T11:48:28.292Z",
-			"popularity": 135,
+			"popularity": 137,
 			"editors": [
 				"graingert"
 			],
@@ -7916,7 +7916,7 @@
 			"value": "JavaScript does not have a modulus operator. `%` is \"remainder\". https://web.archive.org/web/20171212212850/http://www.sitecrafting.com/blog/modulus-remainder/",
 			"creator": "ljharb",
 			"date": "2015-06-02T20:19:35.561Z",
-			"popularity": 26,
+			"popularity": 27,
 			"editors": [
 				"ljharb"
 			],
@@ -7949,7 +7949,7 @@
 			"alias": "mod",
 			"creator": "ljharb",
 			"date": "2015-06-02T20:19:50.619Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -8183,7 +8183,7 @@
 			"value": "When asking for help, provide all of your code; often the problem might not be where you think it is. http://shadow.cat/blog/matt-s-trout/show-us-the-whole-code/",
 			"creator": "joepie91",
 			"date": "2015-06-27T07:26:12.181Z",
-			"popularity": 17,
+			"popularity": 18,
 			"editors": [],
 			"changes": []
 		},
@@ -8312,7 +8312,7 @@
 			"value": "React is a JavaScript library for building user interfaces https://facebook.github.io/react/. Also see http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome",
 			"creator": "falafel",
 			"date": "2015-07-16T23:12:34.173Z",
-			"popularity": 17,
+			"popularity": 18,
 			"editors": [
 				"notchris",
 				"ljharb"
@@ -8909,7 +8909,7 @@
 			"value": "ES2015 provides semantics for import/export (currently in modern browsers). node 8.5+, however, requires the --experimental-modules flag and .mjs files. !babel simply transpiles import/export to `require`. Use node-style CJS modules for now.",
 			"creator": "ljharb",
 			"date": "2015-09-22T14:25:53.057Z",
-			"popularity": 420,
+			"popularity": 422,
 			"editors": [
 				"Sorella",
 				"Maxdamantus",
@@ -9450,7 +9450,7 @@
 			"value": "There's 3 options to properly get data from the server to the client: 1) fetch request from JS. 2) HTML data-* attributes, read them in JS. 3) <script type=\"application/json\"></script>, read and parse it from JS, however this option requires special escaping of </script> in the json body. Never generate/template JS on the fly. See also !fetch",
 			"creator": "ljharb",
 			"date": "2015-11-10T10:18:02.124Z",
-			"popularity": 89,
+			"popularity": 90,
 			"editors": [
 				"GreenJello",
 				"graingert",
@@ -9867,7 +9867,7 @@
 			"value": "MongoDB is a cross-platform document-based DB. It has many issues (in particular, the linearisation algorithm in distributed scenarios is inconsistent, and loses data), and probably isn't the right solution to your problem (see \"!no mongo\" for details).",
 			"creator": "Sorella",
 			"date": "2016-03-31T09:16:35.520Z",
-			"popularity": 35,
+			"popularity": 36,
 			"editors": [
 				"Sorella"
 			],
@@ -10300,7 +10300,7 @@
 			"value": "(a, b, s=1)=>Array.from({length: (b-a)/s+1}, (_,i)=>a+i*s)",
 			"creator": "qswz",
 			"date": "2016-08-20T18:27:28.743Z",
-			"popularity": 21,
+			"popularity": 22,
 			"editors": [
 				"qswz"
 			],
@@ -10547,7 +10547,7 @@
 			"value": "Asking about is X faster than Y? Is there an actual results based reason you are concerned about the performance of either X *OR* Y? If the answer is yes to all of these - have you generated a profile using your browsers dev tools running a simple test case? If so, you already have your result. End.",
 			"creator": "ZhinZhao",
 			"date": "2016-10-08T00:05:57.160Z",
-			"popularity": 46,
+			"popularity": 49,
 			"editors": [],
 			"changes": []
 		},
@@ -11738,7 +11738,7 @@
 			"value": "Don't use MongoDB - it has many issues, and is essentially never the right solution to your problem. Here's a list of issues: http://cryto.net/~joepie91/blog/2015/07/19/why-you-should-never-ever-ever-use-mongodb/ and a more technical article at http://www.sarahmei.com/blog/2013/11/11/why-you-should-never-use-mongodb/",
 			"creator": "samsch",
 			"date": "2017-08-13T03:29:15.090Z",
-			"popularity": 115,
+			"popularity": 117,
 			"editors": [],
 			"changes": []
 		},
@@ -11746,7 +11746,7 @@
 			"value": "Nobody here to our knowledge is a qualified lawyer. It would be extremely advisable to do your own research using the google machine, or contact free/paid legal services to answer your query. Hypothesizing endlessly, especially in a global market such as the internet is largely fruitless",
 			"creator": "MJCD",
 			"date": "2017-08-14T08:49:06.208Z",
-			"popularity": 12,
+			"popularity": 14,
 			"editors": [],
 			"changes": []
 		},
@@ -11917,7 +11917,7 @@
 			"alias": "paste",
 			"creator": "ljharb",
 			"date": "2017-09-01T20:29:31.066Z",
-			"popularity": 65,
+			"popularity": 66,
 			"editors": [],
 			"changes": []
 		},
@@ -12336,7 +12336,7 @@
 			"value": "Another satisfied customer! NEXT!!",
 			"creator": "ljharb",
 			"date": "2017-10-30T22:36:07.201Z",
-			"popularity": 220,
+			"popularity": 223,
 			"editors": [],
 			"changes": []
 		},
@@ -12477,7 +12477,7 @@
 			"value": "immediately invoked async arrow function expression, see also !async and !iife",
 			"creator": "graingert",
 			"date": "2017-12-12T05:03:18.809Z",
-			"popularity": 6,
+			"popularity": 7,
 			"editors": [
 				"graingert"
 			],
@@ -12527,7 +12527,7 @@
 			"alias": "es6 modules",
 			"creator": "",
 			"date": "2017-12-14T00:15:40.705Z",
-			"popularity": 12,
+			"popularity": 13,
 			"editors": [],
 			"changes": []
 		},
@@ -12632,7 +12632,7 @@
 			"alias": "badpastebin",
 			"creator": "graingert",
 			"date": "2018-01-04T20:36:09.993Z",
-			"popularity": 30,
+			"popularity": 31,
 			"editors": [
 				"cjohnson"
 			],
@@ -12690,7 +12690,7 @@
 			"value": "All mainstream Windows users gained access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html",
 			"creator": "graingert",
 			"date": "2018-01-05T16:08:50.100Z",
-			"popularity": 16,
+			"popularity": 17,
 			"editors": [
 				"graingert"
 			],
@@ -12817,7 +12817,7 @@
 			"alias": "server data",
 			"creator": "graingert",
 			"date": "2018-01-11T15:26:37.509Z",
-			"popularity": 20,
+			"popularity": 21,
 			"editors": [],
 			"changes": []
 		},
@@ -13359,7 +13359,7 @@
 			"alias": "iteration",
 			"creator": "",
 			"date": "2018-06-26T19:58:00.776Z",
-			"popularity": 20,
+			"popularity": 21,
 			"editors": [],
 			"changes": []
 		},
@@ -13738,7 +13738,7 @@
 			"value": "https://hastebin.com/about.md",
 			"creator": "howdoi",
 			"date": "2018-10-05T12:27:45.480Z",
-			"popularity": 8,
+			"popularity": 9,
 			"editors": [],
 			"changes": []
 		},
@@ -13762,7 +13762,7 @@
 			"value": "`var` defines a variable in the current function-level scope, and should not be used when `const` or `let` are available (see !babel, !const, and !let). Always use a keyword to declare variables, otherwise you will pollute the global scope (a keyword is required in strict mode).",
 			"creator": "graingert",
 			"date": "2018-10-18T20:28:52.525Z",
-			"popularity": 49,
+			"popularity": 51,
 			"editors": [
 				"sillyslux",
 				"graingert",
@@ -14155,7 +14155,7 @@
 			"alias": "var",
 			"creator": "graingert",
 			"date": "2018-11-23T19:25:50.015Z",
-			"popularity": 27,
+			"popularity": 29,
 			"editors": [],
 			"changes": []
 		},
@@ -14299,7 +14299,7 @@
 			"alias": "promises",
 			"creator": "MJCD",
 			"date": "2019-01-06T14:31:04.440Z",
-			"popularity": 0,
+			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
@@ -14315,6 +14315,95 @@
 			"value": "Why using jsfiddle if it's just a paste?",
 			"creator": "qswz",
 			"date": "2019-01-17T23:02:25.043Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"react tutorial": {
+			"value": "The best way to get started with React is with the React Tutorial: https://reactjs.org/tutorial/tutorial.html If you are new to JavaScript as well, you should start learning that first (some resource for learning JavaScript can be found with !eloquent and !interactive).",
+			"creator": "samsch",
+			"date": "2019-01-21T21:56:23.420Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"x": {
+			"alias": "use x",
+			"creator": "MJCD",
+			"date": "2019-01-23T14:57:37.429Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"use x": {
+			"value": "Always use \"x\" where possible; save yourself the overhead of maintaining code as much as you can.",
+			"creator": "Agamemnus",
+			"date": "2019-01-23T14:59:22.367Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"subjective": {
+			"value": "Don't expect absolute answers to subjective questions. See also; !faster !better",
+			"creator": "MJCD_",
+			"date": "2019-01-25T16:06:56.405Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"domain": {
+			"value": "A domain is a field of study that defines a set of common requirements, terminology, and functionality for any software program constructed to solve a problem in the area of computer programming, known as domain engineering. A problem domain is the area of expertise or application that needs to be examined to solve a problem. Focusing on a problem domain is simply looking at only the topics of an individual's",
+			"creator": "burzuk",
+			"date": "2019-01-25T22:08:20.628Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"ordered data": {
+			"value": "Arrays should be used for data that has an implied order. Note: JS does not have native support for sparse arrays as in many languages (ie PHP), however they can be emulated, see !snip sparse",
+			"creator": "MJCD_",
+			"date": "2019-01-25T23:08:43.281Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"object order": {
+			"value": "Objects have a reliable implied order based on insertion order. This is not part of the specification for objects however, and thus objects should generally be treated as unordered datasets ~ however there are still easy ways to idiomatically iterate objects based on this implied order. See !snip iterateObject",
+			"creator": "MJCD_",
+			"date": "2019-01-25T23:17:24.619Z",
+			"popularity": 0,
+			"editors": [
+				"MJCD_"
+			],
+			"changes": [
+				{
+					"date": "2019-01-25T23:17:42.241Z",
+					"editor": "MJCD_",
+					"old-value": "Objects have a realiable implied order based on insertion order. This is not part of the specification for objects however, and thus objects should generally be treated as unordered datasets ~ however there are still easy ways to idiomatically iterate objects based on this implied order. See !snip iterateObject",
+					"new-value": "Objects have a reliable implied order based on insertion order. This is not part of the specification for objects however, and thus objects should generally be treated as unordered datasets ~ however there are still easy ways to idiomatically iterate objects based on this implied order. See !snip iterateObject"
+				}
+			]
+		},
+		"object ordering": {
+			"alias": "object order",
+			"creator": "MJCD_",
+			"date": "2019-01-25T23:18:05.527Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"property order": {
+			"alias": "object order",
+			"creator": "MJCD_",
+			"date": "2019-01-25T23:19:01.516Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"property ordering": {
+			"alias": "object order",
+			"creator": "MJCD_",
+			"date": "2019-01-25T23:19:11.445Z",
 			"popularity": 0,
 			"editors": [],
 			"changes": []
@@ -19441,6 +19530,32 @@
 				"creator": "MJCD",
 				"date": "2019-01-05T15:45:42.479Z",
 				"popularity": 0,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2019-01-23T14:57:34.220Z",
+			"editor": "MJCD",
+			"key": "x",
+			"value": {
+				"value": "use x",
+				"creator": "MJCD",
+				"date": "2019-01-23T14:56:47.994Z",
+				"popularity": 0,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2019-01-23T14:59:01.587Z",
+			"editor": "Agamemnus",
+			"key": "use x",
+			"value": {
+				"value": "Always use \"x\" where possible, save yourself the overhead of maintaining as much code as you can",
+				"creator": "MJCD",
+				"date": "2019-01-23T14:56:43.108Z",
+				"popularity": 1,
 				"editors": [],
 				"changes": []
 			}
