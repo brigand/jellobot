@@ -128,6 +128,8 @@ client.addListener('registered', () => {
         .forEach((c) => {
           client.join(c.name);
         });
+
+      client.say('nickserv', `regain ${config.nick}`);
     }, 1000);
   }
 });
