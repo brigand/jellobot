@@ -49,7 +49,11 @@ const repastePlugin = (msg) => {
   let url = null;
   let user = null;
   const specifiedUser = words[1];
-  if (words[1]) {
+  if (/^https?:/.test(words[1])) {
+    user = null;
+    // eslint-disable-next-line
+    url = words[1];
+  } else if (words[1]) {
     ({user, url} = findLinkInLogs(msg, specifiedUser));
   } else {
     ({user, url} = findLinkInLogs(msg));
@@ -84,7 +88,11 @@ const repastePlugin = (msg) => {
         githubToken: msg.config.githubToken,
       })
       .then(({ url: resultUrl }) => {
+        if (user) {
         msg.respondWithMention(`Repasted ${user}'s paste to ${resultUrl}`);
+        } else {
+          msg.respondWithMention(`Repasted ${url} to ${resultUrl}`);
+        }
       })
       .catch((err) => {
         if (err && err.gistError) {
