@@ -18,7 +18,7 @@
 		},
 		"w3schools": {
 			"value": "w3schools has spent over a decade subverting search engines to appear at the top of search results, and while it *appears* useful for newcomers, it is in fact of very low quality. Try !eloquent, https://github.com/freeCodeCamp/freeCodeCamp, and http://w3fools.com/",
-			"popularity": 359,
+			"popularity": 360,
 			"editors": [
 				"ljharb",
 				"graingert"
@@ -50,7 +50,7 @@
 		},
 		"this": {
 			"value": "A function call of the form `a.b()` calls the function with `this` being the value of `a`; in a call of the form `f()`, `this` will be `undefined`, which is turned into the global object if the function wasn't defined in strict mode. Note that arrow functions and functions produced by `Function.prototype.bind` ignore the passed `this` value. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this",
-			"popularity": 991,
+			"popularity": 992,
 			"editors": [
 				"ImBcmDth",
 				"dwcook",
@@ -173,7 +173,7 @@
 		},
 		"paste": {
 			"value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
-			"popularity": 2287,
+			"popularity": 2295,
 			"editors": [
 				"niggler",
 				"gkatsev",
@@ -343,7 +343,7 @@
 		},
 		"code": {
 			"value": "Show some code, but don't paste it on the channel. You can provide a test case we can run and help you with your problem with http://jsfiddle.net , http://jsbin.com , or http://requirebin.com . Sites like http://gist.github.com/ and http://bpaste.net are cool too.",
-			"popularity": 831,
+			"popularity": 832,
 			"editors": [
 				"CoverSlide",
 				"ph88",
@@ -421,7 +421,7 @@
 		},
 		"xy": {
 			"value": "The XY problem: You want to do X, but don't know how. You think you can solve it using Y, but don't know how to do that either. You ask about Y, which is a strange thing to want to do. Just ask about X. See also: http://xyproblem.info/",
-			"popularity": 1117,
+			"popularity": 1121,
 			"editors": [
 				"j201",
 				"sukima",
@@ -473,7 +473,7 @@
 		},
 		"tias": {
 			"value": "Try it and see, why dontcha?",
-			"popularity": 176
+			"popularity": 177
 		},
 		"css": {
 			"value": "Use Javascript to manipulate CSS stylesheets in a page. http://www.quirksmode.org/dom/w3c_css.html | Quick A-Z reference https://emw3.com/css/ - the js css property names use  camelCase. example: \"text-align\" is \"textAlign\" in the js css api |  For other CSS problems, please try the #css channel.",
@@ -496,7 +496,7 @@
 		},
 		"ask": {
 			"value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html https://jvns.ca/blog/good-questions/",
-			"popularity": 1864,
+			"popularity": 1867,
 			"editors": [
 				"hemanth",
 				"eboy",
@@ -584,7 +584,7 @@
 		},
 		"doesn't work": {
 			"value": "What do you mean it doesn't work? Is it unemployed? What happens when you try to run it? What did you try to run? What's the output? What's the error message? What did you want or expect to happen? Can you post a screenshot or a fiddle?",
-			"popularity": 875,
+			"popularity": 876,
 			"editors": [
 				"dwcook",
 				"graingert"
@@ -786,7 +786,7 @@
 		},
 		"help": {
 			"value": "For help, ask your question. Be patient. Code samples should be pasted in a paste service (see !paste). Tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !describe and !debug).",
-			"popularity": 4129,
+			"popularity": 4130,
 			"editors": [
 				"ashnur",
 				"earendel",
@@ -831,7 +831,7 @@
 		},
 		"ops": {
 			"value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello jaawerth niggler. In case of an emergency requiring op attention, activate !emergency",
-			"popularity": 351,
+			"popularity": 353,
 			"editors": [
 				"Mortchek",
 				"dwcook",
@@ -1337,7 +1337,7 @@
 		},
 		"source": {
 			"value": "My source code is available at: https://github.com/oftn-oswg/oftn-bot/",
-			"popularity": 170,
+			"popularity": 171,
 			"editors": [
 				"eligrey"
 			],
@@ -1582,7 +1582,7 @@
 		},
 		"truthy": {
 			"value": "The 'falsy' values in JavaScript are undefined, null, 0, -0, NaN, '', and false. The 'truthy' values are all other values. All objects are truthy. There is nothing both truthy and falsy, or neither truthy nor falsy.",
-			"popularity": 285,
+			"popularity": 286,
 			"editors": [
 				"Mortchek",
 				"ljharb",
@@ -1777,7 +1777,7 @@
 		},
 		"hey": {
 			"value": "\"!ho\"",
-			"popularity": 64
+			"popularity": 65
 		},
 		"hughfdjackson": {
 			"value": "\"https://github.com/hughfdjackson\""
@@ -1834,7 +1834,7 @@
 		},
 		"inline": {
 			"value": "Inline event handlers are essentially `eval` inside HTML markup - they're bad practice and result in poorly factored, hard-to-manage code. Seriously consider attaching your events with JavaScript, instead, eg: https://developer.mozilla.org/en/DOM/element.addEventListener",
-			"popularity": 787,
+			"popularity": 790,
 			"editors": [
 				"ljharb",
 				"Akinator"
@@ -1856,7 +1856,7 @@
 		},
 		"gist": {
 			"value": "Paste code at https://gist.github.com (or a similar site) and name the file .js so that we can look over it. Thanks!",
-			"popularity": 278,
+			"popularity": 282,
 			"editors": [
 				"GreenJello"
 			],
@@ -1986,7 +1986,7 @@
 		},
 		"falsy": {
 			"alias": "truthy",
-			"popularity": 179
+			"popularity": 180
 		},
 		"new array": {
 			"value": "The array literal format - [] - is often preferred for array construction to the array constructor - new Array() or Array(), for two reasons. 1) [] is fewer characters without damaging readability, 2) new Array acts the same as [], *except* if you pass a single integer argument; in which case it makes an array whose length is equal to that argument. [] has no such functionality, and hence has no such inconsistencies.",
@@ -2051,7 +2051,7 @@
 		},
 		"nouns": {
 			"value": "In JavaScript, verbs are equally important as nouns. http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html",
-			"popularity": 242,
+			"popularity": 243,
 			"editors": [
 				"ljharb"
 			],
@@ -2110,7 +2110,7 @@
 		},
 		"hello": {
 			"value": "Welcome! We're a community of friendly, helpful people who are happy to help any time 24/7/365. Please make yourself at home and consider adding us to your autojoin :) Please make sure you read the channel status for channel commands and updates. FYI, just saying hello with no message is super rude in IRC! See also !nohello",
-			"popularity": 293,
+			"popularity": 298,
 			"editors": [
 				"PigDude",
 				"qswz",
@@ -2681,7 +2681,7 @@
 		},
 		"books": {
 			"value": "!eloquent (http://eloquentjavascript.net), !ydkjs (https://github.com/getify/You-Dont-Know-JS), JavaScript: The Definitive Guide by David Flanagan, High Performance JavaScript by Nicholas C. Zakas, Effective JavaScript by David Herman, Functional JavaScript by Michael Fogus, Programming JavaScript Applications by Eric Elliott.",
-			"popularity": 1120,
+			"popularity": 1121,
 			"creator": "gkatsev",
 			"editors": [
 				"gkatsev",
@@ -2904,7 +2904,7 @@
 		},
 		"java": {
 			"value": "Remember, Java is to JavaScript as Pain is to Painting, or Ham is to Hamster. We don't know Java, and if you're trying to apply your Java knowledge to JavaScript, it probably won't work. See also: http://ow.ly/GMctL and https://twitter.com/ryber/status/567681894662164480 - Try ##java",
-			"popularity": 335,
+			"popularity": 336,
 			"creator": "ljharb",
 			"editors": [
 				"eboy",
@@ -3254,7 +3254,7 @@
 		},
 		"bot": {
 			"value": "I'm a bot!",
-			"popularity": 83,
+			"popularity": 84,
 			"creator": "lilmonkey",
 			"editors": []
 		},
@@ -3470,7 +3470,7 @@
 		},
 		"thanks": {
 			"value": "Don't thank me, I'm just a bot! You're welcome, nevertheless.",
-			"popularity": 27,
+			"popularity": 29,
 			"creator": "eboy",
 			"editors": [
 				"eboy"
@@ -3725,7 +3725,7 @@
 		},
 		"onclick": {
 			"alias": "onfoo",
-			"popularity": 116,
+			"popularity": 117,
 			"editors": [
 				"ljharb"
 			],
@@ -3805,7 +3805,7 @@
 		},
 		"es6 shim": {
 			"value": "To get every backwards-compatible feature of ES6 in every browser and node, use https://www.npmjs.com/package/es6-shim ! It's heavily tested, comes with Promises, and using the !es5-shim as well is strongly encouraged.",
-			"popularity": 417,
+			"popularity": 418,
 			"creator": "ljharb",
 			"editors": [
 				"ljharb",
@@ -4063,7 +4063,7 @@
 		},
 		"csp": {
 			"value": "Content Security Policy (CSP) is an added layer of security to detect/mitigate certain attacks, including XSS and data injection. https://developer.mozilla.org/en-US/docs/Security/CSP",
-			"popularity": 87,
+			"popularity": 88,
 			"creator": "ljharb",
 			"editors": []
 		},
@@ -6176,7 +6176,7 @@
 			"value": "|> function range(start, end) { return Array.apply(Array, Array(end + 1 - start)).map(function (_, i) { return i + start; }); }",
 			"creator": "ljharb",
 			"date": "2014-08-17T12:05:59.180Z",
-			"popularity": 156,
+			"popularity": 158,
 			"editors": [
 				"qswz",
 				"ljharb"
@@ -6290,7 +6290,7 @@
 			"value": "Using \".onclick\", \".onchange\", or \"on\" anything is bad practice and results in poorly factored, hard-to-manage code; as well as limiting you to one event listener per event. Consider attaching your events with addEventListener, instead, eg: https://developer.mozilla.org/en/DOM/element.addEventListener",
 			"creator": "ljharb",
 			"date": "2014-10-22T00:25:55.014Z",
-			"popularity": 163,
+			"popularity": 164,
 			"editors": [
 				"Havvy"
 			],
@@ -6768,7 +6768,7 @@
 			"value": ">> var x = { toString: function () { return NaN; }, valueOf: function () { return Infinity; }}; [x.toString(), x + '', String(x)] /* note that only the third item is both a string, and the toString value */",
 			"creator": "ljharb",
 			"date": "2014-12-13T03:23:31.641Z",
-			"popularity": 56,
+			"popularity": 57,
 			"editors": [
 				"ljharb"
 			],
@@ -6938,7 +6938,7 @@
 			"value": "Don't use pastebin.com, Ads, Spamfilters, Captcha, Adds whitespace, Slow, Ugly, No comment/fork/annotate, Breaks copy/paste, Blocked for some people, etc. See !paste and !fiddle",
 			"creator": "ashnur",
 			"date": "2015-01-07T11:48:28.292Z",
-			"popularity": 146,
+			"popularity": 148,
 			"editors": [
 				"graingert"
 			],
@@ -9504,7 +9504,7 @@
 			"value": "There's 3 options to properly get data from the server to the client: 1) fetch request from JS. 2) HTML data-* attributes, read them in JS. 3) <script type=\"application/json\"></script>, read and parse it from JS, however this option requires special escaping of </script> in the json body. Never generate/template JS on the fly. See also !fetch",
 			"creator": "ljharb",
 			"date": "2015-11-10T10:18:02.124Z",
-			"popularity": 95,
+			"popularity": 97,
 			"editors": [
 				"GreenJello",
 				"graingert",
@@ -10441,7 +10441,7 @@
 			"value": "Arrow functions, new in ES2015, are not just shorter function syntax with optional implicit return. They do not bind this/super/arguments/new.target, they don't have a lexical name (for recursion), and can't be `new`ed. http://mdn.io/arrow+functions Examples: `x => x + 2`, `(x, y) => x + y`, `x => { return x * 2; }`",
 			"creator": "ljharb",
 			"date": "2016-09-15T03:58:03.374Z",
-			"popularity": 38,
+			"popularity": 39,
 			"editors": [
 				"ljharb"
 			],
@@ -10466,7 +10466,7 @@
 			"value": "We tend to support airbnb's javascript style guide - it can be found here: https://github.com/airbnb/javascript you can enforce it in eslint with https://www.npmjs.com/package/eslint-config-airbnb-base see also !eslint",
 			"creator": "XinzZz",
 			"date": "2016-09-20T18:12:53.786Z",
-			"popularity": 170,
+			"popularity": 171,
 			"editors": [
 				"ljharb",
 				"graingert"
@@ -10828,7 +10828,7 @@
 			"value": "The `eval` function has two use cases: macro expansion, and evaluating dynamically generated programs. `eval` is probably not the answer for your problem. See https://blog.racket-lang.org/2011/10/on-eval-in-dynamic-languages-generally-and-in-racket-specifically.html for details. See unsafe-eval in !csp for security aspects.",
 			"creator": "graingert",
 			"date": "2016-12-19T05:11:28.207Z",
-			"popularity": 19,
+			"popularity": 20,
 			"editors": [
 				"Sorella",
 				"graingert"
@@ -11450,7 +11450,7 @@
 			"value": "How to create a minimal, complete, and verifiable example https://stackoverflow.com/help/mcve see also !fiddle",
 			"creator": "falafel",
 			"date": "2017-07-04T22:54:53.347Z",
-			"popularity": 26,
+			"popularity": 27,
 			"editors": [
 				"graingert"
 			],
@@ -11978,7 +11978,7 @@
 			"alias": "paste",
 			"creator": "ljharb",
 			"date": "2017-09-01T20:29:31.066Z",
-			"popularity": 67,
+			"popularity": 70,
 			"editors": [],
 			"changes": []
 		},
@@ -12403,7 +12403,7 @@
 			"value": "Another satisfied customer! NEXT!!",
 			"creator": "ljharb",
 			"date": "2017-10-30T22:36:07.201Z",
-			"popularity": 239,
+			"popularity": 242,
 			"editors": [],
 			"changes": []
 		},
@@ -12443,7 +12443,7 @@
 			"value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: repl.it, runkit.com, gist.github.com. See also !mcve and !paste",
 			"creator": "graingert",
 			"date": "2017-11-29T00:23:06.807Z",
-			"popularity": 288,
+			"popularity": 292,
 			"editors": [
 				"graingert",
 				"cjohnson",
@@ -12699,7 +12699,7 @@
 			"alias": "badpastebin",
 			"creator": "graingert",
 			"date": "2018-01-04T20:36:09.993Z",
-			"popularity": 38,
+			"popularity": 40,
 			"editors": [
 				"cjohnson"
 			],
@@ -12788,7 +12788,7 @@
 			"alias": "hello",
 			"creator": "MJCD",
 			"date": "2018-01-05T22:24:59.103Z",
-			"popularity": 17,
+			"popularity": 19,
 			"editors": [],
 			"changes": []
 		},
@@ -13773,7 +13773,7 @@
 			"value": "https://hastebin.com/about.md",
 			"creator": "howdoi",
 			"date": "2018-10-05T12:27:45.480Z",
-			"popularity": 9,
+			"popularity": 13,
 			"editors": [],
 			"changes": []
 		},
@@ -14493,11 +14493,43 @@
 			"editors": [],
 			"changes": []
 		},
-		"jesus": {
-			"alias": "books",
+		"throw": {
+			"value": "Throwing an Error is ONLY for \"exception\"al difficulties. The main use case is when you need to break out of a chain of activities that you do not control. Ideally - handle the error if possible and keep going, log the error on the server and once again, keep going.",
 			"creator": "MJCD",
-			"date": "2019-02-22T18:00:05.571Z",
+			"date": "2019-02-25T22:17:15.786Z",
 			"popularity": 1,
+			"editors": [
+				"MJCD",
+				"ljharb"
+			],
+			"changes": [
+				{
+					"date": "2019-02-25T22:21:39.254Z",
+					"editor": "MJCD",
+					"old-value": "Throwing an error is ONLY for \"exception\"al difficulties with processing something. The main use case is when you need to break out of a chain of activities that you do not control. It is colloquially in JS referred to as 'throwing an error' where `error` is to be read as \"exception\" behaviour. Ideally - handle the error if possible and keep going, or at a bare minimum log the error and initiate any required actions such as (ie) sending",
+					"new-value": "!learn throw=Throwing an Error is ONLY for \"exception\"al difficulties. The main use case is when you need to break out of a chain of activities that you do not control. Ideally - handle the error if possible and keep going, log the error on the server and once again, keep going."
+				},
+				{
+					"date": "2019-02-26T02:11:59.947Z",
+					"editor": "ljharb",
+					"old-value": "!learn throw=Throwing an Error is ONLY for \"exception\"al difficulties. The main use case is when you need to break out of a chain of activities that you do not control. Ideally - handle the error if possible and keep going, log the error on the server and once again, keep going.",
+					"new-value": "Throwing an Error is ONLY for \"exception\"al difficulties. The main use case is when you need to break out of a chain of activities that you do not control. Ideally - handle the error if possible and keep going, log the error on the server and once again, keep going."
+				}
+			]
+		},
+		"throw exception": {
+			"alias": "throw",
+			"creator": "MJCD",
+			"date": "2019-02-25T22:22:20.786Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"throw error": {
+			"alias": "throw",
+			"creator": "MJCD",
+			"date": "2019-02-25T22:22:29.152Z",
+			"popularity": 0,
 			"editors": [],
 			"changes": []
 		}
@@ -19825,6 +19857,19 @@
 				"creator": "MJCD",
 				"date": "2019-02-16T11:45:08.305Z",
 				"popularity": 1,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2019-02-26T02:11:39.828Z",
+			"editor": "ljharb",
+			"key": "jesus",
+			"value": {
+				"alias": "books",
+				"creator": "MJCD",
+				"date": "2019-02-22T18:00:05.571Z",
+				"popularity": 2,
 				"editors": [],
 				"changes": []
 			}
