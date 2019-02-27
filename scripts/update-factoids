@@ -1,6 +1,9 @@
 #!/bin/bash
+out_file=src/plugins/factoids/facts.json
 
-curl -sSL --compressed http://boshi.inimino.org/ecmabot-factoids.json > src/plugins/factoids/facts.json
+curl -sSL --compressed http://boshi.inimino.org/ecmabot-factoids.json > "$out_file"
 
 printf "Total factoids: %d\n" "$(jq '.factoids | keys | length' < src/plugins/factoids/facts.json)"
+
+git commit "$out_file" -m 'updated factoids'
 
