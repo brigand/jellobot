@@ -82,7 +82,7 @@ async function run() {
 
     await ssh.exec(`cd ${dir}; ./src/plugins/js-eval/init`); // build brigand/js-eval image
   } finally {
-    await ssh.end();
+     ssh.end().catch(() => {});
   }
 }
 

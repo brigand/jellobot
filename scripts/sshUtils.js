@@ -17,7 +17,6 @@ const conns = [];
 class SshConnection {
   constructor(_opts) {
     const opts = { ..._opts };
-    this.id =
     assert.ok(opts, `opts (first arg) are required`);
     assert.ok(typeof opts.host === 'string', `opts.host must be a string`);
     if (!opts.user) opts.user = 'ubuntu';
