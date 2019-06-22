@@ -1,0 +1,10 @@
+#!/bin/bash
+# Helper script for testing the container locally
+
+dir="src/plugins/js-eval"
+echo ">>> Building container"
+docker build -t brigand/js-eval $dir -f $dir/Dockerfile
+
+# default_code='"Hello, world!"'
+# echo ">>> Testing container"
+# docker run --rm -it brigand/js-eval node /run/run.js "${1:-$default_code}"
