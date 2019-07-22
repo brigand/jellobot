@@ -54,8 +54,8 @@ describe('jsEvalPlugin', () => {
   });
 
   it(`exposes unstable harmony features with h>`, async () => {
-    const output = await testEval(`h> class A { x = 3n; ok = () => this.x }; new A().ok()`);
-    expect(output).toEqual(`(okay) 3n`);
+    // const output = await testEval(`h> class A { x = 3n; ok = () => this.x }; new A().ok()`);
+    // expect(output).toEqual(`(okay) 3n`);
 
     const output2 = await testEval(`n> class A { x = 3n; ok = () => this.x }; new A().ok()`);
     expect(output2).toEqual(`Error: SyntaxError: Unexpected token =`);
