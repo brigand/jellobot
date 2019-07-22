@@ -58,8 +58,10 @@ describe('jsEvalPlugin', () => {
     // const output = await testEval(`h> class A { x = 3n; ok = () => this.x }; new A().ok()`);
     // expect(output).toEqual(`(okay) 3n`);
 
-    const output2 = await testEval(`n> class A { x = 3n; ok = () => this.x }; new A().ok()`);
-    expect(output2).toEqual(`Error: SyntaxError: Unexpected token =`);
+    // Note: this test failed on previous node.js versions but now passes. It should be replaced
+    // with some new feature that only works with harmony flags.
+    // const output2 = await testEval(`n> class A { x = 3n; ok = () => this.x }; new A().ok()`);
+    // expect(output2).toEqual(`Error: SyntaxError: Unexpected token =`);
   });
 
   it(`can run babel with b>`, async () => {
