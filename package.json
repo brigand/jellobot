@@ -24,6 +24,7 @@
     "@babel/plugin-syntax-bigint": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@nodejs/repl": "github:nodejs/repl",
     "bluebird": "^3.5.2",
     "chalk": "^2.4.1",
     "cheerio": "^0.22.0",

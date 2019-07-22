@@ -136,4 +136,13 @@ describe('jsEvalPlugin', () => {
       }
     });
   });
+
+  it('handles top-level await', async () => {
+    await jsEval({
+      message: 'n> await `wat`',
+      respond: output => {
+        expect(output).toEqual(`(okay) 'wat'`)
+      }
+    })
+  })
 });

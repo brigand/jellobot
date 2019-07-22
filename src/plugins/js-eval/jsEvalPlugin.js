@@ -1,5 +1,6 @@
 const cp = require('child_process');
 const babel = require('@babel/core');
+const { processTopLevelAwait } = require('@nodejs/repl/src/await');
 const jsEval = require('./jsEval');
 
 const babelTransform = code => new Promise((res, rej) => babel.transform(
@@ -21,6 +22,9 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
   if (mode === '?') return respond((mentionUser ? `${mentionUser}, ` : '') + helpMsg);
   let code = message.slice(2);
   if (mode === 'b') code = await babelTransform(message.slice(2));
+
+  // top-lvel await for everyone
+  code = processTopLevelAwait(code) || code; // it returns null when no TLA is found
 
   try {
     const result = await jsEval(
