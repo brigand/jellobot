@@ -32,7 +32,7 @@ describe('jsEvalPlugin', () => {
     expect(output2).toEqual('Error: 2');
   });
 
-  it(`times out but return temporary result`, async () => { // jest doesn't pass this test correctly if we don't await jsEval
+  it(`times out but return temporary result`, async () => {
     const output = await testEval('n> setTimeout(() => console.log(2), 10000); 1', { selfConfig: { timer: 1000 } });
     // current devsnek/js-eval has no parens, there's a PR to add them + code result until then
     expect(/^Error: \(?timeout\)?/.test(output)).toBeTruthy();
@@ -54,6 +54,7 @@ describe('jsEvalPlugin', () => {
   });
 
   it(`exposes unstable harmony features with h>`, async () => {
+    // Currently failing with "Error"
     // const output = await testEval(`h> class A { x = 3n; ok = () => this.x }; new A().ok()`);
     // expect(output).toEqual(`(okay) 3n`);
 
@@ -86,11 +87,7 @@ describe('jsEvalPlugin', () => {
   });
 
   it('handles top-level await', async () => {
-    await jsEval({
-      message: 'n> await `wat`',
-      respond: output => {
-        expect(output).toEqual(`(okay) 'wat'`)
-      }
-    })
-  })
+    const output = await testEval('n> await `wat`');
+    expect(output).toEqual(`(okay) 'wat'`);
+  });
 });
