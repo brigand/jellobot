@@ -5,135 +5,83 @@ beforeAll(() => {
   cp.execSync(`${__dirname}/../../../../src/plugins/js-eval/init`);
 });
 
+async function testEval(message, opts = {}) {
+  return new Promise((resolve) => {
+    jsEval({
+      ...opts,
+      message,
+      respond: resolve
+    });
+  });
+}
+
 describe('jsEvalPlugin', () => {
   it(`works`, async () => {
-    await jsEval({
-      message: 'n> 2+2',
-      respond: output => {
-        expect(output).toEqual('(okay) 4');
-      }
-    });
+    const output = await testEval('n> 2+2');
+    expect(output).toEqual('(okay) 4');
 
-    await jsEval({
-      message: 'n> setTimeout(() => console.log(2), 1000); 1',
-      respond: output => {
-        expect(output).toEqual('(okay) 12');
-      }
-    });
+    const output2 = await testEval('n> setTimeout(() => console.log(2), 1000); 1');
+    expect(output2).toEqual('(okay) 12');
   });
 
   it(`errors when it should`, async () => {
-    await jsEval({
-      message: 'n> 2++2',
-      respond: output => {
-        expect(output).toEqual(`Error: ReferenceError: Invalid left-hand side expression in postfix operation`);
-      }
-    });
+    const output = await testEval('n> 2++2');
+    expect(output).toEqual(`Error: ReferenceError: Invalid left-hand side expression in postfix operation`);
 
-    await jsEval({
-      message: 'n> throw 2',
-      respond: output => {
-        expect(output).toEqual('Error: 2');
-      }
-    });
+    const output2 = await testEval('n> throw 2');
+    expect(output2).toEqual('Error: 2');
   });
 
   it(`times out but return temporary result`, async () => { // jest doesn't pass this test correctly if we don't await jsEval
-    await jsEval({
-      message: 'n> setTimeout(() => console.log(2), 10000); 1',
-      selfConfig: { timer: 1000 },
-      respond: output => {
-        expect(/^Error: \(?timeout\)?/.test(output)).toBeTruthy(); // current devsnek/js-eval has no parens, there's a PR to add them + code result until then
-      }
-    });
+    const output = await testEval('n> setTimeout(() => console.log(2), 10000); 1', { selfConfig: { timer: 1000 } });
+    // current devsnek/js-eval has no parens, there's a PR to add them + code result until then
+    expect(/^Error: \(?timeout\)?/.test(output)).toBeTruthy();
   });
 
   it(`exposes node core modules`, async () => {
-    await jsEval({
-      message: `n> fs.writeFileSync('foo', '..'); [fs.readdirSync('.'), child_process.execSync('ls')+'']`,
-      respond: output => {
-        expect(output).toEqual(`(okay) [ [ 'foo' ], 'foo\\n' ]`);
-      }
-    });
+    const output = await testEval(`n> fs.writeFileSync('foo', '..'); [fs.readdirSync('.'), child_process.execSync('ls')+'']`);
+    expect(output).toEqual(`(okay) [ [ 'foo' ], 'foo\\n' ]`);
   });
 
   it(`replies to user`, async () => {
-    await jsEval({
-      message: `n>'ok'`,
-      mentionUser: 'jay',
-      respond: output => {
-        expect(output).toEqual(`jay, 'ok'`);
-      }
-    });
+    const output = await testEval(`n>'ok'`, { mentionUser: 'jay' });
+    expect(output).toEqual(`jay, 'ok'`);
   });
 
   it(`replies to user`, async () => {
-    await jsEval({
-      message: `n>'ok'`,
-      mentionUser: 'jay',
-      respond: output => {
-        expect(output).toEqual(`jay, 'ok'`);
-      }
-    });
+    const output = await testEval(`n>'ok'`, { mentionUser: 'jay' });
+    expect(output).toEqual(`jay, 'ok'`);
   });
 
   it(`exposes unstable harmony features with h>`, async () => {
-    await jsEval({
-      message: `h> class A { x = 3n; ok = () => this.x }; new A().ok()`,
-      respond: output => {
-        expect(output).toEqual(`(okay) 3n`);
-      }
-    });
+    const output = await testEval(`h> class A { x = 3n; ok = () => this.x }; new A().ok()`);
+    expect(output).toEqual(`(okay) 3n`);
 
-    await jsEval({
-      message: `n> class A { x = 3n; ok = () => this.x }; new A().ok()`,
-      respond: output => {
-        expect(output).toEqual(`Error: SyntaxError: Unexpected token =`);
-      }
-    });
+    const output2 = await testEval(`n> class A { x = 3n; ok = () => this.x }; new A().ok()`);
+    expect(output2).toEqual(`Error: SyntaxError: Unexpected token =`);
   });
 
   it(`can run babel with b>`, async () => {
-    await jsEval({
-      message: `b> class A { x = 3n; ok = () => this.x }; new A().ok()`,
-      respond: output => {
-        expect(output).toEqual(`(okay) 3n`);
-      }
-    });
+    const output = await testEval(`b> class A { x = 3n; ok = () => this.x }; new A().ok()`);
+    expect(output).toEqual(`(okay) 3n`);
   });
 
   it('has date-fns', async () => {
-    await jsEval({
-      message: `n> require('date-fns').subDays(new Date(2018,10,5), 10)`,
-      respond: output => {
-        expect(output).toEqual(`(okay) 2018-10-26T00:00:00.000Z`);
-      }
-    });
+    const output = await testEval(`n> require('date-fns').subDays(new Date(2018,10,5), 10)`);
+    expect(output).toEqual(`(okay) 2018-10-26T00:00:00.000Z`);
   });
 
   it(`babel has String.prototype.matchAll`, async () => {
-    await jsEval({
-      message: `b> [...'1 2 3'.matchAll(/\\d/g)].map(o => o.index)`,
-      respond: output => {
-        expect(output).toEqual(`(okay) [ 0, 2, 4 ]`);
-      }
-    });
+    const output = await testEval(`b> [...'1 2 3'.matchAll(/\\d/g)].map(o => o.index)`);
+    expect(output).toEqual(`(okay) [ 0, 2, 4 ]`);
   });
   it(`babel has Object.fromEntries`, async () => {
-    await jsEval({
-      message: `b> typeof Object.fromEntries`,
-      respond: output => {
-        expect(output).toEqual(`(okay) 'function'`);
-      }
-    });
+    const output = await testEval(`b> typeof Object.fromEntries`);
+    expect(output).toEqual(`(okay) 'function'`);
   });
 
   it(`handles empty input`, async () => {
-    await jsEval({
-      message: `n>  `,
-      respond: output => {
-        expect(output).toEqual(`(okay) undefined`);
-      }
-    });
+    const output = await testEval(`n>  `);
+    expect(output).toEqual(`(okay) undefined`);
   });
 });
