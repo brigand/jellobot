@@ -84,4 +84,13 @@ describe('jsEvalPlugin', () => {
     const output = await testEval(`n>  `);
     expect(output).toEqual(`(okay) undefined`);
   });
+
+  it('handles top-level await', async () => {
+    await jsEval({
+      message: 'n> await `wat`',
+      respond: output => {
+        expect(output).toEqual(`(okay) 'wat'`)
+      }
+    })
+  })
 });
