@@ -1,29 +1,52 @@
 const cp = require('child_process');
 const babel = require('@babel/core');
-const { processTopLevelAwait } = require('@nodejs/repl/src/await');
 const jsEval = require('./jsEval');
-
-const babelTransform = code => new Promise((res, rej) => babel.transform(
-  code,
-  { filename: 'script.js' },
-  (err, obj) => err ? rej(err) : res(obj.code)
-));
+const processTopLevelAwait = require('./processTopLevelAwait');
 
 const helpMsg = `n> node-cjs stable, h> node-cjs harmony, b> babel (stage1+), s> [script](nodejs.org/api/vm.html#vm_class_vm_script), m> [module](nodejs.org/api/vm.html#vm_class_vm_sourcetextmodule)`;
 
 // default jseval run command
 const CMD = ['node', '--no-warnings', '/run/run.js'];
 const CMD_SHIMS = ['node', '-r', '/run/node_modules/airbnb-js-shims/target/es2019', '/run/run.js'];
-const CMD_HARMONY = ['node', '--harmony-bigint', '--harmony-class-fields', '--harmony-private-fields', '--harmony-static-fields', '--harmony-public-fields', '--harmony-do-expressions', '--harmony-await-optimization', '--experimental-vm-modules', '--experimental-modules', '--no-warnings', '/run/run.js'];
+const CMD_HARMONY = ['node', '--harmony-class-fields', '--harmony-private-methods', '--harmony-regexp-sequence', '--harmony-weak-refs', '--harmony-promise-all-settled', '--harmony-intl-bigint', '--harmony-intl-datetime-style', '--harmony-intl-segmenter', '--experimental-vm-modules', '--experimental-modules', '--no-warnings', '/run/run.js'];
 
 const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
   if (!/^[nhbsm?]>/.test(message)) return;
   const mode = message[0];
   if (mode === '?') return respond((mentionUser ? `${mentionUser}, ` : '') + helpMsg);
   let code = message.slice(2);
-  if (mode === 'b') code = await babelTransform(message.slice(2));
 
-  // top-lvel await for everyone
+  if (mode === 'b') {
+    code = (await babel.transformAsync(code, {
+      parserOpts: {
+        allowAwaitOutsideFunction: true,
+        allowReturnOutsideFunction: true,
+      },
+      plugins: [
+        '@babel/plugin-transform-typescript',
+        '@babel/plugin-proposal-class-properties',
+        ['@babel/plugin-proposal-decorators', { legacy: true }],
+        '@babel/plugin-proposal-do-expressions',
+        '@babel/plugin-proposal-export-default-from',
+        '@babel/plugin-proposal-export-namespace-from',
+        '@babel/plugin-proposal-function-sent',
+        '@babel/plugin-proposal-function-bind',
+        '@babel/plugin-proposal-json-strings',
+        '@babel/plugin-proposal-logical-assignment-operators',
+        '@babel/plugin-proposal-nullish-coalescing-operator',
+        '@babel/plugin-proposal-numeric-separator',
+        '@babel/plugin-proposal-optional-catch-binding',
+        '@babel/plugin-proposal-optional-chaining',
+        '@babel/plugin-proposal-partial-application',
+        ['@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' }],
+        '@babel/plugin-proposal-throw-expressions',
+        '@babel/plugin-syntax-dynamic-import',
+        '@babel/plugin-syntax-bigint',
+        '@babel/plugin-syntax-import-meta',
+      ]
+    })).code;
+  }
+
   code = processTopLevelAwait(code) || code; // it returns null when no TLA is found
 
   try {

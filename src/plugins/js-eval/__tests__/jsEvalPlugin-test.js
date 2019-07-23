@@ -5,6 +5,7 @@ beforeAll(() => {
   cp.execSync(`${__dirname}/../../../../src/plugins/js-eval/init`);
 });
 
+
 async function testEval(message, opts = {}) {
   return new Promise((resolve) => {
     jsEval({
@@ -14,6 +15,7 @@ async function testEval(message, opts = {}) {
     });
   });
 }
+
 
 describe('jsEvalPlugin', () => {
   it(`works`, async () => {
@@ -89,7 +91,12 @@ describe('jsEvalPlugin', () => {
   });
 
   it('handles top-level await', async () => {
-    const output = await testEval('n> await `wat`');
+    const output = await testEval('n> let x=await `wat`; x // test');
+    expect(output).toEqual(`(okay) 'wat'`);
+  });
+
+  it('handles top-level await with babel', async () => {
+    const output = await testEval('b> await `wat` // test');
     expect(output).toEqual(`(okay) 'wat'`);
   });
 });
