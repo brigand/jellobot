@@ -10,6 +10,8 @@ const inspect = (val) => {
       maxArrayLength: 20,
       breakLength: Infinity,
       colors: false,
+      compact: 10,
+      depth: 10,
     });
   } catch {
     return '';
