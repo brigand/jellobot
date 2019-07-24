@@ -24,8 +24,8 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
       },
       plugins: [
         '@babel/plugin-transform-typescript',
+        ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: false }], // must be before class-properties https://babeljs.io/docs/en/babel-plugin-proposal-decorators#note-compatibility-with-babel-plugin-proposal-class-properties
         '@babel/plugin-proposal-class-properties',
-        ['@babel/plugin-proposal-decorators', { legacy: true }],
         '@babel/plugin-proposal-do-expressions',
         '@babel/plugin-proposal-export-default-from',
         '@babel/plugin-proposal-export-namespace-from',
