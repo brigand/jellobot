@@ -14,7 +14,7 @@ function processTopLevelAwait(src) {
         }
       }
     });
-  } catch {
+  } catch (error) {
     return null; // if code is not valid, don't bother
   }
 
