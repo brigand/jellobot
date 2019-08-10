@@ -99,4 +99,14 @@ describe('jsEvalPlugin', () => {
     const output = await testEval('b> await `wat` // test');
     expect(output).toEqual(`(okay) 'wat'`);
   });
+
+  it('handles slice notation', async () => {
+    const output = await testEval('f> [1,2,3][0:2]');
+    expect(output).toEqual(`(okay) [ 1, 2 ]`);
+  });
+
+  it('handles slice notation', async () => {
+    const output = await testEval('f> Array.from(0:2:-1)');
+    expect(output).toEqual(`(okay) [ 1, 0 ]`);
+  });
 });
