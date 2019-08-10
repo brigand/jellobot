@@ -104,16 +104,20 @@ for (const [type, fn] of [...Object.entries(walk.base), ...Object.entries(base)]
   };
 }
 
-const __sliceStr = `Object.prototype.__slice = function (si = 0, ei = this.length, step = 1) {
+
+const SliceStr = `function* Slice(si, ei, step = 1) {
+  if (step < 0) for (let i = ei + step; i >= si; i += step) yield i;
+  else for (let i = si; i < ei; i += step) yield i;
+}`
+const Object__sliceStr = `Object.prototype.__slice = function (si = 0, ei = this.length, step = 1) {
   if (si < 0) si = Math.max(si + this.length, 0);
   if (ei < 0) ei = Math.max(ei + this.length, 0);
   si = Math.min(si, this.length);
   ei = Math.min(ei, this.length);
-  const a = [];
-  if (step < 0) for (let i = ei + step; i >= si; i += step) a.push(this[i]);
-  else for (let i = si; i < ei; i += step) a.push(this[i]);
+  const a = Array.from(Slice(si, ei, step), i => this[i]);
   return this instanceof String ? a.join('') : a;
 };`;
+
 
 function replaceNode(parent, node, newNode) {
   // locate node
@@ -135,23 +139,10 @@ function replaceNode(parent, node, newNode) {
 
 module.exports = function processSliceExpression(source) {
   const root = ParserWithSE.parse(source);
-  let need__slice;
+  let needObject__slice;
 
   walk.recursive(root, [], {
     SliceExpression: (node, ancestors, c) => {
-      // don't use eval outside a sandboxed env or a local env where you know what you're doing
-      let si = node.startIndex
-        ? node.startIndex.value !== undefined ? node.startIndex.value : eval(source.slice(node.startIndex.start, node.startIndex.end))
-        : undefined;
-
-      let ei = node.endIndex
-        ? node.endIndex.value !== undefined ? node.endIndex.value : eval(source.slice(node.endIndex.start, node.endIndex.end))
-        : undefined;
-
-      let step = node.step
-        ? node.step.value !== undefined ? node.step.value : eval(source.slice(node.step.start, node.step.end))
-        : undefined;
-
       // get closest MemberExpression,
       const me = ancestors.find(n => n.type === 'MemberExpression');
 
@@ -164,61 +155,18 @@ module.exports = function processSliceExpression(source) {
             object: me.object,
             property: { type: 'Identifier', name: '__slice' }
           },
-          arguments: [{ type: 'Literal', value: si }, { type: 'Literal', value: ei }, { type: 'Literal', value: step }]
+          arguments: [node.startIndex, node.endIndex, node.step]
         }
         const meParent = ancestors[ancestors.indexOf(me) + 1];
         if (!meParent) throw new Error('no parent, cannot replace node');
 
         replaceNode(meParent, me, expr);
-        need__slice = true;
+        needObject__slice = true;
       } else {
         const expr = {
           type: 'CallExpression',
-          callee: {
-            type: 'FunctionExpression',
-            expression: false,
-            generator: true,
-            params: [],
-            body: {
-              type: 'BlockStatement',
-              body: [{
-                type: 'ForStatement',
-                init: {
-                  type: 'VariableDeclaration',
-                  declarations: [{
-                    type: 'VariableDeclarator',
-                    id: { type: 'Identifier', name: 'i' },
-                    init: step < 0 ? { type: 'Literal', value: ei + step } : { type: 'Literal', value: si }
-                  }],
-                  kind: 'let'
-                },
-                test: {
-                  type: 'BinaryExpression',
-                  operator: step < 0 ? '>=' : '<',
-                  left: { type: 'Identifier', name: 'i' },
-                  right: step < 0 ? { type: 'Literal', value: si } : { type: 'Literal', value: ei },
-                },
-                update: {
-                  type: 'AssignmentExpression',
-                  operator: '+=',
-                  left: { type: 'Identifier', name: 'i' },
-                  right: { type: 'Literal', value: step },
-                },
-                body: {
-                  type: 'ExpressionStatement',
-                  expression: {
-                    type: 'YieldExpression',
-                    delegate: false,
-                    argument: {
-                      type: 'Identifier',
-                      name: 'i'
-                    },
-                  }
-                }
-              }]
-            }
-          },
-          arguments: []
+          callee: { type: 'Identifier', name: 'Slice' },
+          arguments: [node.startIndex, node.endIndex, node.step]
         };
 
         replaceNode(ancestors[1], node, expr);
@@ -227,5 +175,5 @@ module.exports = function processSliceExpression(source) {
     }
   }, base);
 
-  return (need__slice ? __sliceStr : '') + recast.print(root).code;
+  return `${SliceStr}${needObject__slice ? Object__sliceStr : ''}${recast.print(root).code}`;
 }
