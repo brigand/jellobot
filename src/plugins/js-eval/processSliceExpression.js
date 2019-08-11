@@ -143,6 +143,11 @@ module.exports = function processSliceExpression(source) {
 
   walk.recursive(root, [], {
     SliceExpression: (node, ancestors, c) => {
+      const {
+        startIndex = { type: 'Identifier', name: 'undefined' },
+        endIndex = { type: 'Identifier', name: 'undefined' },
+      } = node;
+
       // get closest MemberExpression,
       const me = ancestors.find(n => n.type === 'MemberExpression');
 
@@ -155,7 +160,7 @@ module.exports = function processSliceExpression(source) {
             object: me.object,
             property: { type: 'Identifier', name: '__slice' }
           },
-          arguments: [node.startIndex, node.endIndex, node.step]
+          arguments: [startIndex, endIndex, node.step]
         }
         const meParent = ancestors[ancestors.indexOf(me) + 1];
         if (!meParent) throw new Error('no parent, cannot replace node');
@@ -166,7 +171,7 @@ module.exports = function processSliceExpression(source) {
         const expr = {
           type: 'CallExpression',
           callee: { type: 'Identifier', name: 'Slice' },
-          arguments: [node.startIndex, node.endIndex, node.step]
+          arguments: [startIndex, endIndex, node.step]
         };
 
         replaceNode(ancestors[1], node, expr);
