@@ -3,12 +3,13 @@ const babel = require('@babel/core');
 const jsEval = require('./jsEval');
 const processTopLevelAwait = require('./processTopLevelAwait');
 
-const helpMsg = `n> node-cjs stable, h> node-cjs harmony, b> babel (stage1+), s> [script](nodejs.org/api/vm.html#vm_class_vm_script), m> [module](nodejs.org/api/vm.html#vm_class_vm_sourcetextmodule)`;
+
+const helpMsg = `n> node stable, h> node harmony, b> babel, s> node vm.Script, m> node vm.SourceTextModule`;
 
 // default jseval run command
 const CMD = ['node', '--no-warnings', '/run/run.js'];
 const CMD_SHIMS = ['node', '-r', '/run/node_modules/airbnb-js-shims/target/es2019', '/run/run.js'];
-const CMD_HARMONY = ['node', '--harmony-class-fields', '--harmony-private-methods', '--harmony-regexp-sequence', '--harmony-weak-refs', '--harmony-promise-all-settled', '--harmony-intl-bigint', '--harmony-intl-datetime-style', '--harmony-intl-segmenter', '--experimental-vm-modules', '--experimental-modules', '--no-warnings', '/run/run.js'];
+const CMD_HARMONY = ['node', '--harmony', '--experimental-vm-modules', '--experimental-modules', '--no-warnings', '/run/run.js'];
 
 const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
   if (!/^[nhbsm?]>/.test(message)) return;
@@ -24,6 +25,7 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
       },
       plugins: [
         '@babel/plugin-transform-typescript',
+        '@babel/plugin-transform-modules-commonjs', // required by dynamicImport
         ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: false }], // must be before class-properties https://babeljs.io/docs/en/babel-plugin-proposal-decorators#note-compatibility-with-babel-plugin-proposal-class-properties
         '@babel/plugin-proposal-class-properties',
         '@babel/plugin-proposal-do-expressions',
@@ -40,7 +42,7 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
         '@babel/plugin-proposal-partial-application',
         ['@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' }],
         '@babel/plugin-proposal-throw-expressions',
-        '@babel/plugin-syntax-dynamic-import',
+        '@babel/plugin-proposal-dynamic-import',
         '@babel/plugin-syntax-bigint',
         '@babel/plugin-syntax-import-meta',
       ]
