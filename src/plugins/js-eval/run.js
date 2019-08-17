@@ -1,6 +1,14 @@
+const { Realm, initializeAgent, FEATURES, inspect: inspectEngine262 } = require('engine262');
 const { Script, SourceTextModule, createContext } = require('vm');
 const util = require('util');
 const builtinModules = require('module').builtinModules.filter((a) => !/^_|\//.test(a));
+
+initializeAgent({
+  features: FEATURES.map(o => o.name),
+})
+
+const realm = new Realm();
+
 
 // copied from https://github.com/devsnek/docker-js-eval/run.js
 
@@ -72,6 +80,9 @@ const run = async (code, environment, timeout) => {
       timeout,
       displayErrors: true,
     });
+  }
+  if (environment === 'engine262') {
+    return inspectEngine262(realm.evaluateScript(code), realm);
   }
 
   throw new RangeError(`Invalid environment: ${environment}`);

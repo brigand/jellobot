@@ -1,5 +1,6 @@
 FROM node:slim
 RUN npm i --prefix /run date-fns airbnb-js-shims full-icu
+RUN curl https://engine262.js.org/engine262.js > /run/node_modules/engine262.js
 
 FROM debian:stretch-slim
 RUN useradd node && mkdir -p /home/node && chown -R node:node /home/node

@@ -3,8 +3,7 @@ const babel = require('@babel/core');
 const jsEval = require('./jsEval');
 const processTopLevelAwait = require('./processTopLevelAwait');
 
-
-const helpMsg = `n> node stable, h> node harmony, b> babel, s> node vm.Script, m> node vm.SourceTextModule`;
+const helpMsg = `n> node stable, h> node harmony, b> babel, s> node vm.Script, m> node vm.SourceTextModule, e> engine262`;
 
 // default jseval run command
 const CMD = ['node', '--no-warnings', '/run/run.js'];
@@ -12,7 +11,7 @@ const CMD_SHIMS = ['node', '-r', '/run/node_modules/airbnb-js-shims/target/es201
 const CMD_HARMONY = ['node', '--harmony', '--experimental-vm-modules', '--experimental-modules', '--no-warnings', '/run/run.js'];
 
 const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
-  if (!/^[nhbsm?]>/.test(message)) return;
+  if (!/^[nhbsme?]>/.test(message)) return;
   const mode = message[0];
   if (mode === '?') return respond((mentionUser ? `${mentionUser}, ` : '') + helpMsg);
   let code = message.slice(2);
@@ -49,12 +48,14 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
     })).code;
   }
 
-  code = processTopLevelAwait(code) || code; // it returns null when no TLA is found
+  if (mode !== 'e') { // engine262 already does it
+    code = processTopLevelAwait(code) || code; // it returns null when no TLA is found
+  }
 
   try {
     const result = await jsEval(
       code,
-      mode === 's' ? 'script' : mode === 'm' ? 'module' : 'node-cjs',
+      mode === 'e' ? 'engine262' : mode === 's' ? 'script' : mode === 'm' ? 'module' : 'node-cjs',
       selfConfig.timer || 5000,
       mode === 'b' ? CMD_SHIMS : mode === 'n' ? CMD : CMD_HARMONY
     );
