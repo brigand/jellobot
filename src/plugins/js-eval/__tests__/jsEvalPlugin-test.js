@@ -94,4 +94,9 @@ describe('jsEvalPlugin', () => {
     const output = await testEval('b> await `wat` // test');
     expect(output).toEqual(`(okay) 'wat'`);
   });
+
+  it('works with engine262', async () => {
+    const output = await testEval('e> ({foo: 1})?.foo ?? 2');
+    expect(output).toEqual(`(okay) '1'`);
+  });
 });

@@ -48,9 +48,7 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
     })).code;
   }
 
-  if (mode !== 'e') { // engine262 already does it
-    code = processTopLevelAwait(code) || code; // it returns null when no TLA is found
-  }
+  code = processTopLevelAwait(code) || code; // it returns null when no TLA is found
 
   try {
     const result = await jsEval(
