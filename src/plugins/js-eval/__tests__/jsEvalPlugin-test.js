@@ -71,11 +71,6 @@ describe('jsEvalPlugin', () => {
     expect(output).toEqual(`(okay) 3n`);
   });
 
-  it('has date-fns', async () => {
-    const output = await testEval(`n> require('date-fns').subDays(new Date(2018,10,5), 10)`);
-    expect(output).toEqual(`(okay) 2018-10-26T00:00:00.000Z`);
-  });
-
   it(`babel has String.prototype.matchAll`, async () => {
     const output = await testEval(`b> [...'1 2 3'.matchAll(/\\d/g)].map(o => o.index)`);
     expect(output).toEqual(`(okay) [ 0, 2, 4 ]`);

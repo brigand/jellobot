@@ -1,5 +1,5 @@
 FROM node:slim
-RUN npm i --prefix /run date-fns airbnb-js-shims full-icu acorn nearley
+RUN npm i --prefix /run airbnb-js-shims full-icu acorn nearley
 # acorn nearley are needed by engine262
 RUN curl https://engine262.js.org/engine262.js > /run/node_modules/engine262.js
 
