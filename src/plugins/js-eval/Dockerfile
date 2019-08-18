@@ -1,9 +1,7 @@
 FROM node:slim
 RUN npm i --prefix /run airbnb-js-shims full-icu acorn nearley
 # acorn nearley are needed by engine262
-RUN mkdir /run/vendor && curl https://engine262.js.org/engine262.js > /run/vendor/engine262.js
-# test that the file is valid
-RUN node -p 'assert(require("./run/vendor/engine262.js").Realm)'
+COPY vendor/engine262.js /run/node_modules/engine262.js
 
 FROM debian:stretch-slim
 RUN useradd node && mkdir -p /home/node && chown -R node:node /home/node

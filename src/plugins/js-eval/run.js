@@ -78,7 +78,7 @@ const run = async (code, environment, timeout) => {
   }
   if (environment === 'engine262') {
     if (!runWithEngine262) {
-      const { Realm, initializeAgent, FEATURES, inspect } = require('./vendor/engine262');
+      const { Realm, initializeAgent, FEATURES, inspect } = require('engine262');
 
       initializeAgent({
         features: FEATURES.map(o => o.name),
