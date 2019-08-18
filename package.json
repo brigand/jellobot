@@ -6,6 +6,11 @@
   "repository": "git@github.com:brigand/jellobot.git",
   "author": "Frankie Bagnardi <f.bagnardi@gmail.com>",
   "license": "MIT",
+
+  "scripts": {
+    "test": "jest",
+    "update-engine262": "dir='src/plugins/js-eval/vendor'; mkdir -p \"$dir\" && cd \"$dir\" && curl -sS https://engine262.js.org/engine262.js > engine262.js && node --check ./engine262"
+  },
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/parser": "^7.5.5",
@@ -59,9 +64,5 @@
     "jest-cli": "^23.6.0",
     "nearley": "^2.18.0",
     "ssh2": "^0.6.1"
-  },
-  "scripts": {
-    "test": "jest",
-    "update-engine262": "mkdir -p vendor && curl https://engine262.js.org/engine262.js > vendor/engine262.js && node -p 'assert(require(\"./vendor/engine262.js\").Realm)'"
   }
 }
