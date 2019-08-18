@@ -12,6 +12,7 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-proposal-do-expressions": "^7.0.0",
+    "@babel/plugin-proposal-dynamic-import": "^7.5.0",
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
     "@babel/plugin-proposal-function-bind": "^7.2.0",
@@ -26,8 +27,8 @@
     "@babel/plugin-proposal-pipeline-operator": "^7.0.0",
     "@babel/plugin-proposal-throw-expressions": "^7.2.0",
     "@babel/plugin-syntax-bigint": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/plugin-transform-typescript": "^7.5.5",
     "bluebird": "^3.5.2",
     "chalk": "^2.4.1",
@@ -44,6 +45,7 @@
     "superagent": "^3.8.3"
   },
   "devDependencies": {
+    "acorn": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -55,9 +57,11 @@
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
+    "nearley": "^2.18.0",
     "ssh2": "^0.6.1"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "update-engine262": "mkdir -p vendor && curl https://engine262.js.org/engine262.js > vendor/engine262.js && node -p 'assert(require(\"./vendor/engine262.js\").Realm)'"
   }
 }

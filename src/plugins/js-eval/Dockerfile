@@ -1,5 +1,7 @@
 FROM node:slim
-RUN npm i --prefix /run date-fns airbnb-js-shims full-icu
+RUN npm i --prefix /run airbnb-js-shims full-icu acorn nearley
+# acorn nearley are needed by engine262
+COPY vendor/engine262.js /run/node_modules/engine262.js
 
 FROM debian:stretch-slim
 RUN useradd node && mkdir -p /home/node && chown -R node:node /home/node
