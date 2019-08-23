@@ -1,19 +1,41 @@
 const babelParser = require('@babel/parser');
-const recast = require('recast');
+const babelTraverse = require('@babel/traverse').default;
+const babelGenerator = require('@babel/generator').default;
 
-const b = recast.types.builders;
+const babelParseOpts = {
+  allowAwaitOutsideFunction: true,
+  plugins: [
+    'throwExpressions',
+    'bigInt',
+    ['decorators', { decoratorsBeforeExport: true }],
+    'classProperties',
+    'classPrivateProperties',
+    'classPrivateMethods',
+    'doExpressions',
+    'dynamicImport',
+    'exportDefaultFrom',
+    'exportNamespaceFrom',
+    'functionBind',
+    'functionSent',
+    'importMeta',
+    'logicalAssignment',
+    'nullishCoalescingOperator',
+    'numericSeparator',
+    // 'objectRestSpread',
+    'optionalCatchBinding',
+    'optionalChaining',
+    'partialApplication',
+    ['pipelineOperator', { proposal: 'minimal' }],
+    'throwExpressions'
+  ]
+};
+
 
 function processTopLevelAwait(src) {
   let root;
 
   try {
-    root = recast.parse(src, {
-      parser: {
-        parse(src) {
-          return babelParser.parse(src, { allowAwaitOutsideFunction: true });
-        }
-      }
-    });
+    root = babelParser.parse(src, babelParseOpts);
   } catch (error) {
     return null; // if code is not valid, don't bother
   }
@@ -21,33 +43,30 @@ function processTopLevelAwait(src) {
   let containsAwait = false;
   let containsReturn = false;
 
-  recast.visit(root, {
-    visitNode: function (path) {
-      const node = path.value;
-
-      switch (node.type) {
+  babelTraverse(root, {
+    enter(path) {
+      switch (path.type) {
+        case 'FunctionDeclaration':
         case 'FunctionExpression':
         case 'ArrowFunctionExpression':
         case 'MethodDefinition':
+        case 'ClassMethod':
           // stop when entering a new function scope:
-          return false;
+          return path.stop();
 
         case 'ForOfStatement':
-          if (node.await === true) {
+          if (path.node.await === true) {
             containsAwait = true;
           }
-          return this.traverse(path);
+          return;
 
         case 'AwaitExpression':
           containsAwait = true;
-          return this.traverse(path);
+          return;
 
         case 'ReturnStatement':
           containsReturn = true;
-          return this.traverse(path);
-
-        default:
-          return this.traverse(path);
+          return;
       }
     }
   });
@@ -65,20 +84,26 @@ function processTopLevelAwait(src) {
   }
 
   // replace last node with a returnStatement of this node
-  root.program.body[root.program.body.length - 1] = b.returnStatement(last);
+  root.program.body[root.program.body.length - 1] = {
+    type: 'ReturnStatement',
+    argument: last
+  };
 
-  const iiafe = b.callExpression(
-    b.arrowFunctionExpression(
-      [],
-      b.blockStatement(root.program.body),
-      true
-    ),
-    []
-  );
+  const iiafe = {
+    type: 'CallExpression',
+    callee: {
+      type: 'ArrowFunctionExpression',
+      async: true,
+      params: [],
+      body: {
+        type: 'BlockStatement',
+        body: root.program.body
+      },
+    },
+    arguments: []
+  };
 
-  iiafe.callee.async = true;
-
-  return recast.print(iiafe).code;
+  return babelGenerator(iiafe).code;
 }
 
 module.exports = processTopLevelAwait;
