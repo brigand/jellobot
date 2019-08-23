@@ -1,41 +1,20 @@
 const babelParser = require('@babel/parser');
 const babelTraverse = require('@babel/traverse').default;
-const babelGenerator = require('@babel/generator').default;
+const { parserPlugins } = require('./babelPlugins');
 
-const babelParseOpts = {
-  allowAwaitOutsideFunction: true,
-  plugins: [
-    'throwExpressions',
-    'bigInt',
-    ['decorators', { decoratorsBeforeExport: true }],
-    'classProperties',
-    'classPrivateProperties',
-    'classPrivateMethods',
-    'doExpressions',
-    'dynamicImport',
-    'exportDefaultFrom',
-    'exportNamespaceFrom',
-    'functionBind',
-    'functionSent',
-    'importMeta',
-    'logicalAssignment',
-    'nullishCoalescingOperator',
-    'numericSeparator',
-    // 'objectRestSpread',
-    'optionalCatchBinding',
-    'optionalChaining',
-    'partialApplication',
-    ['pipelineOperator', { proposal: 'minimal' }],
-    'throwExpressions'
-  ]
-};
-
-
+/**
+ * 
+ * @param {string} src 
+ * @return {object} ast
+ */
 function processTopLevelAwait(src) {
   let root;
 
   try {
-    root = babelParser.parse(src, babelParseOpts);
+    root = babelParser.parse(src, {
+      allowAwaitOutsideFunction: true,
+      plugins: parserPlugins
+    });
   } catch (error) {
     return null; // if code is not valid, don't bother
   }
@@ -90,20 +69,28 @@ function processTopLevelAwait(src) {
   };
 
   const iiafe = {
-    type: 'CallExpression',
-    callee: {
-      type: 'ArrowFunctionExpression',
-      async: true,
-      params: [],
-      body: {
-        type: 'BlockStatement',
-        body: root.program.body
-      },
-    },
-    arguments: []
+    type: 'Program',
+    sourceType: 'script',
+    body: [{
+      type: 'ExpressionStatement',
+      expression: {
+        type: 'CallExpression',
+        callee: {
+          type: 'ArrowFunctionExpression',
+          async: true,
+          params: [],
+          body: {
+            type: 'BlockStatement',
+            body: root.program.body
+          },
+        },
+        arguments: []
+      }
+    }],
   };
+  // const iiafe = t.program([t.expressionStatement(t.callExpression(t.arrowFunctionExpression([], t.blockStatement(root.program.body)), []))]) // with @babel/types
 
-  return babelGenerator(iiafe).code;
+  return iiafe;
 }
 
 module.exports = processTopLevelAwait;
