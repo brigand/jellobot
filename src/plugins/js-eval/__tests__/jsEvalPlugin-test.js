@@ -28,16 +28,18 @@ describe('jsEvalPlugin', () => {
 
   it(`errors when it should`, async () => {
     const output = await testEval('n> 2++2');
-    expect(output).toEqual(`Error: ReferenceError: Invalid left-hand side expression in postfix operation`);
+    expect(output).toEqual(`(fail) ReferenceError: Invalid left-hand side expression in postfix operation`);
 
     const output2 = await testEval('n> throw 2');
-    expect(output2).toEqual('Error: 2');
+    expect(output2).toEqual('(fail) 2');
+
+    const output3 = await testEval('n> throw new TypeError(2)');
+    expect(output3).toEqual('(fail) TypeError: 2');
   });
 
   it(`times out but return temporary result`, async () => {
     const output = await testEval('n> setTimeout(() => console.log(2), 10000); 1', { selfConfig: { timer: 1000 } });
-    // current devsnek/js-eval has no parens, there's a PR to add them + code result until then
-    expect(/^Error: \(?timeout\)?/.test(output)).toBeTruthy();
+    expect(output).toEqual('(timeout) 1');
   });
 
   it(`exposes node core modules`, async () => {
