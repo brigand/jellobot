@@ -15,7 +15,7 @@ const jsEval = (code, environment = 'node-cjs', timeout = 5000, cmd = []) => new
   const timer = setTimeout(() => {
     try {
       cp.execSync(`docker kill --signal=9 ${name}`);
-      reject(new Error('(timeout) ' + data)); // send data received so far
+      reject(Object.assign(new Error(data), { reason: 'timeout' })); // send data received so far
     } catch (e) {
       reject(e);
     }
