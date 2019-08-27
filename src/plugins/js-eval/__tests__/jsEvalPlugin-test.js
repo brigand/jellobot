@@ -32,6 +32,9 @@ describe('jsEvalPlugin', () => {
 
     const output2 = await testEval('n> throw 2');
     expect(output2).toEqual('(fail) 2');
+
+    const output3 = await testEval('n> throw new TypeError(2)');
+    expect(output3).toEqual('(fail) TypeError: 2');
   });
 
   it(`times out but return temporary result`, async () => {
