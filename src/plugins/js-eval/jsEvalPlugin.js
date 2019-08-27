@@ -59,7 +59,7 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
     );
     respond((mentionUser ? `${mentionUser}, ` : '(okay) ') + result);
   } catch (e) {
-    respond((mentionUser ? `${mentionUser}, ` : '') + e); // Error message always start with Error:
+    respond((mentionUser ? `${mentionUser}, ` : '(fail) ') + e.message); // Error message always start with Error:
   }
 };
 

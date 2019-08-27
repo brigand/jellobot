@@ -6,7 +6,6 @@
   "repository": "git@github.com:brigand/jellobot.git",
   "author": "Frankie Bagnardi <f.bagnardi@gmail.com>",
   "license": "MIT",
-
   "scripts": {
     "test": "jest",
     "update-engine262": "dir='src/plugins/js-eval/vendor'; mkdir -p \"$dir\" && cd \"$dir\" && curl -sS https://engine262.js.org/engine262.js > engine262.js && node --check ./engine262"
