@@ -24,6 +24,9 @@ describe('jsEvalPlugin', () => {
 
     const output2 = await testEval('n> setTimeout(() => console.log(2), 1000); 1');
     expect(output2).toEqual('(okay) 12');
+
+    const output3 = await testEval('n> console.warn("test")');
+    expect(output3).toEqual(`(okay) test\nundefined`);
   });
 
   it(`errors when it should`, async () => {

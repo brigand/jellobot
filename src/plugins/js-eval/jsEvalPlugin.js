@@ -7,7 +7,7 @@ const helpMsg = `n> node stable, h> node harmony, b> babel, s> node vm.Script, m
 
 // default jseval run command
 const CMD = ['node', '--no-warnings', '/run/run.js'];
-const CMD_SHIMS = ['node', '-r', '/run/node_modules/airbnb-js-shims/target/es2019', '/run/run.js'];
+const CMD_SHIMS = ['node', '-r', '/run/node_modules/airbnb-js-shims/target/es2019', '--no-warnings', '/run/run.js'];
 const CMD_HARMONY = ['node', '--harmony', '--experimental-vm-modules', '--experimental-modules', '--no-warnings', '/run/run.js'];
 
 const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
