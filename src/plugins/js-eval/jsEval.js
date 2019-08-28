@@ -30,6 +30,10 @@ const jsEval = (code, environment = 'node-cjs', timeout = 5000, cmd = []) => new
     data += chunk;
   });
 
+  proc.stderr.on('data', (chunk) => {
+    data += chunk;
+  });
+
   proc.on('error', (e) => {
     clearTimeout(timer);
     reject(e);
