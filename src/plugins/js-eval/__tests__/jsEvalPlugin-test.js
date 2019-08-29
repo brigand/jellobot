@@ -90,14 +90,28 @@ describe('jsEvalPlugin', () => {
     expect(output).toEqual(`(okay) undefined`);
   });
 
-  it('handles top-level await', async () => {
-    const output = await testEval('n> let x=await `wat`; x // test');
-    expect(output).toEqual(`(okay) 'wat'`);
-  });
+  describe('top-level-await', () => {
+    it('works', async () => {
+      expect([
+        await testEval('n> var x = await Promise.resolve(2n); x'),
+        await testEval('b> var x = await Promise.resolve(2n); x'),
+        await testEval('n> var x = await Promise.resolve(2n); if (x) {}'),
+        await testEval('b> var x = await Promise.resolve(2n); if (x) {}'),
+      ]).toEqual([
+        '(okay) 2n',
+        '(okay) 2n',
+        '(okay) undefined',
+        '(okay) undefined',
+      ])
+    });
 
-  it('handles top-level await with babel', async () => {
-    const output = await testEval('b> await `wat` // test');
-    expect(output).toEqual(`(okay) 'wat'`);
+    it('works with comments', async () => {
+      const output = await testEval('n> let x=await `wat`; x // test');
+      expect(output).toEqual(`(okay) 'wat'`);
+
+      const output2 = await testEval('b> await `wat` // test');
+      expect(output2).toEqual(`(okay) 'wat'`);
+    });
   });
 
   it('works with engine262', async () => {

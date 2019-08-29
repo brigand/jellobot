@@ -58,15 +58,15 @@ function processTopLevelAwait(src) {
   }
 
   let last = root.program.body[root.program.body.length - 1];
+
+  // replace last node with a returnStatement of this node, if the last node is an expression
   if (last.type === 'ExpressionStatement') {
-    last = last.expression;
+    root.program.body[root.program.body.length - 1] = {
+      type: 'ReturnStatement',
+      argument: last.expression
+    };
   }
 
-  // replace last node with a returnStatement of this node
-  root.program.body[root.program.body.length - 1] = {
-    type: 'ReturnStatement',
-    argument: last
-  };
 
   const iiafe = {
     type: 'Program',
