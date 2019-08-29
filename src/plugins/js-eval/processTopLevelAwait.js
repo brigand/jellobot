@@ -1,18 +1,19 @@
 const babelParser = require('@babel/parser');
-const recast = require('recast');
+const babelTraverse = require('@babel/traverse').default;
+const { parserPlugins } = require('./babelPlugins');
 
-const b = recast.types.builders;
-
+/**
+ * 
+ * @param {string} src 
+ * @return {object} ast
+ */
 function processTopLevelAwait(src) {
   let root;
 
   try {
-    root = recast.parse(src, {
-      parser: {
-        parse(src) {
-          return babelParser.parse(src, { allowAwaitOutsideFunction: true });
-        }
-      }
+    root = babelParser.parse(src, {
+      allowAwaitOutsideFunction: true,
+      plugins: parserPlugins
     });
   } catch (error) {
     return null; // if code is not valid, don't bother
@@ -21,33 +22,30 @@ function processTopLevelAwait(src) {
   let containsAwait = false;
   let containsReturn = false;
 
-  recast.visit(root, {
-    visitNode: function (path) {
-      const node = path.value;
-
-      switch (node.type) {
+  babelTraverse(root, {
+    enter(path) {
+      switch (path.type) {
+        case 'FunctionDeclaration':
         case 'FunctionExpression':
         case 'ArrowFunctionExpression':
         case 'MethodDefinition':
+        case 'ClassMethod':
           // stop when entering a new function scope:
-          return false;
+          return path.stop();
 
         case 'ForOfStatement':
-          if (node.await === true) {
+          if (path.node.await === true) {
             containsAwait = true;
           }
-          return this.traverse(path);
+          return;
 
         case 'AwaitExpression':
           containsAwait = true;
-          return this.traverse(path);
+          return;
 
         case 'ReturnStatement':
           containsReturn = true;
-          return this.traverse(path);
-
-        default:
-          return this.traverse(path);
+          return;
       }
     }
   });
@@ -60,25 +58,39 @@ function processTopLevelAwait(src) {
   }
 
   let last = root.program.body[root.program.body.length - 1];
+
+  // replace last node with a returnStatement of this node, if the last node is an expression
   if (last.type === 'ExpressionStatement') {
-    last = last.expression;
+    root.program.body[root.program.body.length - 1] = {
+      type: 'ReturnStatement',
+      argument: last.expression
+    };
   }
 
-  // replace last node with a returnStatement of this node
-  root.program.body[root.program.body.length - 1] = b.returnStatement(last);
 
-  const iiafe = b.callExpression(
-    b.arrowFunctionExpression(
-      [],
-      b.blockStatement(root.program.body),
-      true
-    ),
-    []
-  );
+  const iiafe = {
+    type: 'Program',
+    sourceType: 'script',
+    body: [{
+      type: 'ExpressionStatement',
+      expression: {
+        type: 'CallExpression',
+        callee: {
+          type: 'ArrowFunctionExpression',
+          async: true,
+          params: [],
+          body: {
+            type: 'BlockStatement',
+            body: root.program.body
+          },
+        },
+        arguments: []
+      }
+    }],
+  };
+  // const iiafe = t.program([t.expressionStatement(t.callExpression(t.arrowFunctionExpression([], t.blockStatement(root.program.body)), []))]) // with @babel/types
 
-  iiafe.callee.async = true;
-
-  return recast.print(iiafe).code;
+  return iiafe;
 }
 
 module.exports = processTopLevelAwait;
