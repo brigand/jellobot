@@ -13,7 +13,7 @@ const inspect = (val) => {
       maxArrayLength: 20,
       breakLength: Infinity,
       colors: false,
-      compact: 10,
+      compact: true,
       depth: 10,
     });
   } catch {
