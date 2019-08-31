@@ -1,5 +1,6 @@
 const superagent = require('superagent');
 const prettier = require('prettier');
+const cheerio = require('cheerio')
 const pasteUrlToRaw = require('./pasteUrlToRaw');
 const {createGist, deleteGist} = require('./createGist');
 const getJsfiddle = require('./jsfiddle/getJsfiddle');
@@ -137,7 +138,16 @@ function getCode(msg, url) {
     console.log({extension, url: rawFiles[extension]});
     return superagent.get(rawFiles[extension])
     .then((res) => {
-      const {text} = res;
+      let {text} = res;
+
+      if (/text\/html/i.test(res.headers['content-type'])) {
+        const $ = cheerio.load(text);
+        const fromHtml = $('body').text();
+        if (fromHtml) {
+          text = fromHtml;
+        }
+      }
+
       msg.vlog(`Fetched ${rawFiles[extension]} with body length ${text.length}`);
       return {extension, text};
     });
