@@ -20,7 +20,7 @@ To full run the bot, you'll need node.js (10.x recommended), docker (with your u
 brew install libmagic
 ```
 
-Then to get the dependencies run either `yarn install` or `npm install` (use `yarn` if contributing).
+Then to get the dependencies run `npm install`.
 
 Then create a config file...
 
