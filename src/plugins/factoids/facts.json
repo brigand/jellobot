@@ -50,7 +50,7 @@
 		},
 		"this": {
 			"value": "A function call of the form `a.b()` calls the function with `this` being the value of `a`; in a call of the form `f()`, `this` will be `undefined`, which is turned into the global object if the function wasn't defined in strict mode. Note that arrow functions and functions produced by `Function.prototype.bind` ignore the passed `this` value. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this",
-			"popularity": 1012,
+			"popularity": 1013,
 			"editors": [
 				"ImBcmDth",
 				"dwcook",
@@ -173,7 +173,7 @@
 		},
 		"paste": {
 			"value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
-			"popularity": 2421,
+			"popularity": 2443,
 			"editors": [
 				"niggler",
 				"gkatsev",
@@ -343,7 +343,7 @@
 		},
 		"code": {
 			"value": "Show some code, but don't paste it on the channel. You can provide a test case we can run and help you with your problem with http://jsfiddle.net , http://jsbin.com , or http://requirebin.com . Sites like http://gist.github.com/ and http://bpaste.net are cool too.",
-			"popularity": 852,
+			"popularity": 854,
 			"editors": [
 				"CoverSlide",
 				"ph88",
@@ -445,7 +445,7 @@
 		},
 		"xy": {
 			"value": "The XY problem: You want to do X, but don't know how. You think you can solve it using Y, but don't know how to do that either. You ask about Y, which is a strange thing to want to do. Just ask about X. See also: http://xyproblem.info/",
-			"popularity": 1184,
+			"popularity": 1194,
 			"editors": [
 				"j201",
 				"sukima",
@@ -489,7 +489,7 @@
 		},
 		"eloquent": {
 			"value": "Eloquent JavaScript is a comprehensive introductory Web-based book with examples and a built-in interpreter. http://eloquentjavascript.net/",
-			"popularity": 1754,
+			"popularity": 1756,
 			"editors": [
 				"ericelliott",
 				"ashnur"
@@ -520,7 +520,7 @@
 		},
 		"ask": {
 			"value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html https://jvns.ca/blog/good-questions/",
-			"popularity": 1974,
+			"popularity": 1982,
 			"editors": [
 				"hemanth",
 				"eboy",
@@ -567,7 +567,7 @@
 		},
 		"let": {
 			"value": "The let statement provides a way to associate values with variables within the scope of a block, without affecting the values of like-named variables outside the block. Always prefer it to `var`, but prefer `const` when you don't change the variable binding (which should be most of the time).",
-			"popularity": 48,
+			"popularity": 49,
 			"editors": [
 				"j201",
 				"Sorella",
@@ -608,7 +608,7 @@
 		},
 		"doesn't work": {
 			"value": "What do you mean it doesn't work? Is it unemployed? What happens when you try to run it? What did you try to run? What's the output? What's the error message? What did you want or expect to happen? Can you post a screenshot or a fiddle?",
-			"popularity": 924,
+			"popularity": 934,
 			"editors": [
 				"dwcook",
 				"graingert"
@@ -810,7 +810,7 @@
 		},
 		"help": {
 			"value": "For help, ask your question. Be patient. Code samples should be pasted in a paste service (see !paste). Tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !describe and !debug).",
-			"popularity": 4171,
+			"popularity": 4175,
 			"editors": [
 				"ashnur",
 				"earendel",
@@ -855,7 +855,7 @@
 		},
 		"ops": {
 			"value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello jaawerth niggler. In case of an emergency requiring op attention, activate !emergency",
-			"popularity": 372,
+			"popularity": 374,
 			"editors": [
 				"Mortchek",
 				"dwcook",
@@ -899,7 +899,7 @@
 		},
 		"not working": {
 			"alias": "doesn't work",
-			"popularity": 40
+			"popularity": 41
 		},
 		"resources": {
 			"value": "!books, !es5, !gcu, !mdn, !owsc, !quirksmode, !caniuse, !crockford, !cheatsheet",
@@ -1122,7 +1122,7 @@
 		},
 		"sleep": {
 			"value": "JavaScript in the browser and Node.js doesn't have a sleep function -- as it's single threaded (if that makes no sense, ask). const sleep = util.promisify(setTimeout); Or const sleep = t => new Promise(r => setTimeout(r, t)); Then use await sleep(400);",
-			"popularity": 68,
+			"popularity": 70,
 			"editors": [
 				"Sorella",
 				"graingert"
@@ -1308,7 +1308,7 @@
 		},
 		"comparisons": {
 			"value": "Using == and != should be avoided, since they perform coercion giving unexpected results. Use === and !== instead. See also: http://zero.milosz.ca/ http://es5.github.io/#x11.9.3 https://eqeq.js.org/",
-			"popularity": 237,
+			"popularity": 238,
 			"editors": [
 				"jrajav",
 				"j201",
@@ -1427,7 +1427,7 @@
 		},
 		"cors": {
 			"value": "Cross-origin resource sharing (http://www.w3.org/TR/cors/) allows browser to negotiate access for cross-domain requests - for example with XMLHttpRequest - as a way to work around the same-origin policy. See also: !same, http://caniuse.com/cors , https://developer.mozilla.org/en/HTTP_access_control",
-			"popularity": 261
+			"popularity": 264
 		},
 		"point": {
 			"value": "Don't ask to ask, don't ask if someone is available. Just get to the point, and then wait a while.",
@@ -1435,7 +1435,7 @@
 		},
 		"http": {
 			"value": "Any Web developer worthy of the name must have a strong understanding of HTTP. http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol, http://www.w3.org/Protocols/rfc2616/rfc2616.html, http://www.jmarshall.com/easy/http/",
-			"popularity": 21,
+			"popularity": 22,
 			"editors": [
 				"gkatsev"
 			],
@@ -1522,7 +1522,7 @@
 		},
 		"prototype": {
 			"value": "JavaScript uses prototypal inheritance, where Objects inherit directly from other Objects (there's no !classes). This post covers the foundations of that: http://yehudakatz.com/2011/08/12/understanding-prototypes-in-javascript/",
-			"popularity": 187,
+			"popularity": 188,
 			"editors": [
 				"MJCD",
 				"ljharb"
@@ -1824,10 +1824,11 @@
 			"popularity": 66
 		},
 		"regexp": {
-			"value": "Reference: http://regular-expressions.info/ - Regular Expressions in Javascript: http://evolt.org/regexp_in_javascript/ - Useful tester: https://regex101.com/",
-			"popularity": 31,
+			"value": "Reference: http://regular-expressions.info/ - Regular Expressions in Javascript:http://evolt.org/regexp_in_javascript/ - Useful tester: https://regex101.com - Game: https://regexcrossword.com",
+			"popularity": 32,
 			"editors": [
-				"cjohnson"
+				"cjohnson",
+				"qswz"
 			],
 			"changes": [
 				{
@@ -1841,6 +1842,12 @@
 					"editor": "cjohnson",
 					"old-value": "Regular Expressions in Javascript: http://www.evolt.org/article/Regular_Expressions_in_JavaScript/17/36435/ .. or more generally: http://www.regular-expressions.info/. Useful tester: https://regex101.com/",
 					"new-value": "Reference: http://regular-expressions.info/ - Regular Expressions in Javascript: http://evolt.org/regexp_in_javascript/ - Useful tester: https://regex101.com/"
+				},
+				{
+					"date": "2019-09-04T14:52:06.491Z",
+					"editor": "qswz",
+					"old-value": "Reference: http://regular-expressions.info/ - Regular Expressions in Javascript: http://evolt.org/regexp_in_javascript/ - Useful tester: https://regex101.com/",
+					"new-value": "Reference: http://regular-expressions.info/ - Regular Expressions in Javascript:http://evolt.org/regexp_in_javascript/ - Useful tester: https://regex101.com - Game: https://regexcrossword.com"
 				}
 			]
 		},
@@ -1875,7 +1882,7 @@
 		},
 		"inline": {
 			"value": "Inline event handlers are essentially `eval` inside HTML markup - they're bad practice and result in poorly factored, hard-to-manage code. Seriously consider attaching your events with JavaScript, instead, eg: https://developer.mozilla.org/en/DOM/element.addEventListener",
-			"popularity": 813,
+			"popularity": 814,
 			"editors": [
 				"ljharb",
 				"Akinator"
@@ -1897,7 +1904,7 @@
 		},
 		"gist": {
 			"value": "Paste code at https://gist.github.com (or a similar site see !paste) and name the file .js so that we can look over it. Thanks!",
-			"popularity": 327,
+			"popularity": 333,
 			"editors": [
 				"GreenJello",
 				"graingert"
@@ -2011,7 +2018,7 @@
 		},
 		"premature optimization": {
 			"value": "Worrying about efficiency without first identifying real bottlenecks that affect the end-user leads to hard to read, hard to maintain code; and is far slower to write. Unless you can prove that it causes significant and noticeable slow-down, you've probably got bigger things to worry about.",
-			"popularity": 75,
+			"popularity": 77,
 			"editors": [
 				"j201"
 			],
@@ -2092,7 +2099,7 @@
 		},
 		"nouns": {
 			"value": "In JavaScript, verbs are equally important as nouns. http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html",
-			"popularity": 246,
+			"popularity": 247,
 			"editors": [
 				"ljharb"
 			],
@@ -2151,7 +2158,7 @@
 		},
 		"hello": {
 			"value": "Welcome! We're a community of friendly, helpful people who are happy to help any time 24/7/365. Please make yourself at home and consider adding us to your autojoin :) Please make sure you read the channel status for channel commands and updates. FYI, just saying hello with no message is super rude in IRC! See also !nohello",
-			"popularity": 322,
+			"popularity": 325,
 			"editors": [
 				"PigDude",
 				"qswz",
@@ -2624,7 +2631,7 @@
 		},
 		"ded": {
 			"alias": "dedicated",
-			"popularity": 474,
+			"popularity": 476,
 			"editors": [
 				"gkatsev"
 			],
@@ -2723,7 +2730,7 @@
 		},
 		"books": {
 			"value": "!eloquent (http://eloquentjavascript.net), !ydkjs (https://github.com/getify/You-Dont-Know-JS), JavaScript: The Definitive Guide by David Flanagan, High Performance JavaScript by Nicholas C. Zakas, Effective JavaScript by David Herman, Functional JavaScript by Michael Fogus, Programming JavaScript Applications by Eric Elliott.",
-			"popularity": 1145,
+			"popularity": 1149,
 			"creator": "gkatsev",
 			"editors": [
 				"gkatsev",
@@ -2946,7 +2953,7 @@
 		},
 		"java": {
 			"value": "Remember, Java is to JavaScript as Pain is to Painting, or Ham is to Hamster. We don't know Java, and if you're trying to apply your Java knowledge to JavaScript, it probably won't work. See also: http://ow.ly/GMctL and https://twitter.com/ryber/status/567681894662164480 - Try ##java",
-			"popularity": 348,
+			"popularity": 349,
 			"creator": "ljharb",
 			"editors": [
 				"eboy",
@@ -2994,7 +3001,7 @@
 		},
 		"promises": {
 			"value": "Promises are placeholders for values that'll be provided in the future. They allow composing asynchronous operations like synchronous ones. See http://robotlolita.me/2015/11/15/how-do-promises-work.html and https://blog.domenic.me/youre-missing-the-point-of-promises/. Contrast with !cps & see https://bevacqua.github.io/promisees/. Another guide: http://www.javascriptkit.com/javatutors/javascriptpromises.shtml",
-			"popularity": 486,
+			"popularity": 487,
 			"creator": "ljharb",
 			"editors": [
 				"ljharb",
@@ -3306,7 +3313,7 @@
 		},
 		"bot": {
 			"value": "I'm a bot!",
-			"popularity": 89,
+			"popularity": 90,
 			"creator": "lilmonkey",
 			"editors": []
 		},
@@ -3318,7 +3325,7 @@
 		},
 		"sop": {
 			"value": "The same-origin policy restricts how a document or script loaded from one origin can interact with a resource from another origin. It is a critical security mechanism for isolating potentially malicious documents. More; https://developer.mozilla.org/en-US/docs/JavaScript/Same_origin_policy_for_JavaScript",
-			"popularity": 35,
+			"popularity": 38,
 			"creator": "mistertwig",
 			"editors": [
 				"MJCD"
@@ -3434,7 +3441,7 @@
 		},
 		"doesnt work": {
 			"alias": "doesn't work",
-			"popularity": 34
+			"popularity": 35
 		},
 		"dedicated channels": {
 			"alias": "shoo"
@@ -3479,7 +3486,7 @@
 		},
 		"tldr": {
 			"value": "too many concerns. Modularize, simplify, remove the cruft. See !modularizing",
-			"popularity": 9,
+			"popularity": 10,
 			"creator": "pachet",
 			"editors": [
 				"pachet",
@@ -3792,7 +3799,7 @@
 		},
 		"iteration": {
 			"value": "ECMAScript's Array contains a number of built-in methods for iteration (e.g., map, reduce, every, some, filter, and forEach). They relieve the need for manual iteration, provide better abstraction than a `for` loop, and make it clear what your iteration is doing. See https://gist.github.com/ljharb/58faf1cfcb4e6808f74aae4ef7944cff",
-			"popularity": 601,
+			"popularity": 604,
 			"creator": "Mortchek",
 			"editors": [
 				"Mortchek",
@@ -3991,7 +3998,7 @@
 		},
 		"inheritance": {
 			"value": "JavaScript does not really have “inheritance” like classical languages. What it has is more properly called “property delegation” or “behavior delegation” http://davidwalsh.name/javascript-objects - ie `foo.bar(baz)` when `!foo.hasOwnProperty('bar')` is essentially doing `Object.getPrototypeOf(foo).bar.call(foo, baz)`",
-			"popularity": 371,
+			"popularity": 372,
 			"creator": "ljharb",
 			"editors": [
 				"Agamemnus",
@@ -4115,7 +4122,7 @@
 		},
 		"csp": {
 			"value": "Content Security Policy (CSP) is an added layer of security to detect/mitigate certain attacks, including XSS and data injection. https://developer.mozilla.org/en-US/docs/Security/CSP",
-			"popularity": 92,
+			"popularity": 93,
 			"creator": "ljharb",
 			"editors": []
 		},
@@ -4465,7 +4472,7 @@
 		},
 		"tutorial": {
 			"value": "It is HIGHLY recommended that you establish a firm grasp of the core syntax within both JavaScript, HTML, and basic CSS. Before asking any syntax error related questions you can use `!eslint` to detect any contextual errors. A critically acclaimed tutorial is available @ http://eloquentjavascript.net/",
-			"popularity": 180,
+			"popularity": 182,
 			"creator": "MJCD",
 			"editors": [
 				"graingert",
@@ -4707,7 +4714,7 @@
 		},
 		"optimisation": {
 			"value": "Don't try to optimize if you have no clue about what goes 'round the JIT. JITs are *really* smart, and they do lots of complex optimizations based off dynamic type inferencing and execution analysis over time that'll defeat your naive reasoning. See: https://www.youtube.com/watch?v=65-RbBwZQdU, https://www.youtube.com/watch?v=g0ek4vV7nEA",
-			"popularity": 116,
+			"popularity": 117,
 			"creator": "Sorella",
 			"editors": [
 				"Sorella",
@@ -4759,7 +4766,7 @@
 		},
 		"optimization": {
 			"alias": "optimisation",
-			"popularity": 54,
+			"popularity": 55,
 			"editors": [
 				"Sorella"
 			],
@@ -5769,55 +5776,6 @@
 			"editors": [],
 			"changes": []
 		},
-		"delay": {
-			"value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". Most environments provide setTimeout and ES6 has Promises which are available natively in the latest Firefox, Chrome, io.js or usable via a library such as https://github.com/petkaantonov/bluebird. Also check out caolan/async. For more info: !timeout, !promises",
-			"creator": "dwcook",
-			"date": "2014-03-26T02:21:37.430Z",
-			"popularity": 96,
-			"editors": [
-				"dwcook",
-				"Havvy",
-				"qswz"
-			],
-			"changes": [
-				{
-					"date": "2014-03-26T02:27:42.597Z",
-					"editor": "dwcook",
-					"old-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided in an environment-dependent way. For example, browser JS has setTimeout, which accepts a callback and a number of milliseconds and calls it after that amount of time. See http://jsfiddle.net/8Y5qe/ for an example. jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async h",
-					"new-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided in an environment-dependent way, such as browser JS's setTimeout. See http://jsfiddle.net/8Y5qe/ for an example. jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbac"
-				},
-				{
-					"date": "2014-03-26T02:30:07.626Z",
-					"editor": "dwcook",
-					"old-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided in an environment-dependent way, such as browser JS's setTimeout. See http://jsfiddle.net/8Y5qe/ for an example. jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbac",
-					"new-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided by the environment, such as browser JS's setTimeout. E.g., http://jsfiddle.net/8Y5qe/ jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbacks."
-				},
-				{
-					"date": "2014-03-26T02:30:46.484Z",
-					"editor": "dwcook",
-					"old-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided by the environment, such as browser JS's setTimeout. E.g., http://jsfiddle.net/8Y5qe/ jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbacks.",
-					"new-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided by the environment, such as browser JS's setTimeout. E.g., http://jsfiddle.net/8Y5qe/. jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbacks."
-				},
-				{
-					"date": "2015-05-19T18:32:11.845Z",
-					"editor": "Havvy",
-					"old-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided by the environment, such as browser JS's setTimeout. E.g., http://jsfiddle.net/8Y5qe/. jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbacks.",
-					"new-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". Most environments provide setTimeout and ES6 has Promises which are available natively in the latest Firefox, Chrome, io.js or usable via a library such as https://github.com/petkaantonov/bluebird. Also check out caolan/async. For more info: !timeout, !promises"
-				},
-				{
-					"date": "2018-08-02T01:13:31.733Z",
-					"editor": "qswz",
-					"old-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". Most environments provide setTimeout and ES6 has Promises which are available natively in the latest Firefox, Chrome, io.js or usable via a library such as https://github.com/petkaantonov/bluebird. Also check out caolan/async. For more info: !timeout, !promises",
-					"new-value": "(t, ...a) => new Promise(r => setTimeout(r, t, ...a)) or util.promisify(setTimeout)"
-				},
-				{
-					"date": "2018-08-02T01:14:43.344Z",
-					"editor": "qswz",
-					"old-value": "(t, ...a) => new Promise(r => setTimeout(r, t, ...a)) or util.promisify(setTimeout)",
-					"new-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". Most environments provide setTimeout and ES6 has Promises which are available natively in the latest Firefox, Chrome, io.js or usable via a library such as https://github.com/petkaantonov/bluebird. Also check out caolan/async. For more info: !timeout, !promises"
-				}
-			]
-		},
 		"interactives": {
 			"value": "http://www.codecombat.com, http://www.codewars.com, http://www.codecademy.com, http://www.khanacademy.org, http://alexnisnevich.github.io/untrusted/",
 			"creator": "Agamemnus",
@@ -6326,7 +6284,7 @@
 			"value": "https://nodesource.com/blog/understanding-the-nodejs-event-loop ; https://www.youtube.com/watch?v=8aGhZQkoFbQ ; https://www.youtube.com/watch?v=cCOL7MC4Pl0",
 			"creator": "ashnur",
 			"date": "2014-10-09T20:07:26.047Z",
-			"popularity": 204,
+			"popularity": 207,
 			"editors": [
 				"Havvy",
 				"devsnek",
@@ -6373,7 +6331,7 @@
 			"value": "Using \".onclick\", \".onchange\", or \"on\" anything is bad practice and results in poorly factored, hard-to-manage code; as well as limiting you to one event listener per event. Consider attaching your events with addEventListener, instead, eg: https://developer.mozilla.org/en/DOM/element.addEventListener",
 			"creator": "ljharb",
 			"date": "2014-10-22T00:25:55.014Z",
-			"popularity": 165,
+			"popularity": 166,
 			"editors": [
 				"Havvy"
 			],
@@ -7021,7 +6979,7 @@
 			"value": "Don't use pastebin.com, Ads, Spamfilters, Captcha, Adds whitespace, Slow, Ugly, No comment/fork/annotate, Breaks copy/paste, Blocked for some people, etc. See !paste and !fiddle",
 			"creator": "ashnur",
 			"date": "2015-01-07T11:48:28.292Z",
-			"popularity": 180,
+			"popularity": 184,
 			"editors": [
 				"graingert"
 			],
@@ -7388,7 +7346,7 @@
 			"alias": "iteration",
 			"creator": "ljharb",
 			"date": "2015-02-12T04:31:36.893Z",
-			"popularity": 224,
+			"popularity": 225,
 			"editors": [],
 			"changes": []
 		},
@@ -7428,7 +7386,7 @@
 			"alias": "iteration",
 			"creator": "ljharb",
 			"date": "2015-02-17T22:54:23.253Z",
-			"popularity": 102,
+			"popularity": 103,
 			"editors": [],
 			"changes": []
 		},
@@ -7675,7 +7633,7 @@
 			"value": "window.fetch - a standard way to make HTTP requests and get a Promise http://mdn.io/Using_Fetch. For older browsers (IE*) see !polyfill",
 			"creator": "ljharb",
 			"date": "2015-04-19T01:39:06.472Z",
-			"popularity": 273,
+			"popularity": 284,
 			"editors": [
 				"Havvy",
 				"qswz",
@@ -7767,7 +7725,7 @@
 			"value": "Loops fail to clearly signal the intention of your code, and as such should be avoided whenever possible (prefer higher-order functions, such as .map, .reduce, .filter, ...). See also: http://qr.ae/RNMEGA and https://gist.github.com/robotlolita/7643014",
 			"creator": "Sorella",
 			"date": "2015-04-28T16:42:32.510Z",
-			"popularity": 149,
+			"popularity": 150,
 			"editors": [
 				"Sorella"
 			],
@@ -7943,7 +7901,7 @@
 			"value": "The compiler for next generation JavaScript. Babel is a JavaScript transpiler. Use next generation JavaScript, today. https://babeljs.io/",
 			"creator": "Havvy",
 			"date": "2015-05-24T16:16:02.462Z",
-			"popularity": 97,
+			"popularity": 98,
 			"editors": [
 				"ljharb",
 				"graingert"
@@ -8303,7 +8261,7 @@
 			"value": "When asking for help, provide all of your code; often the problem might not be where you think it is. http://shadow.cat/blog/matt-s-trout/show-us-the-whole-code/",
 			"creator": "joepie91",
 			"date": "2015-06-27T07:26:12.181Z",
-			"popularity": 21,
+			"popularity": 22,
 			"editors": [],
 			"changes": []
 		},
@@ -8351,7 +8309,7 @@
 			"value": "Do not use switch statements in JavaScript - use if/else chains, or a simple object/Map lookup. `switch` is more verbose, can suffer from unintentional case fallthrough and cause bugs. See: https://ericleads.wordpress.com/2012/12/11/switch-case-considered-harmful/",
 			"creator": "ljharb",
 			"date": "2015-07-01T23:14:16.321Z",
-			"popularity": 22,
+			"popularity": 23,
 			"editors": [
 				"jaawerth",
 				"systemfault"
@@ -8600,7 +8558,7 @@
 			"value": "You probably don't actually need MVC. http://aredridel.dinhe.net/2015/01/30/why-mvc-does-not-fit-the-web/",
 			"creator": "joepie91",
 			"date": "2015-08-05T07:53:11.876Z",
-			"popularity": 26,
+			"popularity": 27,
 			"editors": [],
 			"changes": []
 		},
@@ -8658,7 +8616,7 @@
 			"value": "#angularjs - ##bootstrap - #browserify - #coffeescript - #css - #d3.js - #dojo - #emberjs  - #express - #grunt - #gulpjs - #jquery - #knockoutjs - #node.js - #reactjs (also tools used in react.js projects) - #requirejs - #socket.io - #three.js - #webgl - ##typescript",
 			"creator": "Sorella",
 			"date": "2015-08-08T16:04:54.273Z",
-			"popularity": 229,
+			"popularity": 231,
 			"editors": [
 				"j201",
 				"deltab",
@@ -9034,7 +8992,7 @@
 			"value": "Don't try to do encryption or cryptography in browser JavaScript. https://web.archive.org/web/20150512024954/http://matasano.com/articles/javascript-cryptography/",
 			"creator": "ljharb",
 			"date": "2015-09-19T06:52:08.583Z",
-			"popularity": 47,
+			"popularity": 48,
 			"editors": [
 				"ljharb"
 			],
@@ -9229,7 +9187,7 @@
 			"value": "Getters and Setters are incompatible with the reflective semantics of JS. Using them will result in code that interacts in awkward (and error-prone!) ways with idiomatic JS libraries. They're also usually harder to optimise and reason about. Since JS isn't a message-passing language, using plain properties is usually a better idea.",
 			"creator": "Sorella",
 			"date": "2015-09-28T19:30:58.152Z",
-			"popularity": 29,
+			"popularity": 30,
 			"editors": [],
 			"changes": []
 		},
@@ -9245,7 +9203,7 @@
 			"alias": "getters/setters",
 			"creator": "Sorella",
 			"date": "2015-09-28T19:31:21.222Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -9345,7 +9303,7 @@
 			"value": "nvm ( http://nvm.sh / #nvm ) lets you change node versions per-user/per-shell. nave ( https://www.npmjs.com/package/nave ) is for per-user/per-SUBshell. n ( https://www.npmjs.com/package/n ) is for a single, global, system-wide node.",
 			"creator": "ljharb",
 			"date": "2015-10-13T22:25:25.927Z",
-			"popularity": 132,
+			"popularity": 133,
 			"editors": [
 				"ljharb"
 			],
@@ -9600,7 +9558,7 @@
 			"value": "There's 3 options to properly get data from the server to the client: 1) fetch request from JS. 2) HTML data-* attributes, read them in JS. 3) <script type=\"application/json\"></script>, read and parse it from JS, however this option requires special escaping of </script> in the json body. Never generate/template JS on the fly. See also !fetch",
 			"creator": "ljharb",
 			"date": "2015-11-10T10:18:02.124Z",
-			"popularity": 100,
+			"popularity": 101,
 			"editors": [
 				"GreenJello",
 				"graingert",
@@ -9829,7 +9787,7 @@
 			"value": "When transpiling or on node 6+, always use `const`. If you can't avoid reassigning the variable (try!), use `let`. Never use `var` unless you are relying on !hoisting (which you shouldn't be).",
 			"creator": "ljharb",
 			"date": "2016-02-05T00:30:21.978Z",
-			"popularity": 83,
+			"popularity": 84,
 			"editors": [
 				"ljharb",
 				"Agamemnus"
@@ -10017,7 +9975,7 @@
 			"value": "MongoDB is a cross-platform document-based DB. It has many issues (in particular, the linearisation algorithm in distributed scenarios is inconsistent, and loses data), and probably isn't the right solution to your problem (see \"!no mongo\" for details).",
 			"creator": "Sorella",
 			"date": "2016-03-31T09:16:35.520Z",
-			"popularity": 37,
+			"popularity": 38,
 			"editors": [
 				"Sorella"
 			],
@@ -10107,7 +10065,7 @@
 			"value": "Don't use JWT for sessions. http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions -- JWT was never meant to be used for sessions, and its popularity happened purely because of marketing: https://youtu.be/GrLtOjCTB1s?t=1h2m44s  |  Instead, use session cookies: https://gist.github.com/joepie91/cf5fd6481a31477b12dc33af453f9a1d",
 			"creator": "joepie91",
 			"date": "2016-06-13T23:14:15.106Z",
-			"popularity": 194,
+			"popularity": 197,
 			"editors": [
 				"joepie91"
 			],
@@ -10146,7 +10104,7 @@
 			"alias": "crypto",
 			"creator": "ljharb",
 			"date": "2016-06-28T14:05:06.809Z",
-			"popularity": 24,
+			"popularity": 25,
 			"editors": [],
 			"changes": []
 		},
@@ -10340,7 +10298,7 @@
 			"value": "TypeScript is a typed quasi-superset of JavaScript that compiles to plain JavaScript. http://www.typescriptlang.org/. Questions are best raised in ##typescript",
 			"creator": "ljharb",
 			"date": "2016-08-03T04:33:19.914Z",
-			"popularity": 14,
+			"popularity": 15,
 			"editors": [
 				"ljharb",
 				"graingert"
@@ -10440,7 +10398,7 @@
 			"value": "node-red (http://nodered.org/) is a visual programming system primarily intended for the 'internet of things'..",
 			"creator": "Xin",
 			"date": "2016-08-17T05:27:38.596Z",
-			"popularity": 28,
+			"popularity": 29,
 			"editors": [],
 			"changes": []
 		},
@@ -10495,7 +10453,7 @@
 			"value": "Don't use it. Use some sane pastebin like bpaste.net gist.github.com, sprunge.us ix.io . Also see !badpastebin",
 			"creator": "Havvy",
 			"date": "2016-08-29T08:57:51.224Z",
-			"popularity": 37,
+			"popularity": 38,
 			"editors": [
 				"qswz",
 				"ljharb"
@@ -10543,7 +10501,7 @@
 			"value": "Arrow functions, new in ES2015, are not just shorter function syntax with optional implicit return. They do not bind this/super/arguments/new.target, they don't have a lexical name (for recursion), and can't be `new`ed. http://mdn.io/arrow+functions Examples: `x => x + 2`, `(x, y) => x + y`, `x => { return x * 2; }`",
 			"creator": "ljharb",
 			"date": "2016-09-15T03:58:03.374Z",
-			"popularity": 39,
+			"popularity": 41,
 			"editors": [
 				"ljharb"
 			],
@@ -10568,7 +10526,7 @@
 			"value": "We tend to support airbnb's javascript style guide - it can be found here: https://github.com/airbnb/javascript you can enforce it in eslint with `npx install-peerdeps --dev eslint-config-airbnb-base && echo '{\"extends\": \"airbnb-base\"}' > .eslintrc` see also !eslint",
 			"creator": "XinzZz",
 			"date": "2016-09-20T18:12:53.786Z",
-			"popularity": 208,
+			"popularity": 210,
 			"editors": [
 				"ljharb",
 				"graingert"
@@ -10651,7 +10609,7 @@
 			"alias": "jwt sessions",
 			"creator": "gkatsev",
 			"date": "2016-09-28T01:19:09.907Z",
-			"popularity": 141,
+			"popularity": 142,
 			"editors": [],
 			"changes": []
 		},
@@ -10692,7 +10650,7 @@
 			"value": "Asking if X is better than Y? You are the best person to determine this for your exact needs. Ideally, read up on the features and drawbacks of X *AND* Y (google, mdn, stackoverflow, etc) and then if you have any specific points you would like explained - ask about that instead.",
 			"creator": "ZhinZhao",
 			"date": "2016-10-07T23:36:21.318Z",
-			"popularity": 27,
+			"popularity": 28,
 			"editors": [
 				"ZhinZhao"
 			],
@@ -11340,7 +11298,7 @@
 			"value": "ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code linting is a type of static analysis that is used to find problematic patterns or code that doesnt adhere to certain style guidelines. There are code linters for most programming languages, and compilers sometimes incorporate linting into the compilation process. http://eslint.org/docs/user-guide/getting-started",
 			"creator": "graingert",
 			"date": "2017-06-06T20:04:36.794Z",
-			"popularity": 66,
+			"popularity": 67,
 			"editors": [
 				"graingert",
 				"cjohnson",
@@ -11534,7 +11492,7 @@
 			"value": "The event that fires as soon as the DOM has loaded and is ready. This is not the same as the load event which waits for all assets to load as well. <https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded#Example>",
 			"creator": "cjohnson",
 			"date": "2017-06-23T21:21:39.413Z",
-			"popularity": 5,
+			"popularity": 6,
 			"editors": [],
 			"changes": []
 		},
@@ -11558,7 +11516,7 @@
 			"value": "How to create a minimal, complete, and verifiable example https://stackoverflow.com/help/mcve see also !fiddle",
 			"creator": "falafel",
 			"date": "2017-07-04T22:54:53.347Z",
-			"popularity": 48,
+			"popularity": 51,
 			"editors": [
 				"graingert"
 			],
@@ -11723,7 +11681,7 @@
 			"value": "Information about the order and meaning of particular load lifecycle events - see; https://javascript.info/onload-ondomcontentloaded",
 			"creator": "MJCD2",
 			"date": "2017-08-03T21:47:31.506Z",
-			"popularity": 18,
+			"popularity": 20,
 			"editors": [],
 			"changes": []
 		},
@@ -11883,7 +11841,7 @@
 			"value": "Don't use MongoDB - it has many issues, and is essentially never the right solution to your problem. Here's a list of issues: http://cryto.net/~joepie91/blog/2015/07/19/why-you-should-never-ever-ever-use-mongodb/ and a more technical article at http://www.sarahmei.com/blog/2013/11/11/why-you-should-never-use-mongodb/",
 			"creator": "samsch",
 			"date": "2017-08-13T03:29:15.090Z",
-			"popularity": 145,
+			"popularity": 146,
 			"editors": [],
 			"changes": []
 		},
@@ -11907,7 +11865,7 @@
 			"value": "The web is all about accessible content. Make your content truly accessible by enabling cors for all http requests on your api. https://enable-cors.org/   See !cors as well.",
 			"creator": "MJCD",
 			"date": "2017-08-14T11:35:01.909Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [
 				"ljharb"
 			],
@@ -11996,7 +11954,7 @@
 			"value": "An up and coming moment alternative and all purpose library for dealing with time and date. (See also !moment) More @ https://github.com/date-fns/date-fns",
 			"creator": "graingert",
 			"date": "2017-08-19T00:11:11.770Z",
-			"popularity": 26,
+			"popularity": 27,
 			"editors": [
 				"MJCD"
 			],
@@ -12021,7 +11979,7 @@
 			"alias": "sop",
 			"creator": "MJCD",
 			"date": "2017-08-20T07:13:10.539Z",
-			"popularity": 3,
+			"popularity": 5,
 			"editors": [],
 			"changes": []
 		},
@@ -12029,7 +11987,7 @@
 			"value": "Before node-style CommonJS became the defacto module standard, UMD rose as a way to be a \"universal\" pattern to support both CJS and AMD (as well as legacy browser global patterns). UMD is no longer particularly useful. http://davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/",
 			"creator": "MJCD",
 			"date": "2017-08-31T13:10:28.991Z",
-			"popularity": 4,
+			"popularity": 5,
 			"editors": [
 				"ljharb"
 			],
@@ -12218,7 +12176,7 @@
 			"value": "Crockford on JavaScript: https://www.youtube.com/playlist?list=PL7664379246A246CB – 1st lecture is about learning from history, so some people prefer to skip that.",
 			"creator": "Sven_vB",
 			"date": "2017-09-11T01:47:13.051Z",
-			"popularity": 22,
+			"popularity": 23,
 			"editors": [
 				"Sven_vB"
 			],
@@ -12368,12 +12326,21 @@
 			"changes": []
 		},
 		"destructuring": {
-			"value": "The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.  More: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment",
+			"value": "The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. An example; `{a, b, c} = require('thing')`; More @  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment",
 			"creator": "MJCD",
 			"date": "2017-10-09T12:11:39.865Z",
 			"popularity": 17,
-			"editors": [],
-			"changes": []
+			"editors": [
+				"MJCD"
+			],
+			"changes": [
+				{
+					"date": "2019-08-23T20:21:18.968Z",
+					"editor": "MJCD",
+					"old-value": "The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.  More: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment",
+					"new-value": "The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. An example; `{a, b, c} = require('thing')`; More @  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"
+				}
+			]
 		},
 		"spread": {
 			"value": "Spread syntax allows an iterable such as an array expression to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected. More; https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator",
@@ -12435,7 +12402,7 @@
 			"value": "A regular expression, regex or regexp is a sequence of characters that define a search pattern ( More @ More; https://en.wikipedia.org/wiki/Regular_expression ). You can toy with them and learn the syntax @ https://regex101.com",
 			"creator": "MJCD",
 			"date": "2017-10-29T17:40:48.830Z",
-			"popularity": 6,
+			"popularity": 7,
 			"editors": [
 				"MJCD"
 			],
@@ -12458,7 +12425,7 @@
 			"value": "Another satisfied customer! NEXT!!",
 			"creator": "ljharb",
 			"date": "2017-10-30T22:36:07.201Z",
-			"popularity": 309,
+			"popularity": 314,
 			"editors": [],
 			"changes": []
 		},
@@ -12490,7 +12457,7 @@
 			"alias": "iteration",
 			"creator": "ljharb",
 			"date": "2017-11-21T21:07:56.326Z",
-			"popularity": 10,
+			"popularity": 11,
 			"editors": [],
 			"changes": []
 		},
@@ -12498,7 +12465,7 @@
 			"value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: repl.it, runkit.com, gist.github.com. See also !mcve and !paste",
 			"creator": "graingert",
 			"date": "2017-11-29T00:23:06.807Z",
-			"popularity": 343,
+			"popularity": 349,
 			"editors": [
 				"graingert",
 				"cjohnson",
@@ -12665,7 +12632,7 @@
 			"value": "don't use <script> without src=. See also !csp",
 			"creator": "graingert",
 			"date": "2017-12-20T20:37:36.166Z",
-			"popularity": 40,
+			"popularity": 41,
 			"editors": [],
 			"changes": []
 		},
@@ -12754,7 +12721,7 @@
 			"alias": "badpastebin",
 			"creator": "graingert",
 			"date": "2018-01-04T20:36:09.993Z",
-			"popularity": 53,
+			"popularity": 54,
 			"editors": [
 				"cjohnson"
 			],
@@ -12800,29 +12767,6 @@
 			"editors": [],
 			"changes": []
 		},
-		"ie11": {
-			"value": "All mainstream Windows users gained access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html",
-			"creator": "graingert",
-			"date": "2018-01-05T16:08:50.100Z",
-			"popularity": 23,
-			"editors": [
-				"graingert"
-			],
-			"changes": [
-				{
-					"date": "2018-01-05T16:24:00.422Z",
-					"editor": "graingert",
-					"old-value": "support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html",
-					"new-value": "All mainstream Windows users will have access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html"
-				},
-				{
-					"date": "2018-01-09T05:06:06.739Z",
-					"editor": "graingert",
-					"old-value": "All mainstream Windows users will have access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html",
-					"new-value": "All mainstream Windows users gained access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html"
-				}
-			]
-		},
 		"tdz": {
 			"value": "The variables are created when their containing Lexical Environment is instantiated [...] but may not be accessed in any way until the variable’s LexicalBinding is evaluated.",
 			"creator": "graingert",
@@ -12835,7 +12779,7 @@
 			"value": "Do you have a question? also see http://nohello.com",
 			"creator": "progysm",
 			"date": "2018-01-05T21:59:59.438Z",
-			"popularity": 53,
+			"popularity": 54,
 			"editors": [],
 			"changes": []
 		},
@@ -13052,7 +12996,7 @@
 			"value": "Please try to keep conversation limited to web technologies and more specifically, JavaScript topics. For social talk please join #web-social",
 			"creator": "graingert",
 			"date": "2018-02-21T18:40:36.910Z",
-			"popularity": 50,
+			"popularity": 54,
 			"editors": [
 				"MJCD"
 			],
@@ -13328,7 +13272,7 @@
 			"value": "Show some code, but don't paste it to the channel. Use sites like gist.github.com or dpaste.com. Ideally it should be executable, see !paste",
 			"creator": "systemfault",
 			"date": "2018-04-28T01:17:51.504Z",
-			"popularity": 35,
+			"popularity": 37,
 			"editors": [],
 			"changes": []
 		},
@@ -13575,23 +13519,6 @@
 			"editors": [],
 			"changes": []
 		},
-		"polyfill.io": {
-			"value": "<script nomodule src=\"//cdn.polyfill.io/v2/polyfill.min.js?features=default,URL,fetch\"></script>",
-			"creator": "qswz",
-			"date": "2018-08-10T23:58:39.984Z",
-			"popularity": 22,
-			"editors": [
-				"qswz"
-			],
-			"changes": [
-				{
-					"date": "2018-11-05T17:53:49.248Z",
-					"editor": "qswz",
-					"old-value": "<script nomodule src=\"//polyfill.io\"></script>",
-					"new-value": "<script nomodule src=\"//cdn.polyfill.io/v2/polyfill.min.js?features=default,URL,fetch\"></script>"
-				}
-			]
-		},
 		"roadmap": {
 			"value": "How do you get to your goal of being a web developer? https://github.com/kamranahmedse/developer-roadmap",
 			"creator": "GreenJello",
@@ -13743,12 +13670,13 @@
 			"changes": []
 		},
 		"axios": {
-			"value": "Promise based HTTP client for the browser and node.js that offers a far more useful level of abstraction compared to the Fetch API – https://www.npmjs.com/package/axios",
+			"value": "Promise based HTTP client for the browser and node.js that offers a level of abstraction compared to the XMLHttpRequest or node 'http', 'https' or 'http2' APIs – https://www.npmjs.com/package/axios https://danlevy.net/you-may-not-need-axios/ see also !fetch",
 			"creator": "qswz",
 			"date": "2018-09-13T01:21:44.667Z",
-			"popularity": 13,
+			"popularity": 15,
 			"editors": [
-				"DeltaHeavy"
+				"DeltaHeavy",
+				"graingert"
 			],
 			"changes": [
 				{
@@ -13756,6 +13684,30 @@
 					"editor": "DeltaHeavy",
 					"old-value": "Do you know about fetch?",
 					"new-value": "Promise based HTTP client for the browser and node.js that offers a far more useful level of abstraction compared to the Fetch API – https://www.npmjs.com/package/axios"
+				},
+				{
+					"date": "2019-08-19T22:22:11.191Z",
+					"editor": "graingert",
+					"old-value": "Promise based HTTP client for the browser and node.js that offers a far more useful level of abstraction compared to the Fetch API – https://www.npmjs.com/package/axios",
+					"new-value": "Promise based HTTP client for the browser and node.js that offers a far more useful level of abstraction compared to the XMLHttpRequest API – https://www.npmjs.com/package/axios See also !fetch"
+				},
+				{
+					"date": "2019-08-19T22:23:55.565Z",
+					"editor": "graingert",
+					"old-value": "Promise based HTTP client for the browser and node.js that offers a far more useful level of abstraction compared to the XMLHttpRequest API – https://www.npmjs.com/package/axios See also !fetch",
+					"new-value": "Promise based HTTP client for the browser and node.js that offers a far more useful level of abstraction compared to the XMLHttpRequest or node 'http', 'https' or 'http2' APIs – https://www.npmjs.com/package/axios See also !fetch"
+				},
+				{
+					"date": "2019-08-19T22:24:52.950Z",
+					"editor": "graingert",
+					"old-value": "Promise based HTTP client for the browser and node.js that offers a far more useful level of abstraction compared to the XMLHttpRequest or node 'http', 'https' or 'http2' APIs – https://www.npmjs.com/package/axios See also !fetch",
+					"new-value": "Promise based HTTP client for the browser and node.js that offers a level of abstraction compared to the XMLHttpRequest or node 'http', 'https' or 'http2' APIs – https://www.npmjs.com/package/axios See also !fetch"
+				},
+				{
+					"date": "2019-08-19T22:28:19.078Z",
+					"editor": "graingert",
+					"old-value": "Promise based HTTP client for the browser and node.js that offers a level of abstraction compared to the XMLHttpRequest or node 'http', 'https' or 'http2' APIs – https://www.npmjs.com/package/axios See also !fetch",
+					"new-value": "Promise based HTTP client for the browser and node.js that offers a level of abstraction compared to the XMLHttpRequest or node 'http', 'https' or 'http2' APIs – https://www.npmjs.com/package/axios https://danlevy.net/you-may-not-need-axios/ see also !fetch"
 				}
 			]
 		},
@@ -13829,7 +13781,7 @@
 			"value": "https://hastebin.com/about.md",
 			"creator": "howdoi",
 			"date": "2018-10-05T12:27:45.480Z",
-			"popularity": 20,
+			"popularity": 23,
 			"editors": [],
 			"changes": []
 		},
@@ -13853,7 +13805,7 @@
 			"value": "`var` defines a variable in the current function-level scope, and should not be used when `const` or `let` are available (see !babel, !const, and !let). Always use a keyword to declare variables, otherwise you will pollute the global scope (a keyword is required in strict mode).",
 			"creator": "graingert",
 			"date": "2018-10-18T20:28:52.525Z",
-			"popularity": 106,
+			"popularity": 108,
 			"editors": [
 				"sillyslux",
 				"graingert",
@@ -14042,7 +13994,7 @@
 			"alias": "fiddle",
 			"creator": "MJCD",
 			"date": "2018-10-20T00:54:01.823Z",
-			"popularity": 14,
+			"popularity": 15,
 			"editors": [],
 			"changes": []
 		},
@@ -14246,7 +14198,7 @@
 			"alias": "var",
 			"creator": "graingert",
 			"date": "2018-11-23T19:25:50.015Z",
-			"popularity": 75,
+			"popularity": 77,
 			"editors": [],
 			"changes": []
 		},
@@ -14944,7 +14896,7 @@
 			"value": "(a,b) => b === 0 ? a : gcd(b, a%b)",
 			"creator": "qswz",
 			"date": "2019-07-21T01:35:05.216Z",
-			"popularity": 1,
+			"popularity": 2,
 			"editors": [],
 			"changes": []
 		},
@@ -14952,7 +14904,7 @@
 			"alias": "premature optimization",
 			"creator": "ljharb",
 			"date": "2019-07-30T02:27:11.755Z",
-			"popularity": 0,
+			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
@@ -14972,19 +14924,89 @@
 			"editors": [],
 			"changes": []
 		},
-		"ping everyone cool": {
-			"value": "`slikts boo(censored) cjohnson CoJaBo darkseid dka DnzAtWrk Donitzo dysfigured gde33 gk4tsev(censored) GreenJello grr12314 howdoi inimino joeytwiddle Kirjava knod 1jharb(censored) MACscr NoiseEee notchris SJr systemfault tcsc thykka zsocw",
-			"creator": "MJCD",
-			"date": "2019-08-02T14:34:39.723Z",
-			"popularity": 0,
-			"editors": [],
-			"changes": []
-		},
 		"fpjargon": {
 			"value": "Jargon from the functional programming world in simple terms! http://git.io/fp-jargons",
 			"creator": "howdoi",
 			"date": "2019-08-04T15:59:13.312Z",
 			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"delay": {
+			"alias": "sleep",
+			"creator": "qswz",
+			"date": "2019-08-21T16:25:37.250Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"ie11": {
+			"value": "All mainstream Windows users gained access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html",
+			"creator": "graingert",
+			"date": "2019-08-23T02:12:03.481Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"array-replace-pure": {
+			"value": "arr.map((ai, i) => i===index ? a : ai) or [...arr.slice(0,i), a, ...arr.slice(i+1)] or [...arr[0:i], a, ...arr[i+1:]] (with slice-notation proposal stage1)",
+			"creator": "qswz",
+			"date": "2019-08-23T19:27:13.434Z",
+			"popularity": 0,
+			"editors": [
+				"qswz"
+			],
+			"changes": [
+				{
+					"date": "2019-08-23T19:27:55.774Z",
+					"editor": "qswz",
+					"old-value": "arr.map((ai, i) => i===index ? newAi : ai)",
+					"new-value": "arr.map((ai, i) => i===index ? newAi : ai) or [...arr.slice(0,i), a, ...arr.slice(i+1)]"
+				},
+				{
+					"date": "2019-08-23T19:28:30.876Z",
+					"editor": "qswz",
+					"old-value": "arr.map((ai, i) => i===index ? newAi : ai) or [...arr.slice(0,i), a, ...arr.slice(i+1)]",
+					"new-value": "arr.map((ai, i) => i===index ? a : ai) or [...arr.slice(0,i), a, ...arr.slice(i+1)]"
+				},
+				{
+					"date": "2019-08-23T19:29:20.306Z",
+					"editor": "qswz",
+					"old-value": "arr.map((ai, i) => i===index ? a : ai) or [...arr.slice(0,i), a, ...arr.slice(i+1)]",
+					"new-value": "arr.map((ai, i) => i===index ? a : ai) or [...arr.slice(0,i), a, ...arr.slice(i+1)] or [...arr[0:i], a, ...arr[i+1:]] (with slice-notation proposal stage1)"
+				}
+			]
+		},
+		"destructuring assignment": {
+			"alias": "destructuring",
+			"creator": "MJCD",
+			"date": "2019-08-23T20:21:37.459Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"polyfill.io": {
+			"value": "<script nomodule src=\"https://polyfill.io/v3/polyfill.js?flags=always&features=default,fetch\"></script>",
+			"creator": "qswz",
+			"date": "2019-09-03T00:27:55.447Z",
+			"popularity": 1,
+			"editors": [
+				"qswz"
+			],
+			"changes": [
+				{
+					"date": "2019-09-03T00:37:59.392Z",
+					"editor": "qswz",
+					"old-value": "<script nomodule src=\"https://polyfill.io/v3/polyfill.js?features=es5,es6,es7&flags=always\"></script>",
+					"new-value": "<script nomodule src=\"https://polyfill.io/v3/polyfill.js?flags=always&features=default,fetch\"></script>"
+				}
+			]
+		},
+		"orm": {
+			"value": "Object-Relational-Messing",
+			"creator": "qswz",
+			"date": "2019-09-04T15:02:01.129Z",
+			"popularity": 0,
 			"editors": [],
 			"changes": []
 		}
@@ -20781,6 +20803,156 @@
 						"editor": "MJCD_",
 						"old-value": "|>var sing = function() { Array(16).join('yay' -1) + ' Batman' } //",
 						"new-value": "|>var sing = function() { Array(16).join('yay' -1) + ' Batman' }() //"
+					}
+				]
+			}
+		},
+		{
+			"date": "2019-08-18T10:37:08.224Z",
+			"editor": "ljharb",
+			"key": "ie11",
+			"value": {
+				"value": "All mainstream Windows users gained access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html",
+				"creator": "graingert",
+				"date": "2018-01-05T16:08:50.100Z",
+				"popularity": 24,
+				"editors": [
+					"graingert"
+				],
+				"changes": [
+					{
+						"date": "2018-01-05T16:24:00.422Z",
+						"editor": "graingert",
+						"old-value": "support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html",
+						"new-value": "All mainstream Windows users will have access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html"
+					},
+					{
+						"date": "2018-01-09T05:06:06.739Z",
+						"editor": "graingert",
+						"old-value": "All mainstream Windows users will have access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html",
+						"new-value": "All mainstream Windows users gained access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html"
+					}
+				]
+			}
+		},
+		{
+			"date": "2019-08-18T10:39:26.438Z",
+			"editor": "ljharb",
+			"key": "ie11",
+			"value": {
+				"value": "All mainstream Windows users gained access to Edge on January 9th, 2018. All extended support ends October 14, 2025. https://web.archive.org/web/20180105110806/http://allyncs.com/docs/lifecyclesupport.html",
+				"creator": "graingert",
+				"date": "2019-08-18T10:37:58.322Z",
+				"popularity": 0,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2019-08-18T10:40:03.026Z",
+			"editor": "ljharb",
+			"key": "ping everyone cool",
+			"value": {
+				"value": "`slikts boo(censored) cjohnson CoJaBo darkseid dka DnzAtWrk Donitzo dysfigured gde33 gk4tsev(censored) GreenJello grr12314 howdoi inimino joeytwiddle Kirjava knod 1jharb(censored) MACscr NoiseEee notchris SJr systemfault tcsc thykka zsocw",
+				"creator": "MJCD",
+				"date": "2019-08-02T14:34:39.723Z",
+				"popularity": 0,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2019-08-21T16:25:10.245Z",
+			"editor": "qswz",
+			"key": "delay",
+			"value": {
+				"value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". Most environments provide setTimeout and ES6 has Promises which are available natively in the latest Firefox, Chrome, io.js or usable via a library such as https://github.com/petkaantonov/bluebird. Also check out caolan/async. For more info: !timeout, !promises",
+				"creator": "dwcook",
+				"date": "2014-03-26T02:21:37.430Z",
+				"popularity": 97,
+				"editors": [
+					"dwcook",
+					"Havvy",
+					"qswz"
+				],
+				"changes": [
+					{
+						"date": "2014-03-26T02:27:42.597Z",
+						"editor": "dwcook",
+						"old-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided in an environment-dependent way. For example, browser JS has setTimeout, which accepts a callback and a number of milliseconds and calls it after that amount of time. See http://jsfiddle.net/8Y5qe/ for an example. jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async h",
+						"new-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided in an environment-dependent way, such as browser JS's setTimeout. See http://jsfiddle.net/8Y5qe/ for an example. jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbac"
+					},
+					{
+						"date": "2014-03-26T02:30:07.626Z",
+						"editor": "dwcook",
+						"old-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided in an environment-dependent way, such as browser JS's setTimeout. See http://jsfiddle.net/8Y5qe/ for an example. jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbac",
+						"new-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided by the environment, such as browser JS's setTimeout. E.g., http://jsfiddle.net/8Y5qe/ jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbacks."
+					},
+					{
+						"date": "2014-03-26T02:30:46.484Z",
+						"editor": "dwcook",
+						"old-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided by the environment, such as browser JS's setTimeout. E.g., http://jsfiddle.net/8Y5qe/ jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbacks.",
+						"new-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided by the environment, such as browser JS's setTimeout. E.g., http://jsfiddle.net/8Y5qe/. jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbacks."
+					},
+					{
+						"date": "2015-05-19T18:32:11.845Z",
+						"editor": "Havvy",
+						"old-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". This functionality may be provided by the environment, such as browser JS's setTimeout. E.g., http://jsfiddle.net/8Y5qe/. jQuery and many other libraries support promises, e.g. http://jsfiddle.net/4n9Gu/.  Also take a look at https://github.com/caolan/async https://github.com/petkaantonov/bluebird https://github.com/kriskowal/q when you have a lot of callbacks.",
+						"new-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". Most environments provide setTimeout and ES6 has Promises which are available natively in the latest Firefox, Chrome, io.js or usable via a library such as https://github.com/petkaantonov/bluebird. Also check out caolan/async. For more info: !timeout, !promises"
+					},
+					{
+						"date": "2018-08-02T01:13:31.733Z",
+						"editor": "qswz",
+						"old-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". Most environments provide setTimeout and ES6 has Promises which are available natively in the latest Firefox, Chrome, io.js or usable via a library such as https://github.com/petkaantonov/bluebird. Also check out caolan/async. For more info: !timeout, !promises",
+						"new-value": "(t, ...a) => new Promise(r => setTimeout(r, t, ...a)) or util.promisify(setTimeout)"
+					},
+					{
+						"date": "2018-08-02T01:14:43.344Z",
+						"editor": "qswz",
+						"old-value": "(t, ...a) => new Promise(r => setTimeout(r, t, ...a)) or util.promisify(setTimeout)",
+						"new-value": "JavaScript doesn't have a concept of \"sleep\" or \"wait\". Most environments provide setTimeout and ES6 has Promises which are available natively in the latest Firefox, Chrome, io.js or usable via a library such as https://github.com/petkaantonov/bluebird. Also check out caolan/async. For more info: !timeout, !promises"
+					}
+				]
+			}
+		},
+		{
+			"date": "2019-08-29T18:29:31.398Z",
+			"editor": "MJCD",
+			"key": "learner",
+			"value": {
+				"value": "!learn",
+				"creator": "MJCD",
+				"date": "2019-08-29T18:27:09.051Z",
+				"popularity": 1,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2019-09-03T00:24:44.743Z",
+			"editor": "qswz",
+			"key": "polyfill.io",
+			"value": {
+				"value": "This service is not recommended best practice over simply providing/bundling the polyfills required for the specified target standard. While easy to implement, you are relying on an external, free service with no responsibility to you, just to make your own site work. You might as well be using wix. For what it's worth you can investigate their service further at http://polyfill.io",
+				"creator": "qswz",
+				"date": "2018-08-10T23:58:39.984Z",
+				"popularity": 27,
+				"editors": [
+					"qswz",
+					"MJCD"
+				],
+				"changes": [
+					{
+						"date": "2018-11-05T17:53:49.248Z",
+						"editor": "qswz",
+						"old-value": "<script nomodule src=\"//polyfill.io\"></script>",
+						"new-value": "<script nomodule src=\"//cdn.polyfill.io/v2/polyfill.min.js?features=default,URL,fetch\"></script>"
+					},
+					{
+						"date": "2019-08-23T20:17:27.986Z",
+						"editor": "MJCD",
+						"old-value": "<script nomodule src=\"//cdn.polyfill.io/v2/polyfill.min.js?features=default,URL,fetch\"></script>",
+						"new-value": "This service is not recommended best practice over simply providing/bundling the polyfills required for the specified target standard. While easy to implement, you are relying on an external, free service with no responsibility to you, just to make your own site work. You might as well be using wix. For what it's worth you can investigate their service further at http://polyfill.io"
 					}
 				]
 			}
