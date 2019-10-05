@@ -18,7 +18,7 @@
 		},
 		"w3schools": {
 			"value": "w3schools has spent over a decade subverting search engines to appear at the top of search results, and while it *appears* useful for newcomers, it is in fact of very low quality. Try !eloquent, https://github.com/freeCodeCamp/freeCodeCamp, and http://w3fools.com/",
-			"popularity": 371,
+			"popularity": 372,
 			"editors": [
 				"ljharb",
 				"graingert"
@@ -173,7 +173,7 @@
 		},
 		"paste": {
 			"value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
-			"popularity": 2477,
+			"popularity": 2479,
 			"editors": [
 				"niggler",
 				"gkatsev",
@@ -343,7 +343,7 @@
 		},
 		"code": {
 			"value": "Show some code, but don't paste it on the channel. You can provide a test case we can run and help you with your problem with http://jsfiddle.net , http://jsbin.com , or http://requirebin.com . Sites like http://gist.github.com/ and http://bpaste.net are cool too.",
-			"popularity": 855,
+			"popularity": 856,
 			"editors": [
 				"CoverSlide",
 				"ph88",
@@ -384,7 +384,7 @@
 		},
 		"scoping": {
 			"value": "http://johnkpaul.com/blog/2013/02/11/what-is-hoisting-really/ https://web.archive.org/web/20170907201821/https://developer.mozilla.org/en-US/docs/Archive/Web/Scope_Cheatsheet https://snek.dev/blag/2019-07_js_hoisting",
-			"popularity": 210,
+			"popularity": 213,
 			"editors": [
 				"eboy",
 				"sillyslux",
@@ -418,7 +418,7 @@
 		},
 		"scope": {
 			"alias": "scoping",
-			"popularity": 82
+			"popularity": 83
 		},
 		"form": {
 			"alias": "forms",
@@ -426,7 +426,7 @@
 		},
 		"hoisting": {
 			"alias": "scoping",
-			"popularity": 118
+			"popularity": 119
 		},
 		"same origin": {
 			"alias": "cross-domain",
@@ -445,7 +445,7 @@
 		},
 		"xy": {
 			"value": "The XY problem: You want to do X, but don't know how. You think you can solve it using Y, but don't know how to do that either. You ask about Y, which is a strange thing to want to do. Just ask about X. See also: http://xyproblem.info/",
-			"popularity": 1204,
+			"popularity": 1206,
 			"editors": [
 				"j201",
 				"sukima",
@@ -489,7 +489,7 @@
 		},
 		"eloquent": {
 			"value": "Eloquent JavaScript is a comprehensive introductory Web-based book with examples and a built-in interpreter. http://eloquentjavascript.net/",
-			"popularity": 1761,
+			"popularity": 1763,
 			"editors": [
 				"ericelliott",
 				"ashnur"
@@ -519,7 +519,7 @@
 			"popularity": 45
 		},
 		"ask": {
-			"value": "Don't ask to ask, nor if anyone is here or alive or uses something ~ or ESPECIALLY if one user you've talked to before will help you. Just ask your question to the channel and whoever can help at the time, will. Further reading list: http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html https://jvns.ca/blog/good-questions/",
+			"value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html",
 			"popularity": 2001,
 			"editors": [
 				"hemanth",
@@ -529,7 +529,8 @@
 				"therealklanni",
 				"Havvy",
 				"asdasda",
-				"MJCD"
+				"MJCD",
+				"GreenJello"
 			],
 			"changes": [
 				{
@@ -574,6 +575,12 @@
 					"editor": "MJCD",
 					"old-value": "Don't ask to ask, nor if anyone is here or alive or uses something ~ or ESPECIALLY if one user you've talked to before will help you. Just ask your question to the channel and whoever can help at the time, will. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html https://jvns.ca/blog/good-questions/",
 					"new-value": "Don't ask to ask, nor if anyone is here or alive or uses something ~ or ESPECIALLY if one user you've talked to before will help you. Just ask your question to the channel and whoever can help at the time, will. Further reading list: http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html https://jvns.ca/blog/good-questions/"
+				},
+				{
+					"date": "2019-10-03T21:30:42.684Z",
+					"editor": "GreenJello",
+					"old-value": "Don't ask to ask, nor if anyone is here or alive or uses something ~ or ESPECIALLY if one user you've talked to before will help you. Just ask your question to the channel and whoever can help at the time, will. Further reading list: http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html https://jvns.ca/blog/good-questions/",
+					"new-value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html"
 				}
 			]
 		},
@@ -620,7 +627,7 @@
 		},
 		"doesn't work": {
 			"value": "What do you mean it doesn't work? Is it unemployed? What happens when you try to run it? What did you try to run? What's the output? What's the error message? What did you want or expect to happen? Can you post a screenshot or a fiddle?",
-			"popularity": 941,
+			"popularity": 942,
 			"editors": [
 				"dwcook",
 				"graingert"
@@ -758,7 +765,7 @@
 		},
 		"debug": {
 			"value": "Firefox <https://developer.mozilla.org/en-US/docs/Tools/Debugger>, Safari <https://developer.apple.com/technologies/safari/developer-tools.html>, Chrome <https://developers.google.com/web/tools/chrome-devtools/javascript/>, Opera <http://www.opera.com/dragonfly/>, IE <http://msdn.microsoft.com/en-us/library/dd565625%28v=vs.85%29>",
-			"popularity": 442,
+			"popularity": 443,
 			"editors": [
 				"j201",
 				"FireFly",
@@ -807,7 +814,7 @@
 		},
 		"about": {
 			"value": "I'm written entirely in JavaScript using Node.js. Look under the hood on Github: <https://github.com/oftn/oftn-bot>",
-			"popularity": 326,
+			"popularity": 327,
 			"editors": [
 				"ljharb"
 			],
@@ -822,7 +829,7 @@
 		},
 		"help": {
 			"value": "For help, ask your question. Be patient. Code samples should be pasted in a paste service (see !paste). Tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !describe and !debug).",
-			"popularity": 4182,
+			"popularity": 4184,
 			"editors": [
 				"ashnur",
 				"earendel",
@@ -867,7 +874,7 @@
 		},
 		"ops": {
 			"value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello jaawerth niggler. In case of an emergency requiring op attention, activate !emergency",
-			"popularity": 377,
+			"popularity": 380,
 			"editors": [
 				"Mortchek",
 				"dwcook",
@@ -1603,7 +1610,7 @@
 		},
 		"for..in": {
 			"value": "for..in is not to loop through indices/values of an array. Use for(init;cond;step) or Array#forEach. For..in iterates over *all* enumerable properties of an object, without any defined order. See also !iteration",
-			"popularity": 62,
+			"popularity": 64,
 			"editors": [
 				"graingert"
 			],
@@ -1867,7 +1874,7 @@
 		},
 		"gist": {
 			"value": "Paste code at https://gist.github.com (or a similar site see !paste) and name the file .js so that we can look over it. Thanks!",
-			"popularity": 340,
+			"popularity": 341,
 			"editors": [
 				"GreenJello",
 				"graingert"
@@ -2023,7 +2030,7 @@
 		},
 		"describe": {
 			"value": "Please, provide the full scenario for your problem. e.g.: I am trying to do X, I do so by calling APIs Y (see !paste), but Z happens instead. I see the following error messages: [can't call method Y of undefined].",
-			"popularity": 256,
+			"popularity": 257,
 			"editors": [
 				"ashnur"
 			]
@@ -2139,7 +2146,7 @@
 		},
 		"hello": {
 			"value": "Welcome! We're a community of friendly, helpful people who are happy to help any time 24/7/365. Please make yourself at home and consider adding us to your autojoin :) Please make sure you read the channel status for channel commands and updates. FYI, just saying hello with no message is super rude in IRC! See also !nohello",
-			"popularity": 336,
+			"popularity": 337,
 			"editors": [
 				"PigDude",
 				"qswz",
@@ -2440,7 +2447,7 @@
 		},
 		"for-in": {
 			"alias": "for..in",
-			"popularity": 2
+			"popularity": 4
 		},
 		"for...in": {
 			"alias": "for..in",
@@ -2456,7 +2463,7 @@
 		},
 		"!>>": {
 			"value": "To run code, use >> and sm> to execute on the Spidermonkey JS engine or >>> and v8> to execute on the v8 JS engine.",
-			"popularity": 64,
+			"popularity": 66,
 			"editors": [
 				"ImBcmDth"
 			],
@@ -3984,7 +3991,7 @@
 		},
 		"terminology": {
 			"value": "Terminology in PLT is much more fucked up than in all other areas of CS. Please don't try to apply terms from English or any other language to JS, check out the specs instead.",
-			"popularity": 0,
+			"popularity": 1,
 			"creator": "sorella",
 			"editors": []
 		},
@@ -4189,7 +4196,7 @@
 		},
 		"fuckitjs": {
 			"value": "https://github.com/mattdiamond/fuckitjs",
-			"popularity": 5,
+			"popularity": 6,
 			"creator": "Havvy",
 			"editors": []
 		},
@@ -4807,7 +4814,7 @@
 		},
 		"asi": {
 			"value": "ASI stands for 'automatic semicolon insertion', a mechanism by which semicolons may be omitted from the source code in certain cases, and still be recognized by the parser. Note that semicolons are NOT OPTIONAL and use of this feature will patch around your omission. For details: http://inimino.org/~inimino/blog/javascript_semicolons",
-			"popularity": 167,
+			"popularity": 170,
 			"creator": "ashnur",
 			"editors": [
 				"ImBcmDth",
@@ -5715,7 +5722,7 @@
 			"alias": "!>>",
 			"creator": "ImBcmDth",
 			"date": "2014-03-22T19:44:54.278Z",
-			"popularity": 36,
+			"popularity": 37,
 			"editors": [],
 			"changes": []
 		},
@@ -6195,7 +6202,7 @@
 			"value": "|> function range(start, end) { return Array.apply(Array, Array(end + 1 - start)).map(function (_, i) { return i + start; }); }",
 			"creator": "ljharb",
 			"date": "2014-08-17T12:05:59.180Z",
-			"popularity": 166,
+			"popularity": 167,
 			"editors": [
 				"qswz",
 				"ljharb"
@@ -7632,7 +7639,7 @@
 			"value": "window.fetch - a standard way to make HTTP requests and get a Promise http://mdn.io/Using_Fetch. For older browsers (IE*) see !polyfill",
 			"creator": "ljharb",
 			"date": "2015-04-19T01:39:06.472Z",
-			"popularity": 289,
+			"popularity": 291,
 			"editors": [
 				"Havvy",
 				"qswz",
@@ -8998,7 +9005,7 @@
 			"value": "Don't try to do encryption or cryptography in browser JavaScript. https://web.archive.org/web/20150512024954/http://matasano.com/articles/javascript-cryptography/",
 			"creator": "ljharb",
 			"date": "2015-09-19T06:52:08.583Z",
-			"popularity": 49,
+			"popularity": 50,
 			"editors": [
 				"ljharb"
 			],
@@ -9342,7 +9349,7 @@
 			"value": "ES6 generators can be used with a \"spawn\" functions to create mostly-identical behavior to ES2018's async/await. Spawn implementation & example: https://gist.github.com/jaawerth/91ec6f6e65583a1ddacf - See also: !async/await",
 			"creator": "jaawerth",
 			"date": "2015-10-23T21:47:42.318Z",
-			"popularity": 32,
+			"popularity": 33,
 			"editors": [
 				"jaawerth"
 			],
@@ -9383,7 +9390,7 @@
 			"value": "Mongo only pawn in game of life. http://i.imgur.com/O2qQl8a.png",
 			"creator": "jaawerth",
 			"date": "2015-10-28T08:58:11.757Z",
-			"popularity": 37,
+			"popularity": 38,
 			"editors": [
 				"jaawerth"
 			],
@@ -9654,7 +9661,7 @@
 			"value": "huh?",
 			"creator": "GreenJello",
 			"date": "2015-12-09T08:55:53.589Z",
-			"popularity": 1,
+			"popularity": 2,
 			"editors": [],
 			"changes": []
 		},
@@ -10110,7 +10117,7 @@
 			"alias": "crypto",
 			"creator": "ljharb",
 			"date": "2016-06-28T14:05:06.809Z",
-			"popularity": 26,
+			"popularity": 27,
 			"editors": [],
 			"changes": []
 		},
@@ -11535,7 +11542,7 @@
 			"value": "How to create a minimal, complete, and verifiable example https://stackoverflow.com/help/mcve see also !fiddle",
 			"creator": "falafel",
 			"date": "2017-07-04T22:54:53.347Z",
-			"popularity": 58,
+			"popularity": 59,
 			"editors": [
 				"graingert"
 			],
@@ -11860,7 +11867,7 @@
 			"value": "Don't use MongoDB - it has many issues, and is essentially never the right solution to your problem. Here's a list of issues: http://cryto.net/~joepie91/blog/2015/07/19/why-you-should-never-ever-ever-use-mongodb/ and a more technical article at http://www.sarahmei.com/blog/2013/11/11/why-you-should-never-use-mongodb/",
 			"creator": "samsch",
 			"date": "2017-08-13T03:29:15.090Z",
-			"popularity": 148,
+			"popularity": 149,
 			"editors": [],
 			"changes": []
 		},
@@ -12039,7 +12046,7 @@
 			"alias": "paste",
 			"creator": "ljharb",
 			"date": "2017-09-01T20:29:31.066Z",
-			"popularity": 94,
+			"popularity": 95,
 			"editors": [],
 			"changes": []
 		},
@@ -12444,7 +12451,7 @@
 			"value": "Another satisfied customer! NEXT!!",
 			"creator": "ljharb",
 			"date": "2017-10-30T22:36:07.201Z",
-			"popularity": 325,
+			"popularity": 326,
 			"editors": [],
 			"changes": []
 		},
@@ -12790,7 +12797,7 @@
 			"value": "Do you have a question? also see http://nohello.com",
 			"creator": "progysm",
 			"date": "2018-01-05T21:59:59.438Z",
-			"popularity": 56,
+			"popularity": 57,
 			"editors": [],
 			"changes": []
 		},
@@ -15178,14 +15185,6 @@
 			"value": "(a,b) => a.flatMap(x => b.map(y=>[x,y]));",
 			"creator": "qswz",
 			"date": "2019-10-01T23:40:46.505Z",
-			"popularity": 1,
-			"editors": [],
-			"changes": []
-		},
-		"immutable": {
-			"value": "please do not mutate here!",
-			"creator": "incognito",
-			"date": "2019-10-03T21:02:16.172Z",
 			"popularity": 1,
 			"editors": [],
 			"changes": []
@@ -21385,6 +21384,19 @@
 				"value": "Don't be dismissive of things that are different than your opinion, especially if it's a) explained (only to be dismissed) b) stated as merely somebody elses opinion. This is extremely offensive social behaviour. Be nice, let people have their !subjective opinions.",
 				"creator": "MJCD",
 				"date": "2019-10-01T07:47:10.202Z",
+				"popularity": 1,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2019-10-04T00:01:38.914Z",
+			"editor": "ljharb",
+			"key": "immutable",
+			"value": {
+				"value": "please do not mutate here!",
+				"creator": "incognito",
+				"date": "2019-10-03T21:02:16.172Z",
 				"popularity": 1,
 				"editors": [],
 				"changes": []
