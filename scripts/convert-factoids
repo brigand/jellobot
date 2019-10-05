@@ -1,0 +1,79 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const toml = require('@iarna/toml');
+
+const INPUT = require('../src/plugins/factoids/facts.json');
+const OUTPUT = {};
+
+const RECENT_TIME = new Date(Date.UTC(2015, 0, 1, 0, 0, 0, 0));
+
+function toISOString(value) {
+  let timestamp = Number(RECENT_TIME);
+  if (
+    typeof value === 'string' &&
+    /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])$/.test(value)
+  ) {
+    timestamp = Date.parse(value);
+  } else if (
+    typeof value === 'number' &&
+    value > Number(RECENT_TIME) &&
+    value < Date.now()
+  ) {
+    timestamp = value;
+  }
+
+  return new Date(timestamp).toISOString();
+}
+
+function normalize(input) {
+  if (!input) {
+    return null;
+  }
+
+  const entry = {
+    type: input.alias ? 'alias' : 'factoid',
+    value: input.value || input.alias || null,
+    creator: input.creator || '',
+    date: toISOString(input.date),
+    popularity: input.popularity || 0,
+    editors: input.editors || [],
+    changes: input.changes || [],
+  };
+
+  if (!entry.value) {
+    return null;
+  }
+
+  entry.changes = entry.changes.map((change) => ({
+    date: toISOString(change.date),
+    editor: (change.editor || 'unknown').toLowerCase(),
+    value: change['new-value'],
+    previous: change['old-value'],
+  }));
+
+  // Sort with newest entries first
+  entry.changes.sort((a, b) => b.date.localeCompare(a.date.localeCompare));
+
+  return entry;
+}
+
+function run() {
+  const entries = Object.entries(INPUT.factoids).sort((a, b) =>
+    a[0].localeCompare(b[0]),
+  );
+  for (const [key, value] of entries) {
+    const entry = normalize(value);
+
+    if (!entry) {
+      console.error(`Invalid entry for ${key}: ${JSON.stringify(value)}`);
+    } else {
+      OUTPUT[key] = entry;
+    }
+  }
+
+  const result = toml.stringify(OUTPUT);
+  fs.writeFileSync('src/plugins/factoids/facts.toml', result);
+}
+
+run();
