@@ -4,6 +4,11 @@ function clearCache(test = null) {
   // clear the cache so we don't need to restart the bot
   Object.keys(require.cache).forEach((key) => {
     if (/node_modules/.test(key)) return;
+
+    // If the file is e.g. foo.persistent.js, that means HMR shouldn't touch
+    // it. It's responsible for calling require() multiple times on its dependencies
+    // if necessary.
+    if (/\.persistent\./.test(key)) return;
     if (test) {
       if (typeof test === 'function' && !test(key)) return;
       if (test instanceof RegExp && !test.test(key)) return;
