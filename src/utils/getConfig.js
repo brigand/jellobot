@@ -16,13 +16,11 @@ const defaultConfig = {
   server: 'chat.freenode.net',
   nick: `jellobot-${Math.floor(Math.random() * 1e5)}`,
   password: null,
-  channels: [
-    {name: '##jellobot-test'},
-  ],
+  channels: [{ name: '##jellobot-test' }],
   plugins: {
     jsEval: {
       timeout: 5000,
-    }
+    },
   },
 };
 
@@ -31,9 +29,7 @@ exports.processConfig = (customConfig) => {
 
   // generate the config passed to new irc.Client
   config.ircClientConfig = {
-    channels: config.channels
-      .filter(x => !x.requiresAuth)
-      .map(({name}) => name),
+    channels: config.channels.filter((x) => !x.requiresAuth).map(({ name }) => name),
     retryCount: 10,
   };
 

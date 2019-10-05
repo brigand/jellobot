@@ -10,7 +10,12 @@ const host = process.argv[3];
 assert(user, `User ($1) must be provided`);
 assert(host, `Host ($2) must be provided`);
 
-const configFiles = [process.env.JELLOBOT_CONFIG, 'jellobot-config.prod.json', 'jellobot-config.production.json', 'jellobot-config.json'].filter(Boolean);
+const configFiles = [
+  process.env.JELLOBOT_CONFIG,
+  'jellobot-config.prod.json',
+  'jellobot-config.production.json',
+  'jellobot-config.json',
+].filter(Boolean);
 let configContent = null;
 
 // eslint-disable-next-line
@@ -24,7 +29,9 @@ for (const file of configFiles) {
 }
 
 if (!configContent) {
-  console.error(`Tried reading config files: ${configFiles.join(', ')} but none existed`);
+  console.error(
+    `Tried reading config files: ${configFiles.join(', ')} but none existed`,
+  );
   process.exit(7);
 }
 
@@ -72,9 +79,13 @@ async function run() {
     if (process.argv.includes('--restart')) {
       console.error(`Restarting the bot`);
       try {
-        await ssh.exec(`cd ${dir}; pwd; env NODE_ENV=production pm2 restart jellobot1`);
+        await ssh.exec(
+          `cd ${dir}; pwd; env NODE_ENV=production pm2 restart jellobot1`,
+        );
       } catch (e) {
-        await ssh.exec(`cd ${dir}; pwd; env NODE_ENV=production pm2 start --name jellobot1 src/bot.js`);
+        await ssh.exec(
+          `cd ${dir}; pwd; env NODE_ENV=production pm2 start --name jellobot1 src/bot.js`,
+        );
       }
     } else {
       console.error(`Run with --restart to restart the bot.`);
@@ -82,13 +93,12 @@ async function run() {
 
     await ssh.exec(`cd ${dir}; ./src/plugins/js-eval/init`); // build brigand/js-eval image
   } finally {
-     ssh.end().catch(() => {});
+    ssh.end().catch(() => {});
   }
 }
 
-run()
-  .catch((e) => {
-    console.error(`Fatal error`);
-    console.error(e);
-    process.exit(7);
-  });
+run().catch((e) => {
+  console.error(`Fatal error`);
+  console.error(e);
+  process.exit(7);
+});

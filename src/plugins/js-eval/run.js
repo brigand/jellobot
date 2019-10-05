@@ -1,9 +1,10 @@
 const { Script, SourceTextModule, createContext } = require('vm');
 const util = require('util');
-const builtinModules = require('module').builtinModules.filter((a) => !/^_|\//.test(a));
+const builtinModules = require('module').builtinModules.filter(
+  (a) => !/^_|\//.test(a),
+);
 
 let runWithEngine262; // cached function, initialized lazily below in run()
-
 
 // copied from https://github.com/devsnek/docker-js-eval/run.js
 
@@ -81,12 +82,12 @@ const run = async (code, environment, timeout) => {
       const { Realm, initializeAgent, FEATURES, inspect } = require('engine262');
 
       initializeAgent({
-        features: FEATURES.map(o => o.name),
+        features: FEATURES.map((o) => o.name),
       });
 
       const realm = new Realm();
 
-      runWithEngine262 = code => inspect(realm.evaluateScript(code), realm);
+      runWithEngine262 = (code) => inspect(realm.evaluateScript(code), realm);
     }
     return runWithEngine262(code);
   }
@@ -97,7 +98,8 @@ const run = async (code, environment, timeout) => {
 if (!module.parent) {
   (async () => {
     let code = process.argv[2];
-    if (!code) { // if no argument, read from stdin
+    if (!code) {
+      // if no argument, read from stdin
       code = '';
       for await (const chunk of process.stdin) {
         code += chunk;
@@ -111,7 +113,9 @@ if (!module.parent) {
       );
       process.stdout.write(inspect(result));
     } catch (error) {
-      process.stdout.write(error instanceof Error ? `${error.name}: ${error.message}` : `${error}`);
+      process.stdout.write(
+        error instanceof Error ? `${error.name}: ${error.message}` : `${error}`,
+      );
       process.exit(1);
     }
   })();

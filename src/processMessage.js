@@ -18,7 +18,9 @@ function processMessage(client, config, logs, from, to, message) {
   };
 
   const say = (to2, raw) => {
-    let text = String(raw).split('\n').join(' ');
+    let text = String(raw)
+      .split('\n')
+      .join(' ');
     if (text.length > 400) {
       text = `${text.slice(0, 390)} ...`;
     }
@@ -65,9 +67,14 @@ function processMessage(client, config, logs, from, to, message) {
   // parse e.g. !mdn array.map @ someuser
   // we only accept valid IRC nicks
   // https://stackoverflow.com/a/5163309/1074592
-  const targetedMatch = messageObj.command
-    && messageObj.command.command.match(/^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/i);
-  const targetedMatch2 = messageObj.message.match(/^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/i);
+  const targetedMatch =
+    messageObj.command &&
+    messageObj.command.command.match(
+      /^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/i,
+    );
+  const targetedMatch2 = messageObj.message.match(
+    /^(.*)@\s*([a-z_\-[\]\\^{}|`][a-z0-9_\-[\]\\^{}|`]{0,15})\s*$/i,
+  );
 
   if (targetedMatch) {
     messageObj.command.command = targetedMatch[1].trim();
@@ -81,11 +88,13 @@ function processMessage(client, config, logs, from, to, message) {
 
   messageObj.verbose = !!config.verbose;
   if (config.verbose) {
-    console.error(yamlStringify(messageObj, {
-      skipInvalid: true,
-      flowLevel: 2,
-      noRefs: true,
-    }).trim());
+    console.error(
+      yamlStringify(messageObj, {
+        skipInvalid: true,
+        flowLevel: 2,
+        noRefs: true,
+      }).trim(),
+    );
   }
 
   // log the message

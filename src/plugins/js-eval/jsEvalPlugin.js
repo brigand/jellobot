@@ -5,14 +5,25 @@ const jsEval = require('./jsEval');
 const processTopLevelAwait = require('./processTopLevelAwait');
 const { transformPlugins } = require('./babelPlugins');
 
-
 const helpMsg = `n> node stable, h> node --harmony, b> babel, s> node vm.Script, m> node vm.SourceTextModule, e> engine262`;
 
 // default jseval run command
 const CMD = ['node', '--no-warnings', '/run/run.js'];
-const CMD_SHIMS = ['node', '-r', '/run/node_modules/airbnb-js-shims/target/es2019', '--no-warnings', '/run/run.js'];
-const CMD_HARMONY = ['node', '--harmony', '--experimental-vm-modules', '--experimental-modules', '--no-warnings', '/run/run.js'];
-
+const CMD_SHIMS = [
+  'node',
+  '-r',
+  '/run/node_modules/airbnb-js-shims/target/es2019',
+  '--no-warnings',
+  '/run/run.js',
+];
+const CMD_HARMONY = [
+  'node',
+  '--harmony',
+  '--experimental-vm-modules',
+  '--experimental-modules',
+  '--no-warnings',
+  '/run/run.js',
+];
 
 const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
   if (!/^[nhbsme?]>/.test(message)) return;
@@ -26,11 +37,15 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
     code = (await babel.transformAsync(code, { plugins: transformPlugins })).code;
   }
 
-  if (hasMaybeTLA) { // there's maybe a TLA await
+  if (hasMaybeTLA) {
+    // there's maybe a TLA await
     const iiafe = processTopLevelAwait(code);
-    if (iiafe) { // there's a TLA
+    if (iiafe) {
+      // there's a TLA
       if (mode === 'b') {
-        code = (await babel.transformFromAstAsync(iiafe, code, { plugins: transformPlugins })).code;
+        code = (await babel.transformFromAstAsync(iiafe, code, {
+          plugins: transformPlugins,
+        })).code;
       } else {
         code = babelGenerator(iiafe).code;
       }
@@ -40,13 +55,21 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
   try {
     const result = await jsEval(
       code,
-      mode === 'e' ? 'engine262' : mode === 's' ? 'script' : mode === 'm' ? 'module' : 'node-cjs',
+      mode === 'e'
+        ? 'engine262'
+        : mode === 's'
+        ? 'script'
+        : mode === 'm'
+        ? 'module'
+        : 'node-cjs',
       selfConfig.timer || 5000,
-      mode === 'b' ? CMD_SHIMS : mode === 'n' ? CMD : CMD_HARMONY
+      mode === 'b' ? CMD_SHIMS : mode === 'n' ? CMD : CMD_HARMONY,
     );
     respond((mentionUser ? `${mentionUser}, ` : '(okay) ') + result);
   } catch (e) {
-    respond((mentionUser ? `${mentionUser}, ` : `(${e.reason || 'fail'}) `) + e.message); // Error message always start with Error:
+    respond(
+      (mentionUser ? `${mentionUser}, ` : `(${e.reason || 'fail'}) `) + e.message,
+    ); // Error message always start with Error:
   }
 };
 

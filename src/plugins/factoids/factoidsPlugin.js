@@ -5,14 +5,13 @@ const factoidPlugin = async (msg) => {
   try {
     await fs.readFileSync('/tmp/disable-factoids');
     return;
-  } catch (e) {
-  }
+  } catch (e) {}
   if (msg.from === 'ecmabot') {
     fs.writeFile('/tmp/disable-factoids', 'x', () => {});
   }
   if (!msg.command) return null;
 
-  let parts = msg.command.command.split('@').map(x => x.trim());
+  let parts = msg.command.command.split('@').map((x) => x.trim());
   const [key, nick] = parts;
 
   const fact = facts[key];
@@ -35,4 +34,3 @@ const factoidPlugin = async (msg) => {
 };
 
 module.exports = factoidPlugin;
-

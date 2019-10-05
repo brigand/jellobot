@@ -3,8 +3,8 @@ const babelTraverse = require('@babel/traverse').default;
 const { parserPlugins } = require('./babelPlugins');
 
 /**
- * 
- * @param {string} src 
+ *
+ * @param {string} src
  * @return {object} ast
  */
 function processTopLevelAwait(src) {
@@ -13,7 +13,7 @@ function processTopLevelAwait(src) {
   try {
     root = babelParser.parse(src, {
       allowAwaitOutsideFunction: true,
-      plugins: parserPlugins
+      plugins: parserPlugins,
     });
   } catch (error) {
     return null; // if code is not valid, don't bother
@@ -47,7 +47,7 @@ function processTopLevelAwait(src) {
           containsReturn = true;
           return;
       }
-    }
+    },
   });
 
   // Do not transform if
@@ -63,30 +63,31 @@ function processTopLevelAwait(src) {
   if (last.type === 'ExpressionStatement') {
     root.program.body[root.program.body.length - 1] = {
       type: 'ReturnStatement',
-      argument: last.expression
+      argument: last.expression,
     };
   }
-
 
   const iiafe = {
     type: 'Program',
     sourceType: 'script',
-    body: [{
-      type: 'ExpressionStatement',
-      expression: {
-        type: 'CallExpression',
-        callee: {
-          type: 'ArrowFunctionExpression',
-          async: true,
-          params: [],
-          body: {
-            type: 'BlockStatement',
-            body: root.program.body
+    body: [
+      {
+        type: 'ExpressionStatement',
+        expression: {
+          type: 'CallExpression',
+          callee: {
+            type: 'ArrowFunctionExpression',
+            async: true,
+            params: [],
+            body: {
+              type: 'BlockStatement',
+              body: root.program.body,
+            },
           },
+          arguments: [],
         },
-        arguments: []
-      }
-    }],
+      },
+    ],
   };
   // const iiafe = t.program([t.expressionStatement(t.callExpression(t.arrowFunctionExpression([], t.blockStatement(root.program.body)), []))]) // with @babel/types
 

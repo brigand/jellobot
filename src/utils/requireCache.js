@@ -20,7 +20,6 @@ const isProd = process.env.NODE_ENV === 'production';
 
 let needsUpdate = false;
 
-
 if (isProd) {
   let last = new Date().toISOString();
   setInterval(() => {

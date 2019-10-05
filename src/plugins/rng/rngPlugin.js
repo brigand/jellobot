@@ -1,5 +1,4 @@
-
-const rngPlugin = async ({ command, handling = () => { }, respondWithMention }) => {
+const rngPlugin = async ({ command, handling = () => {}, respondWithMention }) => {
   if (!command) return;
 
   const m = command.command.match(/^(?:pick|choose|which)[: ](\S[^#?]*)/); // allow to pass comments after # or ?
@@ -13,4 +12,3 @@ const rngPlugin = async ({ command, handling = () => { }, respondWithMention }) 
 };
 
 module.exports = rngPlugin;
-

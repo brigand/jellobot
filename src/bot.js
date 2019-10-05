@@ -5,7 +5,7 @@ const init = require('./plugins/initPlugins');
 
 chalk.enabled = true;
 
-const {readAndProcessConfig} = require('./utils/getConfig');
+const { readAndProcessConfig } = require('./utils/getConfig');
 const plugins = require('./plugins/plugins.js');
 const changeNick = require('./utils/changeNick');
 
@@ -39,12 +39,12 @@ function updateConfig() {
 
   // join channels
   for (const chan of newChan) {
-    if (!oldChan.find(x => x.name === chan.name)) {
+    if (!oldChan.find((x) => x.name === chan.name)) {
       client.join(chan.name);
     }
   }
   for (const chan of oldChan) {
-    if (!newChan.find(x => x.name === chan.name)) {
+    if (!newChan.find((x) => x.name === chan.name)) {
       client.part(chan.name);
     }
   }
@@ -74,7 +74,7 @@ client.addListener('message', (from, to, message) => {
     messageObj = processMessage(client, config, logs, from, to, message);
   } catch (e) {
     const isRoom = /^#/.test(to);
-    if (Date.now() > lastProcessMessageFail + (1000 * 60 * 60)) {
+    if (Date.now() > lastProcessMessageFail + 1000 * 60 * 60) {
       lastProcessMessageFail = Date.now();
       client.say(isRoom ? to : from, `Internal error while processing the message`);
     }
@@ -124,7 +124,7 @@ client.addListener('registered', () => {
     client.say('nickserv', `IDENTIFY ${config.userName} ${config.password}`);
     setTimeout(() => {
       config.channels
-        .filter(x => x.requiresAuth)
+        .filter((x) => x.requiresAuth)
         .forEach((c) => {
           client.join(c.name);
         });
@@ -142,7 +142,11 @@ client.addListener('names', (channel, nicks) => {
   }
   receivedNickListsForChannelEver[channel] = true;
   const diffFromConnect = Date.now() - connectFinishTime;
-  console.log(`${logBotPrefix}: connected to ${channel} which has ${Object.keys(nicks).length} users. Took ${diffFromConnect}ms since register.`);
+  console.log(
+    `${logBotPrefix}: connected to ${channel} which has ${
+      Object.keys(nicks).length
+    } users. Took ${diffFromConnect}ms since register.`,
+  );
 });
 
 if (config.verbose) {

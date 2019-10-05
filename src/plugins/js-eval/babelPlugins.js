@@ -23,9 +23,8 @@ exports.transformPlugins = [
   '@babel/plugin-proposal-dynamic-import',
   '@babel/plugin-syntax-bigint',
   '@babel/plugin-syntax-import-meta',
-  '@babel/plugin-proposal-unicode-property-regex'
+  '@babel/plugin-proposal-unicode-property-regex',
 ];
-
 
 // @babel/parser plugins https://babeljs.io/docs/en/next/babel-parser.html#ecmascript-proposals-https-githubcom-babel-proposals
 exports.parserPlugins = [
@@ -50,5 +49,5 @@ exports.parserPlugins = [
   'optionalChaining',
   'partialApplication',
   ['pipelineOperator', { proposal: 'minimal' }],
-  'throwExpressions'
-]
+  'throwExpressions',
+];

@@ -3,7 +3,8 @@ jellobot is a a plugable irc bot written for node.js.
 Primary features:
 
 - makes it easy to write plugins and configure them from one config file
-- code is live refreshed for zero-downtime updates, which also makes development much faster
+- code is live refreshed for zero-downtime updates, which also makes development much
+  faster
 
 Default plugins:
 
@@ -13,7 +14,8 @@ Default plugins:
 
 ## Setup
 
-To full run the bot, you'll need node.js (10.x recommended), docker (with your user having permission to execute containers), and libmagic.
+To full run the bot, you'll need node.js (10.x recommended), docker (with your user
+having permission to execute containers), and libmagic.
 
 ```sh
 # Install libmagic on OSX

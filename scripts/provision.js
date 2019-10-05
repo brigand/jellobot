@@ -37,7 +37,9 @@ async function installNode({ ssh, log }) {
   await ssh.exec(`rm node-*.tar* >/dev/null 2>&1 || true; wget "${nodeUrl}" --quiet`);
 
   log.info(`Extracting node binary`);
-  await ssh.exec(`tar --strip-components 1 -xzvf node-v* -C /usr/local`, { root: true });
+  await ssh.exec(`tar --strip-components 1 -xzvf node-v* -C /usr/local`, {
+    root: true,
+  });
 }
 
 async function installPython({ ssh, log }) {
@@ -77,8 +79,14 @@ async function installDocker({ ssh, log }) {
     await ssh.exec(`docker --version`, { root: true });
   } catch (e) {
     log.info(`Installing docker.`);
-    await ssh.exec(`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add`, { root: true });
-    await ssh.exec(`sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`, { root: true });
+    await ssh.exec(
+      `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add`,
+      { root: true },
+    );
+    await ssh.exec(
+      `sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`,
+      { root: true },
+    );
     await ssh.exec(`sudo apt-get update`, { root: true });
     await ssh.exec(`apt-cache policy docker-ce`, { root: true });
     await ssh.exec(`sudo apt-get install -y docker-ce`, { root: true });
@@ -116,7 +124,10 @@ async function run() {
     }
 
     try {
-      await ssh.exec(`useradd -g jellobot --home-dir /home/jellobot --shell /bin/bash jellobot`, { root: true });
+      await ssh.exec(
+        `useradd -g jellobot --home-dir /home/jellobot --shell /bin/bash jellobot`,
+        { root: true },
+      );
     } catch (e) {
       console.error(e);
     }
@@ -144,9 +155,8 @@ async function run() {
   }
 }
 
-run()
-  .catch((e) => {
-    console.error(`Fatal error`);
-    console.error(e);
-    process.exit(7);
-  });
+run().catch((e) => {
+  console.error(`Fatal error`);
+  console.error(e);
+  process.exit(7);
+});

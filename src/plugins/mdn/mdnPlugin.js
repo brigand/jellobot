@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 
 function slugify(words) {
   return words
-    .map(x => x.trim().toLowerCase())
+    .map((x) => x.trim().toLowerCase())
     .join('-')
     .replace(/[^a-zA-Z0-9]+/g, '-')
     .replace(/[^a-zA-Z0-9]+/g, '-');
@@ -13,13 +13,12 @@ function slugify(words) {
 class HtmlParseError extends Error {}
 
 function getMdnTitle(title) {
-  return title
-    .replace(/\s*-\s*(\w+\s*\w*)\s*\|\s*MDN/gi, (m, _type) => {
-      let type = _type;
-      if (type === 'JavaScript') type = null;
-      if (type === 'Web APIs') type = 'DOM';
-      return type ? `, ${type}` : '';
-    });
+  return title.replace(/\s*-\s*(\w+\s*\w*)\s*\|\s*MDN/gi, (m, _type) => {
+    let type = _type;
+    if (type === 'JavaScript') type = null;
+    if (type === 'Web APIs') type = 'DOM';
+    return type ? `, ${type}` : '';
+  });
 }
 
 function extractFromHtml(html) {
@@ -32,9 +31,15 @@ function extractFromHtml(html) {
     .text();
 
   if (!text) {
-    const bodyText = $('body').text().replace(/\s+/g, ' ');
+    const bodyText = $('body')
+      .text()
+      .replace(/\s+/g, ' ');
 
-    if (/did not match any documents|No results containing all your search terms were found/.test(bodyText)) {
+    if (
+      /did not match any documents|No results containing all your search terms were found/.test(
+        bodyText,
+      )
+    ) {
       throw new HtmlParseError(`No MDN page found with this search.`);
     }
     throw new HtmlParseError(`Failed to extract mdn text`);
@@ -47,10 +52,12 @@ async function fixLanguage(origRes, lastRedirect) {
 
   // attempt to rewrite the language part of the URL
   const urlParts = url.parse(lastRedirect);
-  urlParts.pathname = urlParts.pathname.replace(/^\/(\w+)(\/docs\/)/, (m, lang, rest) => {
-    return `/en-US${rest}`;
-  });
-
+  urlParts.pathname = urlParts.pathname.replace(
+    /^\/(\w+)(\/docs\/)/,
+    (m, lang, rest) => {
+      return `/en-US${rest}`;
+    },
+  );
 
   // If we changed the URL, we need to do another request for it
   const fixedUrl = url.format(urlParts);
@@ -72,7 +79,6 @@ const mdnPlugin = async (msg) => {
   }
   msg.handling();
 
-
   const suffix = slugify(words.slice(1));
   const initialUrl = `https://mdn.io/${suffix}`;
 
@@ -80,7 +86,8 @@ const mdnPlugin = async (msg) => {
   let res = null;
 
   try {
-    res = await superagent.get(initialUrl)
+    res = await superagent
+      .get(initialUrl)
       .set('accept-language', 'en-US,en;q=0.5')
       .redirects(5)
       .on('redirect', (redirect) => {

@@ -24,7 +24,11 @@ const npmPlugin = async (msg) => {
     ({ stdout, stderr } = await exec(`npm info "${name}" --json`));
     const data = JSON.parse(stdout);
 
-    msg.respondWithMention(`${name}@${data.version}: ${data.description ? data.description.slice(0, 100) : '(no description)'} - https://www.npmjs.com/package/${name}`);
+    msg.respondWithMention(
+      `${name}@${data.version}: ${
+        data.description ? data.description.slice(0, 100) : '(no description)'
+      } - https://www.npmjs.com/package/${name}`,
+    );
   } catch (e) {
     msg.respondWithMention(`Failed to look up package`);
     console.error(`stdout`, stdout, `stderr`, stderr);

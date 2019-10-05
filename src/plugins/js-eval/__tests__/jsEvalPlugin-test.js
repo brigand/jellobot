@@ -7,17 +7,15 @@ beforeAll(() => {
   cp.execSync(`${__dirname}/../../../../src/plugins/js-eval/init`);
 });
 
-
 async function testEval(message, opts = {}) {
   return new Promise((resolve) => {
     jsEval({
       ...opts,
       message,
-      respond: resolve
+      respond: resolve,
     });
   });
 }
-
 
 describe('jsEvalPlugin', () => {
   it(`works`, async () => {
@@ -33,7 +31,9 @@ describe('jsEvalPlugin', () => {
 
   it(`errors when it should`, async () => {
     const output = await testEval('n> 2++2');
-    expect(output).toEqual(`(fail) ReferenceError: Invalid left-hand side expression in postfix operation`);
+    expect(output).toEqual(
+      `(fail) ReferenceError: Invalid left-hand side expression in postfix operation`,
+    );
 
     const output2 = await testEval('n> throw 2');
     expect(output2).toEqual('(fail) 2');
@@ -43,12 +43,16 @@ describe('jsEvalPlugin', () => {
   });
 
   it(`times out but return temporary result`, async () => {
-    const output = await testEval('n> setTimeout(() => console.log(2), 10000); 1', { selfConfig: { timer: 1000 } });
+    const output = await testEval('n> setTimeout(() => console.log(2), 10000); 1', {
+      selfConfig: { timer: 1000 },
+    });
     expect(output).toEqual('(timeout) 1');
   });
 
   it(`exposes node core modules`, async () => {
-    const output = await testEval(`n> fs.writeFileSync('foo', '..'); [fs.readdirSync('.'), child_process.execSync('ls')+'']`);
+    const output = await testEval(
+      `n> fs.writeFileSync('foo', '..'); [fs.readdirSync('.'), child_process.execSync('ls')+'']`,
+    );
     expect(output).toEqual(`(okay) [ [ 'foo' ], 'foo\\n' ]`);
   });
 
@@ -66,7 +70,6 @@ describe('jsEvalPlugin', () => {
     // Currently failing with "Error"
     // const output = await testEval(`h> class A { x = 3n; ok = () => this.x }; new A().ok()`);
     // expect(output).toEqual(`(okay) 3n`);
-
     // Note: this test failed on previous node.js versions but now passes. It should be replaced
     // with some new feature that only works with harmony flags.
     // const output2 = await testEval(`n> class A { x = 3n; ok = () => this.x }; new A().ok()`);
@@ -74,12 +77,16 @@ describe('jsEvalPlugin', () => {
   });
 
   it(`can run babel with b>`, async () => {
-    const output = await testEval(`b> class A { x = 3n; ok = () => this.x }; new A().ok()`);
+    const output = await testEval(
+      `b> class A { x = 3n; ok = () => this.x }; new A().ok()`,
+    );
     expect(output).toEqual(`(okay) 3n`);
   });
 
   it(`babel has String.prototype.matchAll`, async () => {
-    const output = await testEval(`b> [...'1 2 3'.matchAll(/\\d/g)].map(o => o.index)`);
+    const output = await testEval(
+      `b> [...'1 2 3'.matchAll(/\\d/g)].map(o => o.index)`,
+    );
     expect(output).toEqual(`(okay) [ 0, 2, 4 ]`);
   });
   it(`babel has Object.fromEntries`, async () => {
@@ -99,12 +106,7 @@ describe('jsEvalPlugin', () => {
         await testEval('b> var x = await Promise.resolve(2n); x'),
         await testEval('n> var x = await Promise.resolve(2n); if (x) {}'),
         await testEval('b> var x = await Promise.resolve(2n); if (x) {}'),
-      ]).toEqual([
-        '(okay) 2n',
-        '(okay) 2n',
-        '(okay) undefined',
-        '(okay) undefined',
-      ])
+      ]).toEqual(['(okay) 2n', '(okay) 2n', '(okay) undefined', '(okay) undefined']);
     });
 
     it('works with comments', async () => {

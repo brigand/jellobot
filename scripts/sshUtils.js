@@ -3,11 +3,11 @@ const os = require('os');
 const fs = require('fs');
 const assert = require('assert');
 const Bluebird = require('bluebird');
-const {Client} = require('ssh2');
+const { Client } = require('ssh2');
 const chalk = require('chalk');
 const shellEscape = require('shell-escape');
 
-const randId = () => `randId:${Math.floor(Math.random() * (2 ** 32))}`;
+const randId = () => `randId:${Math.floor(Math.random() * 2 ** 32)}`;
 
 const readFile = pify(fs.readFile);
 
@@ -113,14 +113,14 @@ class SshConnection {
     if (this._ftpPromise) {
       (await this._ftpPromise).end();
     }
-    const matchingIndex = conns.findIndex(x => x.conn = this.conn);
+    const matchingIndex = conns.findIndex((x) => (x.conn = this.conn));
     conns.splice(matchingIndex, 1);
     return this.endPromise;
   }
 
   _escape(args) {
     if (!Array.isArray(args)) return args;
-    return shellEscape(args.map(x => this._escape(x)));
+    return shellEscape(args.map((x) => this._escape(x)));
   }
 
   async exec(_command, _opts = {}) {
@@ -132,7 +132,7 @@ class SshConnection {
       // Add sudo if it's not already there
       command = this.validateAndFixCommand(command, opts);
 
-      const execOpts = {pty: !!opts.root};
+      const execOpts = { pty: !!opts.root };
       if (opts.cwd) execOpts.cwd = opts.cwd;
 
       this.conn.exec(command, execOpts, (err, stream) => {
@@ -151,7 +151,7 @@ class SshConnection {
               process.stdout.write(String(s));
             }
           } else {
-            events.push({type: 'stdout', value: String(s)});
+            events.push({ type: 'stdout', value: String(s) });
           }
           stdout += String(s);
         });
@@ -161,16 +161,18 @@ class SshConnection {
               process.stderr.write(String(s));
             }
           } else {
-            events.push({type: 'stderr', value: String(s)});
+            events.push({ type: 'stderr', value: String(s) });
           }
         });
         stream.on('exit', (code) => {
           if (code) {
             if (!opts.silent) {
-              console.error(chalk.red(`Failed to execute command with status code ${code}`));
+              console.error(
+                chalk.red(`Failed to execute command with status code ${code}`),
+              );
             }
             let res = '';
-            events.forEach(({type, value}) => {
+            events.forEach(({ type, value }) => {
               res += value;
               if (opts.log.flags.debug && !opts.silent) {
                 if (type === 'stdout') process.stdout.write(value);
@@ -179,8 +181,7 @@ class SshConnection {
             });
             reject({ code, res });
             return;
-          }
-          else resolve(stdout);
+          } else resolve(stdout);
         });
       });
     });
@@ -214,7 +215,13 @@ class SshConnection {
 
   async writeIfDifferentAndReturnChanged(path, content, owner) {
     // create the directory if needed
-    await this.exec(`mkdir -p ${path.split('/').slice(0, -1).join('/')}`, { root: true, silent: true });
+    await this.exec(
+      `mkdir -p ${path
+        .split('/')
+        .slice(0, -1)
+        .join('/')}`,
+      { root: true, silent: true },
+    );
 
     let current = null;
     try {

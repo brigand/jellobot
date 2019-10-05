@@ -14,7 +14,6 @@ function tryRequire(path) {
   }
 }
 
-
 async function tryInit(dir) {
   const initImpl = tryRequire(`./${dir}/init.js`);
 
