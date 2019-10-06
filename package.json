@@ -39,7 +39,6 @@
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/plugin-transform-typescript": "^7.5.5",
     "@babel/traverse": "^7.5.5",
-    "@iarna/toml": "^2.2.3",
     "bluebird": "^3.5.2",
     "chalk": "^2.4.1",
     "cheerio": "^0.22.0",

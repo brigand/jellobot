@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const toml = require('@iarna/toml');
 
-const INPUT = require('../src/plugins/factoids/facts.json');
+const INPUT = require('../src/plugins/factoids/ecmabot-factoids');
+
+const OUT_FILE = 'src/plugins/factoids/factoids.json';
 const OUTPUT = {};
 
 const RECENT_TIME = new Date(Date.UTC(2015, 0, 1, 0, 0, 0, 0));
@@ -72,8 +73,8 @@ function run() {
     }
   }
 
-  const result = toml.stringify(OUTPUT);
-  fs.writeFileSync('src/plugins/factoids/facts.toml', result);
+  const result = JSON.stringify(OUTPUT, null, 2);
+  fs.writeFileSync(OUT_FILE, result);
 }
 
 run();
