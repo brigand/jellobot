@@ -1,15 +1,13 @@
 const fs = require('fs');
 const { promisify } = require('util');
+const slugify = require('slugify');
 const { getStore } = require('./storage.persistent');
-
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
 async function checkAndSaveDisabled(msg) {
-  const safeTo = String(msg.channel)
-    .replace(/[^a-zA-Z0-9#]/g, (char) => '-' + char.codePointAt(0).toString(16) + '-')
-    .replace(/#/g, '-H')
-    .replace(/^([^-])/, '-$1');
+  const safeTo = slugify(msg.channel);
+
   const disableFile = `/tmp/disable-factoids${safeTo}`;
 
   const disabled = await readFile(disableFile).then(() => true, () => false);
