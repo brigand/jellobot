@@ -26,7 +26,7 @@ class Store {
   }
 
   set(key, entry) {
-    this._items.set(key.toLowerCase(), entry);
+    this._items.set(toKey(key), entry);
     this._dirty = true;
     return this;
   }
@@ -106,7 +106,7 @@ class Store {
       }
       entry.changes.unshift({
         date: new Date().toISOString(),
-        editor,
+        editor: editor2,
         value,
         previous: entry.value,
       });
@@ -115,7 +115,7 @@ class Store {
       entry = {
         type: 'factoid',
         value,
-        creator: editor,
+        creator: toKey(editor),
         date: new Date().toISOString(),
         popularity: 0,
         editors: [],
@@ -123,7 +123,7 @@ class Store {
       };
     }
 
-    this._items.set(key, entry);
+    this._items.set(toKey(key), entry);
     this._dirty = true;
   }
 
