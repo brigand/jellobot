@@ -114,7 +114,7 @@ class Store {
       throw new Error(`An alias named "${key}" already exists.`);
     }
 
-    if (entry.value === value) {
+    if (entry && entry.value === value) {
       throw new Error(`This is the same as the current value in "${key}".`);
     }
 

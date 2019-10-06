@@ -1,7 +1,9 @@
 const fs = require('fs');
+const text = require('../../utils/text');
 const { promisify } = require('util');
 const slugify = require('slugify');
 const { getStore } = require('./storage.persistent');
+
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
@@ -30,7 +32,7 @@ const factoidPlugin = async (msg) => {
     return;
   }
 
-  const { command } = msg.command;
+  const command = text.validate(msg.command.command).trim();
 
   const STORE = getStore();
 
@@ -38,9 +40,7 @@ const factoidPlugin = async (msg) => {
     await STORE.loadFromDisk();
   }
 
-  const learnMatch = command.match(
-    /learn\s+([a-zA-Z0-9_ -]{2,}[a-zA-Z0-9_-])\s*=\s*(.*)$/,
-  );
+  const learnMatch = command.match(/learn\s+([^=]+[^=\s])\s*=\s*(.*)$/);
 
   if (learnMatch) {
     const [, key, value] = learnMatch;
@@ -50,15 +50,16 @@ const factoidPlugin = async (msg) => {
       );
       return;
     }
+
     STORE.update(key, { editor: msg.from, value });
     msg.respondWithMention(`Learned "${key}"`);
     return;
   }
 
-  const text = STORE.getText(command);
+  const factoidContent = STORE.getText(command);
 
-  if (text) {
-    msg.respondWithMention(text);
+  if (factoidContent) {
+    msg.respondWithMention(factoidContent);
   }
 };
 
