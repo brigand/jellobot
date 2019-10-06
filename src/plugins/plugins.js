@@ -1,6 +1,6 @@
 /* eslint global-require: "off" */
-const { maybeClearCache } = require('../utils/requireCache');
 const get = require('lodash/get');
+const { maybeClearCache } = require('../utils/requireCache');
 
 const runPlugins = (msg) => {
   maybeClearCache(null);

@@ -5,7 +5,14 @@ const jsEval = require('./jsEval');
 const processTopLevelAwait = require('./processTopLevelAwait');
 const { transformPlugins } = require('./babelPlugins');
 
-const helpMsg = `n> node stable, h> node --harmony, b> babel, s> node vm.Script, m> node vm.SourceTextModule, e> engine262`;
+const helpMsg = [
+  `n> node stable`,
+  `h> node --harmony`,
+  `b> babel`,
+  `s> node vm.Script`,
+  `m> node vm.SourceTextModule`,
+  `e> engine262`,
+].join(', ');
 
 // default jseval run command
 const CMD = ['node', '--no-warnings', '/run/run.js'];
@@ -34,7 +41,7 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
   const hasMaybeTLA = /\bawait\b/.test(code);
 
   if (mode === 'b' && !hasMaybeTLA) {
-    code = (await babel.transformAsync(code, { plugins: transformPlugins })).code;
+    ({ code } = await babel.transformAsync(code, { plugins: transformPlugins }));
   }
 
   if (hasMaybeTLA) {
@@ -43,11 +50,11 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
     if (iiafe) {
       // there's a TLA
       if (mode === 'b') {
-        code = (await babel.transformFromAstAsync(iiafe, code, {
+        ({ code } = await babel.transformFromAstAsync(iiafe, code, {
           plugins: transformPlugins,
-        })).code;
+        }));
       } else {
-        code = babelGenerator(iiafe).code;
+        ({ code } = babelGenerator(iiafe));
       }
     }
   }

@@ -45,7 +45,10 @@ function processTopLevelAwait(src) {
 
         case 'ReturnStatement':
           containsReturn = true;
-          return;
+          break;
+
+        default:
+          break;
       }
     },
   });
@@ -57,7 +60,7 @@ function processTopLevelAwait(src) {
     return null;
   }
 
-  let last = root.program.body[root.program.body.length - 1];
+  const last = root.program.body[root.program.body.length - 1];
 
   // replace last node with a returnStatement of this node, if the last node is an expression
   if (last.type === 'ExpressionStatement') {
@@ -89,7 +92,9 @@ function processTopLevelAwait(src) {
       },
     ],
   };
-  // const iiafe = t.program([t.expressionStatement(t.callExpression(t.arrowFunctionExpression([], t.blockStatement(root.program.body)), []))]) // with @babel/types
+  // const iiafe = t.program([t.expressionStatement(
+  //   t.callExpression(t.arrowFunctionExpression([], t.blockStatement(root.program.body)), [])
+  // )]) // with @babel/types
 
   return iiafe;
 }

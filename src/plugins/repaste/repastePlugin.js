@@ -7,7 +7,7 @@ const getJsfiddle = require('./jsfiddle/getJsfiddle');
 
 const matchUrl = (text) => {
   const match = text.match(
-    /(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/,
+    /(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?/,
   ); // eslint-disable-line
   if (match) return match[0];
   return match;
@@ -67,6 +67,7 @@ const repastePlugin = (msg) => {
   }
 
   if (url) {
+    // eslint-disable-next-line no-use-before-define
     return getCode(msg, url).then(
       (res) => {
         // eslint-disable-line no-use-before-define
@@ -137,7 +138,7 @@ const repastePlugin = (msg) => {
   return Promise.resolve();
 };
 
-function getCode(msg, url) {
+async function getCode(msg, url) {
   if (/jsfiddle\.net/.test(url)) {
     return getJsfiddle(url);
   }
@@ -147,7 +148,7 @@ function getCode(msg, url) {
     msg.respondWithMention(
       `I don't know the paste service at "${url}". GreenJello, ping!`,
     );
-    return Promise.reject({ type: 'InvalidUrl' });
+    throw Object.assign(new Error(`Invalid URL`), { type: 'InvalidUrl' });
   }
   msg.vlog(`Fetching ${rawFiles.js}, ${rawFiles.css}, ${rawFiles.html}`);
   const filePromises = Object.keys(rawFiles).map((extension) => {
@@ -168,12 +169,12 @@ function getCode(msg, url) {
     });
   });
 
-  return Promise.all(filePromises).then((results) => {
-    return results.reduce(
-      (acc, { extension, text }) => Object.assign({}, acc, { [extension]: text }),
-      {},
-    );
-  });
+  const results = await Promise.all(filePromises);
+
+  return results.reduce(
+    (acc, { extension, text }) => Object.assign({}, acc, { [extension]: text }),
+    {},
+  );
 }
 
 module.exports = repastePlugin;
