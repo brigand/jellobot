@@ -14,7 +14,6 @@ exports.getStore = () => {
     });
 
     const tryWrite = () => {
-      console.log('tryWrite');
       STORE.writeToDisk()
         .then((didWrite) => {
           if (didWrite) {
