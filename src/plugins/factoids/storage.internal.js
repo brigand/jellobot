@@ -13,13 +13,17 @@ function toKey(key) {
 }
 
 class Store {
-  constructor(parent = null) {
-    this.#items = new Map();
-    this.#loaded = false;
-    this.#readPromise = null;
-    this.#writePromise = null;
-    this.#dirty = false;
+  #items = new Map();
 
+  #loaded = false;
+
+  #readPromise = null;
+
+  #writePromise = null;
+
+  #dirty = false;
+
+  constructor(parent = null) {
     if (parent) {
       const { items, loaded, dirty } = parent._getFields();
       if (items) this.#items = items;
@@ -166,7 +170,7 @@ class Store {
     for (const key of Object.keys(entries)) {
       map.set(key, entries[key]);
     }
-    this.replaceAll(map);
+    this._replaceAll(map);
     this.#dirty = false;
   }
 
