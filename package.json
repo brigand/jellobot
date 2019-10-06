@@ -9,8 +9,8 @@
   "scripts": {
     "test": "jest",
     "update-engine262": "dir='src/plugins/js-eval/vendor'; mkdir -p \"$dir\" && cd \"$dir\" && curl -sS https://engine262.js.org/engine262.js > engine262.js && node --check ./engine262",
-    "format": "npx prettier --write '{src/**/*.js,scripts/**/*.js,scripts/**/*.sh,README.md}'",
-    "lint": "npx eslint ."
+    "format": "prettier --write '{src/**/*.js,scripts/**/*.js,scripts/**/*.sh,README.md}'",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@babel/core": "^7.5.5",

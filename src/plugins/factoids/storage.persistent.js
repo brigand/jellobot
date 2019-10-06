@@ -5,7 +5,7 @@ exports.getStore = () => {
   const { Store } = require('./storage.internal');
   if (STORE) {
     if (Object.getPrototypeOf(STORE) !== Store.prototype) {
-      Object.setPrototypeOf(STORE, Store.prototype);
+      STORE = new Store(STORE);
     }
   } else {
     STORE = new Store();

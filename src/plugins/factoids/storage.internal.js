@@ -13,21 +13,36 @@ function toKey(key) {
 }
 
 class Store {
-  constructor() {
-    this._items = new Map();
-    this._loaded = false;
-    this._readPromise = null;
-    this._writePromise = null;
-    this._dirty = false;
+  constructor(parent = null) {
+    this.#items = new Map();
+    this.#loaded = false;
+    this.#readPromise = null;
+    this.#writePromise = null;
+    this.#dirty = false;
+
+    if (parent) {
+      const { items, loaded, dirty } = parent._getFields();
+      if (items) this.#items = items;
+      if (loaded != null) this.#loaded = loaded;
+      if (dirty != null) this.#dirty = dirty;
+    }
+  }
+
+  _getFields() {
+    return {
+      items: this.#items,
+      loaded: this.#loaded,
+      dirty: this.#dirty,
+    };
   }
 
   _replaceAll(items) {
-    this._items = items;
+    this.#items = items;
   }
 
   set(key, entry) {
-    this._items.set(toKey(key), entry);
-    this._dirty = true;
+    this.#items.set(toKey(key), entry);
+    this.#dirty = true;
     return this;
   }
 
@@ -40,7 +55,7 @@ class Store {
       i < MAX_ALIAS_DEPTH && cursor && cursor.type === 'alias';
       i += 1
     ) {
-      cursor = this._items.get(cursor.value) || null;
+      cursor = this.#items.get(cursor.value) || null;
     }
 
     if (cursor && cursor.type === 'alias') {
@@ -56,30 +71,30 @@ class Store {
 
   toJSON() {
     const obj = {};
-    for (const [key, entry] of this._items) {
+    for (const [key, entry] of this.#items) {
       obj[key] = entry;
     }
     return obj;
   }
 
   needsLoadFromDisk() {
-    return !this._loaded;
+    return !this.#loaded;
   }
 
   async loadFromDisk() {
-    const readPromise = this._readPromise || this._loadFromDiskInternal();
-    this._readPromise = readPromise;
+    const readPromise = this.#readPromise || this._loadFromDiskInternal();
+    this.#readPromise = readPromise;
 
     await readPromise;
 
-    this._loaded = true;
-    if (this._readPromise === readPromise) {
-      this._readPromise = null;
+    this.#loaded = true;
+    if (this.#readPromise === readPromise) {
+      this.#readPromise = null;
     }
   }
 
   update(key, { editor, value }) {
-    if (!this._loaded) {
+    if (!this.#loaded) {
       throw new Error(
         `Must wait for loadFromDisk to complete before calling .update`,
       );
@@ -89,7 +104,7 @@ class Store {
       throw new Error(`Factoids may not be more than 400 characters long.`);
     }
 
-    let entry = this._items.get(key);
+    let entry = this.#items.get(key);
 
     if (entry && entry.type === 'alias') {
       throw new Error(`An alias named "${key}" already exists.`);
@@ -123,26 +138,26 @@ class Store {
       };
     }
 
-    this._items.set(toKey(key), entry);
-    this._dirty = true;
+    this.#items.set(toKey(key), entry);
+    this.#dirty = true;
   }
 
   async writeToDisk() {
-    if (!this._writePromise) {
-      this._writePromise = Promise.resolve();
+    if (!this.#writePromise) {
+      this.#writePromise = Promise.resolve();
     }
-    this._writePromise = this._writePromise.then(async () => {
+    this.#writePromise = this.#writePromise.then(async () => {
       const promise = this._writeToDiskInternal();
       const updated = await promise.catch((error) => {
         console.error(`Failed to write to disk. ${inspect(error, { depth: 7 })}`);
       });
-      if (this._writePromise === promise) {
-        this._writePromise = null;
+      if (this.#writePromise === promise) {
+        this.#writePromise = null;
       }
       return updated || false;
     });
 
-    return this._writePromise;
+    return this.#writePromise;
   }
 
   async _loadFromDiskInternal() {
@@ -151,18 +166,18 @@ class Store {
     for (const key of Object.keys(entries)) {
       map.set(key, entries[key]);
     }
-    this._replaceAll(map);
-    this._dirty = false;
+    this.replaceAll(map);
+    this.#dirty = false;
   }
 
   async _writeToDiskInternal() {
-    if (!this._dirty) {
+    if (!this.#dirty) {
       return false;
     }
 
     const output = JSON.stringify(this, null, 2);
     await writeFile(FILE_PATH, output);
-    this._dirty = false;
+    this.#dirty = false;
 
     return true;
   }
