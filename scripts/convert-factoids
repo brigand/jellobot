@@ -34,24 +34,28 @@ function normalize(input) {
 
   const entry = {
     type: input.alias ? 'alias' : 'factoid',
-    value: input.value || input.alias || null,
-    creator: input.creator || '',
-    date: toISOString(input.date),
     popularity: input.popularity || 0,
     editors: input.editors || [],
     changes: input.changes || [],
   };
 
-  if (!entry.value) {
-    return null;
-  }
-
   entry.changes = entry.changes.map((change) => ({
     date: toISOString(change.date),
     editor: (change.editor || 'unknown').toLowerCase(),
     value: change['new-value'],
-    previous: change['old-value'],
+    live: true,
   }));
+
+  entry.changes.unshift({
+    editor: input.creator || '',
+    date: toISOString(input.date),
+    value: input.value || input.alias || null,
+    live: true,
+  });
+
+  if (!entry.changes[0].value) {
+    return null;
+  }
 
   // Sort with newest entries first
   entry.changes.sort((a, b) => b.date.localeCompare(a.date.localeCompare));

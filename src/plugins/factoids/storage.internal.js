@@ -67,7 +67,8 @@ class Store {
     }
 
     if (cursor && cursor.type === 'factoid') {
-      return cursor.value;
+      const change = cursor.changes.find((chg) => chg.live);
+      return (change && change.value) || null;
     }
 
     return null;
@@ -97,50 +98,47 @@ class Store {
     }
   }
 
-  update(key, { editor, value }) {
+  update(key, { editor, value, live }) {
     if (!this.#loaded) {
       throw new Error(
         `Must wait for loadFromDisk to complete before calling .update`,
       );
     }
 
-    if (value.length > 400) {
+    if (value != null && value.length > 400) {
       throw new Error(`Factoids may not be more than 400 characters long.`);
     }
 
-    let entry = this.#items.get(key);
+    const entry = this.#items.has(key)
+      ? { ...this.#items.get(key) }
+      : {
+          type: 'factoid',
+          popularity: 0,
+          editors: [],
+          changes: [],
+        };
 
     if (entry && entry.type === 'alias') {
       throw new Error(`An alias named "${key}" already exists.`);
     }
 
-    if (entry && entry.value === value) {
+    const current = entry.changes.find((change) => change.live);
+    if (current && current.value === value) {
       throw new Error(`This is the same as the current value in "${key}".`);
     }
 
-    if (entry) {
-      const editor2 = toKey(editor);
-      if (!entry.editors.includes(editor2)) {
-        entry.editors.push(editor2);
-      }
-      entry.changes.unshift({
+    const editor2 = toKey(editor);
+    if (!entry.editors.includes(editor2)) {
+      entry.editors = entry.editors.concat([editor2]);
+    }
+    entry.changes = [
+      {
         date: new Date().toISOString(),
         editor: editor2,
         value,
-        previous: entry.value,
-      });
-      entry.value = value;
-    } else {
-      entry = {
-        type: 'factoid',
-        value,
-        creator: toKey(editor),
-        date: new Date().toISOString(),
-        popularity: 0,
-        editors: [],
-        changes: [],
-      };
-    }
+        live,
+      },
+    ].concat(entry.changes);
 
     this.#items.set(toKey(key), entry);
     this.#dirty = true;
