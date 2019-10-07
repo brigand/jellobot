@@ -520,7 +520,7 @@
 		},
 		"ask": {
 			"value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html",
-			"popularity": 2001,
+			"popularity": 2002,
 			"editors": [
 				"hemanth",
 				"eboy",
@@ -829,7 +829,7 @@
 		},
 		"help": {
 			"value": "For help, ask your question. Be patient. Code samples should be pasted in a paste service (see !paste). Tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !describe and !debug).",
-			"popularity": 4184,
+			"popularity": 4185,
 			"editors": [
 				"ashnur",
 				"earendel",
@@ -9571,7 +9571,7 @@
 			"value": "There's 3 options to properly get data from the server to the client: 1) fetch request from JS. 2) HTML data-* attributes, read them in JS. 3) <script type=\"application/json\"></script>, read and parse it from JS, however this option requires special escaping of </script> in the json body. Never generate/template JS on the fly. See also !fetch",
 			"creator": "ljharb",
 			"date": "2015-11-10T10:18:02.124Z",
-			"popularity": 103,
+			"popularity": 104,
 			"editors": [
 				"GreenJello",
 				"graingert",
@@ -10078,7 +10078,7 @@
 			"value": "Don't use JWT for sessions. http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions -- JWT was never meant to be used for sessions, and its popularity happened purely because of marketing: https://youtu.be/GrLtOjCTB1s?t=1h2m44s  |  Instead, use session cookies: https://gist.github.com/joepie91/cf5fd6481a31477b12dc33af453f9a1d",
 			"creator": "joepie91",
 			"date": "2016-06-13T23:14:15.106Z",
-			"popularity": 199,
+			"popularity": 200,
 			"editors": [
 				"joepie91"
 			],
@@ -10635,7 +10635,7 @@
 			"alias": "jwt sessions",
 			"creator": "gkatsev",
 			"date": "2016-09-28T01:19:09.907Z",
-			"popularity": 144,
+			"popularity": 145,
 			"editors": [],
 			"changes": []
 		},
@@ -12893,7 +12893,7 @@
 			"alias": "server data",
 			"creator": "graingert",
 			"date": "2018-01-11T15:26:37.509Z",
-			"popularity": 26,
+			"popularity": 27,
 			"editors": [],
 			"changes": []
 		},
@@ -13290,7 +13290,7 @@
 			"value": "Show some code, but don't paste it to the channel. Use sites like gist.github.com or dpaste.com. Ideally it should be executable, see !paste",
 			"creator": "systemfault",
 			"date": "2018-04-28T01:17:51.504Z",
-			"popularity": 41,
+			"popularity": 42,
 			"editors": [],
 			"changes": []
 		},
@@ -15177,7 +15177,7 @@
 			"value": "Have you checked if there is an existing module that meets your needs? Search '[npm/github] xyz javascript' first so we don't have to. Up your search game even further @ https://moz.com/learn/seo/search-operators",
 			"creator": "MJCD",
 			"date": "2019-09-30T16:42:38.755Z",
-			"popularity": 1,
+			"popularity": 2,
 			"editors": [],
 			"changes": []
 		},
