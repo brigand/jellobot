@@ -106,7 +106,7 @@ const factoidPlugin = async (msg) => {
     learn({ key, value }) {
       if (key.length > 50) {
         msg.respondWithMention(
-          `Is anyone going to remember a ${key.length} character trigger? Try something shorter (max 50)`,
+          `is anyone going to remember a ${key.length} character trigger? Try something shorter (max 50)`,
         );
         return;
       }
@@ -117,7 +117,7 @@ const factoidPlugin = async (msg) => {
           `got it. I'll remember this for when "!${key}" is used.`,
         );
       } else {
-        msg.respondWithMention(`Change proposed to "${key}"`);
+        msg.respondWithMention(`change proposed to "${key}"`);
       }
     },
     forget({ key }) {

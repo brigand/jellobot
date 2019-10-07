@@ -151,7 +151,7 @@ class Store {
       );
     }
 
-    const draft = currentIndex === 0 || currentIndex === -1 ? null : entry.changes[0];
+    const draft = currentIndex === 0 ? null : entry.changes[0];
     if (draft && draft.value === value) {
       throw new RespondWithMention(
         `this exact change to "${key}" has already been proposed.`,
