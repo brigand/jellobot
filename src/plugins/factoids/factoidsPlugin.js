@@ -26,6 +26,43 @@ async function checkAndSaveDisabled(msg) {
   return disabled;
 }
 
+class Command {
+  type = '';
+
+  arg = null;
+
+  constructor(command) {
+    const learn = command.match(/learn\s+([^=]+[^=\s])\s*=\s*(.*)$/);
+
+    if (learn) {
+      const [, key, value] = learn;
+      this.type = 'learn';
+      this.arg = { key, value };
+      return;
+    }
+
+    const forget = command.match(/forget\s+([^=]+[^=\s])\s*$/);
+    if (forget) {
+      const [, key] = forget;
+      this.type = 'forget';
+      this.arg = { key };
+      return;
+    }
+
+    this.type = 'factoid';
+    this.arg = { key: command.trim() };
+  }
+
+  match(matchers) {
+    const has = Object.prototype.hasOwnProperty;
+    if (has.call(matchers, this.type)) {
+      return matchers[this.type](this.arg);
+    } else {
+      return matchers.default();
+    }
+  }
+}
+
 const factoidPlugin = async (msg) => {
   if (!msg.command) return null;
   if (await checkAndSaveDisabled(msg)) {
@@ -40,27 +77,40 @@ const factoidPlugin = async (msg) => {
     await STORE.loadFromDisk();
   }
 
-  const learnMatch = command.match(/learn\s+([^=]+[^=\s])\s*=\s*(.*)$/);
+  const moderators = (msg.selfConfig && msg.selfConfig.moderators) || [];
+  const live = moderators.includes(msg.from);
 
-  if (learnMatch) {
-    const [, key, value] = learnMatch;
-    if (key.length > 50) {
-      msg.respondWithMention(
-        `Is anyone going to remember a ${key.length} character trigger? Try something shorter (max 50)`,
-      );
-      return;
-    }
+  new Command(command).match({
+    factoid({ key }) {
+      const content = STORE.getText(key);
 
-    STORE.update(key, { editor: msg.from, value });
-    msg.respondWithMention(`Learned "${key}"`);
-    return;
-  }
+      if (content) {
+        msg.respondWithMention(content);
+      }
+    },
+    learn({ key, value }) {
+      if (key.length > 50) {
+        msg.respondWithMention(
+          `Is anyone going to remember a ${key.length} character trigger? Try something shorter (max 50)`,
+        );
+        return;
+      }
 
-  const factoidContent = STORE.getText(command);
+      STORE.update(key, { editor: msg.from, value, live });
+      msg.respondWithMention(`Learned "${key}"`);
+    },
+    forget({ key }) {
+      const current = STORE.getText(key);
 
-  if (factoidContent) {
-    msg.respondWithMention(factoidContent);
-  }
+      if (current == null) {
+        msg.respondWithMention(
+          `The factoid for "${key}" never existed or was already deleted.`,
+        );
+      } else {
+        STORE.update(key, { editor: msg.from, value: null, live });
+      }
+    },
+  });
 };
 
 module.exports = factoidPlugin;
