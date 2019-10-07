@@ -50,6 +50,14 @@ class Command {
       return;
     }
 
+    const publish = command.match(/publish\s+([^=]+[^=\s])\s*$/);
+    if (publish) {
+      const [, key] = publish;
+      this.type = 'publish';
+      this.arg = { key };
+      return;
+    }
+
     this.type = 'factoid';
     this.arg = { key: command.trim() };
   }
@@ -127,6 +135,18 @@ const factoidPlugin = async (msg) => {
           msg.respondWithMention(`I'll make a note that you want "${key}" removed.`);
         }
       }
+    },
+    publish({ key }) {
+      if (!live) {
+        // Something to grep in logs.
+        msg.log(`Code: 7e01ece9. !publish attempt by ${inspect(msg.from)}`);
+
+        throw new RespondWithMention(
+          `only factoid moderators can publish a factoid.`,
+        );
+      }
+
+      STORE.publishDraft(key);
     },
   });
 };

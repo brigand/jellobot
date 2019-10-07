@@ -176,6 +176,33 @@ class Store {
     this.#dirty = true;
   }
 
+  publishDraft(key) {
+    const key2 = toKey(key);
+
+    const entry = this.#items.get(key2);
+
+    if (!entry) {
+      throw new RespondWithMention(
+        `I couldn't find "${key}" - neither a draft nor live factoid.`,
+      );
+    }
+
+    const liveIndex = entry.changes.findIndex((item) => item.live);
+    const draftIndex = entry.changes.findIndex((item) => !item.live);
+
+    if (draftIndex === -1) {
+      throw new RespondWithMention(`I couldn't find any drafts for "${key}".`);
+    }
+
+    if (liveIndex !== -1 && liveIndex < draftIndex) {
+      throw new RespondWithMention(
+        `The latest draft is older than the live change for "${key}".`,
+      );
+    }
+
+    entry.changes[draftIndex] = { ...entry.changes[draftIndex], live: true };
+  }
+
   async writeToDisk() {
     if (!this.#writePromise) {
       this.#writePromise = Promise.resolve();
