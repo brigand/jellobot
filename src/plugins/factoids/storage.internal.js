@@ -151,11 +151,13 @@ class Store {
       );
     }
 
-    const draft = currentIndex === 0 ? null : entry.changes[0];
-    if (draft && draft.value === value) {
-      throw new RespondWithMention(
-        `this exact change to "${key}" has already been proposed.`,
-      );
+    if (!live) {
+      const draft = currentIndex === 0 ? null : entry.changes[0];
+      if (draft && draft.value === value) {
+        throw new RespondWithMention(
+          `this exact change to "${key}" has already been proposed.`,
+        );
+      }
     }
 
     const editor2 = toKey(editor);

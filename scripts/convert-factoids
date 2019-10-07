@@ -11,9 +11,10 @@ const RECENT_TIME = new Date(Date.UTC(2015, 0, 1, 0, 0, 0, 0));
 
 function toISOString(value) {
   let timestamp = Number(RECENT_TIME);
+
   if (
     typeof value === 'string' &&
-    /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])$/.test(value)
+    /\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d{1,9})?Z$/.test(value)
   ) {
     timestamp = Date.parse(value);
   } else if (
@@ -47,7 +48,7 @@ function normalize(input) {
   }));
 
   entry.changes.unshift({
-    editor: input.creator || '',
+    editor: (input.creator || '').toLowerCase(),
     date: toISOString(input.date),
     value: input.value || input.alias || null,
     live: true,

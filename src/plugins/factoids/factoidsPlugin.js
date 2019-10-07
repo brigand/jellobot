@@ -93,6 +93,7 @@ const factoidPlugin = async (msg) => {
   }
 
   const moderators = (msg.selfConfig && msg.selfConfig.moderators) || [];
+  console.log({ self: msg.selfConfig });
   const live = moderators.includes(msg.from);
 
   new Command(command).log(msg).match({
@@ -147,6 +148,10 @@ const factoidPlugin = async (msg) => {
       }
 
       STORE.publishDraft(key);
+
+      msg.respondWithMention(
+        `done. Everyone will now see the previous draft when "!${key}" is used.`,
+      );
     },
   });
 };
