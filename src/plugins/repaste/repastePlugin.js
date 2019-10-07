@@ -172,7 +172,7 @@ async function getCode(msg, url) {
   const results = await Promise.all(filePromises);
 
   return results.reduce(
-    (acc, { extension, text }) => Object.assign({}, acc, { [extension]: text }),
+    (acc, { extension, text }) => ({ ...acc, [extension]: text }),
     {},
   );
 }

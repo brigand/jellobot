@@ -25,7 +25,7 @@ const defaultConfig = {
 };
 
 exports.processConfig = (customConfig) => {
-  const config = Object.assign({}, defaultConfig, customConfig);
+  const config = { ...defaultConfig, customConfig };
 
   // generate the config passed to new irc.Client
   config.ircClientConfig = {
