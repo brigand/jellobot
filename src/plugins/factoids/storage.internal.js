@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const { promisify, inspect } = require('util');
+const { RespondWithMention } = require('../../errors');
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
@@ -50,7 +51,25 @@ class Store {
     return this;
   }
 
-  getText(key) {
+  getTextLive(key) {
+    return this.getTextWhere(key, (change) => change.live);
+  }
+
+  getTextDraft(key) {
+    let hitLive = false;
+    return this.getTextWhere(key, (change) => {
+      if (change.live) {
+        hitLive = true;
+        return false;
+      } else if (hitLive) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+  }
+
+  getTextWhere(key, filter) {
     const MAX_ALIAS_DEPTH = 5;
     let cursor = { type: 'alias', value: toKey(key) };
 
@@ -67,7 +86,7 @@ class Store {
     }
 
     if (cursor && cursor.type === 'factoid') {
-      const change = cursor.changes.find((chg) => chg.live);
+      const change = cursor.changes.find(filter);
       return (change && change.value) || null;
     }
 
@@ -87,7 +106,7 @@ class Store {
   }
 
   async loadFromDisk() {
-    const readPromise = this.#readPromise || this._loadFromDiskInternal();
+    const readPromise = this.#readPromise || this.#loadFromDiskInternal();
     this.#readPromise = readPromise;
 
     await readPromise;
@@ -106,7 +125,9 @@ class Store {
     }
 
     if (value != null && value.length > 400) {
-      throw new Error(`Factoids may not be more than 400 characters long.`);
+      throw new RespondWithMention(
+        `factoids may not be more than 400 characters long.`,
+      );
     }
 
     const entry = this.#items.has(key)
@@ -119,15 +140,26 @@ class Store {
         };
 
     if (entry && entry.type === 'alias') {
-      throw new Error(`An alias named "${key}" already exists.`);
+      throw new RespondWithMention(`an alias named "${key}" already exists.`);
     }
 
-    const current = entry.changes.find((change) => change.live);
+    const currentIndex = entry.changes.findIndex((change) => change.live);
+    const current = entry.changes[currentIndex];
     if (current && current.value === value) {
-      throw new Error(`This is the same as the current value in "${key}".`);
+      throw new RespondWithMention(
+        `this is the same as the current value in "${key}".`,
+      );
+    }
+
+    const draft = currentIndex === 0 || currentIndex === -1 ? null : entry.changes[0];
+    if (draft && draft.value === value) {
+      throw new RespondWithMention(
+        `this exact change to "${key}" has already been proposed.`,
+      );
     }
 
     const editor2 = toKey(editor);
+
     if (!entry.editors.includes(editor2)) {
       entry.editors = entry.editors.concat([editor2]);
     }
@@ -149,7 +181,7 @@ class Store {
       this.#writePromise = Promise.resolve();
     }
     this.#writePromise = this.#writePromise.then(async () => {
-      const promise = this._writeToDiskInternal();
+      const promise = this.#writeToDiskInternal();
       const updated = await promise.catch((error) => {
         console.error(`Failed to write to disk. ${inspect(error, { depth: 7 })}`);
       });
@@ -162,7 +194,7 @@ class Store {
     return this.#writePromise;
   }
 
-  async _loadFromDiskInternal() {
+  #loadFromDiskInternal = async function loadFromDiskInternal() {
     const map = new Map();
     const entries = JSON.parse(await readFile(FILE_PATH, 'utf-8'));
     for (const key of Object.keys(entries)) {
@@ -170,9 +202,9 @@ class Store {
     }
     this._replaceAll(map);
     this.#dirty = false;
-  }
+  };
 
-  async _writeToDiskInternal() {
+  #writeToDiskInternal = async function writeToDiskInternal() {
     if (!this.#dirty) {
       return false;
     }
@@ -182,7 +214,7 @@ class Store {
     this.#dirty = false;
 
     return true;
-  }
+  };
 }
 
 exports.Store = Store;

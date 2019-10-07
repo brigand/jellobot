@@ -1,7 +1,8 @@
 const fs = require('fs');
-const text = require('../../utils/text');
-const { promisify } = require('util');
+const { promisify, inspect } = require('util');
 const slugify = require('slugify');
+const { RespondWithMention } = require('../../errors');
+const text = require('../../utils/text');
 const { getStore } = require('./storage.persistent');
 
 const readFile = promisify(fs.readFile);
@@ -61,6 +62,12 @@ class Command {
       return matchers.default();
     }
   }
+
+  log(msg) {
+    const log = this.type === 'factoid' ? msg.vlog : msg.log;
+    log(`type=${inspect(this.type)} arg=${inspect(this.arg)}`);
+    return this;
+  }
 }
 
 const factoidPlugin = async (msg) => {
@@ -80,9 +87,9 @@ const factoidPlugin = async (msg) => {
   const moderators = (msg.selfConfig && msg.selfConfig.moderators) || [];
   const live = moderators.includes(msg.from);
 
-  new Command(command).match({
+  new Command(command).log(msg).match({
     factoid({ key }) {
-      const content = STORE.getText(key);
+      const content = STORE.getTextLive(key);
 
       if (content) {
         msg.respondWithMention(content);
@@ -97,17 +104,28 @@ const factoidPlugin = async (msg) => {
       }
 
       STORE.update(key, { editor: msg.from, value, live });
-      msg.respondWithMention(`Learned "${key}"`);
+      if (live) {
+        msg.respondWithMention(
+          `got it. I'll remember this for when "!${key}" is used.`,
+        );
+      } else {
+        msg.respondWithMention(`Change proposed to "${key}"`);
+      }
     },
     forget({ key }) {
       const current = STORE.getText(key);
 
       if (current == null) {
-        msg.respondWithMention(
+        throw new RespondWithMention(
           `The factoid for "${key}" never existed or was already deleted.`,
         );
       } else {
         STORE.update(key, { editor: msg.from, value: null, live });
+        if (live) {
+          msg.respondWithMention(`I won't respond to "${key}" anymore.`);
+        } else {
+          msg.respondWithMention(`I'll make a note that you want "${key}" removed.`);
+        }
       }
     },
   });
