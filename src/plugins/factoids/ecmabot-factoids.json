@@ -173,7 +173,7 @@
 		},
 		"paste": {
 			"value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
-			"popularity": 2480,
+			"popularity": 2482,
 			"editors": [
 				"niggler",
 				"gkatsev",
@@ -376,7 +376,7 @@
 		},
 		"cornify": {
 			"value": "`^nn~ <http://www.cornify.com/>",
-			"popularity": 14
+			"popularity": 16
 		},
 		"ecmascript": {
 			"value": "ECMAScript (pronounced Ek-ma-script) is the written, non-proprietary standard of JavaScript. JavaScript is a Mozilla-specific dialect which adds some features. JScript is Microsoft's dialect. ActionScript is a dialect used in Adobe Flash.",
@@ -434,7 +434,7 @@
 		},
 		"jsonlint": {
 			"value": "JSONLint - The JSON Validator. - http://www.jsonlint.com/",
-			"popularity": 1
+			"popularity": 2
 		},
 		"textContent": {
 			"value": "There is no single cross-browser way to get the inner text from an element (without HTML), so you need the following: var text = element.textContent || element.innerText;",
@@ -445,7 +445,7 @@
 		},
 		"xy": {
 			"value": "The XY problem: You want to do X, but don't know how. You think you can solve it using Y, but don't know how to do that either. You ask about Y, which is a strange thing to want to do. Just ask about X. See also: http://xyproblem.info/",
-			"popularity": 1209,
+			"popularity": 1210,
 			"editors": [
 				"j201",
 				"sukima",
@@ -489,7 +489,7 @@
 		},
 		"eloquent": {
 			"value": "Eloquent JavaScript is a comprehensive introductory Web-based book with examples and a built-in interpreter. http://eloquentjavascript.net/",
-			"popularity": 1763,
+			"popularity": 1765,
 			"editors": [
 				"ericelliott",
 				"ashnur"
@@ -520,7 +520,7 @@
 		},
 		"ask": {
 			"value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html",
-			"popularity": 2007,
+			"popularity": 2008,
 			"editors": [
 				"hemanth",
 				"eboy",
@@ -623,7 +623,7 @@
 		},
 		"select": {
 			"value": "To get the value of a <select> form field: var select = document.getElementById(\"select\"); var value = select.options[select.selectedIndex].value;",
-			"popularity": 5
+			"popularity": 6
 		},
 		"doesn't work": {
 			"value": "What do you mean it doesn't work? Is it unemployed? What happens when you try to run it? What did you try to run? What's the output? What's the error message? What did you want or expect to happen? Can you post a screenshot or a fiddle?",
@@ -647,7 +647,7 @@
 		},
 		"mdc": {
 			"value": "Mozilla Developer Network @ http://developer.mozilla.org/",
-			"popularity": 165,
+			"popularity": 166,
 			"editors": [
 				"qswz",
 				"ljharb"
@@ -681,7 +681,7 @@
 		},
 		"hammertime": {
 			"value": "━━▊ ━━▊ ━━▊",
-			"popularity": 30
+			"popularity": 31
 		},
 		"wait": {
 			"value": "Don't feel ignored and repeat your question quickly; if nobody knows your answer, nobody will answer you. While you wait, try searching https://developer.mozilla.org/en/JavaScript or https://developer.mozilla.org/en/DOM || You might also consider reading: http://www.catb.org/~esr/faqs/smart-questions.html",
@@ -736,7 +736,7 @@
 		},
 		"sadtrombone": {
 			"value": "Wah wah wah waahhh... http://www.sadtrombone.com/",
-			"popularity": 1
+			"popularity": 3
 		},
 		"ugt": {
 			"value": "Universal Greeting Time (or UGT) is a convention that states when a user enters an IRC channel it is always morning and upon leaving it is always night, regardless of the actual physical locations of the users in the channel. http://www.total-knowledge.com/~ilya/mips/ugt.html",
@@ -852,7 +852,7 @@
 		},
 		"bracket access": {
 			"value": "yourObject.foobar is just another way of saying yourObject['foobar']. So of course if varName = 'foobar', then it's also the same as yourObject[varName]. Dot notation is preferred to bracket notation except where the property name would be an invalid identifier. The same applies to quoting keys inside object literals - don't do it unless you have to.",
-			"popularity": 119,
+			"popularity": 121,
 			"editors": [
 				"ljharb"
 			],
@@ -866,11 +866,12 @@
 			]
 		},
 		"bracketaccess": {
-			"alias": "bracket access"
+			"alias": "bracket access",
+			"popularity": 1
 		},
 		"bracket": {
 			"alias": "bracket access",
-			"popularity": 91
+			"popularity": 92
 		},
 		"ops": {
 			"value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello jaawerth niggler. In case of an emergency requiring op attention, activate !emergency",
@@ -978,7 +979,7 @@
 		},
 		"str->int": {
 			"value": " [parseInt('1', 10), Number('1'), +'1', 1*'1', ~~'1', '1'>>0, '1'|0] // each item in the list is a way of doing string->int conversions. Items from ~~ onwards only work for 32bit integers. You likely don't want parseInt, unless you want to convert something like `1001 nights` to the number `1001`. See !parseint.",
-			"popularity": 25,
+			"popularity": 26,
 			"editors": [
 				"Sorella"
 			]
@@ -1077,7 +1078,7 @@
 		},
 		"uuid": {
 			"value": "Are you sure you want a UUID? If want a random token you probably want something more secure than Math.random(). If you want a database ID your database provides utilities for generating such IDs. See also !token",
-			"popularity": 6,
+			"popularity": 7,
 			"editors": [
 				"graingert"
 			],
@@ -1127,14 +1128,6 @@
 					"new-value": "That problem looks a little contrived, and we suspect it may be homework. While we won't do your homework for you, We can help, but we'll want to see some effort, and we'll expect you to read docs rather than get spoon-fed. If it's not homework, see also !xy"
 				}
 			]
-		},
-		"no": {
-			"value": "Don't make shit up.",
-			"popularity": 24
-		},
-		"spelling": {
-			"value": "Spelling and capitalization are important in programming, unless you are using PHP.",
-			"popularity": 21
 		},
 		"submit": {
 			"value": "Do you have a form element with name=\"submit\"? That confuses some browsers. When you call form.submit(), it thinks you're talking about the name=\"submit\" element."
@@ -1278,7 +1271,7 @@
 		},
 		"comparisons": {
 			"value": "Using == and != should be avoided, since they perform coercion giving unexpected results. Use === and !== instead. See also: http://zero.milosz.ca/ http://es5.github.io/#x11.9.3 https://eqeq.js.org/",
-			"popularity": 238,
+			"popularity": 240,
 			"editors": [
 				"jrajav",
 				"j201",
@@ -1320,7 +1313,7 @@
 		},
 		"sosf": {
 			"value": "Son of Suckerfish Dropdowns, a simple technique for making dropdown menus with minimal JavaScript merely for support in IE6: http://www.htmldog.com/articles/suckerfish/dropdowns/",
-			"popularity": 3
+			"popularity": 4
 		},
 		"alot": {
 			"value": "Do you like to hug alot? http://bit.ly/aVDMTo",
@@ -1440,7 +1433,7 @@
 		},
 		"last one only": {
 			"value": "If something is only being applied to the 'last' one of many, you might have a scoping problem. e.g.: in for (i=0; i<5; ++i) {doX(function(){ doY(i); });} `doY' might only receive 5 as a value. You can solve this using closures, so see !closures. For more info see http://web.archive.org/web/20161209211206/www.mennovanslooten.nl/blog/post/62/",
-			"popularity": 267,
+			"popularity": 268,
 			"editors": [
 				"yansanmo",
 				"Maxdamantus",
@@ -1559,7 +1552,7 @@
 		},
 		"parseint": {
 			"value": "If you want to convert something to a Number, don't use `parseInt`, just convert it to a Number using `Number(x)`. parseInt will convert it to a String, then extract the first numeric characters in that String that are allowed in the specified radix, THEN convert those to a Number. You only use it for things like parseInt('500 days of Summer', 10) => 500",
-			"popularity": 47,
+			"popularity": 48,
 			"editors": [
 				"Sorella"
 			],
@@ -1874,7 +1867,7 @@
 		},
 		"gist": {
 			"value": "Paste code at https://gist.github.com (or a similar site see !paste) and name the file .js so that we can look over it. Thanks!",
-			"popularity": 341,
+			"popularity": 342,
 			"editors": [
 				"GreenJello",
 				"graingert"
@@ -1968,7 +1961,7 @@
 		},
 		"equality": {
 			"value": "When the types of a and b are the same, 'a == b' and 'a === b' have the same value. Otherwise, == coerces its operands to the same type, and is sometimes true on operands where === is false. On objects (which are mutable), a == b iff mutating a also mutates b. On immutable types (string, number, boolean, undefined, null) a == b iff the values are equal. Equality Table: https://janosch.woschitz.org/javascript-equality-comparison/",
-			"popularity": 42,
+			"popularity": 43,
 			"editors": [
 				"CoverSlide|TPFR"
 			]
@@ -1998,7 +1991,7 @@
 		},
 		"amiallowed": {
 			"value": "Yes, you're allowed to add factoids!",
-			"popularity": 12
+			"popularity": 13
 		},
 		"public": {
 			"value": "don't direct your question towards one member of the chat who is active & seems knowledgable, but is otherwise unrelated. Ask the channel at large instead.",
@@ -2079,7 +2072,8 @@
 			"popularity": 16
 		},
 		"last-only": {
-			"alias": "last one only"
+			"alias": "last one only",
+			"popularity": 1
 		},
 		"last": {
 			"alias": "last one only",
@@ -2201,7 +2195,7 @@
 		},
 		"otbs": {
 			"value": "The One True Brace style: https://en.wikipedia.org/wiki/Indent_style#Variant:_1TBS_.28OTBS.29",
-			"popularity": 98,
+			"popularity": 99,
 			"editors": [
 				"ljharb"
 			],
@@ -2216,7 +2210,7 @@
 		},
 		"use a library": {
 			"value": "You want to solve a problem that has been solved several times before, and has been distributed as a reusable component for anyone to use. Using a library you can have your cake, and eat it too!",
-			"popularity": 1
+			"popularity": 2
 		},
 		"ajax": {
 			"value": "XMLHttpRequest, a method for asynchronous fetching of data or files from a server with javascript. https://developer.mozilla.org/en/docs/DOM/XMLHttpRequest (see also: !cors for issues with cross-origin XHR)",
@@ -3794,7 +3788,7 @@
 		},
 		"iteration": {
 			"value": "ECMAScript's Array contains a number of built-in methods for iteration (e.g., map, reduce, every, some, filter, and forEach). They relieve the need for manual iteration, provide better abstraction than a `for` loop, and make it clear what your iteration is doing. See https://gist.github.com/ljharb/58faf1cfcb4e6808f74aae4ef7944cff",
-			"popularity": 614,
+			"popularity": 615,
 			"creator": "Mortchek",
 			"editors": [
 				"Mortchek",
@@ -4620,7 +4614,7 @@
 		},
 		"modules": {
 			"value": "Modules divide programs into clusters of code that, by some criterion, belong together. \"!es modules\" are second-class, but JS can encode first-class ones. Major implementations include CommonJS, Node modules (a variant of CJS), and AMD. All of them can be used in any JS VM, including browsers. See also: http://robotlolita.me/2013/06/06/node-modules-to-rule-them-all.html and",
-			"popularity": 189,
+			"popularity": 190,
 			"creator": "Sorella",
 			"editors": [
 				"Sorella",
@@ -5743,7 +5737,7 @@
 			"alias": "comparisons",
 			"creator": "",
 			"date": "2014-03-23T23:44:47.732Z",
-			"popularity": 91,
+			"popularity": 92,
 			"editors": [],
 			"changes": []
 		},
@@ -6876,7 +6870,7 @@
 			"value": "|>function deepClone(o,i){i=Array.isArray(o)?[]:{};return Object.keys(o).reduce(function(a,k,x){return x=o[k],a[k]=typeof x==\\\"object\\\"?deepClone(x):x,a},i)};",
 			"creator": "falafel",
 			"date": "2014-12-30T23:01:31.175Z",
-			"popularity": 32,
+			"popularity": 33,
 			"editors": [
 				"MJCD",
 				"ljharb"
@@ -6981,7 +6975,7 @@
 			"value": "Don't use pastebin.com, Ads, Spamfilters, Captcha, Adds whitespace, Slow, Ugly, No comment/fork/annotate, Breaks copy/paste, Blocked for some people, etc. See !paste and !fiddle",
 			"creator": "ashnur",
 			"date": "2015-01-07T11:48:28.292Z",
-			"popularity": 195,
+			"popularity": 196,
 			"editors": [
 				"graingert"
 			],
@@ -10542,7 +10536,7 @@
 			"value": "Airbnb's javascript style guide is an extremely comprehensive set of default style rules (which you can then customize as you see fit) - setup instructions can be found here: https://github.com/airbnb/javascript - see also !eslint and !airbnb-react",
 			"creator": "XinzZz",
 			"date": "2016-09-20T18:12:53.786Z",
-			"popularity": 244,
+			"popularity": 246,
 			"editors": [
 				"ljharb",
 				"graingert",
@@ -11896,7 +11890,7 @@
 			"value": "Don't use MongoDB - it has many issues, and is essentially never the right solution to your problem. Here's a list of issues: http://cryto.net/~joepie91/blog/2015/07/19/why-you-should-never-ever-ever-use-mongodb/ and a more technical article at http://www.sarahmei.com/blog/2013/11/11/why-you-should-never-use-mongodb/",
 			"creator": "samsch",
 			"date": "2017-08-13T03:29:15.090Z",
-			"popularity": 150,
+			"popularity": 151,
 			"editors": [],
 			"changes": []
 		},
@@ -12042,7 +12036,7 @@
 			"value": "Before node-style CommonJS became the defacto module standard, UMD rose as a way to be a \"universal\" pattern to support both CJS and AMD (as well as legacy browser global patterns). UMD is no longer particularly useful. http://davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/",
 			"creator": "MJCD",
 			"date": "2017-08-31T13:10:28.991Z",
-			"popularity": 6,
+			"popularity": 7,
 			"editors": [
 				"ljharb"
 			],
@@ -13497,7 +13491,7 @@
 			"value": "Don't use environment variables to store credentials like passwords and keys! They're too easy to leak, because many tools don't treat environment variables as private information. Use configuration files (eg. config.json) with strict permissions (0400) instead.",
 			"creator": "joepie91",
 			"date": "2018-07-14T18:48:39.632Z",
-			"popularity": 17,
+			"popularity": 18,
 			"editors": [
 				"joepie91"
 			],
@@ -13619,7 +13613,7 @@
 			"alias": "commonjs",
 			"creator": "graingert",
 			"date": "2018-08-23T02:07:04.565Z",
-			"popularity": 5,
+			"popularity": 6,
 			"editors": [],
 			"changes": []
 		},
@@ -13627,7 +13621,7 @@
 			"alias": "environment variables",
 			"creator": "joepie91",
 			"date": "2018-08-23T17:14:19.115Z",
-			"popularity": 14,
+			"popularity": 15,
 			"editors": [],
 			"changes": []
 		},
@@ -14018,7 +14012,7 @@
 			"value": "https://regex101.com is a tool for playing with regular expressions of various engines against a given set of data to see the results live",
 			"creator": "MJCD",
 			"date": "2018-10-19T23:26:50.389Z",
-			"popularity": 13,
+			"popularity": 14,
 			"editors": [],
 			"changes": []
 		},
@@ -14197,7 +14191,7 @@
 			"alias": "comparisons",
 			"creator": "",
 			"date": "2018-11-07T16:42:09.411Z",
-			"popularity": 4,
+			"popularity": 5,
 			"editors": [],
 			"changes": []
 		},
@@ -14326,7 +14320,7 @@
 			"alias": "iteration",
 			"creator": "MJCD",
 			"date": "2019-01-02T14:07:29.917Z",
-			"popularity": 5,
+			"popularity": 6,
 			"editors": [],
 			"changes": []
 		},
@@ -14739,7 +14733,7 @@
 			"value": "https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/",
 			"creator": "devsnek",
 			"date": "2019-04-18T23:20:37.070Z",
-			"popularity": 1,
+			"popularity": 2,
 			"editors": [],
 			"changes": []
 		},
@@ -15078,7 +15072,7 @@
 			"value": "Brotli is a compression algorithm used in modern https encryption. See https://github.com/google/brotli",
 			"creator": "MJCD",
 			"date": "2019-09-07T14:53:15.169Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [
 				"niggler"
 			],
@@ -15205,7 +15199,7 @@
 			"value": "JavaScript in the browser doesn't have a sleep command -- as it's single threaded (if that makes no sense, ask). Instead, use the setTimeout function. Example: `do_this(); window.setTimeout(do_this_in_after_at_least_2seconds, 2e3);`",
 			"creator": "ljharb",
 			"date": "2019-09-28T04:06:53.955Z",
-			"popularity": 0,
+			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
@@ -21453,6 +21447,24 @@
 			"value": {
 				"value": "https://developer.mozilla.org/en/JavaScript/Guide/Predefined_Core_Objects#Array_Object",
 				"popularity": 9
+			}
+		},
+		{
+			"date": "2019-10-10T23:09:32.022Z",
+			"editor": "niggler",
+			"key": "spelling",
+			"value": {
+				"value": "Spelling and capitalization are important in programming, unless you are using PHP.",
+				"popularity": 23
+			}
+		},
+		{
+			"date": "2019-10-10T23:09:34.465Z",
+			"editor": "ljharb",
+			"key": "no",
+			"value": {
+				"value": "Don't make shit up.",
+				"popularity": 25
 			}
 		}
 	]
