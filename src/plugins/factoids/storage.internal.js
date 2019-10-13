@@ -203,6 +203,8 @@ class Store {
     }
 
     entry.changes[draftIndex] = { ...entry.changes[draftIndex], live: true };
+
+    return { deleted: !this.getTextLive() };
   }
 
   async writeToDisk() {

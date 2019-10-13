@@ -9,6 +9,10 @@ const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
 async function checkAndSaveDisabled(msg) {
+  if (!msg.channel) {
+    return false;
+  }
+
   const safeTo = slugify(msg.channel);
 
   const disableFile = `/tmp/disable-factoids${safeTo}`;
@@ -94,17 +98,19 @@ const factoidPlugin = async (msg) => {
 
   const moderators = (msg.selfConfig && msg.selfConfig.moderators) || [];
   console.log({ self: msg.selfConfig });
-  const live = moderators.includes(msg.from);
+  const isModerator = moderators.includes(msg.from);
 
   new Command(command).log(msg).match({
     factoid({ key }) {
       const content = STORE.getTextLive(key);
 
       if (content) {
+        msg.handling({ type: 'factoid', key });
         msg.respondWithMention(content);
       }
     },
     learn({ key, value }) {
+      msg.handling({ type: 'learn', key, value });
       if (key.length > 50) {
         msg.respondWithMention(
           `is anyone going to remember a ${key.length} character trigger? Try something shorter (max 50)`,
@@ -112,33 +118,34 @@ const factoidPlugin = async (msg) => {
         return;
       }
 
-      STORE.update(key, { editor: msg.from, value, live });
-      if (live) {
-        msg.respondWithMention(
-          `got it. I'll remember this for when "!${key}" is used.`,
-        );
-      } else {
-        msg.respondWithMention(`change proposed to "${key}"`);
-      }
+      STORE.update(key, { editor: msg.from, value, live: false });
+
+      msg.respondWithMention(`I'll record the proposed change to ${inspect(key)}`);
     },
     forget({ key }) {
-      const current = STORE.getText(key);
+      msg.handling({ type: 'forget', key });
+      const current = STORE.getTextLive(key);
 
       if (current == null) {
         throw new RespondWithMention(
           `The factoid for "${key}" never existed or was already deleted.`,
         );
       } else {
-        STORE.update(key, { editor: msg.from, value: null, live });
-        if (live) {
-          msg.respondWithMention(`I won't respond to "${key}" anymore.`);
-        } else {
-          msg.respondWithMention(`I'll make a note that you want "${key}" removed.`);
-        }
+        STORE.update(key, { editor: msg.from, value: null, live: false });
+
+        msg.respondWithMention(`I'll make a note that you want "${key}" removed.`);
       }
     },
     publish({ key }) {
-      if (!live) {
+      msg.handling({ type: 'publish', key });
+
+      if (!msg.pm) {
+        throw new RespondWithMention(
+          `the !publish command can only be used in a private message`,
+        );
+      }
+
+      if (!isModerator) {
         // Something to grep in logs.
         msg.log(`Code: 7e01ece9. !publish attempt by ${inspect(msg.from)}`);
 
@@ -147,11 +154,15 @@ const factoidPlugin = async (msg) => {
         );
       }
 
-      STORE.publishDraft(key);
+      const { deleted } = STORE.publishDraft(key);
 
-      msg.respondWithMention(
-        `done. Everyone will now see the previous draft when "!${key}" is used.`,
-      );
+      if (deleted) {
+        msg.respondWithMention(`done. The factoid has been deleted, as proposed.`);
+      } else {
+        msg.respondWithMention(
+          `done. Everyone will now see the previous draft when "!${key}" is used.`,
+        );
+      }
     },
   });
 };
