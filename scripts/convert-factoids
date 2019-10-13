@@ -36,7 +36,6 @@ function normalize(input) {
   const entry = {
     type: input.alias ? 'alias' : 'factoid',
     popularity: input.popularity || 0,
-    editors: input.editors || [],
     changes: input.changes || [],
   };
 
@@ -48,7 +47,7 @@ function normalize(input) {
   }));
 
   entry.changes.unshift({
-    editor: (input.creator || '').toLowerCase(),
+    editor: (input.creator || 'unknown').toLowerCase(),
     date: toISOString(input.date),
     value: input.value || input.alias || null,
     live: true,
