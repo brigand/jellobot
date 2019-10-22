@@ -44,7 +44,7 @@ describe('jsEvalPlugin', () => {
 
   it(`times out but return temporary result`, async () => {
     const output = await testEval('n> setTimeout(() => console.log(2), 10000); 1', {
-      selfConfig: { timer: 1000 },
+      selfConfig: { timer: 2000 },
     });
     expect(output).toEqual('(timeout) 1');
   });
