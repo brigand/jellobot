@@ -31,8 +31,8 @@ describe('jsEvalPlugin', () => {
 
   it(`errors when it should`, async () => {
     const output = await testEval('n> 2++2');
-    expect(output).toEqual(
-      `(fail) ReferenceError: Invalid left-hand side expression in postfix operation`,
+    expect(output).toMatch(
+      /^\(fail\) (SyntaxError|ReferenceError): Invalid left-hand side expression in postfix operation$/,
     );
 
     const output2 = await testEval('n> throw 2');
@@ -44,7 +44,7 @@ describe('jsEvalPlugin', () => {
 
   it(`times out but return temporary result`, async () => {
     const output = await testEval('n> setTimeout(() => console.log(2), 10000); 1', {
-      selfConfig: { timer: 1000 },
+      selfConfig: { timer: 2000 },
     });
     expect(output).toEqual('(timeout) 1');
   });

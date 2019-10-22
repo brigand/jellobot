@@ -3,4 +3,5 @@ coverage
 scripts/env.sh
 jellobot-config.*
 *.tgz
+.vscode
 

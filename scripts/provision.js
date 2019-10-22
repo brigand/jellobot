@@ -16,7 +16,7 @@ async function installGeneralDeps({ ssh, log }) {
 }
 
 async function installNode({ ssh, log }) {
-  const nodeVersion = 'v8.9.0';
+  const nodeVersion = 'v12.9.1';
   const nodeUrl = `https://nodejs.org/dist/${nodeVersion}/node-${nodeVersion}-linux-x64.tar.gz`;
   try {
     const version = (await ssh.exec(`node -v 2>&1`)).trim();
@@ -153,6 +153,9 @@ async function run() {
   } finally {
     await ssh.end();
   }
+
+  console.log('');
+  console.log(`provision.js: Success`);
 }
 
 run().catch((e) => {

@@ -1,5 +1,5 @@
 #!/bin/bash
-out_file=src/plugins/factoids/facts.json
+out_file=src/plugins/factoids/ecmabot-factoids.json
 
 curl -sSL --compressed http://boshi.inimino.org/ecmabot-factoids.json > "$out_file"
 

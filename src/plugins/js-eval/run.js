@@ -28,7 +28,9 @@ const run = async (code, environment, timeout) => {
     global.module = module;
     global.require = require;
     global.exports = exports;
+    // eslint-disable-next-line no-underscore-dangle
     global.__dirname = __dirname;
+    // eslint-disable-next-line no-underscore-dangle
     global.__filename = __filename;
     for (const name of builtinModules) {
       const setReal = (val) => {
@@ -79,7 +81,13 @@ const run = async (code, environment, timeout) => {
   }
   if (environment === 'engine262') {
     if (!runWithEngine262) {
-      const { Realm, initializeAgent, FEATURES, inspect } = require('engine262');
+      const {
+        Realm,
+        initializeAgent,
+        FEATURES,
+        inspect: e262Inspect,
+        // eslint-disable-next-line global-require
+      } = require('engine262');
 
       initializeAgent({
         features: FEATURES.map((o) => o.name),
@@ -87,7 +95,7 @@ const run = async (code, environment, timeout) => {
 
       const realm = new Realm();
 
-      runWithEngine262 = (code) => inspect(realm.evaluateScript(code), realm);
+      runWithEngine262 = (code2) => e262Inspect(realm.evaluateScript(code2), realm);
     }
     return runWithEngine262(code);
   }

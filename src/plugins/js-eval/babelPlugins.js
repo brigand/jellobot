@@ -1,10 +1,14 @@
-// all babel proposal plugins https://github.com/babel/babel/tree/master/packages (preset-stage-n packages are depreacted https://babeljs.io/docs/en/next/babel-preset-stage-1)
+// all babel proposal plugins https://github.com/babel/babel/tree/master/packages
+// (preset-stage-n packages are deprecated https://babeljs.io/docs/en/next/babel-preset-stage-1)
 // if there are new ones, feel free to add them
 exports.transformPlugins = [
   '@babel/plugin-proposal-async-generator-functions',
   '@babel/plugin-transform-typescript',
   '@babel/plugin-transform-modules-commonjs', // required by dynamicImport
-  ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: false }], // must be before class-properties https://babeljs.io/docs/en/babel-plugin-proposal-decorators#note-compatibility-with-babel-plugin-proposal-class-properties
+  // must be before class-properties
+  // eslint-disable-next-line max-len
+  // https://babeljs.io/docs/en/babel-plugin-proposal-decorators#note-compatibility-with-babel-plugin-proposal-class-properties
+  ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: false }],
   '@babel/plugin-proposal-class-properties',
   '@babel/plugin-proposal-do-expressions',
   '@babel/plugin-proposal-export-default-from',
@@ -26,7 +30,8 @@ exports.transformPlugins = [
   '@babel/plugin-proposal-unicode-property-regex',
 ];
 
-// @babel/parser plugins https://babeljs.io/docs/en/next/babel-parser.html#ecmascript-proposals-https-githubcom-babel-proposals
+// @babel/parser plugins
+// https://babeljs.io/docs/en/next/babel-parser.html#ecmascript-proposals-https-githubcom-babel-proposals
 exports.parserPlugins = [
   'asyncGenerators',
   'bigInt',

@@ -18,8 +18,8 @@ To full run the bot, you'll need node.js (10.x recommended), docker (with your u
 having permission to execute containers), and libmagic.
 
 ```sh
-# Install libmagic on OSX
-brew install libmagic
+# Install libmagic and icu4c on OSX
+brew install libmagic icu4c
 ```
 
 Then to get the dependencies run `npm install`.
