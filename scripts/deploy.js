@@ -42,7 +42,7 @@ async function pack() {
     // do nothing
   }
 
-  cp.execSync(`yarn pack`);
+  cp.execSync(`npm pack`);
 
   const file = glob.sync('*.tgz').shift();
   return file;
@@ -51,7 +51,7 @@ async function pack() {
 async function run() {
   const log = {
     flags: { debug: true, verbose: true },
-    verbose: () => console.error,
+    verbose: console.error,
     info: console.error,
     debug: console.error,
   };
