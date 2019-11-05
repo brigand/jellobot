@@ -106,7 +106,8 @@ describe('jsEvalPlugin', () => {
         await testEval('b> var x = await Promise.resolve(2n); x'),
         await testEval('n> var x = await Promise.resolve(2n); if (x) {}'),
         await testEval('b> var x = await Promise.resolve(2n); if (x) {}'),
-      ]).toEqual(['(okay) 2n', '(okay) 2n', '(okay) undefined', '(okay) undefined']);
+        await testEval(`n> function foo(){}; let o={[await 'foo']: await eval('1')}; o`),
+      ]).toEqual(['(okay) 2n', '(okay) 2n', '(okay) undefined', '(okay) undefined', '(okay) { foo: 1 }']);
     });
 
     it('works with comments', async () => {

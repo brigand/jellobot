@@ -31,7 +31,7 @@ function processTopLevelAwait(src) {
         case 'MethodDefinition':
         case 'ClassMethod':
           // stop when entering a new function scope:
-          return path.stop();
+          return path.skip();
 
         case 'ForOfStatement':
           if (path.node.await === true) {
