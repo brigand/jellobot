@@ -48,6 +48,12 @@ async function pack() {
   return file;
 }
 
+function getPackageJson() {
+  const packageJson = JSON.parse(fs.readFileSync('package.json'));
+  packageJson.devDependencies = {};
+  return packageJson;
+}
+
 async function run() {
   const log = {
     flags: { debug: true, verbose: true },
@@ -56,6 +62,10 @@ async function run() {
     debug: console.error,
   };
   const ssh = new SshConnection({ host, user, log });
+
+  function nvmExec(command) {
+    return ssh.exec(`source ~/.nvm/nvm.sh; nvm use 12 && ${command}`);
+  }
 
   try {
     await ssh.connect();
@@ -70,20 +80,25 @@ async function run() {
     await ssh.exec(`mkdir -p ${dir}`);
 
     await ssh.exec(`cd ${dir} && tar --strip-components 1 -xzf ${tempFilePath}`);
+
+    await ftp.writeFileAsync(
+      `${dir}/package.json`,
+      JSON.stringify(getPackageJson(), null, 2),
+    );
     await ftp.writeFileAsync(`${dir}/jellobot-config.json`, configContent);
 
-    await ssh.exec(`cd ${dir}; npm install --production`);
+    await nvmExec(`cd ${dir}; npm install`);
 
     await ssh.exec(`printf "${new Date().toISOString()}" > /tmp/jellobot-updated-at`);
 
     if (process.argv.includes('--restart')) {
       console.error(`Restarting the bot`);
       try {
-        await ssh.exec(
+        await nvmExec(
           `cd ${dir}; pwd; env NODE_ENV=production pm2 restart jellobot1`,
         );
       } catch (e) {
-        await ssh.exec(
+        await nvmExec(
           `cd ${dir}; pwd; env NODE_ENV=production pm2 start --name jellobot1 src/bot.js`,
         );
       }
@@ -91,7 +106,7 @@ async function run() {
       console.error(`Run with --restart to restart the bot.`);
     }
 
-    await ssh.exec(`cd ${dir}; ./src/plugins/js-eval/init`); // build brigand/js-eval image
+    await nvmExec(`cd ${dir}; ./src/plugins/js-eval/init`); // build brigand/js-eval image
   } finally {
     ssh.end().catch(() => {});
   }
