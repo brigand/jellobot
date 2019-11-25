@@ -4,8 +4,6 @@ const superagent = require('superagent');
 const mdnUrl = 'https://developer.mozilla.org'
 const mdnSearchApiUrl = `${mdnUrl}/api/v1/search/en-US`
 
-class HtmlParseError extends Error {}
-
 const mdnPlugin = async (msg) => {
   if (!msg.command) return;
 
@@ -50,7 +48,7 @@ const mdnPlugin = async (msg) => {
       url: `${mdnUrl}/${res.body.documents[0].slug}`,
     };
   } catch (e) {
-    if (!(e instanceof HtmlParseError)) throw e;
+    if (!(e instanceof TypeError)) throw e;
 
     msg.respond(`${initialUrl} - ${e.message}`);
     return;
