@@ -1,4 +1,3 @@
-const url = require('url');
 const superagent = require('superagent');
 
 const mdnUrl = 'https://developer.mozilla.org'
@@ -13,10 +12,13 @@ const mdnPlugin = async (msg) => {
   }
   msg.handling();
 
-  const query = new URLSearchParams({ q: words.slice(1).join(' '), topic: 'js' });
+  const query = new URLSearchParams({
+    q: words.slice(1).join(' '),
+    topic: 'js',
+    highlight: false,
+  });
   const initialUrl = `${mdnSearchApiUrl}?${query}`;
 
-  let lastRedirect = initialUrl;
   let res = null;
 
   try {
@@ -24,10 +26,7 @@ const mdnPlugin = async (msg) => {
       .get(initialUrl)
       .set('accept-language', 'en-US,en;q=0.5')
       .set('Accept', 'application/json')
-      .redirects(5)
-      .on('redirect', (redirect) => {
-        lastRedirect = redirect.headers.location;
-      });
+      .redirects(5);
   } catch (e) {
     // Rethrow if it's not an HTTP error
     if (!e || !e.response) {
@@ -44,7 +43,7 @@ const mdnPlugin = async (msg) => {
   try {
     pageData = {
       title: res.body.documents[0].title,
-      text:  res.body.documents[0].excerpt.replace(/<\/?mark>/g, ''),
+      text:  res.body.documents[0].excerpt,
       url: `${mdnUrl}/${res.body.documents[0].slug}`,
     };
   } catch (e) {
