@@ -41,11 +41,20 @@ const mdnPlugin = async (msg) => {
 
   let pageData;
   try {
-    pageData = {
-      title: res.body.documents[0].title,
-      text:  res.body.documents[0].excerpt,
-      url: `${mdnUrl}/${res.body.documents[0].slug}`,
-    };
+    if (res.body.documents.length > 0) {
+      pageData = {
+        title: res.body.documents[0].title,
+        text:  res.body.documents[0].excerpt,
+        url: `${mdnUrl}/${res.body.documents[0].slug}`,
+      };
+    }
+    else {
+       pageData = {
+         title: 'Not Found',
+         text: `Could not find anything on: ${words.slice(1).join(' ')}`,
+         url: '',
+       } 
+    }
   } catch (e) {
     if (!(e instanceof TypeError)) throw e;
 
@@ -57,7 +66,7 @@ const mdnPlugin = async (msg) => {
   if (response.length > 400) {
     response = `${response.slice(0, 350).trim()}…`;
   }
-  response += ` ${pageData.url || initialUrl}`;
+  response += ` ${pageData.url}`;
 
   msg.respondWithMention(response);
 };
