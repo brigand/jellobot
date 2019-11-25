@@ -1,74 +1,10 @@
 const url = require('url');
 const superagent = require('superagent');
-const cheerio = require('cheerio');
 
-function slugify(words) {
-  return words
-    .map((x) => x.trim().toLowerCase())
-    .join('-')
-    .replace(/[^a-zA-Z0-9]+/g, '-')
-    .replace(/[^a-zA-Z0-9]+/g, '-');
-}
+const mdnUrl = 'https://developer.mozilla.org'
+const mdnSearchApiUrl = `${mdnUrl}/api/v1/search/en-US`
 
 class HtmlParseError extends Error {}
-
-function getMdnTitle(title) {
-  return title.replace(/\s*-\s*(\w+\s*\w*)\s*\|\s*MDN/gi, (m, _type) => {
-    let type = _type;
-    if (type === 'JavaScript') type = null;
-    if (type === 'Web APIs') type = 'DOM';
-    return type ? `, ${type}` : '';
-  });
-}
-
-function extractFromHtml(html) {
-  const $ = cheerio.load(html);
-  const title = getMdnTitle($('head title').text());
-  const text = $('#wikiArticle')
-    .first()
-    .find('p')
-    .first()
-    .text();
-
-  if (!text) {
-    const bodyText = $('body')
-      .text()
-      .replace(/\s+/g, ' ');
-
-    if (
-      /did not match any documents|No results containing all your search terms were found/.test(
-        bodyText,
-      )
-    ) {
-      throw new HtmlParseError(`No MDN page found with this search.`);
-    }
-    throw new HtmlParseError(`Failed to extract mdn text`);
-  }
-  return { text, title };
-}
-
-async function fixLanguage(origRes, lastRedirect) {
-  let res = origRes;
-
-  // attempt to rewrite the language part of the URL
-  const urlParts = url.parse(lastRedirect);
-  urlParts.pathname = urlParts.pathname.replace(
-    /^\/(\w+)(\/docs\/)/,
-    (m, lang, rest) => {
-      return `/en-US${rest}`;
-    },
-  );
-
-  // If we changed the URL, we need to do another request for it
-  const fixedUrl = url.format(urlParts);
-
-  if (fixedUrl !== lastRedirect) {
-    console.error(`Translated MDN URL from "${lastRedirect}" to "${fixedUrl}"`);
-    res = await superagent.get(fixedUrl).redirects(1);
-  }
-
-  return res;
-}
 
 const mdnPlugin = async (msg) => {
   if (!msg.command) return;
@@ -79,8 +15,8 @@ const mdnPlugin = async (msg) => {
   }
   msg.handling();
 
-  const suffix = slugify(words.slice(1));
-  const initialUrl = `https://mdn.io/${suffix}`;
+  const query = new URLSearchParams({ q: words.slice(1).join(' '), topic: 'js' });
+  const initialUrl = `${mdnSearchApiUrl}?${query}`;
 
   let lastRedirect = initialUrl;
   let res = null;
@@ -89,6 +25,7 @@ const mdnPlugin = async (msg) => {
     res = await superagent
       .get(initialUrl)
       .set('accept-language', 'en-US,en;q=0.5')
+      .set('Accept', 'application/json')
       .redirects(5)
       .on('redirect', (redirect) => {
         lastRedirect = redirect.headers.location;
@@ -100,10 +37,6 @@ const mdnPlugin = async (msg) => {
     }
   }
 
-  if (res) {
-    res = await fixLanguage(res, lastRedirect).catch(() => null);
-  }
-
   if (!res || !res.ok) {
     msg.respondWithMention(`Try ${initialUrl} (couldn't fetch metadata)`);
     return;
@@ -111,7 +44,11 @@ const mdnPlugin = async (msg) => {
 
   let pageData;
   try {
-    pageData = extractFromHtml(res.text);
+    pageData = {
+      title: res.body.documents[0].title,
+      text:  res.body.documents[0].excerpt.replace(/<\/?mark>/g, ''),
+      url: `${mdnUrl}/${res.body.documents[0].slug}`,
+    };
   } catch (e) {
     if (!(e instanceof HtmlParseError)) throw e;
 
@@ -123,7 +60,7 @@ const mdnPlugin = async (msg) => {
   if (response.length > 400) {
     response = `${response.slice(0, 350).trim()}…`;
   }
-  response += ` ${initialUrl}`;
+  response += ` ${pageData.url || initialUrl}`;
 
   msg.respondWithMention(response);
 };
