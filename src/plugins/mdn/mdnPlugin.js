@@ -14,7 +14,7 @@ const mdnPlugin = async (msg) => {
 
   const query = new URLSearchParams({
     q: words.slice(1).join(' '),
-    topic: 'js',
+    topic: 'javascript',
     highlight: false,
   });
   const initialUrl = `${mdnSearchApiUrl}?${query}`;
@@ -28,7 +28,7 @@ const mdnPlugin = async (msg) => {
       .set('Accept', 'application/json')
       .redirects(5);
   } catch (e) {
-    // Rethrow if it's not an HTTP error
+    // Rethrow if it's not a document error
     if (!e || !e.response) {
       throw e;
     }
