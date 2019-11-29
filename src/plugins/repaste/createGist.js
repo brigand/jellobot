@@ -46,7 +46,9 @@ const createGist = (opts) => {
     },
     (errRes) => {
       console.error(`gist error message: ${errRes.message}`);
-      console.error(`gist error body: ${errRes.body}`);
+      if (errRes.response) {
+        console.error(`gist error body: ${errRes.response.text}`);
+      }
       const error = new Error(`Couldn't create gist.`);
       error.gistError = true;
       throw error;
