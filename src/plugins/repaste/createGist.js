@@ -1,5 +1,7 @@
 const superagent = require('superagent');
 
+const USER_AGENT = 'Mozilla/5.0 (compatible; jellobot; +https://brigand.me)';
+
 const createGist = (opts) => {
   const { files, tryShortUrl, githubToken } = opts;
   const body = {
@@ -9,7 +11,10 @@ const createGist = (opts) => {
   Object.keys(files).forEach((fileName) => {
     body.files[fileName] = { content: files[fileName] };
   });
-  const req = superagent.post('https://api.github.com/gists');
+
+  const req = superagent
+    .post('https://api.github.com/gists')
+    .set('User-Agent', USER_AGENT);
   req.send(body);
   if (githubToken) {
     req.set('Authorization', `token ${githubToken}`);
@@ -23,6 +28,7 @@ const createGist = (opts) => {
       return superagent
         .post('https://git.io/')
         .send(`url=${gistUrl}`)
+        .set('User-Agent', USER_AGENT)
         .then(
           (shortRes) => {
             const { location } = shortRes.headers;
