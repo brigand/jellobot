@@ -7,7 +7,7 @@ RUN node_version=$(curl -sSL https://nodejs.org/download/release/ | awk '/>v/{ s
 RUN node --version
 
 # install shims, and acorn+nearley needed by engine262
-RUN npm i --prefix /run airbnb-js-shims acorn nearley
+RUN npm i --prefix /run airbnb-js-shims@latest acorn@latest nearley@latest
 COPY vendor/engine262.js /run/node_modules/engine262.js
 
 
