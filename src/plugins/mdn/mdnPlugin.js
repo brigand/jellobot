@@ -70,6 +70,18 @@ async function fixLanguage(origRes, lastRedirect) {
   return res;
 }
 
+async function fixRedirect(res) {
+  const $ = cheerio.load(res.text);
+  const script = $('script').get()[0].children[0].data;
+  const reg = /(window.location.replace\(\'\/l\/\?kh=-1&uddg=)(.*)(\'\))/;
+  const redirect = decodeURIComponent(script.match(reg)[2]);
+  const redirectRes = await superagent
+    .get(redirect)
+    .set('accept-language', 'en-US,en;q=0.5')
+    .redirects(5);
+  return redirectRes;
+}
+
 const mdnPlugin = async (msg) => {
   if (!msg.command) return;
 
@@ -102,6 +114,10 @@ const mdnPlugin = async (msg) => {
 
   if (res) {
     res = await fixLanguage(res, lastRedirect).catch(() => null);
+  }
+
+  if (res) {
+    res = await fixRedirect(res).catch(() => null);
   }
 
   if (!res || !res.ok) {
