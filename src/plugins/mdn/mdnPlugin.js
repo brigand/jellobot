@@ -73,7 +73,7 @@ async function fixLanguage(origRes, lastRedirect) {
 async function fixRedirect(res) {
   const $ = cheerio.load(res.text);
   const script = $('script').get()[0].children[0].data;
-  const reg = /(window.location.replace\(\'\/l\/\?kh=-1&uddg=)(.*)(\'\))/;
+  const reg = /(window.location.replace\('\/l\/\?kh=-1&uddg=)(.*)(\'\))/;
   const match = script.match(reg);
   if (!match) {
     return res;
