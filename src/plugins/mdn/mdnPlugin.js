@@ -83,7 +83,7 @@ async function fixRedirect(res) {
 
   if (
     redirectURL.host === 'developer.mozilla.org' &&
-    (redirectURL.protocol === 'https:' || redirectURL.protocol === 'https:')
+    (redirectURL.protocol === 'https:' || redirectURL.protocol === 'http:')
   ) {
     const redirectRes = await superagent
       .get(redirect)
