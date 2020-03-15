@@ -74,11 +74,12 @@ async function fixRedirect(res) {
   const $ = cheerio.load(res.text);
   const script = $('script').get()[0].children[0].data;
   const reg = /(window.location.replace\(\'\/l\/\?kh=-1&uddg=)(.*)(\'\))/;
-  const match = script.match(reg)[2];
+  const match = script.match(reg);
+  if (!match) {
+    return res;
+  }
 
-  if (!match) return res;
-
-  const redirect = decodeURIComponent(match);
+  const redirect = decodeURIComponent(match[2]);
   const redirectURL = new URL(redirect);
 
   if (
