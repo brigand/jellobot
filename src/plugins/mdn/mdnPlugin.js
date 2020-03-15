@@ -74,12 +74,25 @@ async function fixRedirect(res) {
   const $ = cheerio.load(res.text);
   const script = $('script').get()[0].children[0].data;
   const reg = /(window.location.replace\(\'\/l\/\?kh=-1&uddg=)(.*)(\'\))/;
-  const redirect = decodeURIComponent(script.match(reg)[2]);
-  const redirectRes = await superagent
-    .get(redirect)
-    .set('accept-language', 'en-US,en;q=0.5')
-    .redirects(5);
-  return redirectRes;
+  const match = script.match(reg)[2];
+
+  if (!match) return res;
+
+  const redirect = decodeURIComponent(match);
+  const redirectURL = new URL(redirect);
+
+  if (
+    redirectURL.host === 'developer.mozilla.org' &&
+    (redirectURL.protocol === 'https:' || redirectURL.protocol === 'https:')
+  ) {
+    const redirectRes = await superagent
+      .get(redirect)
+      .set('accept-language', 'en-US,en;q=0.5')
+      .redirects(5);
+    return redirectRes;
+  }
+
+  return res;
 }
 
 const mdnPlugin = async (msg) => {
