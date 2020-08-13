@@ -1,9 +1,23 @@
 #!/bin/bash
-out_file=src/plugins/factoids/facts.json
+set -e
+file_name="facts.json"
+out_file=src/plugins/factoids/$file_name
 
-curl -sSL --compressed http://boshi.inimino.org/ecmabot-factoids.json > "$out_file"
+curl -sSL --compressed http://boshi.inimino.org/ecmabot-factoids.json > $file_name
 
-printf "Total factoids: %d\n" "$(jq '.factoids | keys | length' < src/plugins/factoids/facts.json)"
+# Fails if invalid JSON
+jq . < "$file_name" >/dev/null
+
+
+total_factoids="$(jq '.factoids | keys | length' < $file_name)"
+printf "Total factoids: %d\n" "$total_factoids"
+
+if ! [[ "$total_factoids" -ge 1 ]]; then
+  echo "File $file_name appears to be invalid"
+  exit 1
+fi
+
+mv "$file_name" "$out_file"
 
 git commit "$out_file" -m 'updated factoids'
 
