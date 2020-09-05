@@ -1,12 +1,16 @@
 #!/bin/bash
 
 # Kill all docker containers created with "--name jseval-{some hex string}"
-n_killed=$(docker ps -aqf name=jseval- | xargs docker rm -f | wc -l)
+n_killed=0
+IFS=$'\n' read -r -d '' -a ps < <(docker ps -aqf name=jseval-)
+if [[ "${ps[0]}" != "" ]]; then
+  n_killed=$( docker rm -f "${ps[@]}" | wc -l)
+fi
 
 if (( n_killed )); then
   echo "Killed $n_killed js-eval containers."
 fi
 
-dir=$(dirname $0)
+dir=$(dirname "$0")
 docker build -t brigand/js-eval $dir -f $dir/Dockerfile
 docker images brigand/js-eval:latest
