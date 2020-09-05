@@ -8,14 +8,13 @@ RUN node --version
 
 # install shims, and acorn+nearley needed by engine262
 RUN npm i --prefix /run airbnb-js-shims@latest acorn@latest nearley@latest
-ADD https://raw.githubusercontent.com/engine262/engine262/main/bin/engine262.js /run/node_modules/engine262.js
-
 
 FROM debian:10-slim
 
 RUN useradd node && mkdir -p /home/node && chown -R node:node /home/node
 WORKDIR /home/node
 COPY --from=0 /run /run
+ADD --chown=node https://raw.githubusercontent.com/engine262/engine262/main/bin/engine262.js /run/node_modules/engine262.js
 COPY --from=0 /usr/local/bin/node /usr/local/bin/node
 COPY --chown=node run.js /run/
 USER node
