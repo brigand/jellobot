@@ -4,8 +4,6 @@ const builtinModules = require('module').builtinModules.filter(
   (a) => !/^_|\//.test(a),
 );
 
-let runWithEngine262; // cached function, initialized lazily below in run()
-
 // copied from https://github.com/devsnek/docker-js-eval/run.js
 
 const inspect = (val) => {
@@ -78,18 +76,25 @@ const run = async (code, environment, timeout) => {
     });
   }
   if (environment === 'engine262') {
-    if (!runWithEngine262) {
-      const { Realm, initializeAgent, FEATURES, inspect } = require('engine262');
+    const { Agent, ManagedRealm, Value, CreateDataProperty, FEATURES, setSurroundingAgent, inspect: _inspect } = require('engine262');
 
-      initializeAgent({
-        features: FEATURES.map((o) => o.name),
+    const agent = new Agent({
+      features: FEATURES.map((o) => o.name),
+    });
+    setSurroundingAgent(agent);
+
+    const realm = new ManagedRealm();
+
+    return new Promise((resolve, reject) => {
+      realm.scope(() => {
+        // const print = new Value((args) => {
+        //   console.log(...args.map((tmp) => _inspect(tmp)));
+        //   return Value.undefined;
+        // });
+        // CreateDataProperty(realm.GlobalObject, new Value('print'), print);
+        resolve(_inspect(realm.evaluateScript(code)));
       });
-
-      const realm = new Realm();
-
-      runWithEngine262 = (code) => inspect(realm.evaluateScript(code), realm);
-    }
-    return runWithEngine262(code);
+    });
   }
 
   throw new RangeError(`Invalid environment: ${environment}`);
