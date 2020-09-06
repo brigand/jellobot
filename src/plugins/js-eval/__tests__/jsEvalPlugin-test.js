@@ -119,8 +119,23 @@ describe('jsEvalPlugin', () => {
     });
   });
 
-  it('works with engine262', async () => {
-    const output = await testEval('e> ({foo: 1})?.foo ?? 2');
-    expect(output).toEqual(`(okay) '1'`);
+  describe('engine262', () => {
+    it('works', async () => {
+      const output = await testEval('e> ({foo: 1})?.foo ?? 2');
+      expect(output).toEqual(`(okay) '1'`);
+    });
+
+    it(`errors when it should`, async () => {
+      const output = await testEval('e> 2++2');
+      expect(output).toEqual(
+        `(fail)  2++2\n    ^\nSyntaxError: Unexpected token`,
+      );
+
+      const output2 = await testEval('e> throw 2');
+      expect(output2).toEqual(`(fail) 2`);
+
+      const output3 = await testEval('e> throw new TypeError(2)');
+      expect(output3).toEqual(`(fail) TypeError: 2\n    at <anonymous>:1:22`);
+    });
   });
 });

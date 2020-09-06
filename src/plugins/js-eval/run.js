@@ -92,7 +92,13 @@ const run = async (code, environment, timeout) => {
         //   return Value.undefined;
         // });
         // CreateDataProperty(realm.GlobalObject, new Value('print'), print);
-        resolve(_inspect(realm.evaluateScript(code)));
+
+        const completion = realm.evaluateScript(code);
+        if (completion.Type === 'throw') {
+          reject(_inspect(completion.Value));
+        } else {
+          resolve(_inspect(completion.Value));
+        }
       });
     });
   }
