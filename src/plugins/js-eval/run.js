@@ -76,7 +76,15 @@ const run = async (code, environment, timeout) => {
     });
   }
   if (environment === 'engine262') {
-    const { Agent, ManagedRealm, Value, CreateDataProperty, FEATURES, setSurroundingAgent, inspect: _inspect } = require('engine262');
+    const {
+      Agent,
+      ManagedRealm,
+      Value,
+      CreateDataProperty,
+      FEATURES,
+      setSurroundingAgent,
+      inspect: _inspect,
+    } = require('engine262');
 
     const agent = new Agent({
       features: FEATURES.map((o) => o.name),
@@ -122,6 +130,7 @@ if (!module.parent) {
         process.env.JSEVAL_ENV,
         Number.parseInt(process.env.JSEVAL_TIMEOUT, 10) || undefined,
       );
+      process.stdout.write('⬊ ');
       process.stdout.write(inspect(result));
     } catch (error) {
       process.stdout.write(
