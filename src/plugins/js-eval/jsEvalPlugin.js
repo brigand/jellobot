@@ -65,7 +65,12 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
       selfConfig.timer || 5000,
       mode === 'b' ? CMD_SHIMS : mode === 'n' ? CMD : CMD_HARMONY,
     );
-    respond((mentionUser ? `${mentionUser}, ` : '(okay) ') + result);
+
+    let clean = result.trim();
+
+    clean = clean.replace(/(\S)\s*⬊ (undefined|null)$/, '$1');
+
+    respond((mentionUser ? `${mentionUser}, ` : '(okay) ') + clean);
   } catch (e) {
     respond(
       (mentionUser ? `${mentionUser}, ` : `(${e.reason || 'fail'}) `) + e.message,
