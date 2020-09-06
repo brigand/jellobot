@@ -87,11 +87,11 @@ const run = async (code, environment, timeout) => {
 
     return new Promise((resolve, reject) => {
       realm.scope(() => {
-        // const print = new Value((args) => {
-        //   console.log(...args.map((tmp) => _inspect(tmp)));
-        //   return Value.undefined;
-        // });
-        // CreateDataProperty(realm.GlobalObject, new Value('print'), print);
+        const print = new Value((args) => {
+          console.log(...args.map((tmp) => _inspect(tmp)));
+          return Value.undefined;
+        });
+        CreateDataProperty(realm.GlobalObject, new Value('print'), print);
 
         const completion = realm.evaluateScript(code);
         if (completion.Type === 'throw') {
