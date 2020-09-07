@@ -130,12 +130,12 @@ describe('jsEvalPlugin', () => {
   describe('engine262', () => {
     it('works', async () => {
       const output = await testEval('e> ({foo: 1})?.foo ?? 2');
-      expect(output).toEqual(`(okay) '1'`);
+      expect(output).toEqual(`(okay) 1`);
     });
 
     it(`adds print() global util, because there's no console`, async () => {
       const output = await testEval('e> print(0b1); print(2n); Math.PI|0');
-      expect(output).toEqual(`(okay) 1\n2n\n'3'`);
+      expect(output).toEqual(`(okay) 1\n2n\n3`);
     });
 
     it(`errors when it should`, async () => {
