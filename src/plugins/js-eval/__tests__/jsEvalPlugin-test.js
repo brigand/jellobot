@@ -26,7 +26,7 @@ describe('jsEvalPlugin', () => {
     expect(output2).toEqual('(okay) 12');
 
     const output3 = await testEval('n> console.warn("test")');
-    expect(output3).toEqual(`(okay) test\nundefined`);
+    expect(output3).toEqual(`(okay) test`);
   });
 
   it(`errors when it should`, async () => {
@@ -106,8 +106,16 @@ describe('jsEvalPlugin', () => {
         await testEval('b> var x = await Promise.resolve(2n); x'),
         await testEval('n> var x = await Promise.resolve(2n); if (x) {}'),
         await testEval('b> var x = await Promise.resolve(2n); if (x) {}'),
-        await testEval(`n> function foo(){}; let o={[await 'foo']: await eval('1')}; o`),
-      ]).toEqual(['(okay) 2n', '(okay) 2n', '(okay) undefined', '(okay) undefined', '(okay) { foo: 1 }']);
+        await testEval(
+          `n> function foo(){}; let o={[await 'foo']: await eval('1')}; o`,
+        ),
+      ]).toEqual([
+        '(okay) 2n',
+        '(okay) 2n',
+        '(okay) undefined',
+        '(okay) undefined',
+        '(okay) { foo: 1 }',
+      ]);
     });
 
     it('works with comments', async () => {
@@ -132,9 +140,7 @@ describe('jsEvalPlugin', () => {
 
     it(`errors when it should`, async () => {
       const output = await testEval('e> 2++2');
-      expect(output).toEqual(
-        `(fail)  2++2\n    ^\nSyntaxError: Unexpected token`,
-      );
+      expect(output).toEqual(`(fail) 2++2\n    ^\nSyntaxError: Unexpected token`);
 
       const output2 = await testEval('e> throw 2');
       expect(output2).toEqual(`(fail) 2`);

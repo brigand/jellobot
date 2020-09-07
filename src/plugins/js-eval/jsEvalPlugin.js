@@ -69,12 +69,16 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
     let clean = result.trim();
 
     clean = clean.replace(/(\S)\s*⬊ (undefined|null)$/, '$1');
+    clean = clean.replace(/⬊\s*/, '');
+    clean = clean.trim();
 
     respond((mentionUser ? `${mentionUser}, ` : '(okay) ') + clean);
   } catch (e) {
-    respond(
-      (mentionUser ? `${mentionUser}, ` : `(${e.reason || 'fail'}) `) + e.message,
-    ); // Error message always start with Error:
+    let clean = e.message.trim();
+    clean = clean.replace(/⬊\s*/, '');
+    clean = clean.trim();
+
+    respond((mentionUser ? `${mentionUser}, ` : `(${e.reason || 'fail'}) `) + clean); // Error message always start with Error:
   }
 };
 
