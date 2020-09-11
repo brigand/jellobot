@@ -6,9 +6,32 @@ const builtinModules = require('module').builtinModules.filter(
 
 // copied from https://github.com/devsnek/docker-js-eval/run.js
 
+class TweakedBoolean {
+  constructor(value) {
+    this.value = value;
+  }
+
+  [Symbol.for('nodejs.util.inspect.custom')]() {
+    const str = this.value ? 'yea' : 'nop';
+    return this.value instanceof Boolean ? `[Boolean ${str}]` : str;
+  }
+}
+
+function tweakBooleans(obj, visited = new Set()) {
+  if (obj == null) return obj;
+  if (typeof obj === 'boolean' || obj instanceof Boolean) return new TweakedBoolean(obj);
+  if (visited.has(obj)) return obj; // return to escape recursive objects
+  const newVisited = new Set(visited);
+  newVisited.add(obj);
+  for (const k of Object.keys(obj)) {
+    obj[k] = tweakBooleans(obj[k], newVisited);
+  }
+  return obj;
+}
+
 const inspect = (val) => {
   try {
-    return util.inspect(val, {
+    return util.inspect(tweakBooleans(val), {
       maxArrayLength: 20,
       breakLength: Infinity,
       colors: false,
