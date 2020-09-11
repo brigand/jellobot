@@ -13,7 +13,7 @@ class TweakedBoolean {
 
   [Symbol.for('nodejs.util.inspect.custom')]() {
     const str = this.value ? 'yea' : 'nop';
-    return this.value instanceof Boolean ? `[Boolean ${str}]` : str;
+    return this.value instanceof Boolean ? `[Boolean: ${str}]` : str;
   }
 }
 
