@@ -72,14 +72,14 @@ async function fixLanguage(origRes, lastRedirect) {
 
 async function fixRedirect(res) {
   const $ = cheerio.load(res.text);
-  const script = $('script').get()[0].children[0].data;
-  const reg = /(window.location.replace\('\/l\/\?kh=-1&uddg=)(.*)(\'\))/;
-  const match = script.match(reg);
+  const meta = $('meta[http-equiv="refresh"]').attr("content")
+  const reg = /url=\/l\/\?uddg=(.*)/
+  const match = meta.match(reg);
   if (!match) {
     return res;
   }
 
-  const redirect = decodeURIComponent(match[2]);
+  const redirect = decodeURIComponent(match[1]);
   const redirectURL = new URL(redirect);
 
   if (
@@ -92,7 +92,6 @@ async function fixRedirect(res) {
       .redirects(5);
     return redirectRes;
   }
-
   return res;
 }
 
