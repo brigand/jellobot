@@ -47,7 +47,7 @@
     "irc": "^0.5.2",
     "js-yaml": "^3.13.1",
     "json5": "^2.1.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "prettier": "1.18.2",
     "shell-escape": "^0.2.0",
     "superagent": "^5.1.0"
