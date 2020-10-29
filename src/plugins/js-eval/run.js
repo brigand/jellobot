@@ -22,6 +22,30 @@ const inspect = (val) => {
   }
 };
 
+function exposeBuiltinInGlobal(name) {
+  const require2 = require;
+  const setReal = (val) => {
+    delete global[name];
+    global[name] = val;
+  };
+  Object.defineProperty(global, name, {
+    get: () => {
+      const value = require2(name); // eslint-disable-line
+      delete global[name];
+      Object.defineProperty(global, name, {
+        get: () => value,
+        set: setReal,
+        configurable: true,
+        enumerable: false,
+      });
+      return value;
+    },
+    set: setReal,
+    configurable: true,
+    enumerable: false,
+  });
+}
+
 const run = async (code, environment, timeout) => {
   switch (environment) {
     case 'node-cjs': {
@@ -31,28 +55,7 @@ const run = async (code, environment, timeout) => {
       global.exports = exports;
       global.__dirname = __dirname;
       global.__filename = __filename;
-      for (const name of builtinModules) {
-        const setReal = (val) => {
-          delete global[name];
-          global[name] = val;
-        };
-        Object.defineProperty(global, name, {
-          get: () => {
-            const lib = require(name); // eslint-disable-line
-            delete global[name];
-            Object.defineProperty(global, name, {
-              get: () => lib,
-              set: setReal,
-              configurable: true,
-              enumerable: false,
-            });
-            return lib;
-          },
-          set: setReal,
-          configurable: true,
-          enumerable: false,
-        });
-      }
+      builtinModules.forEach(exposeBuiltinInGlobal);
       const result = await script.runInThisContext({
         timeout,
         displayErrors: true,
@@ -103,7 +106,7 @@ const run = async (code, environment, timeout) => {
         FEATURES,
         setSurroundingAgent,
         inspect: _inspect,
-      } = require('engine262');
+      } = require('engine262'); // eslint-disable-line
 
       const agent = new Agent({
         features: FEATURES.map((o) => o.name),
