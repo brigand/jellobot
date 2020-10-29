@@ -31,7 +31,7 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
   if (mode === '?') return respond((mentionUser ? `${mentionUser}, ` : '') + helpMsg);
   let code = message.slice(2);
 
-  const hasMaybeTLA = /\bawait\b/.test(code);
+  const hasMaybeTLA = mode !== 'e' && /\bawait\b/.test(code); // engine262 ships TLA
 
   if (mode === 'b' && !hasMaybeTLA) {
     code = (await babel.transformAsync(code, { plugins: transformPlugins })).code;
@@ -58,10 +58,10 @@ const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) 
       mode === 'e'
         ? 'engine262'
         : mode === 's'
-        ? 'script'
-        : mode === 'm'
-        ? 'module'
-        : 'node-cjs',
+          ? 'script'
+          : mode === 'm'
+            ? 'module'
+            : 'node-cjs',
       selfConfig.timer || 5000,
       mode === 'b' ? CMD_SHIMS : mode === 'n' ? CMD : CMD_HARMONY,
     );

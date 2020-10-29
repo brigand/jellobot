@@ -109,11 +109,15 @@ describe('jsEvalPlugin', () => {
         await testEval(
           `n> function foo(){}; let o={[await 'foo']: await eval('1')}; o`,
         ),
+        await testEval(
+          `e> function foo(){}; let o={[await 'foo']: await eval('1')}; o`,
+        ),
       ]).toEqual([
         '(okay) 2n',
         '(okay) 2n',
         '(okay) undefined',
         '(okay) undefined',
+        '(okay) { foo: 1 }',
         '(okay) { foo: 1 }',
       ]);
     });
