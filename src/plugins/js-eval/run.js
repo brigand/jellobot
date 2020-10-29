@@ -4,6 +4,8 @@ const builtinModules = require('module').builtinModules.filter(
   (a) => !/^_|\//.test(a),
 );
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 // copied from https://github.com/devsnek/docker-js-eval/run.js
 
 const inspect = (val) => {
@@ -65,8 +67,19 @@ const run = async (code, environment, timeout) => {
       await module.link(async () => {
         throw new Error('Unable to resolve import');
       });
-      module.instantiate();
-      const { result } = await module.evaluate({ timeout });
+
+      const [error, result] = await Promise.race([
+        module.evaluate({ timeout }).then((r) => [null, r]),
+        delay(Math.floor(timeout * 1.5)).then(() => [
+          new Error('The execution timed out'),
+          null,
+        ]),
+      ]);
+
+      if (error) {
+        throw error;
+      }
+
       return inspect(result);
     }
 
