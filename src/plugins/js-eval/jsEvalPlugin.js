@@ -3,8 +3,9 @@ const crypto = require('crypto');
 const { setTimeout } = require('timers/promises');
 const babel = require('@babel/core');
 const babelGenerator = require('@babel/generator').default;
+const babelParser = require('@babel/parser');
 const processTopLevelAwait = require('./processTopLevelAwait');
-const { transformPlugins } = require('./babelPlugins');
+const { parserPlugins, transformPlugins } = require('./babelPlugins');
 
 const helpMsg = `n> node stable, b> babel, s> node vm.Script, m> node vm.SourceTextModule, e> engine262`;
 
@@ -17,12 +18,7 @@ const envs = {
   b: 'node-cjs',
 };
 
-module.exports = async function jsEvalPlugin({
-  mentionUser,
-  respond,
-  message,
-  selfConfig = {},
-}) {
+module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) {
   const mode = message.charAt(0);
 
   if (mode === '?') return respond((mentionUser ? `${mentionUser}, ` : '') + helpMsg);
@@ -33,23 +29,20 @@ module.exports = async function jsEvalPlugin({
 
   const hasMaybeTLA = /\bawait\b/.test(code);
 
-  if (mode === 'b' && !hasMaybeTLA) {
-    code = (await babel.transformAsync(code, { plugins: transformPlugins })).code;
-  }
-
-  if (hasMaybeTLA) {
+  if (mode === 'b' || hasMaybeTLA) {
     // there's maybe a TLA await
-    const iiafe = processTopLevelAwait(code);
-    if (iiafe) {
-      // there's a TLA
-      if (mode === 'b') {
-        code = (await babel.transformFromAstAsync(iiafe, code, {
-          plugins: transformPlugins,
-        })).code;
-      } else {
-        code = babelGenerator(iiafe).code;
-      }
-    }
+    let ast = babelParser.parse(code, {
+      allowAwaitOutsideFunction: true,
+      ...mode === 'b' && { plugins: parserPlugins },
+    });
+
+    if (hasMaybeTLA) ast = processTopLevelAwait(ast);
+
+    code = mode === 'b'
+      ? (await babel.transformFromAstAsync(ast, code, {
+        plugins: transformPlugins,
+      })).code
+      : babelGenerator(ast).code;
   }
 
   try {
