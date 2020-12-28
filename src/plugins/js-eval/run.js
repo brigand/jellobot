@@ -1,12 +1,11 @@
 const { Script, SourceTextModule, createContext } = require('vm');
 const util = require('util');
 const builtinModules = require('module').builtinModules.filter(
-  (a) => !/^_|\//.test(a),
+  (s) => !/^_|\//.test(s),
 );
+const { setTimeout } = require('timers/promises');
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-// copied from https://github.com/devsnek/docker-js-eval/run.js
+// code taken from https://github.com/devsnek/docker-js-eval/run.js
 
 const inspect = (val) => {
   try {
@@ -46,7 +45,7 @@ function exposeBuiltinInGlobal(name) {
   });
 }
 
-const run = async (code, environment, timeout) => {
+async function run(code, environment, timeout) {
   switch (environment) {
     case 'node-cjs': {
       const script = new Script(code);
@@ -71,17 +70,13 @@ const run = async (code, environment, timeout) => {
         throw new Error('Unable to resolve import');
       });
 
-      const [error, result] = await Promise.race([
-        module.evaluate({ timeout }).then((r) => [null, r]),
-        delay(Math.floor(timeout * 1.5)).then(() => [
-          new Error('The execution timed out'),
-          null,
-        ]),
+      const timeoutCtrl = new AbortController();
+      const result = await Promise.race([
+        module.evaluate({ timeout }).finally(() => timeoutCtrl.abort()),
+        setTimeout(Math.floor(timeout * 1.5), timeoutCtrl).then(() => {
+          throw new Error('The execution timed out');
+        }),
       ]);
-
-      if (error) {
-        throw error;
-      }
 
       return inspect(result);
     }
@@ -136,9 +131,9 @@ const run = async (code, environment, timeout) => {
     default:
       throw new RangeError(`Invalid environment: ${environment}`);
   }
-};
+}
 
-if (!module.parent) {
+if (require.main === module) {
   (async () => {
     let code = process.argv[2];
     if (!code) {
