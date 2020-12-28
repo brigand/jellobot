@@ -1,6 +1,5 @@
 const cp = require('child_process');
 const crypto = require('crypto');
-const { setTimeout } = require('timers/promises');
 const babel = require('@babel/core');
 const babelGenerator = require('@babel/generator').default;
 const babelParser = require('@babel/parser');
@@ -63,7 +62,7 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
       '/run/run.js',
     ];
 
-    const timeoutCtrl = new AbortController();
+    let timeout;
     let data = '';
 
     const result = await Promise.race([
@@ -90,11 +89,15 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
             resolve(data.trim());
           }
         });
-      }).finally(() => timeoutCtrl.abort()),
-      setTimeout(timeoutMs + 10, timeoutCtrl).then(() => {
-        cp.execSync(`docker kill --signal=9 ${name}`);
-        throw Object.assign(new Error(data), { reason: 'timeout' }); // send data received so far in the error msg
-      }),
+      })
+        .finally(() => clearTimeout(timeout)),
+      new Promise((resolve) => {
+        timeout = setTimeout(resolve, timeoutMs + 10);
+      })
+        .then(() => {
+          cp.execSync(`docker kill --signal=9 ${name}`);
+          throw Object.assign(new Error(data), { reason: 'timeout' }); // send data received so far in the error msg
+        }),
     ]);
 
     let clean = result.trim();
