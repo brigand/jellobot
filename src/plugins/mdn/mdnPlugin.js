@@ -72,8 +72,8 @@ async function fixLanguage(origRes, lastRedirect) {
 
 async function fixRedirect(res) {
   const $ = cheerio.load(res.text);
-  const meta = $('meta[http-equiv="refresh"]').attr("content")
-  const reg = /url=\/l\/\?uddg=(.*)/
+  const meta = $('meta[http-equiv="refresh"]').attr('content');
+  const reg = /url=\/l\/\?uddg=(.*)/;
   const match = meta.match(reg);
   if (!match) {
     return res;

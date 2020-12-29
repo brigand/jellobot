@@ -89,6 +89,7 @@ describe('jsEvalPlugin', () => {
     );
     expect(output).toEqual(`(okay) [ 0, 2, 4 ]`);
   });
+
   it(`babel has Object.fromEntries`, async () => {
     const output = await testEval(`b> typeof Object.fromEntries`);
     expect(output).toEqual(`(okay) 'function'`);

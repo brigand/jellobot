@@ -1,70 +1,104 @@
 const cp = require('child_process');
+const crypto = require('crypto');
 const babel = require('@babel/core');
 const babelGenerator = require('@babel/generator').default;
-const jsEval = require('./jsEval');
+const babelParser = require('@babel/parser');
 const processTopLevelAwait = require('./processTopLevelAwait');
-const { transformPlugins } = require('./babelPlugins');
+const { parserPlugins, transformPlugins } = require('./babelPlugins');
 
-const helpMsg = `n> node stable, h> node --harmony, b> babel, s> node vm.Script, m> node vm.SourceTextModule, e> engine262`;
+const helpMsg = `n> node stable, b> babel, s> node vm.Script, m> node vm.SourceTextModule, e> engine262`;
 
-// default jseval run command
-const CMD = ['node', '--no-warnings', '/run/run.js'];
-const CMD_SHIMS = [
-  'node',
-  '-r',
-  '/run/node_modules/airbnb-js-shims/target/es2019',
-  '--no-warnings',
-  '/run/run.js',
-];
-const CMD_HARMONY = [
-  'node',
-  '--harmony',
-  '--experimental-vm-modules',
-  '--experimental-modules',
-  '--no-warnings',
-  '/run/run.js',
-];
+const timeoutMs = 5000;
+const envs = {
+  e: 'engine262',
+  s: 'script',
+  m: 'module',
+  n: 'node-cjs',
+  b: 'node-cjs',
+};
 
-const jsEvalPlugin = async ({ mentionUser, respond, message, selfConfig = {} }) => {
-  if (!/^[nhbsme?]>/.test(message)) return;
-  const mode = message[0];
+module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) {
+  const mode = message.charAt(0);
+
   if (mode === '?') return respond((mentionUser ? `${mentionUser}, ` : '') + helpMsg);
+
+  if (!envs[mode]) return;
+
   let code = message.slice(2);
 
   const hasMaybeTLA = /\bawait\b/.test(code);
 
-  if (mode === 'b' && !hasMaybeTLA) {
-    code = (await babel.transformAsync(code, { plugins: transformPlugins })).code;
-  }
-
-  if (hasMaybeTLA) {
+  if (mode === 'b' || hasMaybeTLA) {
     // there's maybe a TLA await
-    const iiafe = processTopLevelAwait(code);
-    if (iiafe) {
-      // there's a TLA
-      if (mode === 'b') {
-        code = (await babel.transformFromAstAsync(iiafe, code, {
-          plugins: transformPlugins,
-        })).code;
-      } else {
-        code = babelGenerator(iiafe).code;
-      }
-    }
+    let ast = babelParser.parse(code, {
+      allowAwaitOutsideFunction: true,
+      ...mode === 'b' && { plugins: parserPlugins },
+    });
+
+    if (hasMaybeTLA) ast = processTopLevelAwait(ast);
+
+    code = mode === 'b'
+      ? (await babel.transformFromAstAsync(ast, code, {
+        plugins: transformPlugins,
+      })).code
+      : babelGenerator(ast).code;
   }
 
   try {
-    const result = await jsEval(
-      code,
-      mode === 'e'
-        ? 'engine262'
-        : mode === 's'
-        ? 'script'
-        : mode === 'm'
-        ? 'module'
-        : 'node-cjs',
-      selfConfig.timer || 5000,
-      mode === 'b' ? CMD_SHIMS : mode === 'n' ? CMD : CMD_HARMONY,
-    );
+    const name = `jseval-${crypto.randomBytes(8).toString('hex')}`;
+    const args = [
+      'run',
+      '-i',
+      '--rm',
+      `--name=${name}`,
+      `--net=none`,
+      `-eJSEVAL_ENV=${envs[mode]}`,
+      `-eJSEVAL_TIMEOUT=${timeoutMs}`,
+      'brigand/js-eval',
+      'node',
+      '--experimental-vm-modules', // used by m>
+      '--experimental-modules',
+      '--no-warnings',
+      '/run/run.js',
+    ];
+
+    let timeout;
+    let data = '';
+
+    const result = await Promise.race([
+      new Promise((resolve, reject) => {
+        const proc = cp.spawn('docker', args);
+
+        proc.stdin.write(code);
+        proc.stdin.end();
+
+        proc.stdout.on('data', (chunk) => {
+          data += chunk;
+        });
+
+        proc.stderr.on('data', (chunk) => {
+          data += chunk;
+        });
+
+        proc.on('error', reject);
+
+        proc.on('exit', (status) => {
+          if (status !== 0) {
+            reject(new Error(data));
+          } else {
+            resolve(data.trim());
+          }
+        });
+      })
+        .finally(() => clearTimeout(timeout)),
+      new Promise((resolve) => {
+        timeout = setTimeout(resolve, timeoutMs + 10);
+      })
+        .then(() => {
+          cp.execSync(`docker kill --signal=9 ${name}`);
+          throw Object.assign(new Error(data), { reason: 'timeout' }); // send data received so far in the error msg
+        }),
+    ]);
 
     let clean = result.trim();
 
@@ -92,5 +126,3 @@ if (process.env.NODE_ENV !== 'test') {
     });
   });
 }
-
-module.exports = jsEvalPlugin;

@@ -1,11 +1,15 @@
 // all babel proposal plugins https://github.com/babel/babel/tree/master/packages (preset-stage-n packages are depreacted https://babeljs.io/docs/en/next/babel-preset-stage-1)
 // if there are new ones, feel free to add them
+// order maybe matters, not so sure
 exports.transformPlugins = [
   '@babel/plugin-proposal-async-generator-functions',
   '@babel/plugin-transform-typescript',
   '@babel/plugin-transform-modules-commonjs', // required by dynamicImport
   ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: false }], // must be before class-properties https://babeljs.io/docs/en/babel-plugin-proposal-decorators#note-compatibility-with-babel-plugin-proposal-class-properties
   '@babel/plugin-proposal-class-properties',
+  '@babel/plugin-proposal-class-static-block',
+  '@babel/plugin-proposal-private-methods',
+  '@babel/plugin-proposal-private-property-in-object',
   '@babel/plugin-proposal-do-expressions',
   '@babel/plugin-proposal-export-default-from',
   '@babel/plugin-proposal-export-namespace-from',
@@ -24,30 +28,23 @@ exports.transformPlugins = [
   '@babel/plugin-syntax-bigint',
   '@babel/plugin-syntax-import-meta',
   '@babel/plugin-proposal-unicode-property-regex',
+  ['@babel/plugin-syntax-record-and-tuple', { syntaxType: 'hash' }],
 ];
 
-// @babel/parser plugins https://babeljs.io/docs/en/next/babel-parser.html#ecmascript-proposals-https-githubcom-babel-proposals
+// @babel/parser plugins https://babeljs.io/docs/en/babel-parser#ecmascript-proposalshttpsgithubcombabelproposals
 exports.parserPlugins = [
-  'asyncGenerators',
-  'bigInt',
   ['decorators', { decoratorsBeforeExport: true }],
   'classProperties',
   'classPrivateProperties',
   'classPrivateMethods',
+  'classStaticBlock',
+  'decimal',
   'doExpressions',
-  'dynamicImport',
   'exportDefaultFrom',
-  'exportNamespaceFrom',
   'functionBind',
-  'functionSent',
-  'importMeta',
-  'logicalAssignment',
-  'nullishCoalescingOperator',
-  'numericSeparator',
-  // 'objectRestSpread', // no need, node has it since a long time
-  'optionalCatchBinding',
-  'optionalChaining',
   'partialApplication',
   ['pipelineOperator', { proposal: 'minimal' }],
+  'privateIn',
+  ['recordAndTuple', { syntaxType: 'hash' }],
   'throwExpressions',
 ];

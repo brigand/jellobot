@@ -1,24 +1,11 @@
-const babelParser = require('@babel/parser');
 const babelTraverse = require('@babel/traverse').default;
-const { parserPlugins } = require('./babelPlugins');
 
 /**
  *
- * @param {string} src
- * @return {object} ast
+ * @param {Object} root AST
+ * @return {Object} ast
  */
-function processTopLevelAwait(src) {
-  let root;
-
-  try {
-    root = babelParser.parse(src, {
-      allowAwaitOutsideFunction: true,
-      plugins: parserPlugins,
-    });
-  } catch (error) {
-    return null; // if code is not valid, don't bother
-  }
-
+module.exports = function processTopLevelAwait(root) {
   let containsAwait = false;
   let containsReturn = false;
 
@@ -54,7 +41,7 @@ function processTopLevelAwait(src) {
   // 1. False alarm: there isn't actually an await expression.
   // 2. There is a top-level return, which is not allowed.
   if (!containsAwait || containsReturn) {
-    return null;
+    return root;
   }
 
   let last = root.program.body[root.program.body.length - 1];
@@ -93,5 +80,3 @@ function processTopLevelAwait(src) {
 
   return iiafe;
 }
-
-module.exports = processTopLevelAwait;
