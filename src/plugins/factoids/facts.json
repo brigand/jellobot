@@ -73,7 +73,7 @@
 		},
 		"hoisting": {
 			"alias": "scoping",
-			"popularity": 126
+			"popularity": 128
 		},
 		"same origin": {
 			"alias": "cross-domain",
@@ -272,7 +272,7 @@
 		},
 		"bracket": {
 			"alias": "bracket access",
-			"popularity": 94
+			"popularity": 95
 		},
 		"str->num": {
 			"value": "parseFloat(str, 10), parseInt(str, 10), +str",
@@ -283,7 +283,7 @@
 		},
 		"not working": {
 			"alias": "doesn't work",
-			"popularity": 61
+			"popularity": 66
 		},
 		"resources": {
 			"value": "!books, !es5, !gcu, !mdn, !owsc, !quirksmode, !caniuse, !crockford, !cheatsheet",
@@ -656,7 +656,7 @@
 		},
 		"jsonp": {
 			"value": "JSONP is an insecure, but workable way to allow cross-domain requests. It consists of inserting a <script> element pointing to a generated script which runs the callback you specify in URL with the response data: <script src=\"http://some.api/api.js?callback=blah\"/> and server has in api.js ’<?= GET['callback'] ?>(<? '{generate:\"response\", data: \"here\"}' ?>)’. See also: !same",
-			"popularity": 42
+			"popularity": 43
 		},
 		"point": {
 			"value": "Don't ask to ask, don't ask if someone is available. Just get to the point, and then wait a while.",
@@ -791,7 +791,7 @@
 		},
 		"for..in": {
 			"value": "for..in is not to loop through indices/values of an array. Use for(init;cond;step) or Array#forEach. For..in iterates over *all* enumerable properties of an object, without any defined order. See also !iteration",
-			"popularity": 75,
+			"popularity": 78,
 			"editors": [
 				"graingert"
 			],
@@ -1074,7 +1074,7 @@
 		},
 		"premature optimization": {
 			"value": "Worrying about efficiency without first identifying real bottlenecks that affect the end-user leads to hard to read, hard to maintain code; and is far slower to write. Unless you can prove that it causes significant and noticeable slow-down, you've probably got bigger things to worry about.",
-			"popularity": 93,
+			"popularity": 94,
 			"editors": [
 				"j201"
 			],
@@ -1145,11 +1145,11 @@
 		},
 		"last": {
 			"alias": "last one only",
-			"popularity": 237
+			"popularity": 238
 		},
 		"fe vs fd": {
 			"alias": "fe",
-			"popularity": 84
+			"popularity": 85
 		},
 		"nfe": {
 			"value": "Named Function Expressions: http://kangax.github.com/nfe/",
@@ -1193,7 +1193,7 @@
 		},
 		"otbs": {
 			"value": "The One True Brace style: https://en.wikipedia.org/wiki/Indent_style#Variant:_1TBS_.28OTBS.29",
-			"popularity": 104,
+			"popularity": 106,
 			"editors": [
 				"ljharb"
 			],
@@ -1272,7 +1272,7 @@
 		},
 		"prototype modify": {
 			"value": "Don't modify objects you don't own, e.g. by extending native prototypes! http://www.nczonline.net/blog/2010/03/02/maintainable-javascript-dont-modify-objects-you-down-own/",
-			"popularity": 81,
+			"popularity": 82,
 			"editors": [
 				"GreenJello"
 			],
@@ -1287,7 +1287,7 @@
 		},
 		"equals": {
 			"alias": "comparisons",
-			"popularity": 73
+			"popularity": 74
 		},
 		"functions": {
 			"value": "See !fe vs fd",
@@ -1377,7 +1377,7 @@
 		},
 		"for-in": {
 			"alias": "for..in",
-			"popularity": 8
+			"popularity": 11
 		},
 		"for...in": {
 			"alias": "for..in",
@@ -1520,7 +1520,7 @@
 		},
 		"regex html": {
 			"value": "http://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454#1732454",
-			"popularity": 60
+			"popularity": 61
 		},
 		"coffeescript scoping": {
 			"value": "The Problem with Implicit Scoping in CoffeeScript: http://lucumr.pocoo.org/2011/12/22/implicit-scoping-in-coffeescript/",
@@ -1549,7 +1549,7 @@
 		},
 		"ded": {
 			"alias": "dedicated",
-			"popularity": 484,
+			"popularity": 485,
 			"editors": [
 				"gkatsev"
 			],
@@ -1904,7 +1904,7 @@
 		},
 		"sop": {
 			"value": "The same-origin policy restricts how a document or script loaded from one origin can interact with a resource from another origin. It is a critical security mechanism for isolating potentially malicious documents. More; https://developer.mozilla.org/en-US/docs/JavaScript/Same_origin_policy_for_JavaScript",
-			"popularity": 51,
+			"popularity": 52,
 			"creator": "mistertwig",
 			"editors": [
 				"MJCD"
@@ -1973,7 +1973,7 @@
 		},
 		"book": {
 			"alias": "books",
-			"popularity": 51
+			"popularity": 52
 		},
 		"copy": {
 			"value": "\"Shallow copy\" means to copy all the properties over from the source object to the new object.  \"Deep copy\" recursively performs the same to all properties with object values. Illustrations: https://gist.github.com/4644248",
@@ -2185,7 +2185,7 @@
 		},
 		"array mutators": {
 			"value": "Array mutator methods: push, pop, unshift, shift, splice, reverse, sort, fill, copyWithin. https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array#Mutator_methods",
-			"popularity": 64,
+			"popularity": 65,
 			"creator": "ljharb",
 			"editors": [
 				"ljharb"
@@ -3784,7 +3784,7 @@
 			"alias": "comparisons",
 			"creator": "",
 			"date": "2014-03-23T23:44:47.732Z",
-			"popularity": 100,
+			"popularity": 105,
 			"editors": [],
 			"changes": []
 		},
@@ -3941,7 +3941,7 @@
 			"alias": "nouns",
 			"creator": "ljharb",
 			"date": "2014-04-19T21:18:38.096Z",
-			"popularity": 24,
+			"popularity": 25,
 			"editors": [],
 			"changes": []
 		},
@@ -3973,7 +3973,7 @@
 			"value": "convert to boolean",
 			"creator": "Qbix2",
 			"date": "2014-04-24T00:17:29.237Z",
-			"popularity": 116,
+			"popularity": 118,
 			"editors": [
 				"graingert"
 			],
@@ -4257,7 +4257,7 @@
 			"value": "http://www.catb.org/~esr/faqs/smart-questions.html",
 			"creator": "ashnur",
 			"date": "2014-09-06T16:19:41.273Z",
-			"popularity": 20,
+			"popularity": 21,
 			"editors": [],
 			"changes": []
 		},
@@ -4783,7 +4783,7 @@
 			"value": "You Don't Know Javascript - A free book series for intermediate-advanced skill levels (https://github.com/getify/You-Dont-Know-JS)",
 			"creator": "bradleymeck",
 			"date": "2014-12-29T21:10:32.401Z",
-			"popularity": 86,
+			"popularity": 87,
 			"editors": [
 				"ljharb",
 				"Havvy",
@@ -5263,7 +5263,7 @@
 			"alias": "iteration",
 			"creator": "ljharb",
 			"date": "2015-02-12T04:31:36.893Z",
-			"popularity": 252,
+			"popularity": 259,
 			"editors": [],
 			"changes": []
 		},
@@ -5303,7 +5303,7 @@
 			"alias": "iteration",
 			"creator": "ljharb",
 			"date": "2015-02-17T22:54:23.253Z",
-			"popularity": 128,
+			"popularity": 135,
 			"editors": [],
 			"changes": []
 		},
@@ -5591,7 +5591,7 @@
 			"alias": "iteration",
 			"creator": "",
 			"date": "2015-04-28T17:16:37.785Z",
-			"popularity": 45,
+			"popularity": 46,
 			"editors": [],
 			"changes": []
 		},
@@ -5607,7 +5607,7 @@
 			"alias": "numbers",
 			"creator": "ljharb",
 			"date": "2015-05-10T16:21:19.518Z",
-			"popularity": 14,
+			"popularity": 16,
 			"editors": [],
 			"changes": []
 		},
@@ -5817,10 +5817,10 @@
 			"changes": []
 		},
 		"mod": {
-			"value": "JavaScript does not have a modulus operator. `%` is \"remainder\". https://web.archive.org/web/20171212212850/http://www.sitecrafting.com/blog/modulus-remainder/",
+			"value": "JavaScript does not have a modulus operator. `%` is \"remainder\". See https://web.archive.org/web/20171212212850/http://www.sitecrafting.com/blog/modulus-remainder/ and https://en.wikipedia.org/wiki/Modulo_operation#In_programming_languages",
 			"creator": "ljharb",
 			"date": "2015-06-02T20:19:35.561Z",
-			"popularity": 35,
+			"popularity": 37,
 			"editors": [
 				"ljharb"
 			],
@@ -5830,6 +5830,12 @@
 					"editor": "ljharb",
 					"old-value": "JavaScript does not have a modulus operator. `%` is \"remainder\". http://www.sitecrafting.com/blog/modulus-remainder/",
 					"new-value": "JavaScript does not have a modulus operator. `%` is \"remainder\". https://web.archive.org/web/20171212212850/http://www.sitecrafting.com/blog/modulus-remainder/"
+				},
+				{
+					"date": "2020-12-30T03:11:18.865Z",
+					"editor": "ljharb",
+					"old-value": "JavaScript does not have a modulus operator. `%` is \"remainder\". https://web.archive.org/web/20171212212850/http://www.sitecrafting.com/blog/modulus-remainder/",
+					"new-value": "JavaScript does not have a modulus operator. `%` is \"remainder\". See https://web.archive.org/web/20171212212850/http://www.sitecrafting.com/blog/modulus-remainder/ and https://en.wikipedia.org/wiki/Modulo_operation#In_programming_languages"
 				}
 			]
 		},
@@ -6384,7 +6390,7 @@
 			"value": "You probably don't actually need MVC. http://aredridel.dinhe.net/2015/01/30/why-mvc-does-not-fit-the-web/",
 			"creator": "joepie91",
 			"date": "2015-08-05T07:53:11.876Z",
-			"popularity": 34,
+			"popularity": 35,
 			"editors": [],
 			"changes": []
 		},
@@ -6719,7 +6725,7 @@
 			"value": "Don't try to do encryption or cryptography in browser JavaScript. https://web.archive.org/web/20150512024954/http://matasano.com/articles/javascript-cryptography/",
 			"creator": "ljharb",
 			"date": "2015-09-19T06:52:08.583Z",
-			"popularity": 54,
+			"popularity": 56,
 			"editors": [
 				"ljharb"
 			],
@@ -7149,7 +7155,7 @@
 			"alias": "whichnvm",
 			"creator": "ljharb",
 			"date": "2015-11-05T02:46:22.908Z",
-			"popularity": 82,
+			"popularity": 86,
 			"editors": [],
 			"changes": []
 		},
@@ -7165,7 +7171,7 @@
 			"value": "There's 3 options to properly get data from the server to the client: 1) fetch request from JS. 2) HTML data-* attributes, read them in JS. 3) <script type=\"application/json\"></script>, read and parse it from JS, however this option requires special escaping of </script> in the json body. Never generate/template JS on the fly. See also !fetch",
 			"creator": "ljharb",
 			"date": "2015-11-10T10:18:02.124Z",
-			"popularity": 113,
+			"popularity": 116,
 			"editors": [
 				"GreenJello",
 				"graingert",
@@ -7394,7 +7400,7 @@
 			"value": "When transpiling or on node 6+, always use `const`. If you can't avoid reassigning the variable (try!), use `let`. Never use `var` unless you are relying on !hoisting (which you shouldn't be).",
 			"creator": "ljharb",
 			"date": "2016-02-05T00:30:21.978Z",
-			"popularity": 93,
+			"popularity": 95,
 			"editors": [
 				"ljharb",
 				"Agamemnus"
@@ -7583,7 +7589,7 @@
 			"value": "MongoDB is a cross-platform document-based DB. It has many issues (in particular, the linearisation algorithm in distributed scenarios is inconsistent, and loses data), and probably isn't the right solution to your problem (see \"!no mongo\" for details).",
 			"creator": "Sorella",
 			"date": "2016-03-31T09:16:35.520Z",
-			"popularity": 39,
+			"popularity": 40,
 			"editors": [
 				"Sorella"
 			],
@@ -7600,7 +7606,7 @@
 			"value": "Don't parse HTML with regex. http://stackoverflow.com/a/1732454",
 			"creator": "mmmveggies",
 			"date": "2016-05-04T02:55:06.884Z",
-			"popularity": 14,
+			"popularity": 15,
 			"editors": [
 				"ljharb"
 			],
@@ -7689,7 +7695,7 @@
 			"alias": "crypto",
 			"creator": "ljharb",
 			"date": "2016-06-28T14:05:06.809Z",
-			"popularity": 30,
+			"popularity": 32,
 			"editors": [],
 			"changes": []
 		},
@@ -7999,7 +8005,7 @@
 			"value": "(a, b, s=1)=>Array.from({length: (b-a)/s+1}, (_,i)=>a+i*s)",
 			"creator": "qswz",
 			"date": "2016-08-20T18:27:28.743Z",
-			"popularity": 34,
+			"popularity": 36,
 			"editors": [
 				"qswz"
 			],
@@ -8093,7 +8099,7 @@
 			"value": "Arrow functions, new in ES2015, are not just shorter function syntax with optional implicit return. They do not bind this/super/arguments/new.target, they don't have a lexical name (for recursion), and can't be `new`ed. http://mdn.io/arrow+functions Examples: `x => x + 2`, `(x, y) => x + y`, `x => { return x * 2; }`",
 			"creator": "ljharb",
 			"date": "2016-09-15T03:58:03.374Z",
-			"popularity": 54,
+			"popularity": 56,
 			"editors": [
 				"ljharb"
 			],
@@ -8165,7 +8171,7 @@
 			"alias": "jwt sessions",
 			"creator": "gkatsev",
 			"date": "2016-09-28T01:19:09.907Z",
-			"popularity": 206,
+			"popularity": 218,
 			"editors": [],
 			"changes": []
 		},
@@ -8434,7 +8440,7 @@
 			"value": "The `eval` function has two use cases: macro expansion, and evaluating dynamically generated programs. `eval` is probably not the answer for your problem. See https://blog.racket-lang.org/2011/10/on-eval-in-dynamic-languages-generally-and-in-racket-specifically.html for details. See unsafe-eval in !csp for security aspects.",
 			"creator": "graingert",
 			"date": "2016-12-19T05:11:28.207Z",
-			"popularity": 34,
+			"popularity": 35,
 			"editors": [
 				"Sorella",
 				"graingert"
@@ -9088,7 +9094,7 @@
 			"value": "How to create a minimal, complete, and verifiable example https://stackoverflow.com/help/mcve see also !fiddle",
 			"creator": "falafel",
 			"date": "2017-07-04T22:54:53.347Z",
-			"popularity": 117,
+			"popularity": 128,
 			"editors": [
 				"graingert"
 			],
@@ -9560,7 +9566,7 @@
 			"alias": "paste",
 			"creator": "ljharb",
 			"date": "2017-09-01T20:29:31.066Z",
-			"popularity": 106,
+			"popularity": 109,
 			"editors": [],
 			"changes": []
 		},
@@ -9802,7 +9808,7 @@
 			"value": "webpack is a module bundler for modern JS apps. It recursively builds your application into a dependency graph that includes every module your application needs, then packages all of those modules into a small number of bundles - often only one - to be loaded by the browser. More @ webpack.js.org/concepts. Config tool: webpack.jakoblind.no",
 			"creator": "MJCD",
 			"date": "2017-09-24T08:25:56.975Z",
-			"popularity": 23,
+			"popularity": 24,
 			"editors": [
 				"qswz"
 			],
@@ -9884,7 +9890,7 @@
 			"value": "The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. An example; `{a, b, c} = require('thing')`; More @  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment",
 			"creator": "MJCD",
 			"date": "2017-10-09T12:11:39.865Z",
-			"popularity": 27,
+			"popularity": 28,
 			"editors": [
 				"MJCD"
 			],
@@ -9957,7 +9963,7 @@
 			"value": "A regular expression, regex or regexp is a sequence of characters that define a search pattern ( More @ More; https://en.wikipedia.org/wiki/Regular_expression ). You can toy with them and learn the syntax @ https://regex101.com",
 			"creator": "MJCD",
 			"date": "2017-10-29T17:40:48.830Z",
-			"popularity": 10,
+			"popularity": 13,
 			"editors": [
 				"MJCD"
 			],
@@ -10225,7 +10231,7 @@
 			"alias": "hello",
 			"creator": "MJCD",
 			"date": "2018-01-05T22:24:59.103Z",
-			"popularity": 31,
+			"popularity": 33,
 			"editors": [],
 			"changes": []
 		},
@@ -10313,7 +10319,7 @@
 			"alias": "server data",
 			"creator": "graingert",
 			"date": "2018-01-11T15:26:37.509Z",
-			"popularity": 32,
+			"popularity": 34,
 			"editors": [],
 			"changes": []
 		},
@@ -10321,7 +10327,7 @@
 			"alias": "no mongo",
 			"creator": "graingert",
 			"date": "2018-01-12T05:39:56.287Z",
-			"popularity": 41,
+			"popularity": 44,
 			"editors": [],
 			"changes": []
 		},
@@ -10723,7 +10729,7 @@
 			"value": "Show some code, but don't paste it to the channel. Use sites like gist.github.com or dpaste.com. Ideally it should be executable, see !paste",
 			"creator": "systemfault",
 			"date": "2018-04-28T01:17:51.504Z",
-			"popularity": 51,
+			"popularity": 53,
 			"editors": [],
 			"changes": []
 		},
@@ -10796,7 +10802,7 @@
 			"alias": "promises",
 			"creator": "ljharb",
 			"date": "2018-06-05T03:24:19.375Z",
-			"popularity": 9,
+			"popularity": 10,
 			"editors": [],
 			"changes": []
 		},
@@ -10907,7 +10913,7 @@
 			"value": "Don't use environment variables to store credentials like passwords and keys! They're too easy to leak, because many tools don't treat environment variables as private information. Use configuration files (eg. config.json) with strict permissions (0400) instead.",
 			"creator": "joepie91",
 			"date": "2018-07-14T18:48:39.632Z",
-			"popularity": 30,
+			"popularity": 31,
 			"editors": [
 				"joepie91"
 			],
@@ -11037,7 +11043,7 @@
 			"alias": "environment variables",
 			"creator": "joepie91",
 			"date": "2018-08-23T17:14:19.115Z",
-			"popularity": 27,
+			"popularity": 28,
 			"editors": [],
 			"changes": []
 		},
@@ -11222,7 +11228,7 @@
 			"value": "Please don't use Hastebin. It has very poor color contrast, and is therefore not readable for people with poor vision.",
 			"creator": "howdoi",
 			"date": "2018-10-05T12:27:45.480Z",
-			"popularity": 52,
+			"popularity": 55,
 			"editors": [
 				"joepie91"
 			],
@@ -11436,7 +11442,7 @@
 			"alias": "fiddle",
 			"creator": "MJCD",
 			"date": "2018-10-20T00:54:01.823Z",
-			"popularity": 23,
+			"popularity": 24,
 			"editors": [],
 			"changes": []
 		},
@@ -11624,7 +11630,7 @@
 			"value": "it's not standard, and recommends bad practices, see !airbnb and !semicolons",
 			"creator": "graingert",
 			"date": "2018-11-20T15:39:23.439Z",
-			"popularity": 10,
+			"popularity": 11,
 			"editors": [],
 			"changes": []
 		},
@@ -11664,7 +11670,7 @@
 			"value": "A \"sparse\" array is one that has \"holes\" - in other words, an index between 0 and the length minus one that is not an own property of the array. `1 in [1,,3]` will return `false`, because it's sparse. The Array constructor should never be used, because with a single integer argument, it creates a sparse array.",
 			"creator": "ljharb",
 			"date": "2018-12-04T23:08:51.215Z",
-			"popularity": 1,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -11784,7 +11790,7 @@
 			"alias": "promises",
 			"creator": "MJCD",
 			"date": "2019-01-06T14:31:04.440Z",
-			"popularity": 10,
+			"popularity": 12,
 			"editors": [],
 			"changes": []
 		},
@@ -12338,7 +12344,7 @@
 			"value": "const delay = (t, ...vs) => new Promise(r => setTimeout(r, t, ...vs)) or util.promisify(setTimeout)",
 			"creator": "MJCD",
 			"date": "2019-08-02T13:50:48.300Z",
-			"popularity": 4,
+			"popularity": 5,
 			"editors": [
 				"qswz"
 			],
@@ -12775,7 +12781,7 @@
 			"value": "Do you have a question? also see https://web.archive.org/web/20200326042533/http://www.nohello.com/",
 			"creator": "ljharb",
 			"date": "2020-03-19T22:18:27.796Z",
-			"popularity": 17,
+			"popularity": 19,
 			"editors": [
 				"ljharb"
 			],
@@ -12816,7 +12822,7 @@
 			"alias": "array mutators",
 			"creator": "ljharb",
 			"date": "2020-05-12T07:46:51.086Z",
-			"popularity": 0,
+			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
@@ -12832,7 +12838,7 @@
 			"value": "Eloquent JavaScript is a comprehensive introductory Web-based book with examples and a built-in interpreter. http://eloquentjavascript.net/",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:44:49.335Z",
-			"popularity": 25,
+			"popularity": 38,
 			"editors": [],
 			"changes": []
 		},
@@ -12840,7 +12846,7 @@
 			"value": "The XY problem: You want to do X, but don't know how. You think you can solve it using Y, but don't know how to do that either. You ask about Y, which is a strange thing to want to do. Just ask about X. See also: http://xyproblem.info/",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:44:58.775Z",
-			"popularity": 37,
+			"popularity": 42,
 			"editors": [],
 			"changes": []
 		},
@@ -12848,7 +12854,7 @@
 			"value": "!eloquent (http://eloquentjavascript.net), !ydkjs (https://github.com/getify/You-Dont-Know-JS), JavaScript: The Definitive Guide by David Flanagan, High Performance JavaScript by Nicholas C. Zakas, Effective JavaScript by David Herman, Functional JavaScript by Michael Fogus, Programming JavaScript Applications by Eric Elliott.",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:45:06.332Z",
-			"popularity": 22,
+			"popularity": 28,
 			"editors": [],
 			"changes": []
 		},
@@ -12856,7 +12862,7 @@
 			"value": "A function call of the form `a.b()` calls the function with `this` being the value of `a`; in a call of the form `f()`, `this` will be `undefined`, which is turned into the global object if the function wasn't defined in strict mode. Note that arrow functions and functions produced by `Function.prototype.bind` ignore the passed `this` value. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:45:13.330Z",
-			"popularity": 9,
+			"popularity": 13,
 			"editors": [],
 			"changes": []
 		},
@@ -12864,7 +12870,7 @@
 			"value": "Show some code, but don't paste it on the channel. You can provide a test case we can run and help you with your problem with http://jsfiddle.net , http://jsbin.com , or http://requirebin.com . Sites like http://gist.github.com/ and http://bpaste.net are cool too.",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:45:58.025Z",
-			"popularity": 9,
+			"popularity": 10,
 			"editors": [
 				"ljharb"
 			],
@@ -12881,7 +12887,7 @@
 			"value": "Inline event handlers are essentially `eval` inside HTML markup - they're bad practice and result in poorly factored, hard-to-manage code. Seriously consider attaching your events with JavaScript, instead, eg: https://developer.mozilla.org/en/DOM/element.addEventListener",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:46:08.262Z",
-			"popularity": 8,
+			"popularity": 11,
 			"editors": [],
 			"changes": []
 		},
@@ -12889,7 +12895,7 @@
 			"value": "ECMAScript's Array contains a number of built-in methods for iteration (e.g., map, reduce, every, some, filter, and forEach). They relieve the need for manual iteration, provide better abstraction than a `for` loop, and make it clear what your iteration is doing. See https://gist.github.com/ljharb/58faf1cfcb4e6808f74aae4ef7944cff",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:46:19.031Z",
-			"popularity": 25,
+			"popularity": 40,
 			"editors": [],
 			"changes": []
 		},
@@ -12905,7 +12911,7 @@
 			"value": "What do you mean it doesn't work? Is it unemployed? What happens when you try to run it? What did you try to run? What's the output? What's the error message? What did you want or expect to happen? Can you post a screenshot or a fiddle?",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:46:33.302Z",
-			"popularity": 28,
+			"popularity": 40,
 			"editors": [],
 			"changes": []
 		},
@@ -12913,7 +12919,7 @@
 			"value": "Promises are placeholders for values that'll be provided in the future. They allow composing asynchronous operations like synchronous ones. See http://robotlolita.me/2015/11/15/how-do-promises-work.html and https://blog.domenic.me/youre-missing-the-point-of-promises/. Contrast with !cps & see https://bevacqua.github.io/promisees/. Another guide: http://www.javascriptkit.com/javatutors/javascriptpromises.shtml",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:46:40.628Z",
-			"popularity": 20,
+			"popularity": 26,
 			"editors": [],
 			"changes": []
 		},
@@ -12971,12 +12977,13 @@
 			]
 		},
 		"paste": {
-			"value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
+			"value": "Please paste your code to a site like https://gist.github.com or https://dpaste.org/ (NOT pastebin.com or hastebin), or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:50:17.280Z",
-			"popularity": 36,
+			"popularity": 83,
 			"editors": [
-				"ljharb"
+				"ljharb",
+				"samsch"
 			],
 			"changes": [
 				{
@@ -12984,6 +12991,12 @@
 					"editor": "ljharb",
 					"old-value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
 					"new-value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve"
+				},
+				{
+					"date": "2020-12-24T00:05:34.284Z",
+					"editor": "samsch",
+					"old-value": "Please paste your code (gist and other paste sites, NOT pastebin.com or Hastebin) or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve",
+					"new-value": "Please paste your code to a site like https://gist.github.com or https://dpaste.org/ (NOT pastebin.com or hastebin), or create a running example: see !fiddle. See also !badpastebin !hastebin !nopaste and !mcve"
 				}
 			]
 		},
@@ -12991,7 +13004,7 @@
 			"value": "http://johnkpaul.com/blog/2013/02/11/what-is-hoisting-really/ https://web.archive.org/web/20170907201821/https://developer.mozilla.org/en-US/docs/Archive/Web/Scope_Cheatsheet https://snek.dev/blag/2019-07_js_hoisting",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:50:36.406Z",
-			"popularity": 7,
+			"popularity": 9,
 			"editors": [
 				"ljharb"
 			],
@@ -13008,17 +13021,18 @@
 			"value": "Try it and see, why dontcha?",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:50:48.083Z",
-			"popularity": 0,
+			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
 		"ask": {
-			"value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html",
+			"value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:50:54.687Z",
-			"popularity": 55,
+			"popularity": 72,
 			"editors": [
-				"ljharb"
+				"ljharb",
+				"joepie91"
 			],
 			"changes": [
 				{
@@ -13026,6 +13040,12 @@
 					"editor": "ljharb",
 					"old-value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html",
 					"new-value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html"
+				},
+				{
+					"date": "2021-01-10T00:08:43.924Z",
+					"editor": "joepie91",
+					"old-value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html",
+					"new-value": "Don't ask to ask, nor if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html"
 				}
 			]
 		},
@@ -13041,7 +13061,7 @@
 			"value": "document.wrong. Please use something more modern and less prone to doing confusing things. This function tries to write to the current document. If the document has already been processed, the document will be replaced with a blank one with your argument. You don't want that; use the proper DOM methods instead.",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:51:13.385Z",
-			"popularity": 0,
+			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
@@ -13074,7 +13094,7 @@
 			"value": "I'm written entirely in JavaScript using Node.js. Look under the hood on Github: <https://github.com/oftn/oftn-bot>",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:51:38.450Z",
-			"popularity": 18,
+			"popularity": 20,
 			"editors": [
 				"ljharb"
 			],
@@ -13091,7 +13111,7 @@
 			"value": "For help, ask your question. Be patient. Code samples should be pasted in a paste service (see !paste). Tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !describe and !debug).",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:51:44.721Z",
-			"popularity": 14,
+			"popularity": 15,
 			"editors": [],
 			"changes": []
 		},
@@ -13099,23 +13119,32 @@
 			"value": "yourObject.foobar is just another way of saying yourObject['foobar']. So of course if varName = 'foobar', then it's also the same as yourObject[varName]. Dot notation is preferred to bracket notation except where the property name would be an invalid identifier. The same applies to quoting keys inside object literals - don't do it unless you have to.",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:51:53.452Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
 		"ops": {
-			"value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello jaawerth niggler. In case of an emergency requiring op attention, activate !emergency",
+			"value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus GreenJello jaawerth niggler theskillwithin. In case of an emergency requiring op attention, activate !emergency",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:53:06.958Z",
-			"popularity": 15,
-			"editors": [],
-			"changes": []
+			"popularity": 20,
+			"editors": [
+				"theskillwithin"
+			],
+			"changes": [
+				{
+					"date": "2021-01-19T13:08:21.327Z",
+					"editor": "theskillwithin",
+					"old-value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello jaawerth niggler. In case of an emergency requiring op attention, activate !emergency",
+					"new-value": "The ##javascript ops are: buu inimino gkatsev Agamemnus Maxdamantus GreenJello jaawerth niggler theskillwithin. In case of an emergency requiring op attention, activate !emergency"
+				}
+			]
 		},
 		"numbers": {
 			"value": "The Number type has exactly 2^64 − 2^53 + 3 values, representing the double-precision 64-bit format IEEE 754 values as specified in the IEEE Standard for Binary Floating-Point Arithmetic, except that the 2^53 − 2 distinct “Not-a-Number” values of the IEEE Standard are represented as a single special NaN value. : http://www.2ality.com/2012/04/number-encoding.html",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:53:14.846Z",
-			"popularity": 2,
+			"popularity": 4,
 			"editors": [
 				"ljharb"
 			],
@@ -13174,7 +13203,7 @@
 			"value": "Using == and != should be avoided, since they perform coercion giving unexpected results. Use === and !== instead. See also: http://zero.milosz.ca/ http://es5.github.io/#x11.9.3 https://eqeq.js.org/",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:53:44.590Z",
-			"popularity": 2,
+			"popularity": 8,
 			"editors": [
 				"ljharb"
 			],
@@ -13199,7 +13228,7 @@
 			"value": "An \"immediately invoked function expression\" is an expression that both creates and calls a function. As with any function call, a scope is created. \"(function () { /* ... */ }())\" is the most common form. For more info: http://benalman.com/news/2010/11/immediately-invoked-function-expression/",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:05:11.056Z",
-			"popularity": 10,
+			"popularity": 13,
 			"editors": [],
 			"changes": []
 		},
@@ -13231,7 +13260,7 @@
 			"value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: repl.it, runkit.com, gist.github.com. See also !mcve and !paste",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:06:31.308Z",
-			"popularity": 21,
+			"popularity": 33,
 			"editors": [],
 			"changes": []
 		},
@@ -13239,7 +13268,7 @@
 			"value": "Another satisfied customer! NEXT!!",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:06:33.898Z",
-			"popularity": 58,
+			"popularity": 67,
 			"editors": [],
 			"changes": []
 		},
@@ -13247,7 +13276,7 @@
 			"value": "Avoid setInterval; use setTimeout instead. https://web.archive.org/web/20160602165800/https://zetafleet.com/blog/2010/04/why-i-consider-setinterval-to-be-harmful.html (requestAnimationFrame may be another alternative, see !raf)",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:06:38.674Z",
-			"popularity": 9,
+			"popularity": 13,
 			"editors": [],
 			"changes": []
 		},
@@ -13263,7 +13292,7 @@
 			"value": "Welcome! We're a community of friendly, helpful people who are happy to help any time 24/7/365. Please make yourself at home and consider adding us to your autojoin :) Please make sure you read the channel status for channel commands and updates. FYI, just saying hello with no message is super rude in IRC! See also !nohello",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:06:47.908Z",
-			"popularity": 0,
+			"popularity": 3,
 			"editors": [],
 			"changes": []
 		},
@@ -13271,7 +13300,7 @@
 			"value": "Remember, Java is to JavaScript as Pain is to Painting, or Ham is to Hamster. We don't know Java, and if you're trying to apply your Java knowledge to JavaScript, it probably won't work. See also: http://ow.ly/GMctL and https://twitter.com/ryber/status/567681894662164480 - Try ##java",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:06:54.584Z",
-			"popularity": 7,
+			"popularity": 10,
 			"editors": [
 				"ljharb"
 			],
@@ -13288,7 +13317,7 @@
 			"value": "Paste code at https://gist.github.com (or a similar site see !paste) and name the file .js so that we can look over it. Thanks!",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:06:57.367Z",
-			"popularity": 1,
+			"popularity": 6,
 			"editors": [],
 			"changes": []
 		},
@@ -13296,7 +13325,7 @@
 			"value": "window.fetch - a standard way to make HTTP requests, say bye to XHR and get a Promise http://mdn.io/Using_Fetch. For older browsers (IE*) see !polyfill",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:07:02.302Z",
-			"popularity": 14,
+			"popularity": 23,
 			"editors": [],
 			"changes": []
 		},
@@ -13304,7 +13333,7 @@
 			"value": "The 'falsy' values in JavaScript are undefined, null, 0, -0, 0n, NaN, '', and false. The 'truthy' values are all other values. All objects are truthy. There is nothing both truthy and falsy, or neither truthy nor falsy.",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:07:05.671Z",
-			"popularity": 8,
+			"popularity": 9,
 			"editors": [],
 			"changes": []
 		},
@@ -13328,7 +13357,7 @@
 			"value": "Cross-origin resource sharing (http://www.w3.org/TR/cors/) allows browser to negotiate access for cross-domain requests - for example with XMLHttpRequest - as a way to work around the same-origin policy. See also: !same, http://caniuse.com/cors , https://developer.mozilla.org/en/HTTP_access_control",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:07:17.376Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -13336,7 +13365,7 @@
 			"value": "If something is only being applied to the 'last' one of many, you might have a scoping problem. e.g.: in for (i=0; i<5; ++i) {doX(function(){ doY(i); });} `doY' might only receive 5 as a value. You can solve this using closures, so see !closures. For more info see http://web.archive.org/web/20161209211206/www.mennovanslooten.nl/blog/post/62/",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:07:20.633Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -13352,7 +13381,7 @@
 			"value": "In JavaScript, verbs are equally important as nouns. http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:07:26.594Z",
-			"popularity": 13,
+			"popularity": 17,
 			"editors": [],
 			"changes": []
 		},
@@ -13368,7 +13397,7 @@
 			"value": "Don't use JWT for sessions. http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions -- JWT was never meant to be used for sessions, and its popularity happened purely because of marketing: https://youtu.be/GrLtOjCTB1s?t=1h2m44s  |  Instead, use session cookies: https://gist.github.com/joepie91/cf5fd6481a31477b12dc33af453f9a1d",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:07:38.348Z",
-			"popularity": 26,
+			"popularity": 38,
 			"editors": [],
 			"changes": []
 		},
@@ -13376,7 +13405,7 @@
 			"value": "#angularjs - ##bootstrap - #browserify - #coffeescript - #css - #d3.js - #dojo - #emberjs  - #express - #grunt - #gulpjs - #jquery - #knockoutjs - #node.js - #reactjs (also tools used in react.js projects) - #requirejs - #socket.io - #three.js - #webgl - ##typescript",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:07:44.661Z",
-			"popularity": 0,
+			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
@@ -13392,7 +13421,7 @@
 			"value": "https://nodesource.com/blog/understanding-the-nodejs-event-loop ; https://www.youtube.com/watch?v=8aGhZQkoFbQ ; https://www.youtube.com/watch?v=cCOL7MC4Pl0",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:07:51.176Z",
-			"popularity": 9,
+			"popularity": 12,
 			"editors": [],
 			"changes": []
 		},
@@ -13400,7 +13429,7 @@
 			"value": "Don't use pastebin.com, Ads, Spamfilters, Captcha, Adds whitespace, Slow, Ugly, No comment/fork/annotate, Breaks copy/paste, Blocked for some people, etc. See !paste and !fiddle",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:07:53.888Z",
-			"popularity": 3,
+			"popularity": 9,
 			"editors": [],
 			"changes": []
 		},
@@ -13424,7 +13453,7 @@
 			"value": "JavaScript has call-by-value semantics in which references to objects are considered to be a type of value. Direct assignment to an argument will never be visible outside of a function. For a detailed explanation, see: https://web.archive.org/web/20161005155047/http://www.jon-carlos.com/2013/is-javascript-call-by-value-or-call-by-reference/",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:08:05.758Z",
-			"popularity": 7,
+			"popularity": 11,
 			"editors": [],
 			"changes": []
 		},
@@ -13432,7 +13461,7 @@
 			"value": "The same-origin policy prevents access to most methods and properties across pages on different sites (even those inside iframes). Short version: for XHR and cross-frame-interaction to work, this://this.this.and:this/ have to be the same. Alternatives: A server-side proxy, the Dojo iframe trick, CORS, and JSONP. See also: !jsonp, !cors.",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:08:09.291Z",
-			"popularity": 3,
+			"popularity": 5,
 			"editors": [],
 			"changes": []
 		},
@@ -13448,7 +13477,7 @@
 			"value": "JavaScript uses prototypal inheritance, where Objects inherit directly from other Objects (there's no !classes). This post covers the foundations of that: http://yehudakatz.com/2011/08/12/understanding-prototypes-in-javascript/",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:09:12.349Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -13472,7 +13501,7 @@
 			"value": "ASI stands for 'automatic semicolon insertion', a mechanism by which semicolons may be omitted from the source code in certain cases, and still be recognized by the parser. Note that semicolons are NOT OPTIONAL and use of this feature will patch around your omission. For details: http://inimino.org/~inimino/blog/javascript_semicolons",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:09:40.864Z",
-			"popularity": 5,
+			"popularity": 7,
 			"editors": [],
 			"changes": []
 		},
@@ -13488,7 +13517,7 @@
 			"value": "Using \".onclick\", \".onchange\", or \"on\" anything is bad practice and results in poorly factored, hard-to-manage code; as well as limiting you to one event listener per event. Consider attaching your events with addEventListener, instead, eg: https://developer.mozilla.org/en/DOM/element.addEventListener",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:09:46.325Z",
-			"popularity": 4,
+			"popularity": 7,
 			"editors": [],
 			"changes": []
 		},
@@ -13496,7 +13525,7 @@
 			"value": "|> function range(start, end) { return Array.apply(Array, Array(end + 1 - start)).map(function (_, i) { return i + start; }); }",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:09:52.913Z",
-			"popularity": 5,
+			"popularity": 8,
 			"editors": [],
 			"changes": []
 		},
@@ -13504,7 +13533,7 @@
 			"value": "Don't use MongoDB - it has many issues, and is essentially never the right solution to your problem. Here's a list of issues: http://cryto.net/~joepie91/blog/2015/07/19/why-you-should-never-ever-ever-use-mongodb/ and a more technical article at http://www.sarahmei.com/blog/2013/11/11/why-you-should-never-use-mongodb/",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:09:56.684Z",
-			"popularity": 55,
+			"popularity": 71,
 			"editors": [
 				"theskillwithin",
 				"joepie91",
@@ -13616,12 +13645,21 @@
 			]
 		},
 		"emergency": {
-			"value": "Emergency! buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello",
+			"value": "buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello theskillwithin",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:10:00.272Z",
-			"popularity": 1,
-			"editors": [],
-			"changes": []
+			"popularity": 4,
+			"editors": [
+				"theskillwithin"
+			],
+			"changes": [
+				{
+					"date": "2021-01-19T13:09:29.319Z",
+					"editor": "theskillwithin",
+					"old-value": "Emergency! buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello",
+					"new-value": "buu inimino gkatsev Agamemnus Maxdamantus dilvie Sorella GreenJello theskillwithin"
+				}
+			]
 		},
 		"bloat": {
 			"value": "The solution to worrying about JS lib/framework size: include one less .jpg on your site. // https://twitter.com/paul_irish/status/227203681462927361 - also, https://twitter.com/trek/status/227082154109186049 http://fourword.fourkitchens.com/article/one-less-jpg",
@@ -13643,7 +13681,7 @@
 			"value": "A guide to getting started with JavaScript and Node.js: https://gist.github.com/joepie91/95ed77b71790442b7e61",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:10:09.681Z",
-			"popularity": 6,
+			"popularity": 11,
 			"editors": [],
 			"changes": []
 		},
@@ -13659,7 +13697,7 @@
 			"value": "Loops fail to clearly signal the intention of your code, and as such should be avoided whenever possible (prefer higher-order functions, such as .map, .reduce, .filter, ...). See also: http://qr.ae/RNMEGA and https://gist.github.com/robotlolita/7643014",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:10:13.994Z",
-			"popularity": 7,
+			"popularity": 10,
 			"editors": [],
 			"changes": []
 		},
@@ -13667,7 +13705,7 @@
 			"value": "A function declaration `function declared() {}` & a function expression e.g. `var bar = function expressed() {}`: the former is !hoisted, the latter can be immediately invoked (see !iife) and can be anonymous (eg can omit the name \"expressed\"). \"function\" as the first word of a statement at global scope or directly inside a function starts a function declaration; otherwise, it starts a function expression.",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:10:19.267Z",
-			"popularity": 2,
+			"popularity": 3,
 			"editors": [],
 			"changes": []
 		},
@@ -13683,7 +13721,7 @@
 			"value": "nvm ( http://nvm.sh / #nvm ) lets you change node versions per-user/per-shell. nave ( https://www.npmjs.com/package/nave ) is for per-user/per-SUBshell. n ( https://www.npmjs.com/package/n ) is for a single, global, system-wide node.",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:11:00.634Z",
-			"popularity": 4,
+			"popularity": 9,
 			"editors": [],
 			"changes": []
 		},
@@ -13699,7 +13737,7 @@
 			"value": "For animations, requestAnimationFrame is far superior to setTimeout. http://paulirish.com/2011/requestanimationframe-for-smart-animating/ To cover older browsers, use this polyfill: https://gist.github.com/1579671",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:12:25.110Z",
-			"popularity": 2,
+			"popularity": 3,
 			"editors": [],
 			"changes": []
 		},
@@ -13715,7 +13753,7 @@
 			"value": "Class hierarchies? Don't do that! http://raganwald.com/2014/03/31/class-hierarchies-dont-do-that.html (See also, !inheritance)",
 			"creator": "ljharb",
 			"date": "2020-06-23T11:04:52.465Z",
-			"popularity": 6,
+			"popularity": 7,
 			"editors": [],
 			"changes": []
 		},
@@ -13731,7 +13769,7 @@
 			"alias": "promises",
 			"creator": "",
 			"date": "2020-07-08T03:06:49.828Z",
-			"popularity": 0,
+			"popularity": 3,
 			"editors": [],
 			"changes": []
 		},
@@ -13771,7 +13809,7 @@
 			"alias": "no mongo",
 			"creator": "joepie91",
 			"date": "2020-11-22T22:58:53.701Z",
-			"popularity": 4,
+			"popularity": 8,
 			"editors": [],
 			"changes": []
 		},
@@ -13779,7 +13817,7 @@
 			"value": "https://www.tutorialspoint.com/mongodb/mongodb_advantages.htm also see !nomongo",
 			"creator": "theskillwithin",
 			"date": "2020-11-23T11:42:35.130Z",
-			"popularity": 5,
+			"popularity": 7,
 			"editors": [
 				"theskillwithin"
 			],
@@ -13792,6 +13830,12 @@
 				},
 				{
 					"date": "2020-11-23T12:07:34.118Z",
+					"editor": "theskillwithin",
+					"old-value": "https://www.tutorialspoint.com/mongodb/mongodb_advantages.htm also see !nomongo",
+					"new-value": "https://www.tutorialspoint.com/mongodb/mongodb_advantages.htm also see !nomongo"
+				},
+				{
+					"date": "2020-12-12T11:10:29.645Z",
 					"editor": "theskillwithin",
 					"old-value": "https://www.tutorialspoint.com/mongodb/mongodb_advantages.htm also see !nomongo",
 					"new-value": "https://www.tutorialspoint.com/mongodb/mongodb_advantages.htm also see !nomongo"
