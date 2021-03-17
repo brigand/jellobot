@@ -126,7 +126,9 @@ const repastePlugin = (msg) => {
         }
       },
     );
-  } else if (user) {
+  }
+
+  if (user) {
     msg.respondWithMention(`I couldn't find a link from ${user}`);
   } else {
     msg.respondWithMention(
@@ -150,10 +152,20 @@ function getCode(msg, url) {
     return Promise.reject({ type: 'InvalidUrl' });
   }
   msg.vlog(`Fetching ${rawFiles.js}, ${rawFiles.css}, ${rawFiles.html}`);
-  const filePromises = Object.keys(rawFiles).map((extension) => {
-    console.log({ extension, url: rawFiles[extension] });
-    return superagent.get(rawFiles[extension]).then((res) => {
+  const filePromises = Object.entries(rawFiles).map(([extension, value]) => {
+    const transformedUrl = typeof value === 'string' ? value : value.url;
+    const transform =
+      typeof value.transform === 'function' ? value.transform : (x) => x;
+
+    console.log({ extension, url, transformedUrl });
+    return superagent.get(transformedUrl).then((res) => {
       let { text } = res;
+
+      text = transform(text);
+
+      if (!text) {
+        return null;
+      }
 
       if (/text\/html/i.test(res.headers['content-type'])) {
         const $ = cheerio.load(text);
@@ -169,10 +181,12 @@ function getCode(msg, url) {
   });
 
   return Promise.all(filePromises).then((results) => {
-    return results.reduce(
-      (acc, { extension, text }) => Object.assign({}, acc, { [extension]: text }),
-      {},
-    );
+    return results
+      .filter(Boolean)
+      .reduce(
+        (acc, { extension, text }) => Object.assign(acc, { [extension]: text }),
+        {},
+      );
   });
 }
 
