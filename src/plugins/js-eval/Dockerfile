@@ -1,6 +1,7 @@
 FROM debian:10-slim
 
 RUN apt-get update && apt-get install -y xz-utils ca-certificates curl --no-install-recommends
+# Note: this has a tendency to over-cache, and can be bypassed with an edit like `RUN x=1 && node_version=…`
 RUN node_version=$(curl -sSL https://nodejs.org/download/release/ | awk '/>v/{ split($2, a, "[<>]"); sub("/","",a[2]); print a[2] }' | sort -V | tail -n1) \
   && curl -fsSLO --compressed "https://nodejs.org/download/release/$node_version/node-$node_version-linux-x64.tar.xz" \
   && tar -xJf "node-$node_version-linux-x64.tar.xz" -C /usr/local --strip-components=1 --no-same-owner
