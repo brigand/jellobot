@@ -22,14 +22,16 @@ const inspect = (val) => {
 };
 
 function exposeBuiltinInGlobal(name) {
-  const require2 = require;
   const setReal = (val) => {
     delete global[name];
     global[name] = val;
   };
   Object.defineProperty(global, name, {
     get: () => {
-      const value = require2(name); // eslint-disable-line
+      const value = require(name); // eslint-disable-line
+      if (name === 'timers') {
+        value.promises = value.promises || require('timers/promises'); // eslint-disable-line
+      }
       delete global[name];
       Object.defineProperty(global, name, {
         get: () => value,
