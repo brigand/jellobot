@@ -18,7 +18,11 @@ const envs = {
 };
 
 module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) {
-  const mode = message.charAt(0);
+  const mode = message[0];
+
+  if (message[1] !== '>') {
+    return;
+  }
 
   if (mode === '?') return respond((mentionUser ? `${mentionUser}, ` : '') + helpMsg);
 
@@ -32,16 +36,17 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
     // there's maybe a TLA await
     let ast = babelParser.parse(code, {
       allowAwaitOutsideFunction: true,
-      ...mode === 'b' && { plugins: parserPlugins },
+      ...(mode === 'b' && { plugins: parserPlugins }),
     });
 
     if (hasMaybeTLA) ast = processTopLevelAwait(ast);
 
-    code = mode === 'b'
-      ? (await babel.transformFromAstAsync(ast, code, {
-        plugins: transformPlugins,
-      })).code
-      : babelGenerator(ast).code;
+    code =
+      mode === 'b'
+        ? (await babel.transformFromAstAsync(ast, code, {
+            plugins: transformPlugins,
+          })).code
+        : babelGenerator(ast).code;
   }
 
   try {
@@ -89,15 +94,13 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
             resolve(data.trim());
           }
         });
-      })
-        .finally(() => clearTimeout(timeout)),
+      }).finally(() => clearTimeout(timeout)),
       new Promise((resolve) => {
         timeout = setTimeout(resolve, timeoutMs + 10);
-      })
-        .then(() => {
-          cp.execSync(`docker kill --signal=9 ${name}`);
-          throw Object.assign(new Error(data), { reason: 'timeout' }); // send data received so far in the error msg
-        }),
+      }).then(() => {
+        cp.execSync(`docker kill --signal=9 ${name}`);
+        throw Object.assign(new Error(data), { reason: 'timeout' }); // send data received so far in the error msg
+      }),
     ]);
 
     let clean = result.trim();
