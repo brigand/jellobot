@@ -1,8 +1,12 @@
+# This should be kept somewhat recent for local development, but the js-eval/init script
+# sets this to the latest version from nodejs.org/download/release
+ARG node_version=v15.12.0
+
 FROM debian:10-slim
+ARG node_version
 
 RUN apt-get update && apt-get install -y xz-utils ca-certificates curl --no-install-recommends
-# Note: this has a tendency to over-cache, and can be bypassed with an edit like `RUN x=1 && node_version=…`
-RUN node_version=$(curl -sSL https://nodejs.org/download/release/ | awk '/>v/{ split($2, a, "[<>]"); sub("/","",a[2]); print a[2] }' | sort -V | tail -n1) \
+RUN node_version=${node_version} \
   && curl -fsSLO --compressed "https://nodejs.org/download/release/$node_version/node-$node_version-linux-x64.tar.xz" \
   && tar -xJf "node-$node_version-linux-x64.tar.xz" -C /usr/local --strip-components=1 --no-same-owner
 RUN node --version
