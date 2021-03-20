@@ -11,10 +11,10 @@ it('bpaste', () => {
 
 it('pastebin', () => {
   expect(pasteUrlToRaw('http://pastebin.com/iydu8g2t')).toEqual({
-    js: 'http://pastebin.com/raw/iydu8g2t',
+    js: 'https://pastebin.com/raw/iydu8g2t',
   });
   expect(pasteUrlToRaw('http://pastebin.com/raw/iydu8g2t')).toEqual({
-    js: 'http://pastebin.com/raw/iydu8g2t',
+    js: 'https://pastebin.com/raw/iydu8g2t',
   });
 });
 
