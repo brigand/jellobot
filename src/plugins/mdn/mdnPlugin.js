@@ -59,8 +59,11 @@ function extractFromHtml(html) {
   // Object#__proto__: There are .notecard elements we don't want to match, which contain <p> elements,
   // followed by a <p> we do want to match.
   // Command: !mdn object.__proto__
-  $('.notecard').remove();
-  const text = findFirst($article, '.seoSummary', 'p')
+  const text = findFirst(
+    $article,
+    '.seoSummary',
+    ':not(.notecard) > p:not(.notecard)',
+  )
     .text()
     .replace(/\s+/g, ' ')
     .trim();
