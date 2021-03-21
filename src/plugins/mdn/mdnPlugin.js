@@ -6,7 +6,8 @@ function slugify(words) {
   return words
     .map((x) => x.trim().toLowerCase())
     .join('-')
-    .replace(/[^a-zA-Z0-9_.]+/g, '-');
+    .replace(/[^a-zA-Z0-9_.]+/g, '-')
+    .replace(/^-|-$/g, '');
 }
 
 class HtmlParseError extends Error {}
