@@ -23,12 +23,47 @@ function getMdnTitle(title) {
 
 function extractFromHtml(html) {
   const $ = cheerio.load(html);
-  const title = getMdnTitle($('head title').text());
-  const text = $('#wikiArticle')
-    .first()
-    .find('p')
-    .first()
-    .text();
+
+  const findFirst = (parent, ...selectors) => {
+    for (const selector of selectors) {
+      const $match = parent.find(selector);
+      if ($match.length) {
+        return $match.first();
+      }
+    }
+    return null;
+  };
+
+  // Note (March 2021): unclear if #wikiArticle will ever appear in the future. The following
+  // can be grepped for in the logs to see if it happens in practice, and the code simplified
+  // if not.
+  let $article = findFirst($('body'), 'main#content', '#wikiArticle');
+  if ($article.attr('id') === 'wikiArticle') {
+    console.log('METRIC::MDN_WIKI_ARTICLE', new Date().toISOString());
+  }
+
+  const title = getMdnTitle(
+    $article
+      .find('h1')
+      .first()
+      .text(),
+  );
+
+  // Array#map: .seoSummary exists and contains the text we want
+  // Command: !mdn array.map
+  //
+  // Document#write: there is a deprecation warning, followed by the <p> we want. The
+  // seoSummary class doesn't match anything.
+  // Command: !mdn document.write
+  //
+  // Object#__proto__: There are .notecard elements we don't want to match, which contain <p> elements,
+  // followed by a <p> we do want to match.
+  // Command: !mdn object.__proto__
+  $('.notecard').remove();
+  const text = findFirst($article, '.seoSummary', 'p')
+    .text()
+    .replace(/\s+/g, ' ')
+    .trim();
 
   if (!text) {
     const bodyText = $('body')
