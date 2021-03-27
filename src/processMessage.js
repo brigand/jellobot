@@ -21,11 +21,13 @@ function processMessage(client, config, logs, from, to, message) {
     let text = String(raw)
       .split('\n')
       .join(' ');
-    if (text.length > 400) {
-      text = `${text.slice(0, 390)} ...`;
+
+    let utf8 = Buffer.from(text, 'utf8');
+    if (utf8.length > 400) {
+      utf8 = Buffer.concat([utf8.slice(0, 390), Buffer.from(' ...')]);
     }
-    client.say(to2, text);
-    console.log(`${chalk.green(to2)} ${text}`);
+    client.say(to2, utf8);
+    console.log(`${chalk.green(to2)} ${utf8}`);
   };
 
   messageObj.sayTo = say;
