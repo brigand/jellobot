@@ -1,5 +1,6 @@
 const chalk = require('chalk');
 const { safeDump: yamlStringify } = require('js-yaml');
+const overflow = require('./utils/textOverflow');
 
 function processMessage(client, config, logs, from, to, message) {
   // 'to' is either a channel, or the bot's nick. Later we set it to
@@ -22,10 +23,7 @@ function processMessage(client, config, logs, from, to, message) {
       .split('\n')
       .join(' ');
 
-    let utf8 = Buffer.from(text, 'utf8');
-    if (utf8.length > 400) {
-      utf8 = Buffer.concat([utf8.slice(0, 390), Buffer.from(' ...')]);
-    }
+    const utf8 = overflow.ellipses(text, 400);
     client.say(to2, utf8);
     console.log(`${chalk.green(to2)} ${utf8}`);
   };
