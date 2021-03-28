@@ -48,6 +48,7 @@
     "cheerio": "^0.22.0",
     "dirsum": "^0.1.1",
     "glob": "^7.1.6",
+    "grapheme-splitter": "^1.0.4",
     "irc": "^0.5.2",
     "js-yaml": "^3.14.1",
     "json5": "^2.2.0",
