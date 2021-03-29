@@ -19,11 +19,16 @@ function processMessage(client, config, logs, from, to, message) {
   };
 
   const say = (to2, raw) => {
-    let text = String(raw)
+    const text = String(raw)
       .split('\n')
       .join(' ');
 
-    const utf8 = overflow.ellipses(text, 400);
+    const utf8 = overflow.ellipses(
+      text,
+      // TODO: make this smarter. It still sometimes splits across multiple messages, but it's
+      // dependent on at least the channel the bot is in.
+      512 - ' say'.length - Buffer.from(to2).length - ' '.length - '\r\n'.length - 52,
+    );
     client.say(to2, utf8);
     console.log(`${chalk.green(to2)} ${utf8}`);
   };
