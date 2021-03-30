@@ -20,6 +20,7 @@ init().catch((e) => {
 
 const client = new irc.Client(config.server, config.nick, config.ircClientConfig);
 client.currentNick = config.nick;
+client.currentPrefix = '';
 
 function updateConfig() {
   const newConfig = readAndProcessConfig();
@@ -82,6 +83,14 @@ client.addListener('message', (from, to, message) => {
   }
 
   plugins.run(messageObj);
+});
+
+client.addListener('join', (channel, nick, message) => {
+  if (nick === client.currentNick) {
+    if (message.prefix) {
+      client.currentPrefix = message.prefix;
+    }
+  }
 });
 
 let didRegister = false;

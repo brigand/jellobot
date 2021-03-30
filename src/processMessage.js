@@ -18,14 +18,34 @@ function processMessage(client, config, logs, from, to, message) {
     config,
   };
 
-  const say = (to2, raw) => {
-    let text = String(raw)
+  const prepareMessage = (to2, raw) => {
+    const text = String(raw)
       .split('\n')
-      .join(' ');
+      .join(' ')
+      .slice(0, 1000);
 
-    const utf8 = overflow.ellipses(text, 400);
-    client.say(to2, utf8);
-    console.log(`${chalk.green(to2)} ${utf8}`);
+    const prefix = client.currentPrefix || client.currentNick + '!' + '_'.repeat(50);
+
+    const head = `:${prefix} PRIVMSG ${to} :`;
+    const tail = `\r\n`;
+
+    const utf8 = overflow.ellipses(
+      text,
+      // TODO: make this smarter. It still sometimes splits across multiple messages, but it's
+      // dependent on at least the channel the bot is in.
+      512 - Buffer.from(head).length - Buffer.from(tail).length,
+    );
+
+    return {
+      bytes: utf8,
+      truncated: utf8.toString() !== text,
+    };
+  };
+
+  const say = (to2, raw) => {
+    const { bytes } = prepareMessage(to2, raw);
+    client.say(to2, bytes);
+    console.log(`${chalk.green(to2)} ${bytes}`);
   };
 
   messageObj.sayTo = say;
@@ -33,7 +53,17 @@ function processMessage(client, config, logs, from, to, message) {
     say(replyTo, text);
   };
   messageObj.respondWithMention = (text) => {
-    say(replyTo, `${mentionUser}, ${text}`);
+    const message2 = `${mentionUser}, ${text}`;
+
+    if (
+      text.length < 500 &&
+      prepareMessage(replyTo, message2).truncated &&
+      !prepareMessage(replyTo, text).truncated
+    ) {
+      messageObj.respond(text);
+    } else {
+      say(replyTo, message2);
+    }
   };
 
   if (to && to[0] !== '#') {
