@@ -42,6 +42,7 @@ exports.parserPlugins = [
   'doExpressions',
   'exportDefaultFrom',
   'functionBind',
+  'functionSent',
   'partialApplication',
   ['pipelineOperator', { proposal: 'minimal' }],
   'privateIn',
