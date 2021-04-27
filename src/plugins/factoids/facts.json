@@ -13718,7 +13718,7 @@
 			"changes": []
 		},
 		"whichnvm": {
-			"value": "nvm ( http://nvm.sh / #nvm ) lets you change node versions per-user/per-shell. nave ( https://www.npmjs.com/package/nave ) is for per-user/per-SUBshell. n ( https://www.npmjs.com/package/n ) is for a single, global, system-wide node.",
+			"value": "nvm ( https://nvm.sh / #nvm ) lets you change node versions per-user/per-shell. nave ( https://www.npmjs.com/package/nave ) is for per-user/per-SUBshell. n ( https://www.npmjs.com/package/n ) is for a single, global, system-wide node.",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:11:00.634Z",
 			"popularity": 9,
