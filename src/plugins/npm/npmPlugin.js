@@ -1,5 +1,6 @@
 const cp = require('child_process');
 const util = require('util');
+const { messageToFactoid } = require('../factoids/factoidsPlugin');
 
 const exec = util.promisify(cp.exec);
 
@@ -10,6 +11,11 @@ const npmPlugin = async (msg) => {
   if (words[0] !== 'npm') {
     return;
   }
+  const factoid = await messageToFactoid(msg);
+  if (factoid) {
+    return;
+  }
+
   msg.handling();
   const name = words[1];
 
