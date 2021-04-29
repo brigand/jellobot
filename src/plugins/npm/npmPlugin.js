@@ -16,8 +16,12 @@ const npmPlugin = async (msg) => {
     return;
   }
 
-  msg.handling();
   const name = words[1];
+  if (!name) {
+    return;
+  }
+
+  msg.handling();
 
   if (!/^[a-zA-Z0-9_.-]{3,}$/.test(name)) {
     msg.respondWithMention(`that doesn't look like a valid package name`);
