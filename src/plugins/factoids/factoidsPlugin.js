@@ -2,6 +2,9 @@ const fs = require('fs');
 const facts = require('./facts.json').factoids;
 
 function parseMsg(msg) {
+  if (!msg.command) {
+    return { key: null, nick: null };
+  }
   const [key, nick] = msg.command.command.split('@').map((x) => x.trim());
   return { key, nick: nick || null };
 }
@@ -11,8 +14,8 @@ const factoidPlugin = async (msg) => {
     fs.writeFile('/tmp/disable-factoids', 'x', () => {});
   }
 
-  const { nick } = parseMsg(msg);
   const value = await factoidPlugin.messageToFactoid(msg);
+  const { nick } = parseMsg(msg);
 
   if (!value) return;
 
