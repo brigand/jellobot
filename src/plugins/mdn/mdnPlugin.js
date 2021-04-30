@@ -1,6 +1,7 @@
 const url = require('url');
 const superagent = require('superagent');
 const cheerio = require('cheerio');
+const { messageToFactoid } = require('../factoids/factoidsPlugin');
 
 function slugify(words) {
   return words
@@ -138,6 +139,10 @@ const mdnPlugin = async (msg) => {
 
   const words = msg.command.command.split(' ');
   if (words[0] !== 'mdn') {
+    return;
+  }
+  const factoid = await messageToFactoid(msg);
+  if (factoid) {
     return;
   }
   msg.handling();

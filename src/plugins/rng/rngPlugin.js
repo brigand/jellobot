@@ -1,5 +1,13 @@
-const rngPlugin = async ({ command, handling = () => {}, respondWithMention }) => {
+const { messageToFactoid } = require('../factoids/factoidsPlugin');
+
+const rngPlugin = async (msg) => {
+  const { command, handling = () => {}, respondWithMention } = msg;
   if (!command) return;
+
+  const factoid = await messageToFactoid(msg);
+  if (factoid) {
+    return;
+  }
 
   const m = command.command.match(/^(?:pick|choose|which)[: ](\S[^#?]*)/); // allow to pass comments after # or ?
 

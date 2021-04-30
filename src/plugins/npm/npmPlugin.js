@@ -1,5 +1,6 @@
 const cp = require('child_process');
 const util = require('util');
+const { messageToFactoid } = require('../factoids/factoidsPlugin');
 
 const exec = util.promisify(cp.exec);
 
@@ -10,8 +11,17 @@ const npmPlugin = async (msg) => {
   if (words[0] !== 'npm') {
     return;
   }
-  msg.handling();
+  const factoid = await messageToFactoid(msg);
+  if (factoid) {
+    return;
+  }
+
   const name = words[1];
+  if (!name) {
+    return;
+  }
+
+  msg.handling();
 
   if (!/^[a-zA-Z0-9_.-]{3,}$/.test(name)) {
     msg.respondWithMention(`that doesn't look like a valid package name`);
