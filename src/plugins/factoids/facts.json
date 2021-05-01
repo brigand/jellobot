@@ -4236,23 +4236,6 @@
 			"editors": [],
 			"changes": []
 		},
-		"( [morenoh149] foo": {
-			"value": "bar | foo =~ s/expression/replace/gi )",
-			"creator": "morenoh151",
-			"date": "2014-08-25T08:24:02.915Z",
-			"popularity": 0,
-			"editors": [
-				"morenoh151"
-			],
-			"changes": [
-				{
-					"date": "2014-08-25T08:25:04.936Z",
-					"editor": "morenoh151",
-					"old-value": "bar )",
-					"new-value": "bar | foo =~ s/expression/replace/gi )"
-				}
-			]
-		},
 		"smart": {
 			"value": "http://www.catb.org/~esr/faqs/smart-questions.html",
 			"creator": "ashnur",
