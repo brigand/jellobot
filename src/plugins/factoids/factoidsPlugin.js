@@ -51,7 +51,10 @@ const findCommand = (query) => {
   }
   if (matches.length === 1) {
     const [first] = matches;
-    return `I found a matching factoid: !${first}`;
+    if (!facts[first].value) {
+      return `found !${first}`;
+    }
+    return `found !${first}: ${facts[first].value}`;
   }
 
   const andMore = matches.length === MATCH_LIMIT;
@@ -60,7 +63,7 @@ const findCommand = (query) => {
   const tail = andMore ? `and more` : `and ${last}`;
   const formatted = [...items, tail].join(', ');
 
-  return `I found matching factoids: ${formatted}`;
+  return `found ${formatted}`;
 };
 
 const factoidPlugin = async (msg) => {
