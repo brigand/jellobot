@@ -37,7 +37,8 @@ Then create a config file...
   "userName": "examplenick1951",
   "password": "some-nickserv-password",
   "channels": [
-    { "name": "##chan1", "requiresAuth": true },
+    { "name": "##chan1", "requiresAuth": true }
+  ]
 }
 ```
 
