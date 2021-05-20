@@ -38,7 +38,7 @@ function extractFromHtml(html) {
   // Note (March 2021): unclear if #wikiArticle will ever appear in the future. The following
   // can be grepped for in the logs to see if it happens in practice, and the code simplified
   // if not.
-  let $article = findFirst($('body'), 'main#content', '#wikiArticle');
+  const $article = findFirst($('body'), 'main#content', '#wikiArticle');
   if ($article.attr('id') === 'wikiArticle') {
     console.log('METRIC::MDN_WIKI_ARTICLE', new Date().toISOString());
   }

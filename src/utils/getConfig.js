@@ -11,12 +11,18 @@ if (process.env.JELLOBOT_CONFIG) {
   absoluteFilePath = `${process.cwd()}/${filename}`;
 }
 
-const defaultConfig = {
+const randomNick = `jellobot-${Math.floor(Math.random() * 1e5)}`;
+const defaultServer = {
   commandPrefix: '!',
   server: 'chat.freenode.net',
-  nick: `jellobot-${Math.floor(Math.random() * 1e5)}`,
+  nick: randomNick,
   password: null,
   channels: [{ name: '##jellobot-test' }],
+};
+
+const defaultConfig = {
+  servers: [{ ...defaultServer }],
+
   plugins: {
     jsEval: {
       timeout: 5000,
@@ -24,19 +30,38 @@ const defaultConfig = {
   },
 };
 
+const legacyConfigToMultiServer = (config) => {
+  let { plugins, servers, ...rest } = config; // eslint-disable-line prefer-const
+
+  if (!Array.isArray(servers)) {
+    servers = [rest];
+  }
+
+  servers = servers.map((server) => ({
+    ...defaultServer,
+    ...server,
+  }));
+
+  return { plugins, servers };
+};
+
 exports.processConfig = (customConfig) => {
-  const config = Object.assign({}, defaultConfig, customConfig);
+  const config = legacyConfigToMultiServer({ ...defaultConfig, ...customConfig });
 
-  // generate the config passed to new irc.Client
-  config.ircClientConfig = {
-    channels: config.channels.filter((x) => !x.requiresAuth).map(({ name }) => name),
-    retryCount: 10,
-  };
+  for (const server of config.servers) {
+    // generate the config passed to new irc.Client
+    server.ircClientConfig = {
+      channels: server.channels
+        .filter((x) => !x.requiresAuth)
+        .map(({ name }) => name),
+      retryCount: 10,
+    };
 
-  if (config.password) {
-    config.ircClientConfig.userName = config.userName || config.nick;
-    config.ircClientConfig.password = config.password;
-    // config.ircClientConfig.sasl = true;
+    if (server.password) {
+      server.ircClientConfig.userName = server.userName || server.nick;
+      server.ircClientConfig.password = server.password;
+      // server.ircClientConfig.sasl = true;
+    }
   }
 
   // parse args
