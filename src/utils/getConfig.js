@@ -58,7 +58,16 @@ exports.processConfig = (customConfig) => {
     if (server.password) {
       server.ircClientConfig.userName = server.userName || server.nick;
       server.ircClientConfig.password = server.password;
-      // server.ircClientConfig.sasl = true;
+      server.ircClientConfig.port = server.port || 6667;
+      if (server.sasl) {
+        server.ircClientConfig.sasl = true;
+      }
+      if (server.sasl || server.secure) {
+        server.ircClientConfig.secure = true;
+      }
+      if (server.debug) {
+        server.ircClientConfig.debug = true;
+      }
     }
   }
 
