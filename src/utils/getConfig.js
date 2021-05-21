@@ -18,6 +18,9 @@ const defaultServer = {
   nick: randomNick,
   password: null,
   channels: [{ name: '##jellobot-test' }],
+  sasl: false,
+  debug: false,
+  secure: false,
 };
 
 const defaultConfig = {
@@ -59,16 +62,20 @@ exports.processConfig = (customConfig) => {
       server.ircClientConfig.userName = server.userName || server.nick;
       server.ircClientConfig.password = server.password;
       server.ircClientConfig.port = server.port || 6667;
-      if (server.sasl) {
-        server.ircClientConfig.sasl = true;
-      }
-      if (server.sasl || server.secure) {
-        server.ircClientConfig.secure = true;
-      }
-      if (server.debug) {
-        server.ircClientConfig.debug = true;
-      }
     }
+
+    if (server.sasl) {
+      server.ircClientConfig.sasl = true;
+    }
+    if (server.sasl || server.secure) {
+      server.ircClientConfig.secure = true;
+    }
+    if (server.debug) {
+      server.ircClientConfig.debug = true;
+    }
+
+    server.ircClientConfig.realName =
+      server.realName || config.realName || 'jellobot';
   }
 
   // parse args
