@@ -50,6 +50,7 @@
     "glob": "^7.1.6",
     "grapheme-splitter": "^1.0.4",
     "irc": "^0.5.2",
+    "irc-upd": "^0.11.0",
     "js-yaml": "^3.14.1",
     "json5": "^2.2.0",
     "node-fetch": "^2.6.1",

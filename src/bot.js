@@ -1,4 +1,4 @@
-const irc = require('irc');
+const irc = require('irc-upd');
 const chalk = require('chalk');
 const { maybeClearCache } = require('./utils/requireCache');
 const init = require('./plugins/initPlugins');
