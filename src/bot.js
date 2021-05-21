@@ -96,8 +96,9 @@ clients.forEach((client) => {
       messageObj = processMessage(client, config, logs, from, to, message);
     } catch (e) {
       const isRoom = /^#/.test(to);
-      if (Date.now() > lastProcessMessageFail + 1000 * 60 * 60) {
-        lastProcessMessageFail = Date.now();
+      const now = Date.now();
+      if (now > lastProcessMessageFail + 1000 * 60 * 60) {
+        lastProcessMessageFail = now;
         client.say(isRoom ? to : from, `Internal error while processing the message`);
       }
       return;
