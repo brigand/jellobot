@@ -21,8 +21,6 @@ const defaultServer = {
 };
 
 const defaultConfig = {
-  servers: [{ ...defaultServer }],
-
   plugins: {
     jsEval: {
       timeout: 5000,
