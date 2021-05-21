@@ -15,14 +15,18 @@ Object {
         },
       ],
       "commandPrefix": "!",
+      "debug": false,
       "ircClientConfig": Object {
         "channels": Array [
           "##jellobot-test",
         ],
+        "realName": "jellobot",
         "retryCount": 10,
       },
       "nick": "jellobot",
       "password": null,
+      "sasl": false,
+      "secure": false,
       "server": "chat.freenode.net",
     },
   ],
