@@ -2,26 +2,30 @@
 
 exports[`works 1`] = `
 Object {
-  "channels": Array [
-    Object {
-      "name": "##jellobot-test",
-    },
-  ],
-  "commandPrefix": "!",
-  "ircClientConfig": Object {
-    "channels": Array [
-      "##jellobot-test",
-    ],
-    "retryCount": 10,
-  },
-  "nick": "jellobot",
-  "password": null,
   "plugins": Object {
     "jsEval": Object {
       "timeout": 5000,
     },
   },
-  "server": "chat.freenode.net",
+  "servers": Array [
+    Object {
+      "channels": Array [
+        Object {
+          "name": "##jellobot-test",
+        },
+      ],
+      "commandPrefix": "!",
+      "ircClientConfig": Object {
+        "channels": Array [
+          "##jellobot-test",
+        ],
+        "retryCount": 10,
+      },
+      "nick": "jellobot",
+      "password": null,
+      "server": "chat.freenode.net",
+    },
+  ],
   "verbose": false,
 }
 `;
