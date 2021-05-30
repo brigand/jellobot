@@ -1,6 +1,8 @@
 const fs = require('fs');
 const facts = require('./facts.json').factoids;
 
+const has = Object.prototype.hasOwnProperty;
+
 function parseMsg(msg) {
   if (!msg.command) {
     return { key: null, nick: null };
@@ -109,14 +111,14 @@ factoidPlugin.messageToFactoid = async (msg) => {
     return { find };
   }
 
-  // TODO: add hasOwnProperty check
-
   if (key === 'source') {
     return `I'm written in JS and my code can be found at https://github.com/brigand/jellobot`;
   }
 
   const fact = facts[key];
-  if (!fact) return;
+  if (!fact || !has.call(facts, key)) {
+    return;
+  }
 
   if (fact.alias) {
     const fact2 = facts[fact.alias];
