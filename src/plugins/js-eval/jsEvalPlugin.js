@@ -44,8 +44,8 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
     code =
       mode === 'b'
         ? (await babel.transformFromAstAsync(ast, code, {
-            plugins: transformPlugins,
-          })).code
+          plugins: transformPlugins,
+        })).code
         : babelGenerator(ast).code;
   }
 
@@ -64,6 +64,7 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
       '--experimental-vm-modules', // used by m>
       '--experimental-modules',
       '--no-warnings',
+      '-r', 'string.prototype.at/shim', 'array.prototype.at/shim',
       '/run/run.js',
     ];
 
