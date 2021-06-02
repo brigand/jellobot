@@ -64,7 +64,7 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
       '--experimental-vm-modules', // used by m>
       '--experimental-modules',
       '--no-warnings',
-      '-r', 'string.prototype.at/auto', 'array.prototype.at/auto',
+      ...mode === 'b' ? ['-r', 'string.prototype.at/auto', 'array.prototype.at/auto'] : [],
       '/run/run.js',
     ];
 

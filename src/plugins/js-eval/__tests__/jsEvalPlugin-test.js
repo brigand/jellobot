@@ -66,8 +66,8 @@ describe('jsEvalPlugin', () => {
     expect(output).toEqual(`jay, 'ok'`);
   });
 
-  it(`exposes string.prototype.at (stage3)`, async () => {
-    const output = await testEval(`n> '\u{1f4a9}'.at(0)`);
+  it(`babel exposes string.prototype.at (stage3)`, async () => {
+    const output = await testEval(`b> '\u{1f4a9}'.at(0)`);
     expect(output).toEqual(`(okay) '\u{1f4a9}'`);
   });
 
