@@ -66,14 +66,9 @@ describe('jsEvalPlugin', () => {
     expect(output).toEqual(`jay, 'ok'`);
   });
 
-  it(`exposes unstable harmony features with h>`, async () => {
-    // Currently failing with "Error"
-    // const output = await testEval(`h> class A { x = 3n; ok = () => this.x }; new A().ok()`);
-    // expect(output).toEqual(`(okay) 3n`);
-    // Note: this test failed on previous node.js versions but now passes. It should be replaced
-    // with some new feature that only works with harmony flags.
-    // const output2 = await testEval(`n> class A { x = 3n; ok = () => this.x }; new A().ok()`);
-    // expect(output2).toEqual(`Error: SyntaxError: Unexpected token =`);
+  it(`exposes string.prototype.at (stage3)`, async () => {
+    const output = await testEval(`n> '\u{1f4a9}'.at(0)`);
+    expect(output).toEqual(`(okay) '\u{1f4a9}'`);
   });
 
   it(`can run babel with b>`, async () => {
