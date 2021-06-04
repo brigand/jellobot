@@ -67,8 +67,10 @@ describe('jsEvalPlugin', () => {
   });
 
   it(`babel exposes string.prototype.at (stage3)`, async () => {
-    const output = await testEval(`b> '\u{1f4a9}'.at(0)`);
-    expect(output).toEqual(`(okay) '\u{1f4a9}'`);
+    const output = await testEval(`b> '\\u{1f4a9}'.at(0)`);
+
+    // Should return unicode replacement character
+    expect(output).toEqual(`(okay) '\u{fffd}'`);
   });
 
   it(`can run babel with b>`, async () => {
