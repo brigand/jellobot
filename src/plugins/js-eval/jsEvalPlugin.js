@@ -41,12 +41,15 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
 
     if (hasMaybeTLA) ast = processTopLevelAwait(ast);
 
-    code =
-      mode === 'b'
-        ? (await babel.transformFromAstAsync(ast, code, {
-            plugins: transformPlugins,
-          })).code
-        : babelGenerator(ast).code;
+    if (mode === 'b') {
+      code = await babel
+        .transformFromAstAsync(ast, code, {
+          plugins: transformPlugins,
+        })
+        .then((r) => r.code);
+    } else {
+      code = babelGenerator(ast).code;
+    }
   }
 
   try {
@@ -57,6 +60,7 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
       '--rm',
       `--name=${name}`,
       `--net=none`,
+      `-eJSEVAL_MODE=${mode}`,
       `-eJSEVAL_ENV=${envs[mode]}`,
       `-eJSEVAL_TIMEOUT=${timeoutMs}`,
       'brigand/js-eval',
