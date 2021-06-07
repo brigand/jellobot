@@ -13240,7 +13240,7 @@
 			"changes": []
 		},
 		"fiddle": {
-			"value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: repl.it, runkit.com, gist.github.com. See also !mcve and !paste",
+			"value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: runkit.com, gist.github.com. See also !mcve and !paste",
 			"creator": "ljharb",
 			"date": "2020-06-05T23:06:31.308Z",
 			"popularity": 33,
@@ -21690,7 +21690,7 @@
 			"editor": "MJCD",
 			"key": "fiddle",
 			"value": {
-				"value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: repl.it, runkit.com, gist.github.com. See also !mcve and !paste",
+				"value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: runkit.com, gist.github.com. See also !mcve and !paste",
 				"creator": "graingert",
 				"date": "2017-11-29T00:23:06.807Z",
 				"popularity": 415,
@@ -21785,6 +21785,12 @@
 						"editor": "ljharb",
 						"old-value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: repl.it, runkit.com. See also !mcve and !paste",
 						"new-value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: repl.it, runkit.com, gist.github.com. See also !mcve and !paste"
+					},
+					{
+						"date": "2021-06-07T21:05:07.105Z",
+						"editor": "sheetjs",
+						"old-value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: repl.it, runkit.com. See also !mcve and !paste",
+						"new-value": "Please create a running example of your code (a screenshot is not acceptable). For browsers: jsfiddle.net, codesandbox.io, stackblitz.com, codepen.io, jsbin.com  For node: runkit.com, gist.github.com. See also !mcve and !paste"
 					}
 				]
 			}
