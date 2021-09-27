@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# This is a minimal docker mock, that way you can run jsEvalPlugins passing the options { dockerCmd: './duck', runFilePath: './run.js', }
+
+set -e
+
+usage='./duck run -eFOO=bar -eNODE_ENV=test image command'
+
+if [[ "$1" != 'run' ]]; then
+  exit 0;
+fi
+
+shift
+
+env_vars=()
+
+while getopts :e: opt; do
+  case $opt in
+    e) [[ $OPTARG = *=* ]] && env_vars+=( "$OPTARG" )
+        ;;
+    *)  
+        ;;
+  esac
+done
+shift $(($OPTIND - 1))
+
+# image
+shift
+
+env "${env_vars[@]}" "$@"

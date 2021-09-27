@@ -17,7 +17,7 @@ const envs = {
   b: 'node-cjs',
 };
 
-module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) {
+module.exports = async function jsEvalPlugin({ mentionUser, respond, message, dockerCmd = 'docker', runFilePath = '/run/run.js' }) {
   const mode = message[0];
 
   if (message[1] !== '>') {
@@ -68,7 +68,7 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
       '--experimental-vm-modules', // used by m>
       '--experimental-modules',
       '--no-warnings',
-      '/run/run.js',
+      runFilePath,
     ];
 
     let timeout;
@@ -76,7 +76,7 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
 
     const result = await Promise.race([
       new Promise((resolve, reject) => {
-        const proc = cp.spawn('docker', args);
+        const proc = cp.spawn(dockerCmd, args);
 
         proc.stdin.write(code);
         proc.stdin.end();
@@ -102,7 +102,7 @@ module.exports = async function jsEvalPlugin({ mentionUser, respond, message }) 
       new Promise((resolve) => {
         timeout = setTimeout(resolve, timeoutMs + 10);
       }).then(() => {
-        cp.execSync(`docker kill --signal=9 ${name}`);
+        cp.execSync(`${dockerCmd} kill --signal=9 ${name}`);
         throw Object.assign(new Error(data), { reason: 'timeout' }); // send data received so far in the error msg
       }),
     ]);

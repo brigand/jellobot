@@ -13,6 +13,8 @@ async function testEval(message, opts = {}) {
       ...opts,
       message,
       respond: resolve,
+      // dockerCmd: './duck',
+      // runFilePath: './run.js',
     });
   });
 }
@@ -51,9 +53,9 @@ describe('jsEvalPlugin', () => {
 
   it(`exposes node core modules`, async () => {
     const output = await testEval(
-      `n> fs.writeFileSync('foo', '..'); [fs.readdirSync('.'), child_process.execSync('ls')+'']`,
+      `n> fs.writeFileSync('foo', '..'); process.nextTick(() => fs.unlinkSync('foo')); child_process.execSync('cat foo')+''`,
     );
-    expect(output).toEqual(`(okay) [ [ 'foo' ], 'foo\\n' ]`);
+    expect(output).toEqual(`(okay) '..'`);
   });
 
   it(`replies to user`, async () => {
@@ -64,38 +66,41 @@ describe('jsEvalPlugin', () => {
   it(`replies to user`, async () => {
     const output = await testEval(`n>'ok'`, { mentionUser: 'jay' });
     expect(output).toEqual(`jay, 'ok'`);
-  });
-
-  it(`babel exposes string.prototype.at (stage3)`, async () => {
-    const output = await testEval(`b> '\\u{1f4a9}'.at(0)`);
-
-    // Should return unicode replacement character
-    expect(output).toEqual(`(okay) '\u{fffd}'`);
-  });
-
-  it(`can run babel with b>`, async () => {
-    const output = await testEval(
-      `b> class A { x = 3n; ok = () => this.x }; new A().ok()`,
-    );
-    expect(output).toEqual(`(okay) 3n`);
-  });
-
-  it(`babel has String.prototype.matchAll`, async () => {
-    const output = await testEval(
-      `b> [...'1 2 3'.matchAll(/\\d/g)].map(o => o.index)`,
-    );
-    expect(output).toEqual(`(okay) [ 0, 2, 4 ]`);
-  });
-
-  it(`babel has Object.fromEntries`, async () => {
-    const output = await testEval(`b> typeof Object.fromEntries`);
-    expect(output).toEqual(`(okay) 'function'`);
   });
 
   it(`handles empty input`, async () => {
     const output = await testEval(`n>  `);
     expect(output).toEqual(`(okay) undefined`);
   });
+
+
+  describe('babel', () => {
+    it(`runs with b>`, async () => {
+      const output = await testEval(
+        `b> class A { x = 3n; ok = () => this.x }; new A().ok()`,
+      );
+      expect(output).toEqual(`(okay) 3n`);
+    });
+
+    it(`has String.prototype.matchAll`, async () => {
+      const output = await testEval(
+        `b> [...'1 2 3'.matchAll(/\\d/g)].map(o => o.index)`,
+      );
+      expect(output).toEqual(`(okay) [ 0, 2, 4 ]`);
+    });
+
+    it(`has decorators`, async () => {
+      // TODO put a relevant example, I couldn't find one to work, maybe the plugin is not up to date
+      // e.g. b> @x class C {} function x(target) { target.x = true; } [C.x, new C().x] both are undefined
+      // https://github.com/tc39/proposal-decorators#class-methods examples fail because the decorator function in the babel proposal doesn't even receive a second arg
+    });
+
+    it('has pipelines', async () => {
+      const output = await testEval(`b> 2 |> % + 1`);
+      expect(output).toEqual(`(okay) 3`);
+    });
+  });
+
 
   describe('top-level-await', () => {
     it('works', async () => {

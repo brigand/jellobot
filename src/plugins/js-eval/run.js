@@ -50,9 +50,8 @@ function exposeBuiltinInGlobal(name) {
 async function run(code, environment, timeout) {
   switch (environment) {
     case 'node-cjs': {
-      if (process.env.JSEVAL_MODE === 'b') {
-        require('string.prototype.at/auto');
-        require('array.prototype.at/auto');
+     if (process.env.JSEVAL_MODE === 'b') {
+        require('@bloomberg/record-tuple-polyfill');
       }
       const script = new Script(code);
       global.module = module;
