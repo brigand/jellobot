@@ -79,4 +79,4 @@ module.exports = function processTopLevelAwait(root) {
   // const iiafe = t.program([t.expressionStatement(t.callExpression(t.arrowFunctionExpression([], t.blockStatement(root.program.body)), []))]) // with @babel/types
 
   return iiafe;
-}
+};
