@@ -73,7 +73,7 @@ function processMessage(client, config, logs, from, to, message) {
     messageObj.pm = false;
 
     const channelConfig = config.channels.find((channel) => {
-      return channel.name.toLowerCase() === to.toLowerCase();
+      return channel.name && channel.name.toLowerCase() === to.toLowerCase();
     });
 
     if (channelConfig) {

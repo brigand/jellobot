@@ -155,7 +155,7 @@ clients.forEach((client) => {
       client.say('nickserv', `IDENTIFY ${config.userName} ${config.password}`);
       setTimeout(() => {
         config.channels
-          .filter((x) => x.requiresAuth)
+          .filter((x) => x.requiresAuth && x.name)
           .forEach((c) => {
             client.join(c.name);
           });
