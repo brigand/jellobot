@@ -60,7 +60,7 @@ function updateConfig() {
         }
       }
       for (const chan of oldChan) {
-        if (!newChan.find((x) => x.name === chan.name)) {
+        if (chan.name && !newChan.find((x) => x.name === chan.name)) {
           client.part(chan.name);
         }
       }
