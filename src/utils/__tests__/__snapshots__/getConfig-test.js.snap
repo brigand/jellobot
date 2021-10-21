@@ -27,7 +27,7 @@ Object {
       "password": null,
       "sasl": false,
       "secure": false,
-      "server": "chat.freenode.net",
+      "server": "irc.libera.chat",
     },
   ],
   "verbose": false,

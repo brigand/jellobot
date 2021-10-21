@@ -14,7 +14,7 @@ if (process.env.JELLOBOT_CONFIG) {
 const randomNick = `jellobot-${Math.floor(Math.random() * 1e5)}`;
 const defaultServer = {
   commandPrefix: '!',
-  server: 'chat.freenode.net',
+  server: 'irc.libera.chat',
   nick: randomNick,
   password: null,
   channels: [{ name: '##jellobot-test' }],
