@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "format": "npx prettier --write '{src/**/*.js,scripts/**/*.js,scripts/**/*.sh,README.md}'"
+    "format": "npx prettier --write '{src/**/*.js,scripts/**/*.js,scripts/**/*.sh,README.md}'",
+    "start": "node src/bot.js"
   },
   "dependencies": {
     "@babel/core": "^7.13.10",
