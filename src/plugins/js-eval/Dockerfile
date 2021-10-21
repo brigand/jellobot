@@ -1,6 +1,6 @@
 # This should be kept somewhat recent for local development, but the js-eval/init script
 # sets this to the latest version from nodejs.org/download/release
-ARG node_version=v15.12.0
+ARG node_version=v17.0.1
 
 FROM debian:10-slim
 ARG node_version

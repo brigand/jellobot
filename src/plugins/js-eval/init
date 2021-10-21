@@ -13,6 +13,6 @@ fi
 
 dir=$(dirname "$0")
 
-node_version="$(curl -sSL https://nodejs.org/download/release/ | awk '/>v/{ split($2, a, "[<>]"); sub("/","",a[2]); print a[2] }' | sort -V | tail -n1)"
+node_version="$(curl -sSL https://nodejs.org/download/release/index.tab -o - | awk -F ' ' 'FNR==2{ print $1 }')"
 docker build -t brigand/js-eval $dir -f $dir/Dockerfile --build-arg node_version="$node_version"
 docker images brigand/js-eval:latest
