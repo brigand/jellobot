@@ -13074,7 +13074,7 @@
 			"changes": []
 		},
 		"about": {
-			"value": "I'm written entirely in JavaScript using Node.js. Look under the hood on Github: <https://github.com/oftn/oftn-bot>",
+			"value": "I'm written entirely in JavaScript using Node.js. Look under the hood on Github: <https://github.com/ljharb/jellobot>",
 			"creator": "ljharb",
 			"date": "2020-06-05T22:51:38.450Z",
 			"popularity": 20,
