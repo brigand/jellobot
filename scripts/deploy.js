@@ -64,7 +64,7 @@ async function run() {
   const ssh = new SshConnection({ host, user, log });
 
   function nvmExec(command) {
-    return ssh.exec(`source ~/.nvm/nvm.sh; nvm use 12 && ${command}`);
+    return ssh.exec(`source ~/.nvm/nvm.sh; nvm install 12 && ${command}`);
   }
 
   try {

@@ -1,5 +1,5 @@
 #!/bin/bash
 source scripts/env.sh
 
-ssh "$ssh_host" "su - $remote_user -c 'cd package; source ~/.nvm/nvm.sh; nvm use 6; pm2 logs jellobot --raw'"
+ssh "$ssh_host" "su - $remote_user -c 'cd package; source ~/.nvm/nvm.sh; nvm install 6; pm2 logs jellobot --raw'"
 
